@@ -1,0 +1,7 @@
+# Gitignore file #
+
+# Swap files
+
+*~
+\#*\#
+

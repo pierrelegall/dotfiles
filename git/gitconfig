@@ -1,0 +1,18 @@
+[core]
+	editor = emacs -nw
+
+[color]
+	branch      = true
+	diff        = true
+	interactive = true
+	status      = true
+
+[alias]
+	ch = checkout
+	co = commit
+	st = status
+	br = branch
+
+[include]
+	path = .gitprivateconfig
+
