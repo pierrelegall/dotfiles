@@ -8,7 +8,7 @@ YOUR_CONFIG = $(HOME)/.gitconfig
 
 # Actions
 
-all: info set
+all: set info
 
 set:
 	@ echo "<$(TOOL)>"
