@@ -5,7 +5,7 @@
 
 export BASH_DIR='/home/nausor'
 export GREP_COLOR=31
-export VDL_PATH='~/videos/download/%(title)s.%(ext)s'
+export VDL_PATH='~/videos/downloaded/%(title)s.%(ext)s'
 export WINEPREFIX='~/.wine'
 
 if [[ $UID -eq 0 ]]; then
@@ -20,7 +20,7 @@ export PS4="+"
 
 ## Options ##
 
-unset HISTFILE
+# unset HISTFILE
 
 
 ## Aliases ##
