@@ -8,9 +8,11 @@ YOUR_CONFIG = $(HOME)/config.fish
 
 # Actions
 
-all: set
+all: info setup
 
-set:
+info:
 	@ echo "<$(TOOL)>"
+
+setup:
 	@ ln -i -s $(THIS_CONFIG) $(YOUR_CONFIG)
 

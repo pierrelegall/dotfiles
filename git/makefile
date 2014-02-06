@@ -8,12 +8,12 @@ YOUR_CONFIG = $(HOME)/.gitconfig
 
 # Actions
 
-all: set info
-
-set:
-	@ echo "<$(TOOL)>"
-	@ ln -i -s $(THIS_CONFIG) $(YOUR_CONFIG)
+all: info setup
 
 info:
-	@ echo "Set up your own private config (e.g. user data) manualy in ~/.gitprivateconfig"
+	@ echo "<$(TOOL)>"
+	@ echo "Set your own private config (e.g. user data) manualy in ~/.gitprivateconfig"
+
+setup:
+	@ ln -i -s $(THIS_CONFIG) $(YOUR_CONFIG)
 

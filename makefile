@@ -6,9 +6,11 @@ DIRECTORIES = $(shell ls -d */)
 
 # Actions
 
-all: run_all_makefiles
+all: setup_all
 
-run_all_makefiles:
+setup_all:
+	@ echo ""
 	@ for each in $(DIRECTORIES) ; do \
 		make -C $$each --quiet ; \
+		echo "" ; \
 	done
