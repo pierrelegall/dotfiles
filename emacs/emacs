@@ -41,6 +41,12 @@
 	'(initial-scratch-message ";; This is a scratch buffer")
 )
 
+;;;; Required package
+
+; (require 'el-spec)
+
+;;;; User interface
+
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -56,7 +62,7 @@
 ;; No region when it is not highlighted
 (transient-mark-mode 1)
 
-;;;; Bindings
+;;;; Key bindings
 
 (global-set-key (kbd "C-w")               'kill-backward-word)
 (global-set-key (kbd "C-k")               'delete-line) 

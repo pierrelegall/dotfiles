@@ -24,4 +24,4 @@ touch_private_config:
 	fi;
 
 setup: get_tool get_info touch_private_config
-	@ ln -i -s $(LOCAL_CONFIG) $(YOUR_CONFIG)
+	@ ln -i -s $(THIS_CONFIG) $(LOCAL_CONFIG)
