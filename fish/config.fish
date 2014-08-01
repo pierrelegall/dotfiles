@@ -1,6 +1,6 @@
 # Variable set
 
-set VDL_PATH $HOME/videos/downloaded/
+set VDL_PATH $HOME/videos/downloaded
 set PATH $HOME/.gem/ruby/2.1.0/bin/ $PATH
 
 ## Aliases ##
@@ -22,7 +22,7 @@ alias ed='emacs -nw'
 
 alias sf='php app/console'
 
-alias vdl='youtube-dl -o $VDL_PATH'
+alias vdl='youtube-dl -o "$VDL_PATH/%(title)s.%(ext)s"'
 
 alias azer='setxkbmap ud'
 alias qwfp='setxkbmap fr'
