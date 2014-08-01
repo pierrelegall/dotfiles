@@ -1,18 +1,20 @@
-# Make this Emacs config yours
-
 # Variables
 
-TOOL        = Fish
-THIS_CONFIG = $(shell pwd)/.config/fish/config.fish
-YOUR_CONFIG = $(HOME)/config.fish
+TOOL         = Fish
+LOCAL_CONFIG = $(HOME)/.config/fish/config.fish
+THIS_CONFIG  = $(shell pwd)/config.fish
 
 # Actions
 
-all: info setup
+all: setup
 
-info:
-	@ echo "<$(TOOL)>"
+get_tool:
+	@ echo "$(TOOL)"
 
-setup:
-	@ ln -i -s $(THIS_CONFIG) $(YOUR_CONFIG)
+get_info:
+	@ echo "Make your $(TOOL) local config a symlink to this config"
+	@ echo "LOCAL_CONFIG = $(LOCAL_CONFIG)"
+	@ echo "THIS_CONFIG  = $(THIS_CONFIG)"
 
+setup: get_tool get_info
+	@ ln -i -s $(LOCAL_CONFIG) $(YOUR_CONFIG)

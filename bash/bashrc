@@ -7,6 +7,7 @@ export BASH_DIR='/home/nausor'
 export GREP_COLOR=31
 export VDL_PATH='~/videos/downloaded/%(title)s.%(ext)s'
 export WINEPREFIX='~/.wine'
+export PATH=$PATH:$HOME/.gem/ruby/2.1.0/bin
 
 if [[ $UID -eq 0 ]]; then
 	export PS1=" \[\e[01;31m\]#\[\e[0m\] "
@@ -20,7 +21,7 @@ export PS4="+"
 
 ## Options ##
 
-# unset HISTFILE
+unset HISTFILE
 
 
 ## Aliases ##

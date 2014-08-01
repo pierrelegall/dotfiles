@@ -1,18 +1,21 @@
-# Make this Emacs config yours
-
 # Variables
 
-TOOL        = Bash
-THIS_CONFIG = $(shell pwd)/bashrc
-YOUR_CONFIG = $(HOME)/.bashrc
+TOOL         = Bash
+LOCAL_CONFIG = $(HOME)/.bashrc
+THIS_CONFIG  = $(shell pwd)/bashrc
 
 # Actions
 
-all: info setup
+all: setup
 
-info:
+get_tool:
 	@ echo "<$(TOOL)>"
 
-setup:
-	@ ln -i -s $(THIS_CONFIG) $(YOUR_CONFIG)
+get_info:
+	@ echo "Make your $(TOOL) local config a symlink to this config"
+	@ echo "LOCAL_CONFIG = $(LOCAL_CONFIG)"
+	@ echo "THIS_CONFIG  = $(THIS_CONFIG)"
+
+setup: get_tool get_info
+	@ ln -i -s $(LOCAL_CONFIG) $(THIS_CONFIG)
 

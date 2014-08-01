@@ -12,6 +12,7 @@
 	co = commit
 	st = status
 	br = branch
+	gi = "!gi() { curl http://www.gitignore.io/api/$@ ;}; gi"
 
 [include]
 	path = .gitprivateconfig

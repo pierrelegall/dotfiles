@@ -1,18 +1,20 @@
-# Make this Emacs config yours
-
 # Variables
 
-TOOL        = RubyGem
-THIS_CONFIG = $(shell pwd)/gemrc
-YOUR_CONFIG = $(HOME)/.gemrc
+TOOL         = RubyGem
+LOCAL_CONFIG = $(HOME)/.gemrc
+THIS_CONFIG  = $(shell pwd)/gemrc
 
 # Actions
 
-all: info setup
+all: setup
 
-info:
-	@ echo "<$(TOOL)>"
+get_tool:
+	@ echo "$(TOOL)"
 
-setup:
-	@ ln -i -s $(THIS_CONFIG) $(YOUR_CONFIG)
+get_info:
+	@ echo "Make your $(TOOL) local config a symlink to this config"
+	@ echo "LOCAL_CONFIG = $(LOCAL_CONFIG)"
+	@ echo "THIS_CONFIG  = $(THIS_CONFIG)"
 
+setup: get_tool get_info
+	@ ln -i -s $(LOCAL_CONFIG) $(YOUR_CONFIG)

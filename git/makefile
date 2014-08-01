@@ -1,19 +1,27 @@
-# Make this Emacs config yours
-
 # Variables
 
-TOOL        = Git
-THIS_CONFIG = $(shell pwd)/gitconfig
-YOUR_CONFIG = $(HOME)/.gitconfig
+TOOL                 = Git
+LOCAL_CONFIG         = $(HOME)/.gitconfig
+THIS_CONFIG          = $(shell pwd)/gitconfig
+THIS_PRIVATE_CONFIG  = $(shell pwd)/gitprivateconfig
 
 # Actions
 
-all: info setup
+all: setup
 
-info:
-	@ echo "<$(TOOL)>"
-	@ echo "Set your own private config (e.g. user data) manualy in ~/.gitprivateconfig"
+get_tool:
+	@ echo "$(TOOL)"
 
-setup:
-	@ ln -i -s $(THIS_CONFIG) $(YOUR_CONFIG)
+get_info:
+	@ echo "Make your $(TOOL) local config a symlink to this config"
+	@ echo "LOCAL_CONFIG = $(LOCAL_CONFIG)"
+	@ echo "THIS_CONFIG  = $(THIS_CONFIG)"
+	@ echo "Set your own private config (e.g. user data) manualy in $(THIS_PRIVATE_CONFIG)"
 
+touch_private_config:
+	@ if [ ! -e $(THIS_PRIVATE_CONFIG) ]; then \
+		touch $(THIS_PRIVATE_CONFIG); \
+	fi;
+
+setup: get_tool get_info touch_private_config
+	@ ln -i -s $(LOCAL_CONFIG) $(YOUR_CONFIG)

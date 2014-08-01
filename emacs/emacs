@@ -10,20 +10,20 @@
 
 (custom-set-variables
   '(package-archives '(
-	  ("gnu" . "http://elpa.gnu.org/packages/")
-		("marmalade" . "http://marmalade-repo.org/packages/")
-		("melpa" . "http://melpa.milkbox.net/packages/")
-	))
-  '(blink-cursor-delay 0.25)
-	'(blink-cursor-interval 0.25)
-	'(blink-cursor-mode t)
-	'(column-number-mode 1)
-	'(cursor-type (quote bar) t)
-	'(custom-enabled-themes (quote (tango-dark)))
-	'(default-tab-width 2)
-	'(font-use-system-font t)
-	'(inhibit-startup-message t)
-	'(global-linum-mode 1)
+    ("gnu"       . "http://elpa.gnu.org/packages/")
+    ("marmalade" . "http://marmalade-repo.org/packages/")
+    ("melpa"     . "http://melpa.milkbox.net/packages/")
+  ))
+  '(blink-cursor-delay 0.4)
+  '(blink-cursor-interval 0.4)
+  '(blink-cursor-mode t)
+  '(column-number-mode 1)
+  '(cursor-type (quote bar) t)
+  '(custom-enabled-themes (quote (whiteboard)))
+  '(default-tab-width 2)
+  '(font-use-system-font t)
+  '(inhibit-startup-message t)
+  '(global-linum-mode 1)
 	'(global-visual-line-mode 1)
 	'(line-number-mode 1)
 	'(linum-format "%d ")
@@ -38,20 +38,28 @@
 	'(scroll-step 1)
 	'(x-select-enable-clipboard t)
 	'(interprogram-paste-function 'x-cut-buffer-or-selection-value)
-	'(initial-scratch-message ";;\n;; This is your scratch buffer\n;;\n\n")
+	'(initial-scratch-message ";; This is a scratch buffer")
 )
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (fset 'yes-or-no-p 'y-or-n-p)
-(set-cursor-color "#c92323")
+(set-cursor-color "#fa2020")
+
+;;;; CUA mode
+
+;; Active the CUA mode
+(cua-mode t)
+;; Don't tabify after rectangle commands
+(setq cua-auto-tabify-rectangles nil)
+;; No region when it is not highlighted
+(transient-mark-mode 1)
 
 ;;;; Bindings
 
-(global-set-key (kbd "C-z")               'undo)
-(global-set-key (kbd "C-g")               'goto-line)
-(global-set-key (kbd "C-k")               'kill-whole-line-without-kill-ring) 
+(global-set-key (kbd "C-w")               'kill-backward-word)
+(global-set-key (kbd "C-k")               'delete-line) 
 (global-set-key (kbd "<backtab>")         'quoted-insert)
 (global-set-key (kbd "C-o")               'new-line-down)
 (global-set-key (kbd "C-S-o")             'new-line-up)
@@ -71,27 +79,26 @@
 )
 
 (defun new-line-down ()
-	(interactive)
-	(end-of-line)
-	(newline-and-indent)
+  (interactive)
+  (end-of-line)
+  (newline-and-indent)
 )
 
 (defun move-line-up ()
-	(interactive)
-	(transpose-lines 1)
-	(forward-line -2)
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2)
 )
 
 (defun move-line-down ()
-	(interactive)
-	(forward-line 1)
-	(transpose-lines 1)
-	(forward-line -1)
+  (interactive)
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1)
 )
 
-(defun kill-whole-line-without-kill-ring ()
+(defun delete-line ()
   (interactive)
   (kill-whole-line)
   (setq kill-ring (cdr kill-ring))
 )
-
