@@ -3,7 +3,7 @@
 set VDL_PATH $HOME/videos/downloaded
 set PATH $HOME/.gem/ruby/2.1.0/bin/ $PATH
 
-## Aliases ##
+## Aliases
 
 alias grep='grep --color=auto'
 
@@ -24,5 +24,5 @@ alias sf='php app/console'
 
 alias vdl='youtube-dl -o "$VDL_PATH/%(title)s.%(ext)s"'
 
-alias azer='setxkbmap ud'
+alias azer='setxkbmap fr-colemak'
 alias qwfp='setxkbmap fr'
