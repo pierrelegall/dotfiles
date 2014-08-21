@@ -13,7 +13,7 @@ get_info:
 	@ echo "Make your $(TOOL) local config a symlink to this config"
 	@ echo "LOCAL_CONFIG = $(LOCAL_CONFIG)"
 	@ echo "THIS_CONFIG  = $(THIS_CONFIG)"
-	@ echo "Super user rights are needed to add the $(TOOL) to the system."
+	@ echo "/!\ Root privileges needed !!!"
 	@ echo "You have to run manualy : sudo ln -i -s $(THIS_CONFIG) $(LOCAL_CONFIG)"
 
 setup: get_info
