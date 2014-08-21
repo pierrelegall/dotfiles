@@ -16,7 +16,7 @@ get_info:
 	@ echo "LOCAL_CONFIG = $(LOCAL_CONFIG)"
 	@ echo "THIS_CONFIG  = $(THIS_CONFIG)"
 	@ echo "Super user rights are needed to add the $(TOOL) on the system."
-	@ echo "Run manualy : sudo ln -i -s $(LOCAL_CONFIG) $(THIS_CONFIG)"
+	@ echo "Run manualy : sudo ln -i -s $(THIS_CONFIG) $(LOCAL_CONFIG)"
 
 setup: get_tool get_info
 	@ echo "Nothing done."
