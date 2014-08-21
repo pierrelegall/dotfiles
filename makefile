@@ -7,7 +7,11 @@ DIRECTORIES = $(shell ls -d */)
 all: make_all
 
 get_info:
-	@ echo "This makefile run all sub directory makefiles"
+	@ echo ""
+	@ echo "# This makefile run all sub directory makefiles."
+	@ echo "#"
+	@ echo "# It should never ask for root privileges ;"
+	@ echo "# however if it need them, it should ask you to run commands manualy."
 
 make_all: get_info
 	@ echo ""
