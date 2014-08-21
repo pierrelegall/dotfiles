@@ -8,15 +8,12 @@ THIS_CONFIG  = $(shell pwd)/fr-colemak
 
 all: setup
 
-get_tool:
-	@ echo "$(TOOL)"
-
 get_info:
+	@ echo "> $(TOOL)"
 	@ echo "Make your $(TOOL) local config a symlink to this config"
 	@ echo "LOCAL_CONFIG = $(LOCAL_CONFIG)"
 	@ echo "THIS_CONFIG  = $(THIS_CONFIG)"
-	@ echo "Super user rights are needed to add the $(TOOL) on the system."
-	@ echo "Run manualy : sudo ln -i -s $(THIS_CONFIG) $(LOCAL_CONFIG)"
+	@ echo "Super user rights are needed to add the $(TOOL) to the system."
+	@ echo "You have to run manualy : sudo ln -i -s $(THIS_CONFIG) $(LOCAL_CONFIG)"
 
-setup: get_tool get_info
-	@ echo "Nothing done."
+setup: get_info
