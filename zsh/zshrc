@@ -10,6 +10,32 @@ setopt histignorealldups sharehistory
 EDITOR=vim
 VDL_PATH=~/videos/downloaded/
 
+# Aliases
+alias vi=vim
+alias grep='grep --color=auto'
+
+alias rm='rm -I'
+alias mv='mv -i'
+
+alias ls='ls --color=auto'
+alias l='ls'
+alias ll='ls -lh'
+alias la='ls -A'
+alias lla='ls -lhA'
+
+alias mkdir='mkdir -p'
+alias md='mkdir'
+alias rd='rmdir'
+alias df='df -h'
+
+alias em='emacs -nw'
+
+alias sf='php app/console'
+
+alias vdl='youtube-dl -o $VDL_PATH'
+
+alias bépo='setxkbmap fr'
+alias azer='setxkbmap fr bepo-dev'
 # Use vim keybindings even if our EDITOR is set to vi
 bindkey -v
 

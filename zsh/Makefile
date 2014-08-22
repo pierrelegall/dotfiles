@@ -21,21 +21,23 @@ get_info:
 
 download_plugins:
 	@ echo "HL will be downloaded."
-	@ mkdir -p $(HL_DIR)
+	@ mkdir -p $(PLUGINS_DIR)
 	@ if [ ! -d $(HL_DIR) ]; then \
 		git clone $(HL_REPO) $(HL_DIR); \
 	else \
 		cd $(HL_DIR); \
-		git pull $(HL_REPO); \
+		git pull $(HL_DIR); \
 	fi
 	@ echo "OH MY ZSH will be downloaded."
-	@ mkdir -p $(OHMYZSH_DIR)
 	@ if [ ! -d $(OHMYZSH_DIR) ]; then \
 		git clone $(OHMYZSH_REPO) $(OHMYZSH_DIR); \
 	else \
 		cd $(OHMYZSH_DIR); \
-		git pull $(OHMYZSH_REPO); \
+		git pull $(OHMYZSH_DIR); \
 	fi
 
 setup: get_info download_plugins
 	@ ln -i -s $(THIS_CONFIG) $(LOCAL_CONFIG)
+
+clean:
+	@ rm -rf $(PLUGINS_DIR)
