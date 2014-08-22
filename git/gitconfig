@@ -1,5 +1,5 @@
 [core]
-	editor = emacs -nw
+	editor = vim
 
 [color]
 	branch      = true
