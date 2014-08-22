@@ -6,6 +6,14 @@
 :nnoremap j k  
 :nnoremap k j
 :imap hh <Esc>
+:nmap ; :
+:nnoremap ; :
+:nnoremap : ;
+:vnoremap ; :
+:vnoremap : ;
+
+"" Filetype settings
+au BufRead,BufNewFile *.md set filetype=markdown
 
 "" GUI specific options
 :set guioptions-=m "remove menu bar
