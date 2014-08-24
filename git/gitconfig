@@ -1,5 +1,5 @@
 [core]
-	editor = vim
+	editor = nano
 
 [color]
 	branch      = true
