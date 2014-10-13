@@ -13,6 +13,7 @@
 	st = status
 	br = branch
 	gi = "!gi() { curl http://www.gitignore.io/api/$@ ;}; gi"
+	fa = "! git fetch --all --prune; git fetch --tag"
 
 [push]
 	default = simple
