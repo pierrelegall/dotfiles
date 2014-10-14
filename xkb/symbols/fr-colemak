@@ -4,9 +4,9 @@
 //
 // - Colemak based layout
 // - no direct access and Shift access character changed
-// - made for english and french language only
+// - optimize for english and french language only
 // - no dead keys
-// - better for developer (quick access to directional keys, +, -, * etc.)
+// - think for developers (quick access to directional keys, +, -, * etc.)
 // - improve clarity of the layout (many asciitilde of Colemak removed)
 
 default partial alphanumeric_keys
@@ -28,11 +28,11 @@ xkb_symbols "basic" {
     key <AE11> { [        minus,   underscore,      underscore,           emdash ] };
     key <AE12> { [        equal,         plus,        multiply,         division ] };
     
-    key <AD01> { [            q,            Q,     acircumflex,       asciitilde ] };
-    key <AD02> { [            w,            W,            Left,       asciitilde ] };
-    key <AD03> { [            f,            F,            Down,       asciitilde ] };
-    key <AD04> { [            p,            P,              Up,       asciitilde ] };
-    key <AD05> { [            g,            G,           Right,       asciitilde ] };
+    key <AD01> { [            q,            Q,     acircumflex,      Acircumflex ] };
+    key <AD02> { [            w,            W,            plus,       asciitilde ] };
+    key <AD03> { [            f,            F,           minus,       asciitilde ] };
+    key <AD04> { [            p,            P,        asterisk,       asciitilde ] };
+    key <AD05> { [            g,            G,           slash,       asciitilde ] };
     key <AD06> { [            j,            J,      udiaeresis,       asciitilde ] };
     key <AD07> { [            l,            L,     ucircumflex,       asciitilde ] };
     key <AD08> { [            u,            U,          ugrave,           Ugrave ] };
@@ -43,11 +43,11 @@ xkb_symbols "basic" {
     key <BKSL> { [    backslash,          bar,      asciitilde,       asciitilde ] };
     
     key <AC01> { [            a,            A,          agrave,           Agrave ] };
-    key <AC02> { [            r,            R,            plus,       asciitilde ] };
-    key <AC03> { [            s,            S,           minus,       asciitilde ] };
-    key <AC04> { [            t,            T,        asterisk,       asciitilde ] };
-    key <AC05> { [            d,            D,           slash,       asciitilde ] };
-    key <AC06> { [            h,            H,      ediaeresis,       Ediaeresis ] };
+    key <AC02> { [            r,            R,            Left,       asciitilde ] };
+    key <AC03> { [            s,            S,            Down,       asciitilde ] };
+    key <AC04> { [            t,            T,              Up,       asciitilde ] };
+    key <AC05> { [            d,            D,           Right,       asciitilde ] };
+    key <AC06> { [            h,            H,       parenleft,        braceleft ] };
     key <AC07> { [            n,            N,          egrave,           Egrave ] };
     key <AC08> { [            e,            E,          eacute,           Eacute ] };
     key <AC09> { [            i,            I,     icircumflex,      Icircumflex ] };
@@ -59,9 +59,9 @@ xkb_symbols "basic" {
     key <AB03> { [            c,            C,        ccedilla,         Ccedilla ] };
     key <AB04> { [            v,            V,           equal,       asciitilde ] };
     key <AB05> { [            b,            B,      asciitilde,       asciitilde ] };
-    key <AB06> { [            k,            K,      asciitilde,       asciitilde ] };
+    key <AB06> { [            k,            K,      parenright,       braceright ] };
     key <AB07> { [            m,            M,     ecircumflex,      Ecircumflex ] };
-    key <AB08> { [        comma,         less,      asciitilde,       asciitilde ] };
+    key <AB08> { [        comma,         less,      ediaeresis,       Ediaeresis ] };
     key <AB09> { [       period,      greater,        ellipsis,       asciitilde ] };
     key <AB10> { [        slash,     question,       backslash,     questiondown ] };
     
@@ -70,13 +70,3 @@ xkb_symbols "basic" {
     
     include "level3(ralt_switch)"
 };
-
-// partial modifier_keys
-// xkb_symbols "switch_lctl_lalt" {
-//    include "fr-colemak(basic)"
-//    name[Group1]="French (Colemak), with Ctl_L Alt_L switch";
-//    // key <LCTL>   { [ Alt_L, Alt_L ] };
-//    // key <LALT>   { [ Ctl_L, Ctl_L ] };
-//    // modifier_map Mod1    { <LCTL> };
-//    // modifier_map Control { <LALT> };
-// };
