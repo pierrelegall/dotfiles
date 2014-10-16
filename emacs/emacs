@@ -75,6 +75,9 @@
 (global-set-key (kbd "C-S-<iso-lefttab>") 'previous-buffer)
 (global-set-key (kbd "S-<escape>")        'delete-window)
 (global-set-key (kbd "M-<escape>")        'kill-buffer)
+(global-set-key (kbd "M-n")               'back-to-indentation)
+(global-set-key (kbd "M-m")               'cua-set-mark)
+(global-set-key (kbd "M-e")               'end-of-visual-line)
 
 ;;;; Functions
 
