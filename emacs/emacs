@@ -19,7 +19,7 @@
   '(blink-cursor-mode t)
   '(column-number-mode 1)
   '(cursor-type (quote bar) t)
-  '(custom-enabled-themes (quote (whiteboard)))
+  '(custom-enabled-themes (quote (wombat)))
   '(default-tab-width 2)
   '(font-use-system-font t)
   '(inhibit-startup-message t)
