@@ -73,6 +73,8 @@
 (global-set-key (kbd "M-<down>")          'move-line-down)
 (global-set-key (kbd "C-<tab>")           'next-buffer)
 (global-set-key (kbd "C-S-<iso-lefttab>") 'previous-buffer)
+(global-set-key (kbd "S-<escape>")        'delete-window)
+(global-set-key (kbd "M-<escape>")        'kill-buffer)
 
 ;;;; Functions
 
