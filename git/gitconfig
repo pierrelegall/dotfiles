@@ -8,12 +8,11 @@
 	status      = true
 
 [alias]
-	ch = checkout
-	co = commit
+	co = checkout
 	st = status
 	br = branch
-	gi = "!gi() { curl http://www.gitignore.io/api/$@ ;}; gi"
 	fa = "! git fetch --all --prune; git fetch --tag"
+	gi = "!gi() { curl http://www.gitignore.io/api/$@ ;}; gi"
 
 [push]
 	default = simple
