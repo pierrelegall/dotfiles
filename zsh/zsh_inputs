@@ -1,0 +1,22 @@
+# Inputs ()
+
+bindkey '\en' backward-char
+bindkey '\ei' forward-char
+bindkey '\eu' up-line-or-history
+bindkey '\ee' down-line-or-history
+bindkey '\eh' beginning-of-line
+bindkey '\eH' end-of-line
+bindkey '\el' backward-word
+bindkey '\ey' forward-word
+bindkey '\ed' kill-line
+bindkey '\ef' backward-kill-word
+bindkey '\ep' kill-word
+bindkey '\es' backward-delete-char
+bindkey '\et' delete-char
+bindkey '\ez' undo
+bindkey '\ex' kill-region
+bindkey '\ec' copy-region-as-kill
+bindkey '\ev' yank
+bindkey '\e;' forward-search-history
+bindkey '\e:' reverse-search-history
+
