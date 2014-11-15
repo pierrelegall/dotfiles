@@ -4,10 +4,9 @@
 //
 // - Colemak based layout
 // - no direct access and Shift access character changed
-// - optimize for english and french language only
+// - optimize for english and french language
 // - no dead keys
-// - think for developers (quick access to directional keys, +, -, * etc.)
-// - improve clarity of the layout (many asciitilde of Colemak removed)
+// - think for developers (ergo access to char like ‘+ - * = ( ) { }’ etc.)
 
 default partial alphanumeric_keys
 xkb_symbols "basic" {
@@ -43,10 +42,10 @@ xkb_symbols "basic" {
     key <BKSL> { [    backslash,          bar,      asciitilde,       asciitilde ] };
     
     key <AC01> { [            a,            A,          agrave,           Agrave ] };
-    key <AC02> { [            r,            R,            Left,       asciitilde ] };
-    key <AC03> { [            s,            S,            Down,       asciitilde ] };
-    key <AC04> { [            t,            T,              Up,       asciitilde ] };
-    key <AC05> { [            d,            D,           Right,       asciitilde ] };
+    key <AC02> { [            r,            R,       parenleft,      bracketleft ] };
+    key <AC03> { [            s,            S,      parenright,     bracketright ] };
+    key <AC04> { [            t,            T,       braceleft,       asciitilde ] };
+    key <AC05> { [            d,            D,      braceright,       asciitilde ] };
     key <AC06> { [            h,            H,       parenleft,        braceleft ] };
     key <AC07> { [            n,            N,          egrave,           Egrave ] };
     key <AC08> { [            e,            E,          eacute,           Eacute ] };
@@ -66,7 +65,16 @@ xkb_symbols "basic" {
     key <AB10> { [        slash,     question,       backslash,     questiondown ] };
     
     key <LSGT> { [        minus,   underscore,          endash,           emdash ] };
-    key <SPCE> { [        space,        space,      underscore,     nobreakspace ] };
+    key <SPCE> { [        Shift,        space,      underscore,     nobreakspace ] };
+    
+		replace key <CAPS> { [ Shift_L ] };
     
     include "level3(ralt_switch)"
+};
+
+partial modifier_keys
+xkb_symbols "swap-ctrl-alt" {
+    include "fr-colemak"
+    replace key <LCTL> { [ Alt_L ] };
+    replace key <LALT> { [ Control_L, Control_L ] };
 };
