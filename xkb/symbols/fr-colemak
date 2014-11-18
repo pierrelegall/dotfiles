@@ -12,19 +12,19 @@ default partial alphanumeric_keys
 xkb_symbols "basic" {
     include "us"
     name[Group1]="French (Colemak)";
-    
-    key <TLDE> { [        grave,   asciitilde,      asciitilde,       asciitilde ] };
-    key <AE01> { [            1,       exclam,          exclam,      onesuperior ] };
-    key <AE02> { [            2,           at,              at,      twosuperior ] };
-    key <AE03> { [            3,   numbersign,      numbersign,    threesuperior ] };
-    key <AE04> { [            4,       dollar,          dollar,         EuroSign ] };
-    key <AE05> { [            5,      percent,         percent,         sterling ] };
-    key <AE06> { [            6,  asciicircum,     asciicircum,              yen ] };
-    key <AE07> { [            7,    ampersand,       ampersand,              ETH ] };
-    key <AE08> { [            8,     asterisk,        asterisk,            THORN ] };
-    key <AE09> { [            9,    parenleft,       parenleft,  leftdoublequotemark ] };
-    key <AE10> { [            0,   parenright,      parenright, rightdoublequotemark ] };
-    key <AE11> { [        minus,   underscore,      underscore,           emdash ] };
+
+    key <TLDE> { [        grave,   asciitilde,      dead_tilde,       asciitilde ] };
+    key <AE01> { [            1,       exclam,      exclamdown,      onesuperior ] };
+    key <AE02> { [            2,           at,       masculine,      twosuperior ] };
+    key <AE03> { [            3,   numbersign,     ordfeminine,    threesuperior ] };
+    key <AE04> { [            4,       dollar,            cent,         sterling ] };
+    key <AE05> { [            5,      percent,        EuroSign,              yen ] };
+    key <AE06> { [            6,  asciicircum,         hstroke,          Hstroke ] };
+    key <AE07> { [            7,    ampersand,             eth,              ETH ] };
+    key <AE08> { [            8,     asterisk,           thorn,            THORN ] };
+    key <AE09> { [            9,    parenleft,  leftsinglequotemark,  leftdoublequotemark ] };
+    key <AE10> { [            0,   parenright, rightsinglequotemark,  rightdoublequotemark ] };
+    key <AE11> { [        minus,   underscore,          endash,           emdash ] };
     key <AE12> { [        equal,         plus,        multiply,         division ] };
     
     key <AD01> { [            q,            Q,     acircumflex,      Acircumflex ] };
