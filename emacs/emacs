@@ -1,115 +1,287 @@
 ;;;;
-;;;; Emacs configuration file by Pierre
+;;;; Emacs configuration file
 ;;;;
 
-;;;; First exec
+;;;; Global window
 
-;; (kill-buffer "*scratch*")
-
-;;;; Settings
-
-(custom-set-variables
-  '(package-archives '(
-    ("gnu"       . "http://elpa.gnu.org/packages/")
-    ("marmalade" . "http://marmalade-repo.org/packages/")
-    ("melpa"     . "http://melpa.milkbox.net/packages/")
-  ))
-  '(blink-cursor-delay 0.4)
-  '(blink-cursor-interval 0.4)
-  '(blink-cursor-mode t)
-  '(column-number-mode 1)
-  '(cursor-type (quote bar) t)
-  '(custom-enabled-themes (quote (wombat)))
-  '(default-tab-width 2)
-  '(font-use-system-font t)
-  '(inhibit-startup-message t)
-  '(global-linum-mode 1)
-	'(global-visual-line-mode 1)
-	'(line-number-mode 1)
-	'(linum-format "%d ")
-	'(backup-inhibited t)
-	'(auto-save-default nil)
-	'(make-backup-files nil)
-	'(mouse-wheel-follow-mouse (quote t))
-	'(mouse-wheel-mode t)
-	'(mouse-wheel-progressive-speed nil)
-	'(mouse-wheel-scroll-amount (quote (2 ((shift) . 1))))
-	'(read-file-name-completion-ignore-case t)
-	'(scroll-step 1)
-	'(x-select-enable-clipboard t)
-	'(interprogram-paste-function 'x-cut-buffer-or-selection-value)
-	'(initial-scratch-message ";; This is a scratch buffer")
-)
-
-;;;; Required package
-
-; (require 'el-spec)
-
-;;;; User interface
-
-(menu-bar-mode -1)
+(menu-bar-mode 1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+
+;;;; Navigation
+
+(setq scroll-margin 2)
+(setq scroll-step 2)
+(setq mouse-wheel-follow-mouse (quote t))
+(setq mouse-wheel-mode t)
+(setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-scroll-amount (quote (2 ((shift) . 1))))
+(setq shift-select-mode nil)
+
+;;;; Behavior
+
+(setq inhibit-startup-screen t)
+(setq initial-buffer-choice "~/.todo.org")
+(setq default-tab-width 2)
+(setq-default indent-tabs-mode t)
 (fset 'yes-or-no-p 'y-or-n-p)
-(set-cursor-color "#fa2020")
+(setq recentf-mode t)
+(setq-default message-log-max nil)
+(setq delete-selection-mode 1)
+(show-paren-mode 1)
 
-;;;; CUA mode
+;;;; Bottom buffer
 
-;; Active the CUA mode
-(cua-mode t)
-;; Don't tabify after rectangle commands
+(setq line-number-mode 1)
+(setq column-number-mode 1)
+(setq read-file-name-completion-ignore-case t)
+
+;;;; Keymap
+
 (setq cua-auto-tabify-rectangles nil)
-;; No region when it is not highlighted
 (transient-mark-mode 1)
+;(setq cua-keep-region-after-copy t)
+(cua-mode t)
 
-;;;; Key bindings
+(define-key cua-global-keymap (kbd "C-<return>") nil)
+(define-key cua-global-keymap (kbd "C-S-<return>") nil)
+(define-key cua-global-keymap (kbd "C-S-<space>") 'cua-set-rectangle-mark)
+;(define-key lepieru-keymap (kbd "C-m") 'cua-toggle-global-mark)
 
-(global-set-key (kbd "C-w")               'kill-backward-word)
-(global-set-key (kbd "C-k")               'delete-line) 
-(global-set-key (kbd "<backtab>")         'quoted-insert)
-(global-set-key (kbd "C-o")               'new-line-down)
-(global-set-key (kbd "C-S-o")             'new-line-up)
-(global-set-key (kbd "M-<up>")            'move-line-up)
-(global-set-key (kbd "M-<down>")          'move-line-down)
-(global-set-key (kbd "C-<tab>")           'next-buffer)
-(global-set-key (kbd "C-S-<iso-lefttab>") 'previous-buffer)
-(global-set-key (kbd "S-<escape>")        'delete-window)
-(global-set-key (kbd "M-<escape>")        'kill-buffer)
-(global-set-key (kbd "M-n")               'back-to-indentation)
-(global-set-key (kbd "M-m")               'cua-set-mark)
-(global-set-key (kbd "M-e")               'end-of-visual-line)
+(defvar lepieru-keymap (make-keymap) "lepieru keymap")
+(define-minor-mode lepieru-keymap-mode "lepieru keymap" :keymap lepieru-keymap)
+(setq-default lepieru-keymap-mode 1)
+
+(define-key lepieru-keymap (kbd "C-w") 'kill-this-buffer)
+(define-key lepieru-keymap (kbd "C-y") 'select-by-step)
+(define-key lepieru-keymap (kbd "C-S-y") 'select-current-line)
+
+(define-key lepieru-keymap (kbd "C-a") 'execute-extended-command)
+(define-key lepieru-keymap (kbd "C-S-a") 'shell-command)
+
+(define-key lepieru-keymap (kbd "C-,") 'backward-word)
+(define-key lepieru-keymap (kbd "C-.") 'forward-word)
+(define-key lepieru-keymap (kbd "C-<") 'beginning-of-visual-line)
+(define-key lepieru-keymap (kbd "C->") 'end-of-visual-line)
+
+(define-key lepieru-keymap (kbd "C-u")
+	(lambda() (interactive) (scroll-down-line 4)))
+(define-key lepieru-keymap (kbd "C-e")
+	(lambda() (interactive) (scroll-up-line 4)))
+(define-key lepieru-keymap (kbd "C-S-u")
+	(lambda() (interactive) (scroll-down-line 10)))
+(define-key lepieru-keymap (kbd "C-S-e")
+	(lambda() (interactive) (scroll-up-line 10)))
+
+(define-key lepieru-keymap (kbd "<C-tab>") 'next-buffer)
+(define-key lepieru-keymap (kbd "<C-iso-lefttab>") 'previous-buffer)
+
+(define-key lepieru-keymap (kbd "C-k") 'kill-whole-line)
+
+(define-key lepieru-keymap (kbd "C-;") 'comment-or-uncomment-region)
+
+(define-key lepieru-keymap (kbd "C-/") 'toggle-letter-case)
+
+;(define-key lepieru-keymap (kbd "C-k w") 'delete-window)
+;(define-key lepieru-keymap (kbd "C-k b") 'kill-this-buffer)
+
+(define-key lepieru-keymap (kbd "C-o")
+	(lambda() (interactive) (other-window 1)))
+(define-key lepieru-keymap (kbd "C-S-o")
+	(lambda() (interactive) (other-window -1)))
+(define-key lepieru-keymap (kbd "C-x o")
+	(lambda() (interactive) (other-window 1)))
+(define-key lepieru-keymap (kbd "C-x O")
+	(lambda() (interactive) (other-window -1)))
+
+(define-key lepieru-keymap (kbd "<C-return>") 'newline-down)
+(define-key lepieru-keymap (kbd "C-S-<return>") 'newline-up)
+(define-key lepieru-keymap (kbd "<M-down>") 'move-line-down)
+(define-key lepieru-keymap (kbd "<M-up>") 'move-line-up)
+
+(define-key lepieru-keymap [C-f1] 'show-absolute-buffer-file-path)
+
+;;;; Clipboard
+
+(setq x-select-enable-clipboard t)
+(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
+
+;;;;; Indents
+
+(setq js-indent-level 2)
+
+;;;; Files and backups
+
+(setq auto-save-default nil)
+(setq backup-inhibited t)
+(setq make-backup-files nil)
+
+;;;; Org
+
+(setq org-todo-keywords '((sequence "TODO" "IN PROGRESS" "WAITING" "|" "DONE")))
+
+;;;; Packages
+
+(setq package-archives '(
+  ("gnu"       . "http://elpa.gnu.org/packages/")
+  ("marmalade" . "http://marmalade-repo.org/packages/")
+  ("melpa"     . "http://melpa.milkbox.net/packages/")
+))
+
+;;;; Theme and faces
+
+(require 'color-theme)
+(color-theme-initialize)
+(load-theme 'wombat t)
+(setq custom-enabled-themes 'wombat)
+(custom-theme-set-faces
+  'wombat
+  `(cursor ((t (:background, "#ff00e1"))))
+  `(highlight ((t (:background, "#202020" :underline nil))))
+	`(show-paren-match ((t (:foreground "#ff00e1" :background "#242424"))))
+)
+
+(setq font-use-system-font t)
+
+;(set-default 'cursor-type 'hollow)
+(setq blink-cursor-delay 10)
+(setq blink-cursor-interval 0.3)
+(setq blink-cursor-blinks 3)
+(setq cursor-in-non-selected-windows nil)
+(blink-cursor-mode 0)
+(setq global-hl-line-mode 0)
+
+;;;; Server mode
+
+(server-start nil)
 
 ;;;; Functions
 
-(defun new-line-up ()
+(defun semnav-up (arg)
+  (interactive "p")
+  (when (nth 3 (syntax-ppss))
+    (if (> arg 0)
+        (progn
+          (skip-syntax-forward "^\"")
+          (goto-char (1+ (point)))
+          (decf arg))
+      (skip-syntax-backward "^\"")
+      (goto-char (1- (point)))
+      (incf arg)))
+  (up-list arg))
+
+(defun select-by-step (arg &optional incremental)
+  "Select the current word.
+Subsequent calls expands the selection to larger semantic unit."
+  (interactive (list (prefix-numeric-value current-prefix-arg)
+                     (or (and transient-mark-mode mark-active)
+                         (eq last-command this-command))))
+  (if incremental
+      (progn
+        (semnav-up (- arg))
+        (forward-sexp)
+        (mark-sexp -1))
+    (if (> arg 1)
+        (extend-selection (1- arg) t)
+      (if (looking-at "\\=\\(\\s_\\|\\sw\\)*\\_>")
+          (goto-char (match-end 0))
+        (unless (memq (char-before) '(?\) ?\"))
+          (forward-sexp)))
+      (mark-sexp -1))))
+
+(defun select-text-in-quote ()
+"Select text between the nearest left and right delimiters.
+Delimiters are paired characters: ()[]<>«»“”‘’「」, including \"\"."
   (interactive)
-  (beginning-of-line)
-  (newline-and-indent)
-  (previous-line)
-  (indent-for-tab-command)
+  (let (b1 b2)
+    (skip-chars-backward "^\"'([<")
+    (setq b1 (point))
+    (skip-chars-forward "^\"')[>")
+    (setq b2 (point))
+    (set-mark b1)
+  )
 )
 
-(defun new-line-down ()
+(defun select-current-word ()
+  "Select the current line"
+  (interactive)
+	(beginning-of-line)
+  (cua-set-mark)
+  (forward-word))
+
+(defun select-current-line ()
+  "Select the current line"
+  (interactive)
+	(beginning-of-line)
+  (cua-set-mark)
+  (end-of-line))
+
+(defun select-current-paragraph ()
+  "Select the current line"
+  (interactive)
+	(backward-paragraph)
+	(next-line)
+  (cua-set-mark)
+  (forward-paragraph))
+
+(defun toggle-letter-case ()
+  "Toggle the letter case of current word or text selection.
+Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
+  (interactive)
+  (let (p1 p2 (deactivate-mark nil) (case-fold-search nil))
+    (if (use-region-p)
+        (setq p1 (region-beginning) p2 (region-end))
+      (let ((bds (bounds-of-thing-at-point 'word)))
+        (setq p1 (car bds) p2 (cdr bds))))
+    (when (not (eq last-command this-command))
+      (save-excursion
+        (goto-char p1)
+        (cond
+         ((looking-at "[[:lower:]][[:lower:]]") (put this-command 'state "all lower"))
+         ((looking-at "[[:upper:]][[:upper:]]") (put this-command 'state "all caps"))
+         ((looking-at "[[:upper:]][[:lower:]]") (put this-command 'state "init caps"))
+         ((looking-at "[[:lower:]]") (put this-command 'state "all lower"))
+         ((looking-at "[[:upper:]]") (put this-command 'state "all caps"))
+         (t (put this-command 'state "all lower")))))
+    (cond
+     ((string= "all lower" (get this-command 'state))
+      (upcase-initials-region p1 p2) (put this-command 'state "init caps"))
+     ((string= "init caps" (get this-command 'state))
+      (upcase-region p1 p2) (put this-command 'state "all caps"))
+     ((string= "all caps" (get this-command 'state))
+      (downcase-region p1 p2) (put this-command 'state "all lower")))))
+
+(defun newline-up ()
+  (interactive)
+  (beginning-of-line)
+  (newline)
+  (previous-line))
+
+(defun newline-down ()
   (interactive)
   (end-of-line)
-  (newline-and-indent)
-)
+  (newline))
 
 (defun move-line-up ()
   (interactive)
   (transpose-lines 1)
-  (forward-line -2)
-)
+  (forward-line -2))
 
 (defun move-line-down ()
   (interactive)
   (forward-line 1)
   (transpose-lines 1)
-  (forward-line -1)
-)
+  (forward-line -1))
 
-(defun delete-line ()
+(defun show-absolute-buffer-file-path ()
+  "Show the full path file name in the minibuffer."
   (interactive)
-  (kill-whole-line)
-  (setq kill-ring (cdr kill-ring))
-)
+  (message (buffer-file-name)))
+
+;;;; Hooks
+
+(add-hook 'minibuffer-exit-hook
+					'(lambda ()
+						 (let ((buffer "*Completions*"))
+							 (and (get-buffer buffer)
+										(kill-buffer buffer)))))
