@@ -3,7 +3,7 @@
 TOOL                 = Git
 LOCAL_CONFIG         = $(HOME)/.gitconfig
 LOCAL_PRIVATE_CONFIG = $(HOME)/.gitprivateconfig
-THIS_CONFIG          = $(shell pwd)/gitconfig
+THIS_CONFIG          = $(CURDIR)/gitconfig
 
 # Actions
 

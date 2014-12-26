@@ -2,7 +2,7 @@
 
 TOOL         = FR Colemak layout
 LOCAL_CONFIG = /usr/share/X11/xkb/symbols/fr-colemak
-THIS_CONFIG  = $(shell pwd)/symbols/fr-colemak
+THIS_CONFIG  = $(CURDIR)/symbols/fr-colemak
 
 # Actions
 

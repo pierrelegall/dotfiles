@@ -2,7 +2,7 @@
 
 TOOL         = Emacs
 LOCAL_CONFIG = $(HOME)/.emacs
-THIS_CONFIG  = $(shell pwd)/emacs
+THIS_CONFIG  = $(CURDIR)/emacs
 
 # Actions
 

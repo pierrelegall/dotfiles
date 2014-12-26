@@ -2,7 +2,7 @@
 
 TOOL         = Bash
 LOCAL_CONFIG = $(HOME)/.bashrc
-THIS_CONFIG  = $(shell pwd)/bashrc
+THIS_CONFIG  = $(CURDIR)/bashrc
 
 # Actions
 

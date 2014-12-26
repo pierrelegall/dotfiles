@@ -2,7 +2,7 @@
 
 TOOL         = RubyGem
 LOCAL_CONFIG = $(HOME)/.gemrc
-THIS_CONFIG  = $(shell pwd)/gemrc
+THIS_CONFIG  = $(CURDIR)/gemrc
 
 # Actions
 
