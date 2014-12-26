@@ -1,15 +1,23 @@
 # Variables
 
 DV_PATH=~/Videos/downloaded
-TRASH_PATH=~/.mytrash
 
-# Functions
+# Helpers
 
-wv() {
+web-search() {
+	firefox -new-tab "https://duckduckgo.com/?q=$1"
+}
+
+download-stream() {
+	mkdir -p $DV_PATH
+	youtube-dl -o "$DV_PATH/%(title)s-%(id)s.%(ext)s" "$1"
+}
+
+watch-stream() {
 	mpv -fs -cookies $(youtube-dl -g $1)
 }
 
-lv() {
+listen-stream() {
 	mpv --no-video -cookies $(youtube-dl -g $1)
 }
 
@@ -34,17 +42,30 @@ alias ln='ln -i'
 alias df='df -h'
 alias du='du -h'
 
-alias e='emacs'
 alias ec='emacsclient -n'
 alias enw='emacsclient -nw'
 
 alias qwfp='setxkbmap fr'
 alias qwer='setxkbmap fr-colemak'
 alias azer='setxkbmap fr-colemak'
+alias qwert='setxkbmap fr-colemak swap-ctrl-alt'
+alias azert='setxkbmap fr-colemak swap-ctrl-alt'
 
-alias dv='youtube-dl -o $DV_PATH'
+alias en='dict -d wn'
+alias fr='dict -d french'
+alias enc='dict -d foldoc'
+alias en2fr='dict -d fd-eng-fra'
+alias fr2en='dict -d fd-fra-eng'
 
-# ZSH aliases
+alias jsconsole='firefox -jsconsole'
+alias jsc='jsconsole'
+alias ws='web-search'
+
+alias dst='download-stream'
+alias wst='watch-stream'
+alias lst='listen-straem'
+
+# Special ZSH aliases
 
 alias hist='history'
 alias dirs='dirs -v'
