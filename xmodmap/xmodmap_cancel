@@ -1,8 +1,0 @@
-clear control
-clear mod1
-
-keycode 64 = Alt_L Meta_L Alt_L Meta_L
-keycode 37 = Control_L NoSymbol Control_L
-
-add mod1 = Alt_L Meta_L
-add control = Control_L
