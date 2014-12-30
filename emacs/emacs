@@ -136,10 +136,13 @@
 (setq custom-enabled-themes 'wombat)
 (custom-theme-set-faces
   'wombat
-  `(cursor ((t (:background, "#ff00e1"))))
-  `(highlight ((t (:background, "#202020" :underline nil))))
-	`(show-paren-match ((t (:foreground "#ff00e1" :background "#242424"))))
+  `(cursor ((t (:background, "#ff7000"))))
+	;`(region ((t (:background "#424242" :foreground nil)))
+  `(highlight ((t (:background, "#101010" :underline nil))))
+	`(show-paren-match ((t (:background "#242424" :foreground "#ffbb00"))))
 )
+(set-face-attribute 'region nil :background "#424242" :foreground nil)
+;(set-face-attribute 'search nil :background "#424242" :foreground nil)
 
 (setq font-use-system-font t)
 
