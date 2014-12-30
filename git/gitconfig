@@ -8,11 +8,13 @@
 	interactive = true
 
 [alias]
+	staged = diff --staged
+	update = "! git fetch --all --prune ; git fetch --tags"
+	ignore-file = "! f() { curl https://www.gitignore.io/api/$@; } ; f"
+	br = branch
 	co = checkout
 	st = status
-	br = branch
-	fa = "! git fetch --all --prune; git fetch --tags"
-	gi = "!gi() { curl http://www.gitignore.io/api/$@ ;}; gi"
+	sta = staged
 
 [push]
 	default = simple
