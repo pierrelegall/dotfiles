@@ -1,6 +1,6 @@
 # Aliases
 
-alias rm='rm -i'
+alias rm='rm -I'
 alias ll='ls -l'
 
 # Includes
