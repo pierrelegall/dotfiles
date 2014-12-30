@@ -11,7 +11,7 @@
 	co = checkout
 	st = status
 	br = branch
-	fa = "! git fetch --all --prune; git fetch --tag"
+	fa = "! git fetch --all --prune; git fetch --tags"
 	gi = "!gi() { curl http://www.gitignore.io/api/$@ ;}; gi"
 
 [push]
