@@ -82,9 +82,6 @@
 
 (define-key lepieru-keymap (kbd "C-/") 'toggle-letter-case)
 
-;(define-key lepieru-keymap (kbd "C-k w") 'delete-window)
-;(define-key lepieru-keymap (kbd "C-k b") 'kill-this-buffer)
-
 (define-key lepieru-keymap (kbd "C-o")
 	(lambda() (interactive) (other-window 1)))
 (define-key lepieru-keymap (kbd "C-S-o")
