@@ -137,11 +137,11 @@
 (custom-theme-set-faces
   'wombat
   `(cursor ((t (:background, "#ff7000"))))
-	;`(region ((t (:background "#424242" :foreground nil)))
+	;`(region ((t (:background "#323232" :foreground nil)))
   `(highlight ((t (:background, "#101010" :underline nil))))
 	`(show-paren-match ((t (:background "#242424" :foreground "#ffbb00"))))
 )
-(set-face-attribute 'region nil :background "#424242" :foreground nil)
+(set-face-attribute 'region nil :background "#32324a" :foreground nil)
 ;(set-face-attribute 'search nil :background "#424242" :foreground nil)
 
 (setq font-use-system-font t)
