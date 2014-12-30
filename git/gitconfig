@@ -2,10 +2,10 @@
 	editor = nano
 
 [color]
-	branch      = true
-	diff        = true
+	status = true
+	branch = true
+	diff = true
 	interactive = true
-	status      = true
 
 [alias]
 	co = checkout
