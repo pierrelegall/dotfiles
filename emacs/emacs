@@ -117,6 +117,13 @@
 
 (setq org-todo-keywords '((sequence "TODO" "IN PROGRESS" "WAITING" "|" "DONE")))
 
+;;;; Ido
+
+(require 'ido)
+(ido-mode 'buffers) ;; only use this line to turn off ido for file names!
+(setq ido-ignore-buffers '("^ " "*Completions*" "*Shell Command Output*"
+													 "*Messages*" "Async Shell Command"))
+
 ;;;; Packages
 
 (setq package-archives '(
