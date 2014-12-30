@@ -11,20 +11,18 @@ get_git_is_dirty() {
 }
 
 precmd() {
-	printf '\n'
 	for i in `seq $COLUMNS`
 	do
-		printf "×"
+		printf "·"
 	done
-	printf '  \n'	
-	PROMPT="  %{$fg[magenta]%}[%!] %{$fg[cyan]%}%B%n@%m %{$fg[blue]%}%~"
+	printf '\e[0m\n'
+	PROMPT="%{$fg[magenta]%}[%!] %{$fg[cyan]%}%B%n@%m %{$fg[blue]%}%~"
 	if git rev-parse > /dev/null 2>&1; then
 		PROMPT+=" %{$fg[yellow]%}($(get_git_branch)"
 		PROMPT+="%{$fg[red]%}$(get_git_is_dirty)"
 		PROMPT+="%{$fg[yellow]%})"
 	fi
 	PROMPT+=$'\n'
-	PROMPT+="  "
 	if [ "`id -u`" -eq 0 ]; then
 		PROMPT+="%{$fg[red]%}# "
 	else
@@ -34,6 +32,4 @@ precmd() {
 	export PROMPT
 }
 
-preexec() {
-	printf '\n'
-}
+preexec() {}
