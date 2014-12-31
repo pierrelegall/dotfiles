@@ -56,8 +56,8 @@
 (define-key lepieru-keymap (kbd "C-y") 'select-by-step)
 (define-key lepieru-keymap (kbd "C-S-y") 'select-current-line)
 
-(define-key lepieru-keymap (kbd "C-a") 'execute-extended-command)
-(define-key lepieru-keymap (kbd "C-S-a") 'shell-command)
+(define-key lepieru-keymap (kbd "C-c C-c") 'execute-extended-command)
+(define-key lepieru-keymap (kbd "C-c C-x") 'shell-command)
 
 (define-key lepieru-keymap (kbd "C-,") 'backward-word)
 (define-key lepieru-keymap (kbd "C-.") 'forward-word)
