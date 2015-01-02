@@ -29,6 +29,9 @@
 (setq-default message-log-max nil)
 (setq delete-selection-mode 1)
 (show-paren-mode 1)
+(global-visual-line-mode 1)
+(global-linum-mode 1)
+(electric-pair-mode 1)
 
 ;;;; Bottom buffer
 
