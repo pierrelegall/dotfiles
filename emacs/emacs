@@ -80,7 +80,7 @@
 
 (define-key lepieru-keymap (kbd "C-;") 'comment-or-uncomment-region)
 
-(define-key lepieru-keymap (kbd "C-/") 'toggle-letter-case)
+;(define-key lepieru-keymap (kbd "C-/") 'toggle-letter-case)
 
 (define-key lepieru-keymap (kbd "C-o")
 	(lambda() (interactive) (other-window 1)))
