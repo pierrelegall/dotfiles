@@ -52,6 +52,7 @@
 (define-minor-mode lepieru-keymap-mode "lepieru keymap" :keymap lepieru-keymap)
 (setq-default lepieru-keymap-mode 1)
 
+(define-key lepieru-keymap (kbd "C-j") 'keyboard-escape-quit)
 (define-key lepieru-keymap (kbd "C-x C-k") 'kill-this-buffer)
 (define-key lepieru-keymap (kbd "C-y") 'select-by-step)
 (define-key lepieru-keymap (kbd "C-S-y") 'select-current-line)
