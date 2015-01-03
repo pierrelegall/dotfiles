@@ -58,6 +58,8 @@
 (define-key lepieru-keymap (kbd "C-g") 'keyboard-escape-quit)
 (define-key lepieru-keymap (kbd "C-j") 'keyboard-quit)
 (define-key lepieru-keymap (kbd "C-x C-k") 'kill-this-buffer)
+(define-key lepieru-keymap (kbd "C-q") 'kill-buffer-and-window)
+(define-key lepieru-keymap (kbd "M-q") 'quoted-insert)
 (define-key lepieru-keymap (kbd "C-%") 'query-replace)
 (define-key lepieru-keymap (kbd "C-y") 'select-by-step)
 (define-key lepieru-keymap (kbd "C-S-y") 'select-current-line)
