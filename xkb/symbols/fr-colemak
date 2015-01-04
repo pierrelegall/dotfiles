@@ -28,10 +28,10 @@ xkb_symbols "basic" {
     key <AE12> { [        equal,         plus,        multiply,         division ] };
     
     key <AD01> { [            q,            Q,     acircumflex,      Acircumflex ] };
-    key <AD02> { [            w,            W,     bracketleft,  leftdoublequotemark ] };
-    key <AD03> { [            f,            F,    bracketright, rightdoublequotemark ] };
-    key <AD04> { [            p,            P,        asterisk,         multiply ] };
-    key <AD05> { [            g,            G,           slash,         division ] };
+    key <AD02> { [            w,            W,      asciitilde,       asciitilde ] };
+    key <AD03> { [            f,            F,           equal,       asciitilde ] };
+    key <AD04> { [            p,            P,       braceleft,  leftsinglequotemark ] };
+    key <AD05> { [            g,            G,      braceright, rightsinglequotemark ] };
     key <AD06> { [            j,            J,      udiaeresis,       asciitilde ] };
     key <AD07> { [            l,            L,     ucircumflex,       asciitilde ] };
     key <AD08> { [            u,            U,          ugrave,           Ugrave ] };
@@ -42,11 +42,11 @@ xkb_symbols "basic" {
     key <BKSL> { [    backslash,          bar,      asciitilde,       asciitilde ] };
     
     key <AC01> { [            a,            A,          agrave,           Agrave ] };
-    key <AC02> { [            r,            R,       parenleft,    guillemotleft ] };
-    key <AC03> { [            s,            S,      parenright,   guillemotright ] };
-    key <AC04> { [            t,            T,           minus,       asciitilde ] };
-    key <AC05> { [            d,            D,            plus,       asciitilde ] };
-    key <AC06> { [            h,            H,       braceleft,       asciitilde ] };
+    key <AC02> { [            r,            R,            plus,       asciitilde ] };
+    key <AC03> { [            s,            S,           minus,       asciitilde ] };
+    key <AC04> { [            t,            T,       parenleft,  leftdoublequotemark ] };
+    key <AC05> { [            d,            D,      parenright, rightdoublequotemark ] };
+    key <AC06> { [            h,            H,      underscore,       asciitilde ] };
     key <AC07> { [            n,            N,          egrave,           Egrave ] };
     key <AC08> { [            e,            E,          eacute,           Eacute ] };
     key <AC09> { [            i,            I,     icircumflex,      Icircumflex ] };
@@ -56,16 +56,16 @@ xkb_symbols "basic" {
     key <AB01> { [            z,            Z,              ae,               AE ] };
     key <AB02> { [            x,            X,              oe,               OE ] };
     key <AB03> { [            c,            C,        ccedilla,         Ccedilla ] };
-    key <AB04> { [            v,            V,           equal,       asciitilde ] };
-    key <AB05> { [            b,            B,      asciitilde,       asciitilde ] };
-    key <AB06> { [            k,            K,      braceright,       asciitilde ] };
+    key <AB04> { [            v,            V,     bracketleft,    guillemotleft ] };
+    key <AB05> { [            b,            B,    bracketright,   guillemotright ] };
+    key <AB06> { [            k,            K,             bar,       asciitilde ] };
     key <AB07> { [            m,            M,     ecircumflex,      Ecircumflex ] };
     key <AB08> { [        comma,         less,      ediaeresis,       Ediaeresis ] };
     key <AB09> { [       period,      greater,        ellipsis,       asciitilde ] };
     key <AB10> { [        slash,     question,       backslash,     questiondown ] };
     
     key <LSGT> { [        minus,   underscore,          endash,           emdash ] };
-    key <SPCE> { [        Shift,        space,      underscore,     nobreakspace ] };
+    key <SPCE> { [        space,        space,      underscore,     nobreakspace ] };
     
 		replace key <CAPS> { [ Shift_L ] };
     
@@ -75,6 +75,6 @@ xkb_symbols "basic" {
 partial modifier_keys
 xkb_symbols "swap-ctrl-alt" {
     include "fr-colemak"
-    replace key <LCTL> { [ Alt_L ] };
+    replace key <LCTL> { [ Alt_L,     Alt_L     ] };
     replace key <LALT> { [ Control_L, Control_L ] };
 };
