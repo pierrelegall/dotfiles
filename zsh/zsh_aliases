@@ -27,8 +27,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-alias grep='grep --color=auto'
-alias g='grep'
+alias grep='grep -rn --color=auto'
 
 alias rm='rm -I'
 alias mv='mv -i'
