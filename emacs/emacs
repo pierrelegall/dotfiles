@@ -71,17 +71,6 @@
 
 (define-key lepieru-keymap (kbd "C-,") 'backward-word)
 (define-key lepieru-keymap (kbd "C-.") 'forward-word)
-(define-key lepieru-keymap (kbd "C-<") 'beginning-of-visual-line)
-(define-key lepieru-keymap (kbd "C->") 'end-of-visual-line)
-
-(define-key lepieru-keymap (kbd "C-u")
-	(lambda() (interactive) (scroll-down-line 4)))
-(define-key lepieru-keymap (kbd "C-e")
-	(lambda() (interactive) (scroll-up-line 4)))
-(define-key lepieru-keymap (kbd "C-S-u")
-	(lambda() (interactive) (scroll-down-line 10)))
-(define-key lepieru-keymap (kbd "C-S-e")
-	(lambda() (interactive) (scroll-up-line 10)))
 
 (define-key lepieru-keymap (kbd "<C-tab>") 'next-buffer)
 (define-key lepieru-keymap (kbd "<C-iso-lefttab>") 'previous-buffer)
