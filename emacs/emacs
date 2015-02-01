@@ -4,7 +4,7 @@
 
 ;;;; Global window
 
-(menu-bar-mode 1)
+(menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
@@ -31,7 +31,6 @@
 (show-paren-mode 1)
 (global-visual-line-mode 1)
 (global-linum-mode 1)
-(electric-pair-mode 1)
 
 ;;;; Bottom buffer
 
@@ -60,7 +59,6 @@
 (define-key lepieru-keymap (kbd "C-g") 'keyboard-escape-quit)
 (define-key lepieru-keymap (kbd "C-j") 'keyboard-quit)
 (define-key lepieru-keymap (kbd "C-x C-k") 'kill-this-buffer)
-(define-key lepieru-keymap (kbd "C-q") 'kill-buffer-and-window)
 (define-key lepieru-keymap (kbd "M-q") 'quoted-insert)
 (define-key lepieru-keymap (kbd "C-%") 'query-replace)
 (define-key lepieru-keymap (kbd "C-y") 'select-by-step)
@@ -71,6 +69,8 @@
 
 (define-key lepieru-keymap (kbd "C-,") 'backward-word)
 (define-key lepieru-keymap (kbd "C-.") 'forward-word)
+(define-key lepieru-keymap (kbd "C-<") 'beg-of-buffer)
+(define-key lepieru-keymap (kbd "C->") 'end-of-buffer)
 
 (define-key lepieru-keymap (kbd "<C-tab>") 'next-buffer)
 (define-key lepieru-keymap (kbd "<C-iso-lefttab>") 'previous-buffer)
@@ -122,7 +122,7 @@
 ;;;; Ido
 
 (require 'ido)
-(ido-mode 'buffers) ;; only use this line to turn off ido for file names!
+;(ido-mode 'buffers) ;; only use this line to turn off ido for file names!
 (setq ido-ignore-buffers '("^ " "*Completions*" "*Shell Command Output*"
 													 "*Messages*" "Async Shell Command"))
 
