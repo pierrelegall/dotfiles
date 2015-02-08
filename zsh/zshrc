@@ -23,6 +23,6 @@ setopt pushdminus
 
 # Includes
 
-source ~/.zsh.d/aliases
-source ~/.zsh.d/inputs
-source ~/.zsh.d/prompt
+source ~/.config/zsh/aliases
+source ~/.config/zsh/inputs
+source ~/.config/zsh/prompt

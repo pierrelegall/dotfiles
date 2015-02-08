@@ -20,4 +20,4 @@
 	default = simple
 
 [include]
-	path = .gitprivateconfig
+	path = .config/git/private
