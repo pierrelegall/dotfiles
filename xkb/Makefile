@@ -6,13 +6,14 @@ THIS_CONFIG  = $(CURDIR)/symbols/fr-colemak
 
 # Actions
 
-all: setup
+all: print_info setup
 
-get_info:
+print_info:
 	@ echo ">>> $(TOOL)"
 	@ echo "LOCAL_CONFIG = $(LOCAL_CONFIG)"
 	@ echo "THIS_CONFIG  = $(THIS_CONFIG)"
 	@ echo "/!\ Root privileges needed !!!"
 	@ echo "You have to run manualy : sudo ln -i -s $(THIS_CONFIG) $(LOCAL_CONFIG)"
 
-setup: get_info
+setup:
+

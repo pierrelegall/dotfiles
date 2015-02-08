@@ -6,13 +6,13 @@ THIS_CONFIG  = $(CURDIR)/bashrc
 
 # Actions
 
-all: setup
+all: print_info setup
 
-get_info:
+print_info:
 	@ echo ">>> $(TOOL)"
 	@ echo "LOCAL_CONFIG = $(LOCAL_CONFIG)"
 	@ echo "THIS_CONFIG  = $(THIS_CONFIG)"
 
-setup: get_info
+setup:
 	@ ln -i -s $(THIS_CONFIG) $(LOCAL_CONFIG)
 
