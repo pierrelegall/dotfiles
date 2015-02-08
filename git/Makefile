@@ -10,8 +10,7 @@ THIS_CONFIG          = $(CURDIR)/gitconfig
 all: setup
 
 get_info:
-	@ echo "> $(TOOL)"
-	@ echo "Make your $(TOOL) local config a symlink to this config"
+	@ echo ">>> $(TOOL)"
 	@ echo "LOCAL_CONFIG = $(LOCAL_CONFIG)"
 	@ echo "THIS_CONFIG  = $(THIS_CONFIG)"
 	@ echo "You have to set your own private config (like user data) manualy in $(LOCAL_PRIVATE_CONFIG)"

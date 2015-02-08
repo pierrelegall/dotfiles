@@ -11,8 +11,7 @@ THIS_CONFIG_DIR  = $(CURDIR)/zsh.d
 all: setup
 
 get_info:
-	@ echo "> $(TOOL)"
-	@ echo "Make your $(TOOL) local config a symlink to this config"
+	@ echo ">>> $(TOOL)"
 	@ echo "LOCAL_CONFIG     = $(LOCAL_CONFIG)"
 	@ echo "THIS_CONFIG      = $(THIS_CONFIG)"
 	@ echo "LOCAL_CONFIG_DIR = $(LOCAL_CONFIG_DIR)"

@@ -9,8 +9,7 @@ THIS_CONFIG  = $(CURDIR)/bashrc
 all: setup
 
 get_info:
-	@ echo "> $(TOOL)"
-	@ echo "Make your $(TOOL) local config a symlink to this config"
+	@ echo ">>> $(TOOL)"
 	@ echo "LOCAL_CONFIG = $(LOCAL_CONFIG)"
 	@ echo "THIS_CONFIG  = $(THIS_CONFIG)"
 
