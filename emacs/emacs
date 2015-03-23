@@ -136,31 +136,7 @@
 
 ;;;; Theme and faces
 
-(require 'color-theme)
-(color-theme-initialize)
-(load-theme 'wombat t)
-(setq custom-enabled-themes 'wombat)
-(custom-theme-set-faces
-  'wombat
-  `(cursor ((t (:background, "#ff9000"))))
-	;`(region ((t (:background "#323232" :foreground nil)))
-  `(highlight ((t (:background, "#101010" :underline nil))))
-	`(show-paren-match ((t (:background "#05008c" :foreground nil))))
-	`(diff-added ((t (:foreground "Green"))) 'now)
-	`(diff-removed ((t (:foreground "Red"))) 'now)
-)
-(set-face-attribute 'region nil :background "#32324a" :foreground nil)
-;(set-face-attribute 'search nil :background "#424242" :foreground nil)
-
-(setq font-use-system-font t)
-
-;(set-default 'cursor-type 'hollow)
-(setq blink-cursor-delay 10)
-(setq blink-cursor-interval 0.3)
-(setq blink-cursor-blinks 3)
-(setq cursor-in-non-selected-windows nil)
-(blink-cursor-mode 0)
-(setq global-hl-line-mode 0)
+(load-theme 'tango-dark t)
 
 ;;;; Server mode
 
