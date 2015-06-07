@@ -34,7 +34,7 @@ alias grepr='grep -rn'
 alias rm='rm -I'
 alias mv='mv -i'
 
-alias ls='ls -px --group-directories-first --color=auto'
+alias ls='ls -px --group-directories-first --color=auto --human-readable --format=vertical'
 alias ll='ls -lh'
 alias la='ls -A'
 alias lla='la -l'
