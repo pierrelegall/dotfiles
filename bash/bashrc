@@ -1,10 +1,8 @@
-# Aliases
+# Include
 
-alias rm='rm -I'
-alias ll='ls -l'
-
-# Includes
+source $HOME/.config/bash/includes/aliases
+source $HOME/.config/bash/includes/prompt
 
 if [ -f /etc/bash_completion ]; then
-	 source /etc/bash_completion
+  source /etc/bash_completion
 fi

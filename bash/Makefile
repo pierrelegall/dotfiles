@@ -1,10 +1,12 @@
 # Variables
 
-TOOL             = Bash
-LOCAL_CONFIG     = $(HOME)/.bashrc
-THIS_CONFIG      = $(CURDIR)/bashrc
-LOCAL_CONFIG_DIR = $(HOME)/.config/bash
-THIS_CONFIG_DIR  = $(CURDIR)/bash.d
+TOOL                = Bash
+LOCAL_CONFIG        = $(HOME)/.bashrc
+THIS_CONFIG         = $(CURDIR)/bashrc
+LOCAL_INPUTS_CONFIG = $(HOME)/.inputrc
+THIS_INPUTS_CONFIG  = $(CURDIR)/inputrc
+LOCAL_CONFIG_DIR    = $(HOME)/.config/bash
+THIS_CONFIG_DIR     = $(CURDIR)/bash.d
 
 # Actions
 
@@ -20,6 +22,6 @@ print_info:
 setup: set_links
 
 set_links:
-	@ ln -i -s -T $(THIS_CONFIG)     $(LOCAL_CONFIG)
-	@ ln -i -s -T $(THIS_CONFIG_DIR) $(LOCAL_CONFIG_DIR)
-
+	@ ln -i -s -T $(THIS_CONFIG)        $(LOCAL_CONFIG)
+	@ ln -i -s -T $(THIS_INPUTS_CONFIG) $(LOCAL_INPUTS_CONFIG)
+	@ ln -i -s -T $(THIS_CONFIG_DIR)    $(LOCAL_CONFIG_DIR)
