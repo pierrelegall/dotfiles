@@ -6,7 +6,7 @@
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-(scroll-bar-mode -1)
+(scroll-bar-mode 1)
 
 ;;;; Navigation
 
@@ -16,21 +16,17 @@
 (setq mouse-wheel-mode t)
 (setq mouse-wheel-progressive-speed nil)
 (setq mouse-wheel-scroll-amount (quote (2 ((shift) . 1))))
-(setq shift-select-mode nil)
 
 ;;;; Behavior
 
 (setq inhibit-startup-screen t)
-(setq initial-buffer-choice "~/.todo.org")
+(setq-default indent-tabs-mode nil)
 (setq default-tab-width 2)
-(setq-default indent-tabs-mode t)
 (fset 'yes-or-no-p 'y-or-n-p)
-(setq recentf-mode t)
 (setq-default message-log-max nil)
 (setq delete-selection-mode 1)
 (show-paren-mode 1)
 (global-visual-line-mode 1)
-(global-linum-mode 1)
 
 ;;;; Bottom buffer
 
@@ -48,57 +44,57 @@
 (define-key cua-global-keymap (kbd "C-<return>") nil)
 (define-key cua-global-keymap (kbd "C-S-<return>") nil)
 (define-key cua-global-keymap (kbd "C-S-<space>") 'cua-set-rectangle-mark)
-;(define-key lepieru-keymap (kbd "C-m") 'cua-toggle-global-mark)
+;(define-key my-keymap (kbd "C-m") 'cua-toggle-global-mark)
 
-(defvar lepieru-keymap (make-keymap) "lepieru keymap")
-(define-minor-mode lepieru-keymap-mode "lepieru keymap" :keymap lepieru-keymap)
-(setq-default lepieru-keymap-mode 1)
+(defvar my-keymap (make-keymap) "my keymap")
+(define-minor-mode my-keymap-mode "my keymap" :keymap my-keymap)
+(setq-default my-keymap-mode 1)
 
-(define-key lepieru-keymap (kbd "C-w") 'kill-ring-save)
-(define-key lepieru-keymap (kbd "M-w") 'kill-region)
-(define-key lepieru-keymap (kbd "C-g") 'keyboard-escape-quit)
-(define-key lepieru-keymap (kbd "C-j") 'keyboard-quit)
-(define-key lepieru-keymap (kbd "C-x C-k") 'kill-this-buffer)
-(define-key lepieru-keymap (kbd "M-q") 'quoted-insert)
-(define-key lepieru-keymap (kbd "C-%") 'query-replace)
-(define-key lepieru-keymap (kbd "C-y") 'select-by-step)
-(define-key lepieru-keymap (kbd "C-S-y") 'select-current-line)
+(define-key my-keymap (kbd "C-w") 'kill-ring-save)
+(define-key my-keymap (kbd "M-w") 'kill-region)
+(define-key my-keymap (kbd "C-g") 'keyboard-escape-quit)
+(define-key my-keymap (kbd "C-j") 'keyboard-quit)
+(define-key my-keymap (kbd "C-x C-k") 'kill-this-buffer)
+(define-key my-keymap (kbd "M-q") 'quoted-insert)
+(define-key my-keymap (kbd "C-%") 'query-replace)
+(define-key my-keymap (kbd "C-y") 'select-by-step)
+(define-key my-keymap (kbd "C-S-y") 'select-current-line)
 
-(define-key lepieru-keymap (kbd "C-c C-c") 'execute-extended-command)
-(define-key lepieru-keymap (kbd "C-c C-x") 'shell-command)
+(define-key my-keymap (kbd "C-c C-c") 'execute-extended-command)
+(define-key my-keymap (kbd "C-c C-x") 'shell-command)
 
-(define-key lepieru-keymap (kbd "C-,") 'backward-word)
-(define-key lepieru-keymap (kbd "C-.") 'forward-word)
-(define-key lepieru-keymap (kbd "C-<") 'beg-of-buffer)
-(define-key lepieru-keymap (kbd "C->") 'end-of-buffer)
+(define-key my-keymap (kbd "C-,") 'backward-word)
+(define-key my-keymap (kbd "C-.") 'forward-word)
+(define-key my-keymap (kbd "C-<") 'beginning-of-buffer)
+(define-key my-keymap (kbd "C->") 'end-of-buffer)
 
-(define-key lepieru-keymap (kbd "<C-tab>") 'next-buffer)
-(define-key lepieru-keymap (kbd "<C-iso-lefttab>") 'previous-buffer)
+(define-key my-keymap (kbd "<C-tab>") 'next-buffer)
+(define-key my-keymap (kbd "<C-iso-lefttab>") 'previous-buffer)
 
-(define-key lepieru-keymap (kbd "C-k") 'kill-whole-line)
+(define-key my-keymap (kbd "C-k") 'kill-whole-line)
 
-(define-key lepieru-keymap (kbd "C-;") 'comment-or-uncomment-region)
+(define-key my-keymap (kbd "C-;") 'comment-or-uncomment-region)
 
-;(define-key lepieru-keymap (kbd "C-/") 'toggle-letter-case)
+;(define-key my-keymap (kbd "C-/") 'toggle-letter-case)
 
-(define-key lepieru-keymap (kbd "C-o")
+(define-key my-keymap (kbd "C-o")
 	(lambda() (interactive) (other-window 1)))
-(define-key lepieru-keymap (kbd "C-S-o")
+(define-key my-keymap (kbd "C-S-o")
 	(lambda() (interactive) (other-window -1)))
-(define-key lepieru-keymap (kbd "C-x o")
+(define-key my-keymap (kbd "C-x o")
 	(lambda() (interactive) (other-window 1)))
-(define-key lepieru-keymap (kbd "C-x O")
+(define-key my-keymap (kbd "C-x O")
 	(lambda() (interactive) (other-window -1)))
 
-(define-key lepieru-keymap (kbd "C-+") 'text-scale-increase)
-(define-key lepieru-keymap (kbd "C--") 'text-scale-decrease)
+(define-key my-keymap (kbd "C-+") 'text-scale-increase)
+(define-key my-keymap (kbd "C--") 'text-scale-decrease)
 
-(define-key lepieru-keymap (kbd "<C-return>") 'newline-down)
-(define-key lepieru-keymap (kbd "C-S-<return>") 'newline-up)
-(define-key lepieru-keymap (kbd "<M-down>") 'move-line-down)
-(define-key lepieru-keymap (kbd "<M-up>") 'move-line-up)
+(define-key my-keymap (kbd "<C-return>") 'newline-down)
+(define-key my-keymap (kbd "C-S-<return>") 'newline-up)
+(define-key my-keymap (kbd "<M-down>") 'move-line-down)
+(define-key my-keymap (kbd "<M-up>") 'move-line-up)
 
-(define-key lepieru-keymap [C-f1] 'show-absolute-buffer-file-path)
+(define-key my-keymap [C-f1] 'show-absolute-buffer-file-path)
 
 ;;;; Clipboard
 
