@@ -52,8 +52,6 @@
 
 (define-key my-keymap (kbd "C-w") 'kill-ring-save)
 (define-key my-keymap (kbd "M-w") 'kill-region)
-(define-key my-keymap (kbd "C-g") 'keyboard-escape-quit)
-(define-key my-keymap (kbd "C-j") 'keyboard-quit)
 (define-key my-keymap (kbd "C-x C-k") 'kill-this-buffer)
 (define-key my-keymap (kbd "M-q") 'quoted-insert)
 (define-key my-keymap (kbd "C-%") 'query-replace)
@@ -71,7 +69,7 @@
 (define-key my-keymap (kbd "<C-tab>") 'next-buffer)
 (define-key my-keymap (kbd "<C-iso-lefttab>") 'previous-buffer)
 
-(define-key my-keymap (kbd "C-k") 'kill-whole-line)
+(define-key my-keymap (kbd "C-S-l") 'goto-line)
 
 (define-key my-keymap (kbd "C-;") 'comment-or-uncomment-region)
 
