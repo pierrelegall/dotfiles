@@ -38,13 +38,13 @@
 
 (setq cua-auto-tabify-rectangles nil)
 (transient-mark-mode 1)
-;(setq cua-keep-region-after-copy t)
+;;(setq cua-keep-region-after-copy t)
 (cua-mode t)
 
 (define-key cua-global-keymap (kbd "C-<return>") nil)
 (define-key cua-global-keymap (kbd "C-S-<return>") nil)
 (define-key cua-global-keymap (kbd "C-S-<space>") 'cua-set-rectangle-mark)
-;(define-key my-keymap (kbd "C-m") 'cua-toggle-global-mark)
+;;(define-key my-keymap (kbd "C-m") 'cua-toggle-global-mark)
 
 (defvar my-keymap (make-keymap) "my keymap")
 (define-minor-mode my-keymap-mode "my keymap" :keymap my-keymap)
@@ -73,16 +73,16 @@
 
 (define-key my-keymap (kbd "C-;") 'comment-or-uncomment-region)
 
-;(define-key my-keymap (kbd "C-/") 'toggle-letter-case)
+;;(define-key my-keymap (kbd "C-/") 'toggle-letter-case)
 
 (define-key my-keymap (kbd "C-o")
-	(lambda() (interactive) (other-window 1)))
+  (lambda() (interactive) (other-window 1)))
 (define-key my-keymap (kbd "C-S-o")
-	(lambda() (interactive) (other-window -1)))
+  (lambda() (interactive) (other-window -1)))
 (define-key my-keymap (kbd "C-x o")
-	(lambda() (interactive) (other-window 1)))
+  (lambda() (interactive) (other-window 1)))
 (define-key my-keymap (kbd "C-x O")
-	(lambda() (interactive) (other-window -1)))
+  (lambda() (interactive) (other-window -1)))
 
 (define-key my-keymap (kbd "C-+") 'text-scale-increase)
 (define-key my-keymap (kbd "C--") 'text-scale-decrease)
@@ -116,17 +116,17 @@
 ;;;; Ido
 
 (require 'ido)
-;(ido-mode 'buffers) ;; only use this line to turn off ido for file names!
+;;(ido-mode 'buffers) ;; only use this line to turn off ido for file names!
 (setq ido-ignore-buffers '("^ " "*Completions*" "*Shell Command Output*"
-													 "*Messages*" "Async Shell Command"))
+                           "*Messages*" "Async Shell Command"))
 
 ;;;; Packages
 
 (setq package-archives '(
-  ("gnu"       . "http://elpa.gnu.org/packages/")
-  ("marmalade" . "http://marmalade-repo.org/packages/")
-  ("melpa"     . "http://melpa.milkbox.net/packages/")
-))
+                         ("gnu"       . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa"     . "http://melpa.milkbox.net/packages/")
+                         ))
 
 ;;;; Theme and faces
 
@@ -171,7 +171,7 @@ Subsequent calls expands the selection to larger semantic unit."
       (mark-sexp -1))))
 
 (defun select-text-in-quote ()
-"Select text between the nearest left and right delimiters.
+  "Select text between the nearest left and right delimiters.
 Delimiters are paired characters: ()[]<>«»“”‘’「」, including \"\"."
   (interactive)
   (let (b1 b2)
@@ -179,29 +179,27 @@ Delimiters are paired characters: ()[]<>«»“”‘’「」, including \"\"."
     (setq b1 (point))
     (skip-chars-forward "^\"')[>")
     (setq b2 (point))
-    (set-mark b1)
-  )
-)
+    (set-mark b1)))
 
 (defun select-current-word ()
   "Select the current line"
   (interactive)
-	(beginning-of-line)
+  (beginning-of-line)
   (cua-set-mark)
   (forward-word))
 
 (defun select-current-line ()
   "Select the current line"
   (interactive)
-	(beginning-of-line)
+  (beginning-of-line)
   (cua-set-mark)
   (end-of-line))
 
 (defun select-current-paragraph ()
   "Select the current line"
   (interactive)
-	(backward-paragraph)
-	(next-line)
+  (backward-paragraph)
+  (next-line)
   (cua-set-mark)
   (forward-paragraph))
 
@@ -262,7 +260,7 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
 ;;;; Hooks
 
 (add-hook 'minibuffer-exit-hook
-					'(lambda ()
-						 (let ((buffer "*Completions*"))
-							 (and (get-buffer buffer)
-										(kill-buffer buffer)))))
+          '(lambda ()
+             (let ((buffer "*Completions*"))
+               (and (get-buffer buffer)
+                    (kill-buffer buffer)))))
