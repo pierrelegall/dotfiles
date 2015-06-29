@@ -6,7 +6,7 @@
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-(scroll-bar-mode 1)
+(scroll-bar-mode -1)
 
 ;;;; Navigation
 
@@ -58,7 +58,6 @@
 (define-key my-keymap (kbd "C-y") 'select-by-step)
 (define-key my-keymap (kbd "C-S-y") 'select-current-line)
 
-(define-key my-keymap (kbd "C-c C-c") 'execute-extended-command)
 (define-key my-keymap (kbd "C-c C-x") 'shell-command)
 
 (define-key my-keymap (kbd "C-,") 'backward-word)
@@ -130,7 +129,7 @@
 
 ;;;; Theme and faces
 
-(load-theme 'tango-dark t)
+(load-theme 'deeper-blue t)
 
 ;;;; Server mode
 
