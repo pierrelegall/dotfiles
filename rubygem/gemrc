@@ -7,5 +7,5 @@
 # :sources:
 # - http://rubyforge.org/
 # - http://gems.github.com/
-gem: --no-ri --no-rdoc --user-install
+gem: --no-rdoc --user-install
 
