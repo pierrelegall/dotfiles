@@ -24,7 +24,7 @@
 (setq default-tab-width 2)
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq-default message-log-max nil)
-(setq delete-selection-mode 1)
+(delete-selection-mode 1)
 (show-paren-mode 1)
 (global-visual-line-mode 1)
 
