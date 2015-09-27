@@ -36,29 +36,22 @@
 
 ;;;; Keymap
 
-(setq cua-auto-tabify-rectangles nil)
-(transient-mark-mode 1)
-;;(setq cua-keep-region-after-copy t)
-(cua-mode t)
-
-(define-key cua-global-keymap (kbd "C-<return>") nil)
-(define-key cua-global-keymap (kbd "C-S-<return>") nil)
-(define-key cua-global-keymap (kbd "C-S-<space>") 'cua-set-rectangle-mark)
-;;(define-key my-keymap (kbd "C-m") 'cua-toggle-global-mark)
-
 (defvar my-keymap (make-keymap) "my keymap")
 (define-minor-mode my-keymap-mode "my keymap" :keymap my-keymap)
 (setq-default my-keymap-mode 1)
 
-(define-key my-keymap (kbd "C-w") 'kill-ring-save)
-(define-key my-keymap (kbd "M-w") 'kill-region)
+(define-key my-keymap (kbd "C-w") 'kill-region-or-backward-word)
 (define-key my-keymap (kbd "C-x C-k") 'kill-this-buffer)
-(define-key my-keymap (kbd "M-q") 'quoted-insert)
 (define-key my-keymap (kbd "C-%") 'query-replace)
-(define-key my-keymap (kbd "C-y") 'select-by-step)
-(define-key my-keymap (kbd "C-S-y") 'select-current-line)
 
-(define-key my-keymap (kbd "C-c C-x") 'shell-command)
+(define-key my-keymap (kbd "C-j") 'keyboard-escape-quit)
+
+(define-key my-keymap (kbd "C-h") 'backward-delete-char-untabify)
+(define-key my-keymap (kbd "C-S-h") 'backward-kill-word)
+(define-key my-keymap (kbd "C-S-d") 'kill-word)
+
+(define-key my-keymap (kbd "C-!") 'bash-mode)
+(define-key my-keymap (kbd "C-`") 'rename-buffer)
 
 (define-key my-keymap (kbd "C-,") 'backward-word)
 (define-key my-keymap (kbd "C-.") 'forward-word)
@@ -115,6 +108,7 @@
 ;;;; Ido
 
 (require 'ido)
+(ido-mode t)
 ;;(ido-mode 'buffers) ;; only use this line to turn off ido for file names!
 (setq ido-ignore-buffers '("^ " "*Completions*" "*Shell Command Output*"
                            "*Messages*" "Async Shell Command"))
@@ -133,7 +127,8 @@
 
 ;;;; Server mode
 
-(server-start nil)
+(load "server")
+(unless (server-running-p) (server-start))
 
 ;;;; Functions
 
@@ -256,7 +251,23 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
   (interactive)
   (message (buffer-file-name)))
 
+(defun kill-region-or-backward-word ()
+  "If the region is active and non-empty, call `kilregion'.
+Otherwise, call `backward-kill-word'."
+  (interactive)
+  (call-interactively
+   (if (use-region-p) 'kill-region 'backward-kill-word)))
+
+(defun bash-mode ()
+  "Run an ansi-term with bash in the current buffer."
+  (interactive)
+  (ansi-term "/bin/bash" nil))
+
 ;;;; Hooks
+
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (kill-buffer "*Messages*")))
 
 (add-hook 'minibuffer-exit-hook
           '(lambda ()
