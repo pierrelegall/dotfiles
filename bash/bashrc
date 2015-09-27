@@ -1,8 +1,5 @@
-# Include
+# Includes
 
 source $HOME/.config/bash/includes/aliases
 source $HOME/.config/bash/includes/prompt
-
-if [ -f /etc/bash_completion ]; then
-  source /etc/bash_completion
-fi
+source $HOME/.config/bash/includes/plugins
