@@ -18,14 +18,8 @@ print_info:
 	@ echo "LOCAL_CONFIG_DIR = $(LOCAL_CONFIG_DIR)"
 	@ echo "THIS_CONFIG_DIR  = $(THIS_CONFIG_DIR)"
 
-setup: set_links touch_local_private_config
+setup: set_links
 
 set_links:
 	@ ln -i -s -T $(THIS_CONFIG)     $(LOCAL_CONFIG)
 	@ ln -i -s -T $(THIS_CONFIG_DIR) $(LOCAL_CONFIG_DIR)
-
-touch_local_private_config:
-	@ if [ ! -e $(LOCAL_PRIVATE_CONFIG) ]; then \
-		touch $(LOCAL_PRIVATE_CONFIG); \
-		echo "You have to set your own private config (like user data) manualy in $(LOCAL_PRIVATE_CONFIG)"; \
-	fi;

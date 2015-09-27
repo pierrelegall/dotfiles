@@ -19,5 +19,6 @@
 [push]
 	default = simple
 
-[include]
-	path = .config/git/private
+[user]
+	name = Pierre Le Gall
+	email = pierre@legall.io
