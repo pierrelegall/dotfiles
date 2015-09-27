@@ -1,4 +1,3 @@
-myconfig
-========
+# Shared config
 
-My configuration files with auto setup makefiles.
+My shared configuration files with auto setup makefiles.
