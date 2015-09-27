@@ -1,5 +1,5 @@
 [core]
-	editor = nano
+	editor = "emacsclient -nw"
 
 [color]
 	status = true
