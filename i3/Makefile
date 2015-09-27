@@ -1,19 +1,16 @@
 # Variables
 
-TOOL             = i3
-LOCAL_CONFIG_DIR = $(HOME)/.config/i3
-THIS_CONFIG_DIR  = $(CURDIR)
+CONFIG     = i3
+CONFIG_DIR = $(HOME)/.config/i3
 
 # Actions
 
-all: print_info setup
+all: print-info setup
 
-print_info:
-	@ echo "[$(TOOL)]"
-	@ echo "LOCAL_CONFIG_DIR = $(LOCAL_CONFIG_DIR)"
-	@ echo "THIS_CONFIG_DIR  = $(THIS_CONFIG_DIR)"
+print-info:
+	@ echo "[$(CONFIG)]"
 
-setup: set_links
+setup: set-symlinks
 
-set_links:
-	@ ln -i -s -T $(THIS_CONFIG_DIR) $(LOCAL_CONFIG_DIR)
+set-symlinks:
+	@ ln -v -i -s -T $(CURDIR) $(CONFIG_DIR)

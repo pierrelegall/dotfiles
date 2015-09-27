@@ -1,21 +1,17 @@
-# Variables
-
-TOOL             = French Colemak layout
-LOCAL_CONFIG     = /usr/share/X11/xkb/symbols/fr-colemak
-THIS_CONFIG      = $(CURDIR)/fr-colemak
-
-# Actions
+CONFIG     = Xkb
+CONFIG_DIR = $(HOME)/.config/xkb
 
 all: print-info setup
 
 print-info:
-	@ echo "[$(TOOL)]"
-	@ echo "LOCAL_CONFIG = $(LOCAL_CONFIG)"
-	@ echo "THIS_CONFIG  = $(THIS_CONFIG)"
-	@ echo "/!\ Root privileges needed, you have to run manualy :"
-	@ echo "> sudo make -C $(CURDIR) set-symlinks --quiet"
+	@ echo "[$(CONFIG)]"
+	@ echo "Root privileges needed, you have to run manualy :"
+	@ echo "> sudo make -C $(CURDIR) set-system-symlinks --quiet"
 
-setup:
+setup: set-symlinks
 
 set-symlinks:
-	@ ln -i -s -T $(THIS_CONFIG) $(LOCAL_CONFIG)
+	@ ln -v -i -s -T $(CURDIR) $(CONFIG_DIR)
+
+set-system-symlinks:
+	@ ln -v -i -s -T $(CONFIG_DIR)/fr-colemak /usr/share/X11/xkb/symbols/fr-colemak

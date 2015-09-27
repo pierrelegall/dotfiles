@@ -1,25 +1,13 @@
-# Variables
-
-TOOL                 = Git
-LOCAL_CONFIG         = $(HOME)/.gitconfig
-LOCAL_PRIVATE_CONFIG = $(HOME)/.config/git/private
-THIS_CONFIG          = $(CURDIR)/gitconfig
-LOCAL_CONFIG_DIR     = $(HOME)/.config/git
-THIS_CONFIG_DIR      = $(CURDIR)/git.d
-
-# Actions
+CONFIG     = Git
+CONFIG_DIR = $(HOME)/.config/git
 
 all: print-info setup
 
 print-info:
-	@ echo "[$(TOOL)]"
-	@ echo "LOCAL_CONFIG     = $(LOCAL_CONFIG)"
-	@ echo "THIS_CONFIG      = $(THIS_CONFIG)"
-	@ echo "LOCAL_CONFIG_DIR = $(LOCAL_CONFIG_DIR)"
-	@ echo "THIS_CONFIG_DIR  = $(THIS_CONFIG_DIR)"
+	@ echo "[$(CONFIG)]"
 
 setup: set-symlinks
 
 set-symlinks:
-	@ ln -i -s -T $(THIS_CONFIG)     $(LOCAL_CONFIG)
-	@ ln -i -s -T $(THIS_CONFIG_DIR) $(LOCAL_CONFIG_DIR)
+	@ ln -v -i -s -T $(CURDIR)               $(CONFIG_DIR)
+	@ ln -v -i -s -T $(CONFIG_DIR)/gitconfig $(HOME)/.gitconfig

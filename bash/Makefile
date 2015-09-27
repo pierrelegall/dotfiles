@@ -1,27 +1,14 @@
-# Variables
-
-TOOL                = Bash
-LOCAL_CONFIG        = $(HOME)/.bashrc
-THIS_CONFIG         = $(CURDIR)/bashrc
-LOCAL_INPUTS_CONFIG = $(HOME)/.inputrc
-THIS_INPUTS_CONFIG  = $(CURDIR)/inputrc
-LOCAL_CONFIG_DIR    = $(HOME)/.config/bash
-THIS_CONFIG_DIR     = $(CURDIR)/bash.d
-
-# Actions
+CONFIG     = Bash
+CONFIG_DIR = $(HOME)/.config/bash
 
 all: print-info setup
 
 print-info:
-	@ echo "[$(TOOL)]"
-	@ echo "LOCAL_CONFIG     = $(LOCAL_CONFIG)"
-	@ echo "THIS_CONFIG      = $(THIS_CONFIG)"
-	@ echo "LOCAL_CONFIG_DIR = $(LOCAL_CONFIG_DIR)"
-	@ echo "THIS_CONFIG_DIR  = $(THIS_CONFIG_DIR)"
+	@ echo "[$(CONFIG)]"
 
 setup: set-symlinks
 
 set-symlinks:
-	@ ln -i -s -T $(THIS_CONFIG)        $(LOCAL_CONFIG)
-	@ ln -i -s -T $(THIS_INPUTS_CONFIG) $(LOCAL_INPUTS_CONFIG)
-	@ ln -i -s -T $(THIS_CONFIG_DIR)    $(LOCAL_CONFIG_DIR)
+	@ ln -v -i -s -T $(CURDIR)             $(CONFIG_DIR)
+	@ ln -v -i -s -T $(CONFIG_DIR)/bashrc  $(HOME)/.bashrc
+	@ ln -v -i -s -T $(CONFIG_DIR)/inputrc $(HOME)/.inputrc

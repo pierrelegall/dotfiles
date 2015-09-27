@@ -1,21 +1,16 @@
 # Variables
 
-DIRECTORIES = $(shell ls -d */)
+SUB_DIRECTORIES = $(shell ls -d */)
 
 # Actions
 
-all: make_all
+all: print-info make-all
 
-get_info:
-	@ echo ""
-	@ echo "# This makefile run all sub directory makefiles."
-	@ echo "#"
-	@ echo "# It should never ask for root privileges ;"
-	@ echo "# however if it need them, it should ask you to run commands manualy."
+print-info:
+	@ echo "This makefile run all sub directories makefiles."
 
-make_all: get_info
-	@ echo ""
-	@ for each in $(DIRECTORIES); do \
-		make -C $$each --quiet; \
+make-all:
+	@ for each in $(SUB_DIRECTORIES); do \
 		echo ""; \
+		make -C $$each --quiet; \
 	done
