@@ -1,7 +1,3 @@
-# Variables
-
-DV_PATH=~/Videos
-
 # Aliases
 
 alias sudo='sudo '
@@ -51,8 +47,8 @@ alias lst='listen-stream'
 # Helpers
 
 download-stream() {
-	mkdir -p $DV_PATH
-	youtube-dl -o "$DV_PATH/%(title)s-%(id)s.%(ext)s" "$1"
+	mkdir -p $VIDEO_PATH
+	youtube-dl -o "$VIDEO_PATH/%(title)s-%(id)s.%(ext)s" "$1"
 }
 
 watch-stream() {
