@@ -1,6 +1,6 @@
 # Includes
 
-source $HOME/.config/bash/includes/exports
-source $HOME/.config/bash/includes/aliases
-source $HOME/.config/bash/includes/prompt
-source $HOME/.config/bash/includes/plugins
+source $HOME/.config/bash/includes/exports.sh
+source $HOME/.config/bash/includes/aliases.sh
+source $HOME/.config/bash/includes/prompt.sh
+source $HOME/.config/bash/includes/plugins.sh
