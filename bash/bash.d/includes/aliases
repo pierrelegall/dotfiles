@@ -1,12 +1,54 @@
 # Variables
 
-DV_PATH=~/Videos/downloaded
+DV_PATH=~/Videos
+
+# Aliases
+
+alias sudo='sudo '
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+
+alias grep='grep --color=auto'
+alias grepr='grep -rn'
+
+alias rm='rm -I'
+alias mv='mv -i'
+
+alias ls='ls --color=auto --group-directories-first --human-readable --format=vertical --indicator-style=slash'
+alias ll='ls -lh'
+alias la='ls -A'
+alias lla='la -l'
+alias ln='ln -i'
+
+alias df='df -h'
+alias du='du -h'
+
+alias e='emacsclient --no-wait'
+alias ecf='emacsclient --no-wait --create-frame'
+alias enw='emacsclient -nw'
+
+alias kb='setxkbmap fr-colemak swap-ctrl-alt'
+alias azer='kb'
+alias qwer='kb'
+alias qwfp='kb'
+
+alias en='dict -d wn'
+alias fr='dict -d french'
+alias enc='dict -d foldoc'
+alias en2fr='dict -d fd-eng-fra'
+alias fr2en='dict -d fd-fra-eng'
+
+alias jsconsole='firefox -jsconsole'
+alias jsc='jsconsole'
+
+alias dst='download-stream'
+alias wst='watch-stream'
+alias lst='listen-stream'
 
 # Helpers
-
-web-search() {
-	firefox -new-tab "https://duckduckgo.com/?q=$1"
-}
 
 download-stream() {
 	mkdir -p $DV_PATH
@@ -20,53 +62,3 @@ watch-stream() {
 listen-stream() {
 	mpv --no-video -cookies $(youtube-dl -g $1)
 }
-
-# Aliases
-
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
-
-alias grep='grep --color=auto'
-alias grepr='grep -rn'
-
-alias rm='rm -I'
-alias mv='mv -i'
-
-alias ls='ls -px --group-directories-first --color=auto --human-readable --format=vertical'
-alias ll='ls -lh'
-alias la='ls -A'
-alias lla='la -l'
-alias ln='ln -i'
-
-alias df='df -h'
-alias du='du -h'
-
-alias ec='emacsclient -n'
-alias enw='emacsclient -nw'
-
-alias qwfp='setxkbmap fr'
-alias qwer='setxkbmap fr-colemak'
-alias azer='setxkbmap fr-colemak'
-alias qwert='setxkbmap fr-colemak swap-ctrl-alt'
-alias azert='setxkbmap fr-colemak swap-ctrl-alt'
-
-alias en='dict -d wn'
-alias fr='dict -d french'
-alias enc='dict -d foldoc'
-alias en2fr='dict -d fd-eng-fra'
-alias fr2en='dict -d fd-fra-eng'
-
-alias jsconsole='firefox -jsconsole'
-alias jsc='jsconsole'
-alias ws='web-search'
-
-alias dst='download-stream'
-alias wst='watch-stream'
-alias lst='listen-straem'
-
-# Special ZSH aliases
-
-alias hist='history'
-alias dirs='dirs -v'
