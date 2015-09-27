@@ -9,7 +9,7 @@ THIS_CONFIG      = $(CURDIR)/fr-colemak
 all: print_info setup
 
 print_info:
-	@ echo ">>> $(TOOL)"
+	@ echo "[$(TOOL)]"
 	@ echo "LOCAL_CONFIG = $(LOCAL_CONFIG)"
 	@ echo "THIS_CONFIG  = $(THIS_CONFIG)"
 	@ echo "/!\ Root privileges needed, you have to run manualy :"
