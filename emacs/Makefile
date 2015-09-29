@@ -9,5 +9,5 @@ print-info:
 setup: set-symlinks
 
 set-symlinks:
-	@ ln -v -i -s -T $(CURDIR)           $(CONFIG_DIR)
-	@ ln -v -i -s -T $(CONFIG_DIR)/emacs $(HOME)/.emacs
+	@ ln -v -i -s -T $(CURDIR)             $(CONFIG_DIR)
+	@ ln -v -i -s -T $(CONFIG_DIR)/init.el $(HOME)/.emacs
