@@ -41,6 +41,8 @@
 (setq-default my-keymap-mode 1)
 
 (define-key my-keymap (kbd "C-w") 'kill-region-or-backward-word)
+(define-key my-keymap (kbd "C-S-w") 'kill-ring-save)
+(define-key my-keymap (kbd "C-S-y") 'yank-pop)
 (define-key my-keymap (kbd "C-x C-k") 'kill-this-buffer)
 (define-key my-keymap (kbd "C-%") 'query-replace)
 
