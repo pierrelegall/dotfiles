@@ -5,6 +5,7 @@
 exec "i3lock --ignore-empty-password --image ~/.lockpaper"
 exec --no-startup-id "setxkbmap fr-colemak swap-ctrl-alt"
 exec --no-startup-id "feh --bg-scale ~/.wallpaper"
+exec "emacs --daemon"
 
 # Mod key setup
 set $mod Mod4
@@ -24,7 +25,7 @@ bindsym $mod+w exec "firefox"
 bindsym $mod+m exec "thunderbird"
 bindsym $mod+t exec "lxterminal"
 # bindsym $mod+f exec "pcmanfm"
-bindsym $mod+e exec "emacsclient --create-frame --alternate-editor emacs"
+bindsym $mod+e exec "emacsclient --create-frame"
 
 # Kill focused node
 bindsym $mod+q       kill
