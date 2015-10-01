@@ -93,8 +93,10 @@
 (setq x-select-enable-clipboard t)
 (setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
 
-;;;;; Indents
+;;;; Formating style
 
+(setq c-default-style "linux")
+(setq c-basic-offset 2)
 (setq js-indent-level 2)
 
 ;;;; Files and backups
