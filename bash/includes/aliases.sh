@@ -22,6 +22,8 @@ alias ln='ln -i'
 alias df='df -h'
 alias du='du -h'
 
+alias sc='systemctl'
+
 alias e='emacsclient --no-wait'
 alias ecf='emacsclient --no-wait --create-frame'
 alias enw='emacsclient -nw'
