@@ -38,64 +38,65 @@
   (define-key map (kbd "C-p") 'previous-history-element)
   (define-key map (kbd "C-n") 'next-history-element))
 
-;;;; Keymap
+;;;; Global keymap
 
-(defvar my-global-keymap (make-keymap) "my global keymap")
-(define-minor-mode my-global-keymap-mode "my global keymap" :keymap my-global-keymap)
-(setq-default my-global-keymap-mode 1)
+(defvar my-global-map (make-keymap) "my global map")
+(define-minor-mode my-global-map-mode "my global map" :keymap my-global-map)
+(setq-default my-global-map-mode 1)
 
-(define-key my-global-keymap (kbd "C-w") 'kill-region-or-backward-word)
-(define-key my-global-keymap (kbd "C-S-w") 'kill-ring-save)
-(define-key my-global-keymap (kbd "C-S-y") 'yank-pop)
-(define-key my-global-keymap (kbd "C-x C-k") 'kill-this-buffer)
-(define-key my-global-keymap (kbd "C-%") 'query-replace)
+(let ((map my-global-map))
+  (define-key map (kbd "C-w") 'kill-region-or-backward-word)
+  (define-key map (kbd "C-S-w") 'kill-ring-save)
+  (define-key map (kbd "C-S-y") 'yank-pop)
+  (define-key map (kbd "C-x C-k") 'kill-this-buffer)
+  (define-key map (kbd "C-%") 'query-replace)
 
-(define-key my-global-keymap (kbd "C-j") 'keyboard-escape-quit)
+  (define-key map (kbd "C-j") 'keyboard-escape-quit)
 
-(define-key my-global-keymap (kbd "C-h") 'backward-delete-char-untabify)
-(define-key my-global-keymap (kbd "C-S-h") 'backward-kill-word)
-(define-key my-global-keymap (kbd "C-S-d") 'kill-word)
+  (define-key map (kbd "C-h") 'backward-delete-char-untabify)
+  (define-key map (kbd "C-S-h") 'backward-kill-word)
+  (define-key map (kbd "C-S-d") 'kill-word)
 
-(define-key my-global-keymap (kbd "C-!") 'bash-mode)
-(define-key my-global-keymap (kbd "C-`") 'rename-buffer)
+  (define-key map (kbd "C-!") 'bash-mode)
+  (define-key map (kbd "C-`") 'rename-buffer)
 
-(define-key my-global-keymap (kbd "C-,") 'backward-word)
-(define-key my-global-keymap (kbd "C-.") 'forward-word)
-(define-key my-global-keymap (kbd "C-<") 'beginning-of-buffer)
-(define-key my-global-keymap (kbd "C->") 'end-of-buffer)
+  (define-key map (kbd "C-,") 'backward-word)
+  (define-key map (kbd "C-.") 'forward-word)
+  (define-key map (kbd "C-<") 'beginning-of-buffer)
+  (define-key map (kbd "C->") 'end-of-buffer)
 
-(define-key my-global-keymap (kbd "<C-tab>") 'next-buffer)
-(define-key my-global-keymap (kbd "<C-iso-lefttab>") 'previous-buffer)
+  (define-key map (kbd "<C-tab>") 'next-buffer)
+  (define-key map (kbd "<C-iso-lefttab>") 'previous-buffer)
 
-(define-key my-global-keymap (kbd "C-S-l") 'goto-line)
+  (define-key map (kbd "C-S-l") 'goto-line)
 
-(define-key my-global-keymap (kbd "C-;") 'comment-or-uncomment-region)
+  (define-key map (kbd "C-;") 'comment-or-uncomment-region)
 
-;;(define-key my-global-keymap (kbd "C-/") 'toggle-letter-case)
+  ;;(define-key map (kbd "C-/") 'toggle-letter-case)
 
-(define-key my-global-keymap (kbd "C-o")
-  (lambda() (interactive) (other-window 1)))
-(define-key my-global-keymap (kbd "C-S-o")
-  (lambda() (interactive) (other-window -1)))
-(define-key my-global-keymap (kbd "C-x o")
-  (lambda() (interactive) (other-window 1)))
-(define-key my-global-keymap (kbd "C-x O")
-  (lambda() (interactive) (other-window -1)))
+  (define-key map (kbd "C-o")
+    (lambda() (interactive) (other-window 1)))
+  (define-key map (kbd "C-S-o")
+    (lambda() (interactive) (other-window -1)))
+  (define-key map (kbd "C-x o")
+    (lambda() (interactive) (other-window 1)))
+  (define-key map (kbd "C-x O")
+    (lambda() (interactive) (other-window -1)))
 
-(define-key my-global-keymap (kbd "C-+") 'text-scale-increase)
-(define-key my-global-keymap (kbd "C--") 'text-scale-decrease)
+  (define-key map (kbd "C-+") 'text-scale-increase)
+  (define-key map (kbd "C--") 'text-scale-decrease)
 
-(define-key my-global-keymap (kbd "<C-return>") 'newline-down)
-(define-key my-global-keymap (kbd "C-S-<return>") 'newline-up)
-(define-key my-global-keymap (kbd "<M-down>") 'move-line-down)
-(define-key my-global-keymap (kbd "<M-up>") 'move-line-up)
+  (define-key map (kbd "<C-return>") 'newline-down)
+  (define-key map (kbd "C-S-<return>") 'newline-up)
+  (define-key map (kbd "<M-down>") 'move-line-down)
+  (define-key map (kbd "<M-up>") 'move-line-up)
 
-(define-key my-global-keymap (kbd "C-c a") 'org-agenda)
-(define-key my-global-keymap (kbd "C-c l") 'org-store-link)
+  (define-key map (kbd "C-c a") 'org-agenda)
+  (define-key map (kbd "C-c l") 'org-store-link)
 
-(define-key my-global-keymap (kbd "C-c s") 'magit-status)
+  (define-key map (kbd "C-c s") 'magit-status)
 
-(define-key my-global-keymap [C-f1] 'show-absolute-buffer-file-path)
+  (define-key map [C-f1] 'show-absolute-buffer-file-path))
 
 ;;;; Clipboard
 
