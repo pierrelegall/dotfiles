@@ -28,11 +28,15 @@
 (show-paren-mode 1)
 (global-visual-line-mode 1)
 
-;;;; Bottom buffer
+;;;; Minibuffer
 
 (setq line-number-mode 1)
 (setq column-number-mode 1)
 (setq read-file-name-completion-ignore-case t)
+
+(let ((map minibuffer-local-map))
+  (define-key map (kbd "C-p") 'previous-history-element)
+  (define-key map (kbd "C-n") 'next-history-element))
 
 ;;;; Keymap
 
