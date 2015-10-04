@@ -38,6 +38,10 @@
   (define-key map (kbd "C-p") 'previous-history-element)
   (define-key map (kbd "C-n") 'next-history-element))
 
+(let ((map isearch-mode-map))
+  (define-key map (kbd "C-h") 'isearch-delete-char)
+  (define-key map (kbd "C-S-h") 'isearch-delete-char))
+
 ;;;; Global keymap
 
 (defvar my-global-map (make-keymap) "my global map")
