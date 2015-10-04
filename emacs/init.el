@@ -86,6 +86,9 @@
 (define-key my-global-keymap (kbd "<M-down>") 'move-line-down)
 (define-key my-global-keymap (kbd "<M-up>") 'move-line-up)
 
+(define-key my-global-keymap (kbd "C-c a") 'org-agenda)
+(define-key my-global-keymap (kbd "C-c l") 'org-store-link)
+
 (define-key my-global-keymap [C-f1] 'show-absolute-buffer-file-path)
 
 ;;;; Clipboard
