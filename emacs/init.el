@@ -36,57 +36,57 @@
 
 ;;;; Keymap
 
-(defvar my-keymap (make-keymap) "my keymap")
-(define-minor-mode my-keymap-mode "my keymap" :keymap my-keymap)
-(setq-default my-keymap-mode 1)
+(defvar my-global-keymap (make-keymap) "my global keymap")
+(define-minor-mode my-global-keymap-mode "my global keymap" :keymap my-global-keymap)
+(setq-default my-global-keymap-mode 1)
 
-(define-key my-keymap (kbd "C-w") 'kill-region-or-backward-word)
-(define-key my-keymap (kbd "C-S-w") 'kill-ring-save)
-(define-key my-keymap (kbd "C-S-y") 'yank-pop)
-(define-key my-keymap (kbd "C-x C-k") 'kill-this-buffer)
-(define-key my-keymap (kbd "C-%") 'query-replace)
+(define-key my-global-keymap (kbd "C-w") 'kill-region-or-backward-word)
+(define-key my-global-keymap (kbd "C-S-w") 'kill-ring-save)
+(define-key my-global-keymap (kbd "C-S-y") 'yank-pop)
+(define-key my-global-keymap (kbd "C-x C-k") 'kill-this-buffer)
+(define-key my-global-keymap (kbd "C-%") 'query-replace)
 
-(define-key my-keymap (kbd "C-j") 'keyboard-escape-quit)
+(define-key my-global-keymap (kbd "C-j") 'keyboard-escape-quit)
 
-(define-key my-keymap (kbd "C-h") 'backward-delete-char-untabify)
-(define-key my-keymap (kbd "C-S-h") 'backward-kill-word)
-(define-key my-keymap (kbd "C-S-d") 'kill-word)
+(define-key my-global-keymap (kbd "C-h") 'backward-delete-char-untabify)
+(define-key my-global-keymap (kbd "C-S-h") 'backward-kill-word)
+(define-key my-global-keymap (kbd "C-S-d") 'kill-word)
 
-(define-key my-keymap (kbd "C-!") 'bash-mode)
-(define-key my-keymap (kbd "C-`") 'rename-buffer)
+(define-key my-global-keymap (kbd "C-!") 'bash-mode)
+(define-key my-global-keymap (kbd "C-`") 'rename-buffer)
 
-(define-key my-keymap (kbd "C-,") 'backward-word)
-(define-key my-keymap (kbd "C-.") 'forward-word)
-(define-key my-keymap (kbd "C-<") 'beginning-of-buffer)
-(define-key my-keymap (kbd "C->") 'end-of-buffer)
+(define-key my-global-keymap (kbd "C-,") 'backward-word)
+(define-key my-global-keymap (kbd "C-.") 'forward-word)
+(define-key my-global-keymap (kbd "C-<") 'beginning-of-buffer)
+(define-key my-global-keymap (kbd "C->") 'end-of-buffer)
 
-(define-key my-keymap (kbd "<C-tab>") 'next-buffer)
-(define-key my-keymap (kbd "<C-iso-lefttab>") 'previous-buffer)
+(define-key my-global-keymap (kbd "<C-tab>") 'next-buffer)
+(define-key my-global-keymap (kbd "<C-iso-lefttab>") 'previous-buffer)
 
-(define-key my-keymap (kbd "C-S-l") 'goto-line)
+(define-key my-global-keymap (kbd "C-S-l") 'goto-line)
 
-(define-key my-keymap (kbd "C-;") 'comment-or-uncomment-region)
+(define-key my-global-keymap (kbd "C-;") 'comment-or-uncomment-region)
 
-;;(define-key my-keymap (kbd "C-/") 'toggle-letter-case)
+;;(define-key my-global-keymap (kbd "C-/") 'toggle-letter-case)
 
-(define-key my-keymap (kbd "C-o")
+(define-key my-global-keymap (kbd "C-o")
   (lambda() (interactive) (other-window 1)))
-(define-key my-keymap (kbd "C-S-o")
+(define-key my-global-keymap (kbd "C-S-o")
   (lambda() (interactive) (other-window -1)))
-(define-key my-keymap (kbd "C-x o")
+(define-key my-global-keymap (kbd "C-x o")
   (lambda() (interactive) (other-window 1)))
-(define-key my-keymap (kbd "C-x O")
+(define-key my-global-keymap (kbd "C-x O")
   (lambda() (interactive) (other-window -1)))
 
-(define-key my-keymap (kbd "C-+") 'text-scale-increase)
-(define-key my-keymap (kbd "C--") 'text-scale-decrease)
+(define-key my-global-keymap (kbd "C-+") 'text-scale-increase)
+(define-key my-global-keymap (kbd "C--") 'text-scale-decrease)
 
-(define-key my-keymap (kbd "<C-return>") 'newline-down)
-(define-key my-keymap (kbd "C-S-<return>") 'newline-up)
-(define-key my-keymap (kbd "<M-down>") 'move-line-down)
-(define-key my-keymap (kbd "<M-up>") 'move-line-up)
+(define-key my-global-keymap (kbd "<C-return>") 'newline-down)
+(define-key my-global-keymap (kbd "C-S-<return>") 'newline-up)
+(define-key my-global-keymap (kbd "<M-down>") 'move-line-down)
+(define-key my-global-keymap (kbd "<M-up>") 'move-line-up)
 
-(define-key my-keymap [C-f1] 'show-absolute-buffer-file-path)
+(define-key my-global-keymap [C-f1] 'show-absolute-buffer-file-path)
 
 ;;;; Clipboard
 
