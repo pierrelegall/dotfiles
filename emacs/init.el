@@ -89,6 +89,8 @@
 (define-key my-global-keymap (kbd "C-c a") 'org-agenda)
 (define-key my-global-keymap (kbd "C-c l") 'org-store-link)
 
+(define-key my-global-keymap (kbd "C-c s") 'magit-status)
+
 (define-key my-global-keymap [C-f1] 'show-absolute-buffer-file-path)
 
 ;;;; Clipboard
