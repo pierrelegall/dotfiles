@@ -55,8 +55,6 @@
   (define-key map (kbd "C-x C-k") 'kill-this-buffer)
   (define-key map (kbd "C-%") 'query-replace)
 
-  (define-key map (kbd "C-j") 'keyboard-escape-quit)
-
   (define-key map (kbd "C-h") 'backward-delete-char-untabify)
   (define-key map (kbd "C-S-h") 'backward-kill-word)
   (define-key map (kbd "C-S-d") 'kill-word)
