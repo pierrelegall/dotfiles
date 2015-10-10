@@ -74,8 +74,8 @@
 
   (define-key map (kbd "C-S-l") 'goto-line)
 
-  (define-key map (kbd "C-;") 'comment-or-uncomment-region)
-  (define-key my-global-map (kbd "C-;") 'comment-or-uncomment-line-or-region)
+  (define-key map (kbd "C-;") 'comment-or-uncomment-line-or-region)
+
   (define-key map (kbd "C-/") 'undo)
   (define-key map (kbd "C-\\") 'redo)
 
