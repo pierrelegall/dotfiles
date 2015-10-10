@@ -75,6 +75,7 @@
   (define-key map (kbd "C-S-l") 'goto-line)
 
   (define-key map (kbd "C-;") 'comment-or-uncomment-region)
+  (define-key my-global-map (kbd "C-;") 'comment-or-uncomment-line-or-region)
 
   ;;(define-key map (kbd "C-/") 'toggle-letter-case)
 
@@ -150,6 +151,16 @@
 (unless (server-running-p) (server-start))
 
 ;;;; Functions
+
+(defun comment-or-uncomment-line-or-region ()
+  (interactive)
+  (if (region-active-p)
+      (comment-or-uncomment-region (region-beginning) (region-end))
+    (progn
+      (end-of-line)
+      (let ((end (point)))
+        (beginning-of-line)
+        (comment-or-uncomment-region (point) end)))))
 
 (defun semnav-up (arg)
   (interactive "p")
