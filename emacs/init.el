@@ -151,11 +151,6 @@
 
 (load-theme 'deeper-blue t)
 
-;;;; Server mode
-
-(load "server")
-(unless (server-running-p) (server-start))
-
 ;;;; Functions
 
 (defun comment-or-uncomment-line-or-region ()
