@@ -76,6 +76,8 @@
 
   (define-key map (kbd "C-;") 'comment-or-uncomment-region)
   (define-key my-global-map (kbd "C-;") 'comment-or-uncomment-line-or-region)
+  (define-key map (kbd "C-/") 'undo)
+  (define-key map (kbd "C-\\") 'redo)
 
   ;;(define-key map (kbd "C-/") 'toggle-letter-case)
 
@@ -107,6 +109,10 @@
 
 (setq x-select-enable-clipboard t)
 (setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
+
+;;;; Redo
+
+(require 'redo+)
 
 ;;;; Formating style
 
