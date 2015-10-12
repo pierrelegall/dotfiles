@@ -31,15 +31,8 @@ bindsym $mod+e exec "emacsclient --create-frame"
 bindsym $mod+q       kill
 bindsym $mod+Shift+q kill
 
-# Start a program launcher
-# bindsym $mod+x exec --no-startup-id i3-dmenu-desktop
-
 # Lock the screen
 bindsym $mod+l exec "i3lock --nofork --ignore-empty-password --image ~/.lockpaper"
-
-# Rename the current window
-# bindsym $mod+r exec i3-input -F 'rename workspace to "%s"' -P 'New name: ' 
-# i3-msg 'rename workspace <old_name> to <new_name>'
 
 # Jump to urgent
 bindsym $mod+u [urgent=latest] focus
