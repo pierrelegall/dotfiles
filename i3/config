@@ -24,7 +24,7 @@ bindsym $mod+x exec "dmenu_run"
 bindsym $mod+w exec "firefox"
 bindsym $mod+m exec "thunderbird"
 bindsym $mod+t exec "lxterminal"
-# bindsym $mod+f exec "pcmanfm"
+bindsym $mod+b exec "pcmanfm"
 bindsym $mod+e exec "emacsclient --create-frame"
 
 # Kill focused node
