@@ -1,16 +1,10 @@
 # i3status configuration file.
-# see "man i3status" for documentation.
 
 general {
   colors = true
-  # color_default = "#008888"
   color_good = "#33bb33"
   color_bad = "#bb3333"
   color_degraded = "#008888"
-  # output_format = "xmobar"
-  # separator = "  "
-  # separator = "   "
-  # color_separator = "#000000"
   interval = 5
 }
 
@@ -57,7 +51,6 @@ volume master {
   device = "default"
   mixer = "Master"
   mixer_idx = 0
-  color_good = "#00FF00"
 }
 
 disk "/" {
