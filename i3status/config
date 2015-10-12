@@ -14,22 +14,22 @@ general {
 # order += "run_watch DHCP"
 order += "ethernet eth0"
 order += "wireless wlan0"
-order += "battery 1"
 order += "volume master"
+order += "battery 1"
 order += "tztime local"
 
 wireless wlan0 {
-  format_up = "WLAN: %ip on %essid"
+  format_up = "Wlan:%essid-%ip"
   format_down = ""
 }
 
 ethernet eth0 {
-  format_up = "ETH: %ip"
+  format_up = "Eth:%ip"
   format_down = ""
 }
 
 battery 1 {
-  format = "BAT: %percentage"
+  format = "Bat:%percentage"
   integer_battery_capacity = true
 }
 
@@ -42,7 +42,7 @@ run_watch VPN {
 }
 
 tztime local {
-  format = "%A, %d %B %Y - %H:%M"
+  format = "%a. %b. %d %Y - %H:%M"
 }
 
 volume master {
