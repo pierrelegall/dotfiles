@@ -90,9 +90,6 @@
   (define-key map (kbd "C-x O")
     (lambda() (interactive) (other-window -1)))
 
-  (define-key map (kbd "C-+") 'text-scale-increase)
-  (define-key map (kbd "C--") 'text-scale-decrease)
-
   (define-key map (kbd "<C-return>") 'newline-down)
   (define-key map (kbd "C-S-<return>") 'newline-up)
   (define-key map (kbd "<M-down>") 'move-line-down)
