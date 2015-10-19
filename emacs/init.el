@@ -192,17 +192,6 @@ Subsequent calls expands the selection to larger semantic unit."
           (forward-sexp)))
       (mark-sexp -1))))
 
-(defun select-text-in-quote ()
-  "Select text between the nearest left and right delimiters.
-Delimiters are paired characters: ()[]<>«»“”‘’「」, including \"\"."
-  (interactive)
-  (let (b1 b2)
-    (skip-chars-backward "^\"'([<")
-    (setq b1 (point))
-    (skip-chars-forward "^\"')[>")
-    (setq b2 (point))
-    (set-mark b1)))
-
 (defun toggle-letter-case ()
   "Toggle the letter case of current word or text selection.
 Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
