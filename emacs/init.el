@@ -66,6 +66,8 @@
 
   (define-key map (kbd "C-,") 'backward-word)
   (define-key map (kbd "C-.") 'forward-word)
+  (define-key map (kbd "C-S-b") 'backward-word)
+  (define-key map (kbd "C-S-f") 'forward-word)
   (define-key map (kbd "C-<") 'beginning-of-buffer)
   (define-key map (kbd "C->") 'end-of-buffer)
 
