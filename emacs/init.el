@@ -252,17 +252,6 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
      ((string= "all caps" (get this-command 'state))
       (downcase-region p1 p2) (put this-command 'state "all lower")))))
 
-(defun newline-up ()
-  (interactive)
-  (beginning-of-line)
-  (newline)
-  (previous-line))
-
-(defun newline-down ()
-  (interactive)
-  (end-of-line)
-  (newline))
-
 (defun move-line-up ()
   (interactive)
   (transpose-lines 1)
