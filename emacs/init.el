@@ -203,28 +203,6 @@ Delimiters are paired characters: ()[]<>«»“”‘’「」, including \"\"."
     (setq b2 (point))
     (set-mark b1)))
 
-(defun select-current-word ()
-  "Select the current line"
-  (interactive)
-  (beginning-of-line)
-  (cua-set-mark)
-  (forward-word))
-
-(defun select-current-line ()
-  "Select the current line"
-  (interactive)
-  (beginning-of-line)
-  (cua-set-mark)
-  (end-of-line))
-
-(defun select-current-paragraph ()
-  "Select the current line"
-  (interactive)
-  (backward-paragraph)
-  (next-line)
-  (cua-set-mark)
-  (forward-paragraph))
-
 (defun toggle-letter-case ()
   "Toggle the letter case of current word or text selection.
 Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
