@@ -90,10 +90,8 @@
   (define-key map (kbd "C-x O")
     (lambda() (interactive) (other-window -1)))
 
-  (define-key map (kbd "<C-return>") 'newline-down)
-  (define-key map (kbd "C-S-<return>") 'newline-up)
-  (define-key map (kbd "<M-down>") 'move-line-down)
-  (define-key map (kbd "<M-up>") 'move-line-up)
+  (define-key map (kbd "<M-up>") 'move-text-up)
+  (define-key map (kbd "<M-down>") 'move-text-down)
 
   (define-key map (kbd "C-c a") 'org-agenda)
   (define-key map (kbd "C-c l") 'org-store-link)
@@ -149,6 +147,44 @@
 (load-theme 'deeper-blue t)
 
 ;;;; Functions
+
+(defun move-text-internal (arg)
+  (cond
+   ((and mark-active transient-mark-mode)
+    (if (> (point) (mark))
+        (exchange-point-and-mark))
+    (let ((column (current-column))
+          (text (delete-and-extract-region (point) (mark))))
+      (forward-line arg)
+      (move-to-column column t)
+      (set-mark (point))
+      (insert text)
+      (exchange-point-and-mark)
+      (setq deactivate-mark nil)))
+   (t
+    (let ((column (current-column)))
+      (beginning-of-line)
+      (when (or (> arg 0) (not (bobp)))
+        (forward-line)
+        (when (or (< arg 0) (not (eobp)))
+          (transpose-lines arg)
+          (when (and (eval-when-compile
+                       '(and (>= emacs-major-version 24)
+                             (>= emacs-minor-version 3)))
+                     (< arg 0))
+            (forward-line -1)))
+        (forward-line -1))
+      (move-to-column column t)))))
+
+(defun move-text-up (arg)
+  "Move region (transient-mark-mode active) or current line arg lines up."
+  (interactive "*p")
+  (move-text-internal (- arg)))
+
+(defun move-text-down (arg)
+  "Move region (transient-mark-mode active) or current line arg lines down."
+  (interactive "*p")
+  (move-text-internal arg))
 
 (defun comment-or-uncomment-line-or-region ()
   (interactive)
