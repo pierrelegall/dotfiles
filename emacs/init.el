@@ -96,8 +96,8 @@
   (define-key map (kbd "C-x O")
     (lambda() (interactive) (other-window -1)))
 
-  (define-key map (kbd "<M-up>") 'move-text-up)
-  (define-key map (kbd "<M-down>") 'move-text-down)
+  (define-key map (kbd "<M-up>") 'move-line-or-region-above)
+  (define-key map (kbd "<M-down>") 'move-line-or-region-below)
 
   (define-key map (kbd "C-c a") 'org-agenda)
   (define-key map (kbd "C-c l") 'org-store-link)
@@ -143,11 +143,9 @@
 
 ;;;; Packages
 
-(setq package-archives '(
-                         ("gnu"       . "http://elpa.gnu.org/packages/")
+(setq package-archives '(("gnu"       . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa"     . "http://melpa.milkbox.net/packages/")
-                         ))
+                         ("melpa"     . "http://melpa.milkbox.net/packages/")))
 
 ;;;; Theme and faces
 
@@ -155,7 +153,8 @@
 
 ;;;; Functions
 
-(defun move-text-internal (arg)
+(defun move-line-or-region (arg)
+  "Move region (transient-mark-mode active) or current line arg lines up if positive, down if negative."
   (cond
    ((and mark-active transient-mark-mode)
     (if (> (point) (mark))
@@ -183,17 +182,18 @@
         (forward-line -1))
       (move-to-column column t)))))
 
-(defun move-text-up (arg)
-  "Move region (transient-mark-mode active) or current line arg lines up."
+(defun move-line-or-region-above (arg)
+  "Move line or region (if active) above."
   (interactive "*p")
-  (move-text-internal (- arg)))
+  (move-line-or-region (- arg)))
 
-(defun move-text-down (arg)
-  "Move region (transient-mark-mode active) or current line arg lines down."
+(defun move-line-or-region-below (arg)
+  "Move line or region (if active) below."
   (interactive "*p")
-  (move-text-internal arg))
+  (move-line-or-region arg))
 
 (defun comment-or-uncomment-line-or-region ()
+  "Like `comment-or-uncomment-region' but if there is no region selected, the current line is comment or uncomment."
   (interactive)
   (if (region-active-p)
       (comment-or-uncomment-region (region-beginning) (region-end))
@@ -203,7 +203,8 @@
         (beginning-of-line)
         (comment-or-uncomment-region (point) end)))))
 
-(defun semnav-up (arg)
+(defun semantic-unit (arg)
+  "Go to the next semantic unit if arg is positive or to the previous one if negative."
   (interactive "p")
   (when (nth 3 (syntax-ppss))
     (if (> arg 0)
@@ -217,14 +218,13 @@
   (up-list arg))
 
 (defun select-by-step (arg &optional incremental)
-  "Select the current word.
-Subsequent calls expands the selection to larger semantic unit."
+  "Select the current word. Subsequent calls expands the selection to larger semantic unit."
   (interactive (list (prefix-numeric-value current-prefix-arg)
                      (or (and transient-mark-mode mark-active)
                          (eq last-command this-command))))
   (if incremental
       (progn
-        (semnav-up (- arg))
+        (semantic-unit (- arg))
         (forward-sexp)
         (mark-sexp -1))
     (if (> arg 1)
@@ -236,8 +236,7 @@ Subsequent calls expands the selection to larger semantic unit."
       (mark-sexp -1))))
 
 (defun toggle-letter-case ()
-  "Toggle the letter case of current word or text selection.
-Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
+  "Toggle the letter case of current word or text selection. Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
   (interactive)
   (let (p1 p2 (deactivate-mark nil) (case-fold-search nil))
     (if (use-region-p)
@@ -268,8 +267,7 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
   (message (buffer-file-name)))
 
 (defun kill-region-or-backward-word ()
-  "If the region is active and non-empty, call `kilregion'.
-Otherwise, call `backward-kill-word'."
+  "If the region is active and non-empty, call `kill-region'. Otherwise, call `backward-kill-word'."
   (interactive)
   (call-interactively
    (if (use-region-p) 'kill-region 'backward-kill-word)))
