@@ -2,6 +2,10 @@
 ;;;; Emacs configuration file
 ;;;;
 
+;;;; Package init
+
+(package-initialize)
+
 ;;;; Global window
 
 (menu-bar-mode -1)
@@ -28,7 +32,7 @@
 (delete-selection-mode 1)
 (show-paren-mode 1)
 (global-visual-line-mode 1)
-(global-auto-complete-mode 1)
+(global-auto-complete-mode)
 
 ;;;; Minibuffer
 
