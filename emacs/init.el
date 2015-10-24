@@ -127,6 +127,7 @@
 
 (setq org-todo-keywords '((sequence "TODO" "IN PROGRESS" "|" "DONE")))
 (setq org-agenda-files '("~/Documents"))
+(setq org-hide-leading-stars t)
 
 ;;;; Ido
 
