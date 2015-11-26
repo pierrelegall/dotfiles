@@ -28,6 +28,18 @@ alias e='emacsclient --no-wait'
 alias ecf='emacsclient --no-wait --create-frame'
 alias enw='emacsclient -nw'
 
+sudo-e() {
+  e /sudo::$1
+}
+
+sudo-ecf() {
+  ecf /sudo::$1
+}
+
+sudo-enw() {
+  enw /sudo::$1
+}
+
 alias kb='setxkbmap fr-colemak swap-ctrl-alt'
 alias azer='kb'
 alias qwer='kb'
