@@ -263,9 +263,14 @@
       (downcase-region p1 p2) (put this-command 'state "all lower")))))
 
 (defun show-absolute-buffer-file-path ()
-  "Show the full path file name in the minibuffer."
+  "Show the absolute path of the current buffer file in the minibuffer."
   (interactive)
   (message (buffer-file-name)))
+
+(defun yank-absolute-buffer-file-path ()
+  "Yank the absolute path of the current buffer file."
+  (interactive)
+  (kill-new (buffer-file-name)))
 
 (defun kill-region-or-backward-word ()
   "If the region is active and non-empty, call `kill-region'. Otherwise, call `backward-kill-word'."
