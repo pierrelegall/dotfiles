@@ -298,10 +298,6 @@
 
 ;;;; Hooks
 
-(add-hook 'emacs-startup-hook
-          (lambda ()
-            (kill-buffer "*Messages*")))
-
 (add-hook 'minibuffer-exit-hook
           '(lambda ()
              (let ((buffer "*Completions*"))
