@@ -61,6 +61,7 @@
   (define-key map (kbd "C-S-w") 'kill-ring-save)
   (define-key map (kbd "C-S-y") 'yank-pop)
   (define-key map (kbd "C-x C-k") 'kill-this-buffer)
+  (define-key map (kbd "C-c C-k") 'kill-this-buffer-and-delete-file)
   (define-key map (kbd "C-%") 'query-replace)
 
   (define-key map (kbd "C-h") 'backward-delete-char-untabify)
@@ -271,6 +272,19 @@
   (interactive)
   (call-interactively
    (if (use-region-p) 'kill-region 'backward-kill-word)))
+
+(defun kill-this-buffer-and-delete-file ()
+  "Removes file connected to current buffer and kills buffer."
+  (interactive)
+  (let ((filename (buffer-file-name))
+        (buffer (current-buffer))
+        (name (buffer-name)))
+    (if (not (and filename (file-exists-p filename)))
+        (error "Buffer '%s' is not visiting a file!" name)
+      (when (yes-or-no-p "Are you sure you want to remove this file? ")
+        (delete-file filename)
+        (kill-buffer buffer)
+        (message "File '%s' successfully removed" filename)))))
 
 (defun bash-mode ()
   "Run an ansi-term with bash in the current buffer."
