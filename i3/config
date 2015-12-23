@@ -8,16 +8,16 @@ exec --no-startup-id "feh --bg-scale ~/.wallpaper"
 exec "emacs --daemon"
 
 # Workspaces variables
-set $WS1 "1:mail"
-set $WS2 "2:web"
-set $WS3 "3:doc"
-set $WS4 "4:doc"
-set $WS5 "5:image"
-set $WS6 "6:music"
-set $WS7 "7:terms"
-set $WS8 "8:org"
-set $WS9 "9:notes"
-set $WS0 "10:code"
+set $WS1 "1"
+set $WS2 "2"
+set $WS3 "3"
+set $WS4 "4"
+set $WS5 "5"
+set $WS6 "6"
+set $WS7 "7"
+set $WS8 "8"
+set $WS9 "9"
+set $WS0 "10"
 
 # Mod key setup
 set $mod Mod4
