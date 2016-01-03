@@ -318,6 +318,22 @@
           (kill-buffer buffer)
           (message "File '%s' successfully removed." filename)))))))
 
+(defun rename-this-buffer-and-file ()
+  "Rename the current buffer and file it is visiting."
+  (interactive)
+  (let ((filename (buffer-file-name))
+        (buffer (current-buffer))
+        (name (buffer-name)))
+    (if (not (and filename (file-exists-p filename)))
+        (error "Buffer '%s' is not visiting a file!" name)
+      (let ((new-name (read-file-name "New name: " filename)))
+        (cond
+         ((vc-backend filename) (vc-rename-file filename new-name))
+         (t
+          (rename-file filename new-name t)
+          (set-visited-file-name new-name t t)
+          (message "File '%s' successfully moved." filename)))))))
+
 (defun bash-mode ()
   "Run an ansi-term with bash in the current buffer."
   (interactive)
