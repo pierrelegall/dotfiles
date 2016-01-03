@@ -12,7 +12,10 @@
 (if (fboundp 'tool-bar-mode)
     (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode)
-    (scroll-bar-mode -1))
+    (progn
+      (scroll-bar-mode 1)
+      (setq scroll-bar-adjust-thumb-portion nil)
+      (set-scroll-bar-mode 'left)))
 
 ;;;; Navigation
 
