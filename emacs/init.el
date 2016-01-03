@@ -129,6 +129,12 @@
 (setq auto-save-default nil)
 (setq backup-inhibited t)
 (setq make-backup-files nil)
+;;;; Dired
+
+(require 'dired)
+(setq dired-listing-switches "--group-directories-first -Alh --indicator-style=slash")
+(define-key dired-mode-map (kbd "C-m") 'dired-find-alternate-file)
+
 
 ;;;; Org
 
