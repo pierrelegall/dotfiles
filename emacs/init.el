@@ -141,9 +141,20 @@
 
 ;;;; Org
 
-(setq org-todo-keywords '((sequence "TODO" "IN PROGRESS" "|" "DONE")))
-(setq org-agenda-files '("~/Notes/Organizer/"))
-(setq org-hide-leading-stars t)
+(let ((map my-global-map))
+  (define-key map (kbd "<M-up>") 'org-move-subtree-up)
+  (define-key map (kbd "<M-down>") 'org-move-subtree-down))
+
+(setq org-agenda-files '("~/Documents/Organizer/"))
+(setq org-todo-keywords '((sequence "TODO(t)" "|" "DONE(d)")))
+(setq org-agenda-todo-ignore-scheduled t)
+(setq org-agenda-todo-list-sublevels nil)
+
+(setq org-latex-pdf-process
+      '("pdflatex -interaction nonstopmode -output-directory %o %f"
+        "bibtex $(basename %b)"
+        "pdflatex -interaction nonstopmode -output-directory %o %f"
+        "pdflatex -interaction nonstopmode -output-directory %o %f"))
 
 ;;;; Ido
 
