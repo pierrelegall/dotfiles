@@ -71,8 +71,12 @@
   (define-key map (kbd "C-S-h") 'backward-kill-word)
   (define-key map (kbd "C-S-d") 'kill-word)
 
-  (define-key map (kbd "C-!") 'bash-mode)
+  (define-key map (kbd "C-:") 'shell-command)
+  (define-key map (kbd "C-!") 'eshell-command)
   (define-key map (kbd "C-`") 'rename-buffer)
+
+  (define-key map (kbd "C-'") 'select-by-step)
+  (define-key map (kbd "C-j") 'toggle-letter-case)
 
   (define-key map (kbd "C-,") 'backward-word)
   (define-key map (kbd "C-.") 'forward-word)
