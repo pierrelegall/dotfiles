@@ -311,9 +311,12 @@
     (if (not (and filename (file-exists-p filename)))
         (error "Buffer '%s' is not visiting a file!" name)
       (when (yes-or-no-p "Are you sure you want to remove this file? ")
-        (delete-file filename)
-        (kill-buffer buffer)
-        (message "File '%s' successfully removed" filename)))))
+        (cond
+         ((vc-backend filename) (vc-delete-file filename))
+         (t
+          (delete-file filename t)
+          (kill-buffer buffer)
+          (message "File '%s' successfully removed." filename)))))))
 
 (defun bash-mode ()
   "Run an ansi-term with bash in the current buffer."
