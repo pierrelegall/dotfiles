@@ -95,8 +95,6 @@
   (define-key map (kbd "C-/") 'undo)
   (define-key map (kbd "C-\\") 'redo)
 
-  ;;(define-key map (kbd "C-/") 'toggle-letter-case)
-
   (define-key map (kbd "C-o")
     (lambda() (interactive) (other-window 1)))
   (define-key map (kbd "C-S-o")
@@ -168,7 +166,6 @@
 
 (require 'ido)
 (ido-mode t)
-;;(ido-mode 'buffers) ;; only use this line to turn off ido for file names!
 (setq ido-ignore-buffers '("^ " "*Completions*" "*Shell Command Output*"
                            "*Messages*" "Async Shell Command"))
 
@@ -307,7 +304,7 @@
    (if (use-region-p) 'kill-region 'backward-kill-word)))
 
 (defun kill-this-buffer-and-delete-file ()
-  "Removes file connected to current buffer and kills buffer."
+  "Kill the current buffer and file it is visiting file."
   (interactive)
   (let ((filename (buffer-file-name))
         (buffer (current-buffer))
