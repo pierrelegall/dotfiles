@@ -9,5 +9,5 @@ print-info:
 setup: set-symlinks
 
 set-symlinks:
-	@ ln -v -i -s -T $(CURDIR)            $(CONFIG_DIR)
-	@ ln -v -i -s -T $(CONFIG_DIR)/irb.rb $(HOME)/.irbrc
+	@ ln -v -i -s -T $(CURDIR)              $(CONFIG_DIR)
+	@ ln -v -i -s -T $(CONFIG_DIR)/irbrc.rb $(HOME)/.irbrc
