@@ -30,6 +30,7 @@ ethernet eth0 {
 
 battery 1 {
   format = "Bat:%percentage"
+  last_full_capacity = true
   integer_battery_capacity = true
 }
 
