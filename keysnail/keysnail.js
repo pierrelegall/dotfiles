@@ -258,7 +258,7 @@ key.setEditKey("M-y", (event) => {
 
 key.setEditKey("C-M-y", (event) => {
   if (!command.kill.ring.length) return
-  let (ct = command.getClipboardText())
+  let ct = command.getClipboardText()
   (!command.kill.ring.length || ct != command.kill.ring[0]) && command.pushKillRing(ct)
   prompt.selector({
     message: "Paste:",
