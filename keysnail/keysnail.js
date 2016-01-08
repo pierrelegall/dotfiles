@@ -150,6 +150,14 @@ key.setGlobalKey(["C-c", "C-c", "C-c"], (event) => {
   command.clearConsole()
 }, "Clear Javascript console", true)
 
+key.setEditKey("C-y", (event) => {
+  command.yank
+}, "Paste (Yank)", false)
+
+key.setEditKey("C-Y", (event) => {
+  command.yankPop
+}, "Paste pop (Yank pop)", true)
+
 key.setEditKey(["C-x", "h"], (event) => {
   command.selectAll(event)
 }, "Select whole text", true)
@@ -251,6 +259,17 @@ key.setEditKey("C-k", (event) => {
 key.setEditKey("C-y", (event) => {
   command.yank()
 }, "Paste (Yank)", false)
+
+key.setEditKey("C-w", (event) => {
+  goDoCommand("cmd_copy");
+  goDoCommand("cmd_delete");
+  command.resetMark(event);
+}, "Cut current region", true)
+
+key.setEditKey("C-W", (event) => {
+  goDoCommand("cmd_copy");
+  command.resetMark(event);
+}, "Cut current region", true)
 
 key.setEditKey("M-y", (event) => {
   command.yankPop()
