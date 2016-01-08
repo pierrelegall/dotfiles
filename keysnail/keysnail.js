@@ -42,6 +42,14 @@ hook.addToHook("KeyBoardQuit", function (event) {
 
 //// Key bindings
 
+key.setGlobalKey("C-i", (event) => {
+  key.generateKey(event.originalTarget, KeyEvent.DOM_VK_TAB, true)
+}, "Emulate a the tabulation key", true)
+
+key.setGlobalKey("C-m", (event) => {
+  key.generateKey(event.originalTarget, KeyEvent.DOM_VK_RETURN, true)
+}, "Generate the return key code", false)
+
 key.setGlobalKey("C-M-r", (event) => {
   userscript.reload()
 }, "Reload the initialization file", true)
@@ -57,10 +65,6 @@ key.setGlobalKey("M-:", (event) => {
 key.setGlobalKey(["<f1>", "b"], (event) => {
   key.listKeyBindings()
 }, "List all keybindings", false)
-
-key.setGlobalKey("C-m", (event) => {
-  key.generateKey(event.originalTarget, KeyEvent.DOM_VK_RETURN, true)
-}, "Generate the return key code", false)
 
 key.setGlobalKey(["<f1>", "F"], (event) => {
   openHelpLink("firefox-help")
@@ -153,10 +157,6 @@ key.setEditKey(["C-x", "h"], (event) => {
 key.setEditKey([["C-SPC"], ["C-@"]], (event) => {
   command.setMark(event)
 }, "Set the mark", true)
-
-key.setEditKey("C-o", (event) => {
-  command.openLine(event)
-}, "Open line", false)
 
 key.setEditKey([["C-x", "u"], ["C-_"]], (event) => {
   display.echoStatusBar("Undo!", 2000)
