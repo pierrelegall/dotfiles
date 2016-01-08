@@ -86,7 +86,7 @@ key.setGlobalKey(["C-x", "s"], (event) => {
   command.focusElement(command.elementsRetrieverButton, 0)
 }, "Focus to the first button", true)
 
-key.setGlobalKey("M-w", (event) => {
+key.setGlobalKey([["M-w"], ["C-w"]], (event) => {
   command.copyRegion(event)
 }, "Copy selected text", true)
 
@@ -98,7 +98,7 @@ key.setGlobalKey("C-r", (event) => {
   command.iSearchBackwardKs(event)
 }, "Emacs like incremental search backward", true)
 
-key.setGlobalKey(["C-x", "k"], (event) => {
+key.setGlobalKey([["C-x", "k"], ["C-x", "C-k"]], (event) => {
   BrowserCloseTabOrWindow()
 }, "Close tab / window", false)
 
@@ -114,11 +114,11 @@ key.setGlobalKey(["C-x", "n"], (event) => {
   OpenBrowserWindow()
 }, "Open new window", false)
 
-key.setGlobalKey("C-M-l", (event) => {
+key.setGlobalKey("C-o", (event) => {
   getBrowser().mTabContainer.advanceSelectedTab(1, true)
 }, "Select next tab", false)
 
-key.setGlobalKey("C-M-h", (event) => {
+key.setGlobalKey("C-O", (event) => {
   getBrowser().mTabContainer.advanceSelectedTab(-1, true)
 }, "Select previous tab", false)
 
@@ -150,14 +150,6 @@ key.setGlobalKey(["C-c", "C-c", "C-c"], (event) => {
   command.clearConsole()
 }, "Clear Javascript console", true)
 
-key.setEditKey("C-y", (event) => {
-  command.yank
-}, "Paste (Yank)", false)
-
-key.setEditKey("C-Y", (event) => {
-  command.yankPop
-}, "Paste pop (Yank pop)", true)
-
 key.setEditKey(["C-x", "h"], (event) => {
   command.selectAll(event)
 }, "Select whole text", true)
@@ -166,7 +158,7 @@ key.setEditKey([["C-SPC"], ["C-@"]], (event) => {
   command.setMark(event)
 }, "Set the mark", true)
 
-key.setEditKey([["C-x", "u"], ["C-_"]], (event) => {
+key.setEditKey([["C-x", "u"], ["C-_"], ["C-/"]], (event) => {
   display.echoStatusBar("Undo!", 2000)
   goDoCommand("cmd_undo")
 }, "Undo", false)
@@ -192,11 +184,11 @@ key.setEditKey("C-b", (event) => {
   command.previousChar(event)
 }, "Backward char", false)
 
-key.setEditKey("M-f", (event) => {
+key.setEditKey([["M-f"], ["C-F"]], (event) => {
   command.forwardWord(event)
 }, "Next word", false)
 
-key.setEditKey("M-b", (event) => {
+key.setEditKey([["M-b"], ["C-B"]], (event) => {
   command.backwardWord(event)
 }, "Previous word", false)
 
@@ -212,15 +204,15 @@ key.setEditKey("C-v", (event) => {
   command.pageDown(event)
 }, "Page down", false)
 
-key.setEditKey("M-v", (event) => {
+key.setEditKey([["M-v"], ["C-V"]], (event) => {
   command.pageUp(event)
 }, "Page up", false)
 
-key.setEditKey("M-<", (event) => {
+key.setEditKey([["M-<"], ["C-<"]], (event) => {
   command.moveTop(event)
 }, "Beginning of the text area", false)
 
-key.setEditKey("M->", (event) => {
+key.setEditKey([["M->"], ["C->"]], (event) => {
   command.moveBottom(event)
 }, "End of the text area", false)
 
@@ -232,11 +224,11 @@ key.setEditKey("C-h", (event) => {
   goDoCommand("cmd_deleteCharBackward")
 }, "Delete backward char", false)
 
-key.setEditKey("M-d", (event) => {
+key.setEditKey([["M-d"], ["C-D"], ["C-delete"]], (event) => {
   command.deleteForwardWord(event)
 }, "Delete forward word", false)
 
-key.setEditKey([["C-<backspace>"], ["M-<delete>"]], (event) => {
+key.setEditKey([["M-h"], ["C-H"], ["C-<backspace>"]], (event) => {
   command.deleteBackwardWord(event)
 }, "Delete backward word", false)
 
@@ -256,24 +248,23 @@ key.setEditKey("C-k", (event) => {
   command.killLine(event)
 }, "Kill the rest of the line", false)
 
-key.setEditKey("C-y", (event) => {
-  command.yank()
-}, "Paste (Yank)", false)
-
 key.setEditKey("C-w", (event) => {
-  goDoCommand("cmd_copy");
-  goDoCommand("cmd_delete");
-  command.resetMark(event);
+  if (!command.marked(event)) {
+    command.setMark(event)
+    command.backwardWord(event)
+  }
+  goDoCommand("cmd_copy")
+  goDoCommand("cmd_delete")
+  command.resetMark(event)
+}, "Cut current region or backward word", true)
+
+key.setEditKey([["M-y"], ["C-W"]], (event) => {
+  goDoCommand("cmd_copy")
+  command.resetMark(even)
 }, "Cut current region", true)
 
-key.setEditKey("C-W", (event) => {
-  goDoCommand("cmd_copy");
-  command.resetMark(event);
-}, "Cut current region", true)
-
-key.setEditKey("M-y", (event) => {
-  command.yankPop()
-}, "Paste pop (Yank pop)", true)
+key.setEditKey("C-y", command.yank, "Paste (yank)", true)
+key.setEditKey([["M-y"], ["C-Y"]], command.yankPop, "Paste pop (yank pop)", true)
 
 key.setEditKey("C-M-y", (event) => {
   if (!command.kill.ring.length) return
@@ -287,12 +278,6 @@ key.setEditKey("C-M-y", (event) => {
     }
   })
 }, "Show kill-ring and select text to paste", true)
-
-key.setEditKey("C-w", (event) => {
-  goDoCommand("cmd_copy")
-  goDoCommand("cmd_delete")
-  command.resetMark(event)
-}, "Cut current region", true)
 
 key.setEditKey(["C-x", "r", "d"], (event, arg) => {
   command.replaceRectangle(event.originalTarget, "", false, !arg)
@@ -324,11 +309,11 @@ key.setEditKey("M-p", (event) => {
   command.walkInputElement(command.elementsRetrieverTextarea, false, true)
 }, "Focus to the previous text area", false)
 
-key.setViewKey([["C-n"], ["j"]], (event) => {
+key.setViewKey("C-n", (event) => {
   key.generateKey(event.originalTarget, KeyEvent.DOM_VK_DOWN, true)
 }, "Scroll line down", false)
 
-key.setViewKey([["C-p"], ["k"]], (event) => {
+key.setViewKey("C-p", (event) => {
   key.generateKey(event.originalTarget, KeyEvent.DOM_VK_UP, true)
 }, "Scroll line up", false)
 
@@ -340,24 +325,24 @@ key.setViewKey([["C-b"], [","]], (event) => {
   key.generateKey(event.originalTarget, KeyEvent.DOM_VK_LEFT, true)
 }, "Scroll left", false)
 
-key.setViewKey([["M-v"], ["b"]], (event) => {
-  goDoCommand("cmd_scrollPageUp")
-}, "Scroll page up", false)
-
-key.setViewKey("C-v", (event) => {
+key.setViewKey([["C-v"], ["f"]], (event) => {
   goDoCommand("cmd_scrollPageDown")
 }, "Scroll page down", false)
 
-key.setViewKey([["M-<"], ["g"]], (event) => {
+key.setViewKey([["M-v"], ["C-V"], ["b"]], (event) => {
+  goDoCommand("cmd_scrollPageUp")
+}, "Scroll page up", false)
+
+key.setViewKey([["C-<"], ["g"]], (event) => {
   goDoCommand("cmd_scrollTop")
 }, "Scroll to the top of the page", true)
 
-key.setViewKey([["M->"], ["G"]], (event) => {
+key.setViewKey([["C->"], ["G"]], (event) => {
   goDoCommand("cmd_scrollBottom")
 }, "Scroll to the bottom of the page", true)
 
 key.setViewKey("l", (event) => {
-  getBrowser().mTabContainer.advanceSelectedTab(1, true)
+  getBrowser().TmabContainer.advanceSelectedTab(1, true)
 }, "Select next tab", false)
 
 key.setViewKey("h", (event) => {
@@ -384,7 +369,7 @@ key.setViewKey(["C-x", "h"], (event) => {
   goDoCommand("cmd_selectAll")
 }, "Select all", true)
 
-key.setViewKey("f", (event) => {
+key.setViewKey("t", (event) => {
   command.focusElement(command.elementsRetrieverTextarea, 0)
 }, "Focus to the first textarea", true)
 
@@ -490,7 +475,7 @@ key.setCaretKey(["C-x", "h"], (event) => {
   goDoCommand("cmd_selectAll")
 }, "Select all", true)
 
-key.setCaretKey("f", (event) => {
+key.setCaretKey("t", (event) => {
   command.focusElement(command.elementsRetrieverTextarea, 0)
 }, "Focus to the first textarea", true)
 
