@@ -310,6 +310,10 @@ key.setEditKey("M-p", (event) => {
 }, "Focus to the previous text area", false)
 
 key.setViewKey("C-n", (event) => {
+key.setViewKey("x", (event) => {
+  BrowserCloseTabOrWindow()
+}, "Close tab / window", false)
+
   key.generateKey(event.originalTarget, KeyEvent.DOM_VK_DOWN, true)
 }, "Scroll line down", false)
 
