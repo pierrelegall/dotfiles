@@ -86,7 +86,7 @@ key.setGlobalKey(["C-x", "s"], (event) => {
   command.focusElement(command.elementsRetrieverButton, 0)
 }, "Focus to the first button", true)
 
-key.setGlobalKey([["M-w"], ["C-w"]], (event) => {
+key.setGlobalKey([["M-w"], ["C-w"], ["C-W"]], (event) => {
   command.copyRegion(event)
 }, "Copy selected text", true)
 
