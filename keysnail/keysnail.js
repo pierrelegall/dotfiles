@@ -309,15 +309,15 @@ key.setEditKey("M-p", (event) => {
   command.walkInputElement(command.elementsRetrieverTextarea, false, true)
 }, "Focus to the previous text area", false)
 
-key.setViewKey("C-n", (event) => {
 key.setViewKey("x", (event) => {
   BrowserCloseTabOrWindow()
 }, "Close tab / window", false)
 
+key.setViewKey([["C-n"], ["n"]], (event) => {
   key.generateKey(event.originalTarget, KeyEvent.DOM_VK_DOWN, true)
 }, "Scroll line down", false)
 
-key.setViewKey("C-p", (event) => {
+key.setViewKey([["C-p"], ["p"]], (event) => {
   key.generateKey(event.originalTarget, KeyEvent.DOM_VK_UP, true)
 }, "Scroll line up", false)
 
