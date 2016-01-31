@@ -96,6 +96,7 @@
 
   (define-key map (kbd "C-/") 'undo)
   (define-key map (kbd "C-\\") 'redo)
+  (define-key map (kbd "C-S-r") 'revert-buffer)
 
   (define-key map (kbd "C-o")
     (lambda() (interactive) (other-window 1)))
