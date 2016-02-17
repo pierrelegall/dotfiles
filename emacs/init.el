@@ -180,7 +180,7 @@
 
 ;;;; Theme and faces
 
-(load-theme 'deeper-blue t)
+(load-theme solarized-dark t)
 
 ;;;; Functions
 
