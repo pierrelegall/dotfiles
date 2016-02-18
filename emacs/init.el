@@ -73,6 +73,10 @@
   (define-key map (kbd "C-S-h") 'backward-kill-word)
   (define-key map (kbd "C-S-d") 'kill-word)
 
+  (define-key map (kbd "C-v") 'my-scroll-up)
+  (define-key map (kbd "M-v") 'my-scroll-down)
+  (define-key map (kbd "C-S-v") 'my-scroll-down)
+
   (define-key map (kbd "C-:") 'shell-command)
   (define-key map (kbd "C-!") 'eshell-command)
   (define-key map (kbd "C-`") 'rename-buffer)
@@ -339,6 +343,14 @@
           (rename-file filename new-name t)
           (set-visited-file-name new-name t t)
           (message "File '%s' successfully moved." filename)))))))
+
+(defun my-scroll-up ()
+  (interactive)
+  (scroll-up 5))
+
+(defun my-scroll-down ()
+  (interactive)
+  (scroll-down 5))
 
 ;;;; Hooks
 
