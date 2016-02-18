@@ -340,11 +340,6 @@
           (set-visited-file-name new-name t t)
           (message "File '%s' successfully moved." filename)))))))
 
-(defun bash-mode ()
-  "Run an ansi-term with bash in the current buffer."
-  (interactive)
-  (ansi-term "/bin/bash" nil))
-
 ;;;; Hooks
 
 (add-hook 'minibuffer-exit-hook
