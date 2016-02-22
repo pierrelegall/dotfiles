@@ -47,10 +47,10 @@ alias qwfp='kb'
 alias en='dict -d wn'
 alias fr='dict -d french'
 alias enc='dict -d foldoc'
-alias en2fr='dict -d fd-eng-fra'
-alias fr2en='dict -d fd-fra-eng'
+alias enfr='dict -d fd-eng-fra'
+alias fren='dict -d fd-fra-eng'
 
-alias dst='download-stream'
+alias vdl='download-stream'
 
 # Weather
 
@@ -61,6 +61,5 @@ meteo() {
 # Helpers
 
 download-stream() {
-	mkdir -p $VIDEO_PATH
-	youtube-dl -o "$VIDEO_PATH/%(title)s-%(id)s.%(ext)s" "$1"
+	youtube-dl -o "~/Videos/%(title)s-%(id)s.%(ext)s" "$1"
 }
