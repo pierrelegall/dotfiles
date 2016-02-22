@@ -8,7 +8,6 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
 alias grep='grep --color=auto'
-alias grepr='grep -rn'
 
 alias rm='rm -I'
 alias mv='mv -i'
@@ -51,12 +50,7 @@ alias enc='dict -d foldoc'
 alias en2fr='dict -d fd-eng-fra'
 alias fr2en='dict -d fd-fra-eng'
 
-alias jsconsole='firefox -jsconsole'
-alias jsc='jsconsole'
-
 alias dst='download-stream'
-alias wst='watch-stream'
-alias lst='listen-stream'
 
 # Weather
 
@@ -69,12 +63,4 @@ meteo() {
 download-stream() {
 	mkdir -p $VIDEO_PATH
 	youtube-dl -o "$VIDEO_PATH/%(title)s-%(id)s.%(ext)s" "$1"
-}
-
-watch-stream() {
-	mpv -fs -cookies $(youtube-dl -g $1)
-}
-
-listen-stream() {
-	mpv --no-video -cookies $(youtube-dl -g $1)
 }
