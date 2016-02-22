@@ -58,6 +58,12 @@ alias dst='download-stream'
 alias wst='watch-stream'
 alias lst='listen-stream'
 
+# Weather
+
+meteo() {
+  curl wttr.in/$1
+}
+
 # Helpers
 
 download-stream() {
