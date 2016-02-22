@@ -52,13 +52,9 @@ alias fren='dict -d fd-fra-eng'
 
 alias vdl='download-stream'
 
-# Weather
-
 meteo() {
   curl wttr.in/$1
 }
-
-# Helpers
 
 download-stream() {
 	youtube-dl -o "~/Videos/%(title)s-%(id)s.%(ext)s" "$1"
