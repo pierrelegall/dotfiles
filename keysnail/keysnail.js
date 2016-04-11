@@ -102,7 +102,7 @@ key.setGlobalKey([["C-x", "k"], ["C-x", "C-k"]], (event) => {
   BrowserCloseTabOrWindow()
 }, "Close tab / window", false)
 
-key.setGlobalKey(["C-x", "K"], (event) => {
+key.setGlobalKey(["C-x", "C-c"], (event) => {
   closeWindow(true)
 }, "Close the window", false)
 
@@ -321,13 +321,13 @@ key.setViewKey([["C-p"], ["p"]], (event) => {
   key.generateKey(event.originalTarget, KeyEvent.DOM_VK_UP, true)
 }, "Scroll line up", false)
 
-key.setViewKey([["C-f"], ["."]], (event) => {
-  key.generateKey(event.originalTarget, KeyEvent.DOM_VK_RIGHT, true)
-}, "Scroll right", false)
+// key.setViewKey([["C-f"], ["."]], (event) => {
+//   key.generateKey(event.originalTarget, KeyEvent.DOM_VK_RIGHT, true)
+// }, "Scroll right", false)
 
-key.setViewKey([["C-b"], [","]], (event) => {
-  key.generateKey(event.originalTarget, KeyEvent.DOM_VK_LEFT, true)
-}, "Scroll left", false)
+// key.setViewKey([["C-b"], [","]], (event) => {
+//   key.generateKey(event.originalTarget, KeyEvent.DOM_VK_LEFT, true)
+// }, "Scroll left", false)
 
 key.setViewKey([["C-v"], ["f"]], (event) => {
   goDoCommand("cmd_scrollPageDown")
@@ -357,15 +357,15 @@ key.setViewKey(":", (event, arg) => {
   shell.input(null, arg)
 }, "List and execute commands", true)
 
-key.setViewKey("R", (event) => {
+key.setViewKey([["C-r"], ["r"]], (event) => {
   BrowserReload()
 }, "Reload the page", true)
 
-key.setViewKey("B", (event) => {
+key.setViewKey([["C-b"], ["b"]], (event) => {
   BrowserBack()
 }, "Back", false)
 
-key.setViewKey("F", (event) => {
+key.setViewKey([["C-f"], ["f"]], (event) => {
   BrowserForward()
 }, "Forward", false)
 
@@ -421,7 +421,7 @@ key.setCaretKey([["C-v"], ["SPC"]], (event) => {
   event.target.ksMarked ? goDoCommand("cmd_selectPageNext") : goDoCommand("cmd_movePageDown")
 }, "Move caret down by page", false)
 
-key.setCaretKey([["M-v"], ["b"]], (event) => {
+key.setCaretKey([["M-v"]], (event) => {
   event.target.ksMarked ? goDoCommand("cmd_selectPagePrevious") : goDoCommand("cmd_movePageUp")
 }, "Move caret up by page", false)
 
