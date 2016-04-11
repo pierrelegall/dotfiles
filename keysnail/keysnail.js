@@ -357,7 +357,7 @@ key.setViewKey(":", (event, arg) => {
   shell.input(null, arg)
 }, "List and execute commands", true)
 
-key.setViewKey([["C-r"], ["r"]], (event) => {
+key.setViewKey(["r"], (event) => {
   BrowserReload()
 }, "Reload the page", true)
 
@@ -463,7 +463,7 @@ key.setCaretKey(":", (event, arg) => {
   shell.input(null, arg)
 }, "List and execute commands", true)
 
-key.setCaretKey("R", (event) => {
+key.setCaretKey("r", (event) => {
   BrowserReload()
 }, "Reload the page", true)
 
@@ -490,3 +490,41 @@ key.setCaretKey("M-p", (event) => {
 key.setCaretKey("M-n", (event) => {
   command.walkInputElement(command.elementsRetrieverButton, false, true)
 }, "Focus to the previous button", false)
+
+//// Plugins
+
+// HoK
+
+hook.addToHook("PluginLoaded", () => {
+  if (!plugins.hok) return
+
+  key.setGlobalKey(["C-c","C-f"], (event, arg) => {
+    ext.exec("hok-start-foreground-mode", arg)
+  }, "Hok - Foreground hint mode", true)
+
+  key.setGlobalKey(["C-c","C-b"] , (event, arg) => {
+    ext.exec("hok-start-background-mode", arg)
+  }, "HoK - Background hint mode", true)
+
+  key.setGlobalKey(["C-c","C-y"], (event, arg) => {
+    ext.exec("hok-yank-foreground-mode", arg)
+  }, "HoK - Background hint mode", true)
+
+  key.setGlobalKey(["C-c","C-"], (event, arg) => {
+    ext.exec("hok-start-extended-mode", arg)
+  }, "HoK - Extented hint mode", true)
+
+  key.setGlobalKey(["C-c", "C-e"], (event, arg) => {
+    ext.exec("hok-start-continuous-mode", arg)
+  }, "Start continuous HaH", true)
+})
+
+// Tanything
+
+hook.addToHook("PluginLoaded", () => {
+  // if (!plugins.tanything) return
+
+  key.setGlobalKey([["C-x", "b"], ["C-x", "C-b"]], (event, arg) => {
+    ext.exec("tanything", arg)
+  }, "Tanything - View all tabs", true)
+})
