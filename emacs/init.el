@@ -49,10 +49,6 @@
   (define-key map (kbd "C-p") 'previous-history-element)
   (define-key map (kbd "C-n") 'next-history-element))
 
-(let ((map isearch-mode-map))
-  (define-key map (kbd "C-h") 'isearch-delete-char)
-  (define-key map (kbd "C-S-h") 'isearch-delete-char))
-
 ;;;; Global keymap
 
 (defvar my-global-map (make-keymap) "my global map")
@@ -69,14 +65,15 @@
   (define-key map (kbd "C-c C-k") 'kill-this-buffer-and-delete-file)
   (define-key map (kbd "C-%") 'query-replace)
 
-  (define-key map (kbd "C-h") 'backward-delete-char-untabify)
-  (define-key map (kbd "C-S-h") 'backward-kill-word)
+  (define-key map (kbd "C-h") (kbd "<backspace>"))
+  (define-key map (kbd "C-S-h") (kbd "C-<backspace>"))
   (define-key map (kbd "C-S-d") 'kill-word)
 
   (define-key map (kbd "C-v") 'my-scroll-up)
   (define-key map (kbd "M-v") 'my-scroll-down)
   (define-key map (kbd "C-S-v") 'my-scroll-down)
 
+  (define-key map (kbd "C-;") 'execute-extended-command)
   (define-key map (kbd "C-:") 'shell-command)
   (define-key map (kbd "C-!") 'eshell-command)
   (define-key map (kbd "C-`") 'rename-buffer)
@@ -98,7 +95,7 @@
 
   (define-key map (kbd "C-S-l") 'goto-line)
 
-  (define-key map (kbd "C-;") 'comment-or-uncomment-line-or-region)
+  (define-key map (kbd "C-#") 'comment-or-uncomment-line-or-region)
 
   (define-key map (kbd "C-/") 'undo)
   (define-key map (kbd "C-\\") 'redo)
