@@ -20,11 +20,11 @@
 ;;;; Navigation
 
 (setq scroll-margin 2)
-(setq scroll-step 2)
+(setq scroll-step 4)
 (setq mouse-wheel-follow-mouse (quote t))
 (setq mouse-wheel-mode t)
 (setq mouse-wheel-progressive-speed nil)
-(setq mouse-wheel-scroll-amount (quote (2 ((shift) . 1))))
+(setq mouse-wheel-scroll-amount (quote (3 ((shift) . 1))))
 (setq shift-select-mode nil)
 
 ;;;; Behavior
@@ -346,11 +346,11 @@
 
 (defun my-scroll-up ()
   (interactive)
-  (scroll-up 5))
+  (scroll-up 8))
 
 (defun my-scroll-down ()
   (interactive)
-  (scroll-down 5))
+  (scroll-down 8))
 
 ;;;; Hooks
 
