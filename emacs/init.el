@@ -60,6 +60,7 @@
 (setq-default my-global-map-mode 1)
 
 (let ((map my-global-map))
+  (define-key map (kbd "C-?") 'help-command)
   (define-key map (kbd "C-x C-h") 'help-command)
 
   (define-key map (kbd "C-w") 'kill-region-or-backward-word)
@@ -69,8 +70,8 @@
   (define-key map (kbd "C-c C-k") 'kill-this-buffer-and-delete-file)
   (define-key map (kbd "C-%") 'query-replace)
 
-  (define-key map (kbd "C-h") 'backward-delete-char-untabify)
-  (define-key map (kbd "C-S-h") 'backward-kill-word)
+  (define-key map (kbd "C-h") (kbd "<backspace>"))
+  (define-key map (kbd "C-S-h") (kbd "C-<backspace>"))
   (define-key map (kbd "C-S-d") 'kill-word)
 
   (define-key map (kbd "C-v") 'my-scroll-up)
@@ -80,8 +81,8 @@
   (define-key map (kbd "C-:") 'shell-command)
   (define-key map (kbd "C-!") 'eshell-command)
   (define-key map (kbd "C-`") 'rename-buffer)
-  (define-key map (kbd "C-c t") 'multi-term-next)
   (define-key map (kbd "C-c C-t") 'multi-term)
+  (define-key map (kbd "C-c t") 'multi-term-next)
 
   (define-key map (kbd "C-'") 'select-by-step)
   (define-key map (kbd "C-j") 'toggle-letter-case)
@@ -98,7 +99,8 @@
 
   (define-key map (kbd "C-S-l") 'goto-line)
 
-  (define-key map (kbd "C-;") 'comment-or-uncomment-line-or-region)
+  (define-key map (kbd "C-;") 'execute-extended-command)
+  (define-key map (kbd "C-#") 'comment-or-uncomment-line-or-region)
 
   (define-key map (kbd "C-/") 'undo)
   (define-key map (kbd "C-\\") 'redo)
@@ -113,8 +115,8 @@
   (define-key map (kbd "C-x O")
     (lambda() (interactive) (other-window -1)))
 
-  (define-key map (kbd "<M-up>") 'move-line-or-region-above)
-  (define-key map (kbd "<M-down>") 'move-line-or-region-below)
+  (define-key map (kbd "C-S-p") 'move-line-or-region-above)
+  (define-key map (kbd "C-S-n") 'move-line-or-region-below)
 
   (define-key map (kbd "C-c a") 'org-agenda)
   (define-key map (kbd "C-c l") 'org-store-link)
