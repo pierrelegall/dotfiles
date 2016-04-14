@@ -506,6 +506,14 @@ hook.addToHook("PluginLoaded", () => {
     ext.exec("hok-start-background-mode", arg)
   }, "HoK - Background hint mode", true)
 
+  key.setViewKey(["o"], (event, arg) => {
+    ext.exec("hok-start-foreground-mode", arg)
+  }, "Hok - Foreground hint mode", true)
+
+  key.setViewKey(["O"] , (event, arg) => {
+    ext.exec("hok-start-background-mode", arg)
+  }, "HoK - Background hint mode", true)
+
   key.setGlobalKey(["C-c","C-y"], (event, arg) => {
     ext.exec("hok-yank-foreground-mode", arg)
   }, "HoK - Background hint mode", true)
