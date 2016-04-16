@@ -309,7 +309,7 @@ key.setEditKey("M-p", (event) => {
   command.walkInputElement(command.elementsRetrieverTextarea, false, true)
 }, "Focus to the previous text area", false)
 
-key.setViewKey("x", (event) => {
+key.setViewKey([["x"], ["k"]], (event) => {
   BrowserCloseTabOrWindow()
 }, "Close tab / window", false)
 
@@ -503,6 +503,14 @@ hook.addToHook("PluginLoaded", () => {
   }, "Hok - Foreground hint mode", true)
 
   key.setGlobalKey(["C-c","C-b"] , (event, arg) => {
+    ext.exec("hok-start-background-mode", arg)
+  }, "HoK - Background hint mode", true)
+
+  key.setViewKey(["o"], (event, arg) => {
+    ext.exec("hok-start-foreground-mode", arg)
+  }, "Hok - Foreground hint mode", true)
+
+  key.setViewKey(["O"] , (event, arg) => {
     ext.exec("hok-start-background-mode", arg)
   }, "HoK - Background hint mode", true)
 

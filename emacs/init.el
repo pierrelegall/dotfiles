@@ -20,11 +20,11 @@
 ;;;; Navigation
 
 (setq scroll-margin 2)
-(setq scroll-step 2)
+(setq scroll-step 4)
 (setq mouse-wheel-follow-mouse (quote t))
 (setq mouse-wheel-mode t)
 (setq mouse-wheel-progressive-speed nil)
-(setq mouse-wheel-scroll-amount (quote (2 ((shift) . 1))))
+(setq mouse-wheel-scroll-amount (quote (3 ((shift) . 1))))
 (setq shift-select-mode nil)
 
 ;;;; Behavior
@@ -56,6 +56,7 @@
 (setq-default my-global-map-mode 1)
 
 (let ((map my-global-map))
+  (define-key map (kbd "C-?") 'help-command)
   (define-key map (kbd "C-x C-h") 'help-command)
 
   (define-key map (kbd "C-w") 'kill-region-or-backward-word)
@@ -77,8 +78,8 @@
   (define-key map (kbd "C-:") 'shell-command)
   (define-key map (kbd "C-!") 'eshell-command)
   (define-key map (kbd "C-`") 'rename-buffer)
-  (define-key map (kbd "C-c t") 'multi-term-next)
   (define-key map (kbd "C-c C-t") 'multi-term)
+  (define-key map (kbd "C-c t") 'multi-term-next)
 
   (define-key map (kbd "C-'") 'select-by-step)
   (define-key map (kbd "C-j") 'toggle-letter-case)
@@ -95,6 +96,7 @@
 
   (define-key map (kbd "C-S-l") 'goto-line)
 
+  (define-key map (kbd "C-;") 'execute-extended-command)
   (define-key map (kbd "C-#") 'comment-or-uncomment-line-or-region)
 
   (define-key map (kbd "C-/") 'undo)
@@ -110,8 +112,8 @@
   (define-key map (kbd "C-x O")
     (lambda() (interactive) (other-window -1)))
 
-  (define-key map (kbd "<M-up>") 'move-line-or-region-above)
-  (define-key map (kbd "<M-down>") 'move-line-or-region-below)
+  (define-key map (kbd "C-S-p") 'move-line-or-region-above)
+  (define-key map (kbd "C-S-n") 'move-line-or-region-below)
 
   (define-key map (kbd "C-c a") 'org-agenda)
   (define-key map (kbd "C-c l") 'org-store-link)
@@ -343,11 +345,11 @@
 
 (defun my-scroll-up ()
   (interactive)
-  (scroll-up 5))
+  (scroll-up 8))
 
 (defun my-scroll-down ()
   (interactive)
-  (scroll-down 5))
+  (scroll-down 8))
 
 ;;;; Hooks
 
