@@ -373,10 +373,6 @@ key.setViewKey(["C-x", "h"], (event) => {
   goDoCommand("cmd_selectAll")
 }, "Select all", true)
 
-key.setViewKey("t", (event) => {
-  command.focusElement(command.elementsRetrieverTextarea, 0)
-}, "Focus to the first textarea", true)
-
 key.setViewKey("M-p", (event) => {
   command.walkInputElement(command.elementsRetrieverButton, true, true)
 }, "Focus to the next button", false)
@@ -479,10 +475,6 @@ key.setCaretKey(["C-x", "h"], (event) => {
   goDoCommand("cmd_selectAll")
 }, "Select all", true)
 
-key.setCaretKey("t", (event) => {
-  command.focusElement(command.elementsRetrieverTextarea, 0)
-}, "Focus to the first textarea", true)
-
 key.setCaretKey("M-p", (event) => {
   command.walkInputElement(command.elementsRetrieverButton, true, true)
 }, "Focus to the next button", false)
@@ -533,6 +525,10 @@ hook.addToHook("PluginLoaded", () => {
   // if (!plugins.tanything) return
 
   key.setGlobalKey([["C-x", "b"], ["C-x", "C-b"]], (event, arg) => {
+    ext.exec("tanything", arg)
+  }, "Tanything - View all tabs", true)
+
+  key.setViewKey("t", (event, arg) => {
     ext.exec("tanything", arg)
   }, "Tanything - View all tabs", true)
 })
