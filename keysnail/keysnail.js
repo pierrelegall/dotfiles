@@ -309,7 +309,7 @@ key.setEditKey("M-p", (event) => {
   command.walkInputElement(command.elementsRetrieverTextarea, false, true)
 }, "Focus to the previous text area", false)
 
-key.setViewKey("x", (event) => {
+key.setViewKey([["x"], ["k"]], (event) => {
   BrowserCloseTabOrWindow()
 }, "Close tab / window", false)
 
