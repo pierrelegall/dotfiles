@@ -34,6 +34,12 @@
 (global-visual-line-mode 1)
 (global-auto-complete-mode)
 
+;;;; Cursor
+
+(blink-cursor-mode t)
+(setq blink-cursor-interval .1)
+(setq blink-cursor-blinks 2)
+
 ;;;; Minibuffer
 
 (setq line-number-mode 1)
