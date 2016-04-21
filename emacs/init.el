@@ -170,7 +170,7 @@
      (propertize "@" 'face `(:foreground "dodger blue" :weight bold))
      (propertize (system-name) 'face `(:foreground "#d23681" :weight bold))
      (propertize " ")
-     (propertize (eshell/pwd) 'face `(:foreground "#2aa097" :weight bold))
+     (propertize (abbreviate-file-name (eshell/pwd)) 'face `(:foreground "#2aa097" :weight bold))
      (propertize "]" 'face `(:foreground "dodger blue" :weight bold))
      (propertize "\n")
      (if (= (user-uid) 0)
