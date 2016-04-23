@@ -21,7 +21,6 @@
 (setq mouse-wheel-mode t)
 (setq mouse-wheel-progressive-speed nil)
 (setq mouse-wheel-scroll-amount (quote (3 ((shift) . 1))))
-(setq shift-select-mode nil)
 
 ;;;; Behavior
 
@@ -34,6 +33,7 @@
 (show-paren-mode 1)
 (global-visual-line-mode 1)
 (global-auto-complete-mode)
+(setq shift-select-mode nil)
 
 ;;;; Cursor
 
