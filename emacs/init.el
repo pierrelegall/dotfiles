@@ -1,7 +1,7 @@
 ;; * Emacs configuration entry point
 
 (defvar my/init-files-directory
-  (concat (getenv "HOME") "/.config/emacs/init-files")
+  "~/.config/emacs/init-files"
   "Directory of the initialization files.")
 
 (defvar my/init-files
