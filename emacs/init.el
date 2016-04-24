@@ -1,10 +1,21 @@
-;;;;
-;;;; Emacs configuration file
-;;;;
+;; * Emacs configuration entry point
 
-;;;; Package init
+(defvar my/init-files-directory
+  (concat (getenv "HOME") "/.config/emacs/init-files")
+  "Directory of the initialization files.")
+
+(defvar my/init-files
+  (directory-files init-files-directory t "^[^.]")
+  "List of the initialization files.")
+
+(defun my/load-init-files ()
+  "Load all the initialization files."
+  (mapcar (lambda (init-file)
+            (load-file init-file))
+          my/init-files))
 
 (package-initialize)
+(my/load-init-files)
 
 ;;;; Global window
 
