@@ -23,12 +23,6 @@
 (setq c-basic-offset 2)
 (setq js-indent-level 2)
 
-;;;; Saving and backups
-
-(setq auto-save-default nil)
-(setq backup-by-copying t)
-(setq backup-directory-alist '(("." . "~/.emacs-backups")))
-
 ;;;; Dired
 
 (require 'dired)
