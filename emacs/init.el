@@ -17,12 +17,6 @@
 (package-initialize)
 (my/load-init-files)
 
-;;;; Yascroll
-
-(setq yascroll:scroll-bar '(left-fringe right-fringe text-area))
-(setq yascroll:delay-to-hide 1)
-(global-yascroll-bar-mode t)
-
 ;;;; Eshell
 
 (setq eshell-cmpl-ignore-case t)
