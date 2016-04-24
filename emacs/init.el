@@ -17,14 +17,6 @@
 (package-initialize)
 (my/load-init-files)
 
-;;;; Minibuffer
-
-(setq read-file-name-completion-ignore-case t)
-
-(let ((map minibuffer-local-map))
-  (define-key map (kbd "C-p") 'previous-history-element)
-  (define-key map (kbd "C-n") 'next-history-element))
-
 ;;;; Global keymap
 
 (defvar my-global-map (make-keymap) "my global map")
@@ -342,10 +334,4 @@
   (interactive)
   (scroll-down 8))
 
-;;;; Hooks
 
-(add-hook 'minibuffer-exit-hook
-          '(lambda ()
-             (let ((buffer "*Completions*"))
-               (and (get-buffer buffer)
-                    (kill-buffer buffer)))))
