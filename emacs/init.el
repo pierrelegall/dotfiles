@@ -32,8 +32,6 @@
 
 ;;;; Minibuffer
 
-(setq line-number-mode 1)
-(setq column-number-mode 1)
 (setq read-file-name-completion-ignore-case t)
 
 (let ((map minibuffer-local-map))
