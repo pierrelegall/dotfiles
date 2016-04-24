@@ -1,6 +1,6 @@
 ;; * My functions
 
-(defun move-line-or-region (arg)
+(defun my/move-line-or-region (arg)
   "Move region (transient-mark-mode active) or current line arg lines up if positive, down if negative."
   (cond
    ((and mark-active transient-mark-mode)
@@ -29,17 +29,17 @@
         (forward-line -1))
       (move-to-column column t)))))
 
-(defun move-line-or-region-above (arg)
+(defun my/move-line-or-region-above (arg)
   "Move line or region (if active) above."
   (interactive "*p")
-  (move-line-or-region (- arg)))
+  (my/move-line-or-region (- arg)))
 
-(defun move-line-or-region-below (arg)
+(defun my/move-line-or-region-below (arg)
   "Move line or region (if active) below."
   (interactive "*p")
-  (move-line-or-region arg))
+  (my/move-line-or-region arg))
 
-(defun comment-or-uncomment-line-or-region ()
+(defun my/comment-or-uncomment-line-or-region ()
   "Like `comment-or-uncomment-region' but if there is no region selected, the current line is comment or uncomment."
   (interactive)
   (if (region-active-p)
@@ -50,7 +50,7 @@
         (beginning-of-line)
         (comment-or-uncomment-region (point) end)))))
 
-(defun semantic-unit (arg)
+(defun my/semantic-unit (arg)
   "Go to the next semantic unit if arg is positive or to the previous one if negative."
   (interactive "p")
   (when (nth 3 (syntax-ppss))
@@ -64,14 +64,14 @@
       (incf arg)))
   (up-list arg))
 
-(defun select-by-step (arg &optional incremental)
+(defun my/select-by-step (arg &optional incremental)
   "Select the current word. Subsequent calls expands the selection to larger semantic unit."
   (interactive (list (prefix-numeric-value current-prefix-arg)
                      (or (and transient-mark-mode mark-active)
                          (eq last-command this-command))))
   (if incremental
       (progn
-        (semantic-unit (- arg))
+        (my/semantic-unit (- arg))
         (forward-sexp)
         (mark-sexp -1))
     (if (> arg 1)
@@ -82,7 +82,7 @@
           (forward-sexp)))
       (mark-sexp -1))))
 
-(defun toggle-letter-case ()
+(defun my/toggle-letter-case ()
   "Toggle the letter case of current word or text selection. Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
   (interactive)
   (let (p1 p2 (deactivate-mark nil) (case-fold-search nil))
@@ -108,23 +108,23 @@
      ((string= "all caps" (get this-command 'state))
       (downcase-region p1 p2) (put this-command 'state "all lower")))))
 
-(defun show-absolute-buffer-file-path ()
+(defun my/show-absolute-buffer-file-path ()
   "Show the absolute path of the current buffer file in the minibuffer."
   (interactive)
   (message (buffer-file-name)))
 
-(defun yank-absolute-buffer-file-path ()
+(defun my/yank-absolute-buffer-file-path ()
   "Yank the absolute path of the current buffer file."
   (interactive)
   (kill-new (buffer-file-name)))
 
-(defun kill-region-or-backward-word ()
+(defun my/kill-region-or-backward-word ()
   "If the region is active and non-empty, call `kill-region'. Otherwise, call `backward-kill-word'."
   (interactive)
   (call-interactively
    (if (use-region-p) 'kill-region 'backward-kill-word)))
 
-(defun kill-this-buffer-and-delete-file ()
+(defun my/kill-this-buffer-and-delete-file ()
   "Kill the current buffer and file it is visiting file."
   (interactive)
   (let ((filename (buffer-file-name))
@@ -140,7 +140,7 @@
           (kill-buffer buffer)
           (message "File '%s' successfully removed." filename)))))))
 
-(defun rename-this-buffer-and-file ()
+(defun my/rename-this-buffer-and-file ()
   "Rename the current buffer and file it is visiting."
   (interactive)
   (let ((filename (buffer-file-name))
@@ -156,10 +156,10 @@
           (set-visited-file-name new-name t t)
           (message "File '%s' successfully moved." filename)))))))
 
-(defun my-scroll-up ()
+(defun my/scroll-up ()
   (interactive)
   (scroll-up 8))
 
-(defun my-scroll-down ()
+(defun my/scroll-down ()
   (interactive)
   (scroll-down 8))

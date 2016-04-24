@@ -12,7 +12,7 @@
 
 ;; ** Map
 
-(let ((map my-global-map))
+(let ((map my/global-map))
   (define-key map (kbd "<M-up>") 'org-move-subtree-up)
   (define-key map (kbd "<M-down>") 'org-move-subtree-down))
 
