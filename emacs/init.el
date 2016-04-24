@@ -17,13 +17,6 @@
 (package-initialize)
 (my/load-init-files)
 
-;;;; Global window
-
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-(set-default-font "Inconsolata 12")
-
 ;;;; Behavior
 
 (setq inhibit-startup-screen t)
@@ -36,12 +29,6 @@
 (global-visual-line-mode 1)
 (global-auto-complete-mode)
 (setq shift-select-mode nil)
-
-;;;; Cursor
-
-(blink-cursor-mode t)
-(setq blink-cursor-interval .1)
-(setq blink-cursor-blinks 2)
 
 ;;;; Minibuffer
 
@@ -208,10 +195,6 @@
 ;;;; Packages
 
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-
-;;;; Theme and faces
-
-(load-theme 'solarized-dark t)
 
 ;;;; Functions
 
