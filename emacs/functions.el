@@ -163,3 +163,9 @@
 (defun my/scroll-down ()
   (interactive)
   (scroll-down 8))
+
+(defun my/eshell (&optional arg)
+  (interactive "P")
+  (if arg
+      (eshell arg)
+    (eshell-command)))

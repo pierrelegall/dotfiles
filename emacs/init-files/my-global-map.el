@@ -27,8 +27,8 @@
   (define-key map (kbd "M-v") 'my/scroll-down)
   (define-key map (kbd "C-S-v") 'my/scroll-down)
 
-  (define-key map (kbd "C-;") 'execute-extended-command)
-  (define-key map (kbd "C-:") 'shell-command)
+  (define-key map (kbd "C-;") 'my/eshell)
+  (define-key map (kbd "C-:") 'execute-extended-command)
   (define-key map (kbd "C-!") 'eshell-command)
   (define-key map (kbd "C-`") 'rename-buffer)
   (define-key map (kbd "C-c C-t") 'multi-term)
@@ -49,7 +49,6 @@
 
   (define-key map (kbd "C-S-l") 'goto-line)
 
-  (define-key map (kbd "C-;") 'execute-extended-command)
   (define-key map (kbd "C-#") 'my/comment-or-uncomment-line-or-region)
 
   (define-key map (kbd "C-/") 'undo)
