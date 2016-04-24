@@ -17,12 +17,6 @@
 (package-initialize)
 (my/load-init-files)
 
-;;;; Dired
-
-(require 'dired)
-(setq dired-listing-switches "--group-directories-first -Alh --indicator-style=slash")
-(define-key dired-mode-map (kbd "C-m") 'dired-find-alternate-file)
-
 ;;;; Yascroll
 
 (setq yascroll:scroll-bar '(left-fringe right-fringe text-area))
