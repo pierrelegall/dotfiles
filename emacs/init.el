@@ -24,15 +24,6 @@
 (scroll-bar-mode -1)
 (set-default-font "Inconsolata 12")
 
-;;;; Navigation
-
-(setq scroll-margin 2)
-(setq scroll-step 4)
-(setq mouse-wheel-follow-mouse (quote t))
-(setq mouse-wheel-mode t)
-(setq mouse-wheel-progressive-speed nil)
-(setq mouse-wheel-scroll-amount (quote (3 ((shift) . 1))))
-
 ;;;; Behavior
 
 (setq inhibit-startup-screen t)
