@@ -22,14 +22,17 @@
   "Load my functions file."
   (load-file my/functions-file))
 
-(package-initialize)
+(defvar my/package-initialize-file
+  "~/.config/emacs/package-initialize.el"
+  "Package initialization file.")
+
+(defun my/package-initialize ()
+  "Load my/package-initialize-file."
+  (load-file my/package-initialize-file))
+
+(my/package-initialize)
 (my/load-functions)
 (my/load-init-files)
-
-;;;; Packages
-
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-
 
 (put 'dired-find-alternate-file 'disabled nil)
 
