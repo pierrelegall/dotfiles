@@ -17,19 +17,6 @@
 (package-initialize)
 (my/load-init-files)
 
-;;;; Behavior
-
-(setq inhibit-startup-screen t)
-(setq-default indent-tabs-mode nil)
-(setq default-tab-width 2)
-(fset 'yes-or-no-p 'y-or-n-p)
-(setq-default message-log-max nil)
-(delete-selection-mode 1)
-(show-paren-mode 1)
-(global-visual-line-mode 1)
-(global-auto-complete-mode)
-(setq shift-select-mode nil)
-
 ;;;; Minibuffer
 
 (setq read-file-name-completion-ignore-case t)
@@ -110,11 +97,6 @@
   (define-key map (kbd "C-c s") 'magit-status)
 
   (define-key map [C-f1] 'show-absolute-buffer-file-path))
-
-;;;; Clipboard
-
-(setq x-select-enable-clipboard t)
-(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
 
 ;;;; Redo
 
