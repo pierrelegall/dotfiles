@@ -17,10 +17,6 @@
 (package-initialize)
 (my/load-init-files)
 
-;;;; Redo
-
-(require 'redo+)
-
 ;;;; Formating style
 
 (setq c-default-style "linux")
