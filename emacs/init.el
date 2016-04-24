@@ -17,12 +17,6 @@
 (package-initialize)
 (my/load-init-files)
 
-;;;; Formating style
-
-(setq c-default-style "linux")
-(setq c-basic-offset 2)
-(setq js-indent-level 2)
-
 ;;;; Dired
 
 (require 'dired)
