@@ -5,7 +5,7 @@
   "Directory of the initialization files.")
 
 (defvar my/init-files
-  (directory-files init-files-directory t "^[^.]")
+  (directory-files my/init-files-directory t "^[^.]")
   "List of the initialization files.")
 
 (defun my/load-init-files ()
