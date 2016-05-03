@@ -53,14 +53,8 @@
   (define-key map (kbd "C-\\") 'redo)
   (define-key map (kbd "C-S-r") 'revert-buffer)
 
-  (define-key map (kbd "C-o")
-    (lambda() (interactive) (other-window 1)))
-  (define-key map (kbd "C-S-o")
-    (lambda() (interactive) (other-window -1)))
-  (define-key map (kbd "C-x o")
-    (lambda() (interactive) (other-window 1)))
-  (define-key map (kbd "C-x O")
-    (lambda() (interactive) (other-window -1)))
+  (define-key map (kbd "C-o") 'next-multiframe-window)
+  (define-key map (kbd "C-S-o") 'previous-multiframe-window)
 
   (define-key map (kbd "C-S-p") 'my/move-line-or-region-above)
   (define-key map (kbd "C-S-n") 'my/move-line-or-region-below)
