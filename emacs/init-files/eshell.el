@@ -28,3 +28,10 @@
      (propertize " "))))
 
 (setq eshell-prompt-regexp "^[#$] ")
+
+;; ** Command
+
+(defun eshell/clear ()
+  "Clear the eshell buffer."
+  (let ((inhibit-read-only t))
+    (erase-buffer)))
