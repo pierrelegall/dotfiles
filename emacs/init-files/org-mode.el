@@ -25,3 +25,9 @@
 ;;         "pdflatex -interaction nonstopmode -output-directory %o %f"))
 
 (setq org-latex-to-pdf-process (list "latexmk -pdf -bibtex %f"))
+
+;; ** Hooks
+
+(add-hook 'org-mode-hook
+          (lambda ()
+            (visual-line-mode)))
