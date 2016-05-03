@@ -1,5 +1,11 @@
 ;; * Formating style
 
+;; ** Saving hook
+
+(add-hook 'write-file-hooks
+  (lambda ()
+    (delete-trailing-whitespace)))
+
 ;; ** C
 
 (setq c-default-style "linux")
