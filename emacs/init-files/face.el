@@ -19,7 +19,7 @@
 
 ;; ** Font
 
-(set-default-font "Inconsolata 12")
+(my/set-default-font-if-exists '("Inconsolata 12"))
 
 ;; ** Theme
 
