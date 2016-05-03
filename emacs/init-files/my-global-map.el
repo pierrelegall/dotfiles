@@ -31,8 +31,6 @@
   (define-key map (kbd "C-:") 'execute-extended-command)
   (define-key map (kbd "C-!") 'eshell-command)
   (define-key map (kbd "C-`") 'rename-buffer)
-  (define-key map (kbd "C-c C-t") 'multi-term)
-  (define-key map (kbd "C-c t") 'multi-term-next)
 
   (define-key map (kbd "C-'") 'my/select-by-step)
   (define-key map (kbd "C-j") 'my/toggle-letter-case)
