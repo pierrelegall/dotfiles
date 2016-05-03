@@ -4,7 +4,7 @@
 
 (setq eshell-banner-message ";; Welcome to the Emacs shell\n")
 
-;; Completion
+;; ** Completion
 
 (setq eshell-cmpl-ignore-case t)
 
