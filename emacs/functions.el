@@ -169,9 +169,3 @@
   (if arg
       (eshell arg)
     (eshell-command)))
-
-(defun my/set-default-font-if-exists (fonts)
-  (unless (null fonts)
-    (if (null (x-list-fonts (car fonts)))
-        (my/set-default-font-if-exists (cdr fonts))
-      (set-default-font (car fonts)))))

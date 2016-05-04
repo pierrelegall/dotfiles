@@ -17,10 +17,11 @@
 (setq line-number-mode 1)
 (setq column-number-mode 1)
 
-;; ** Font
-
-(my/set-default-font-if-exists '("Inconsolata 12"))
-
 ;; ** Theme
 
 (load-theme 'solarized-dark t)
+
+;; ** Font
+
+(custom-set-faces
+ '(default ((t (:inherit nil :height 120 :family "Inconsolata")))))
