@@ -32,7 +32,7 @@
   (define-key map (kbd "C-!") 'eshell-command)
   (define-key map (kbd "C-`") 'rename-buffer)
 
-  (define-key map (kbd "C-'") 'my/select-by-step)
+  (define-key map (kbd "C-'") 'er/expand-region)
   (define-key map (kbd "C-j") 'my/toggle-letter-case)
 
   (define-key map (kbd "C-,") 'backward-word)
