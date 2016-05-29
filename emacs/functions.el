@@ -137,3 +137,7 @@
   (if arg
       (eshell arg)
     (eshell-command)))
+
+(defun my/previous-window ()
+   (interactive)
+   (other-window -1))

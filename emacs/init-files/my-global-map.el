@@ -53,8 +53,8 @@
   (define-key map (kbd "C-\\") 'redo)
   (define-key map (kbd "C-S-r") 'revert-buffer)
 
-  (define-key map (kbd "C-o") 'next-multiframe-window)
-  (define-key map (kbd "C-S-o") 'previous-multiframe-window)
+  (define-key map (kbd "C-o") 'other-window)
+  (define-key map (kbd "C-S-o") 'my/previous-window)
 
   (define-key map (kbd "C-S-p") 'my/move-line-or-region-above)
   (define-key map (kbd "C-S-n") 'my/move-line-or-region-below)
