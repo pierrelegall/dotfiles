@@ -16,7 +16,13 @@
   (define-key map (kbd "<M-up>") 'org-move-subtree-up)
   (define-key map (kbd "<M-down>") 'org-move-subtree-down))
 
+;; ** Source block
+
+(setq org-src-fontify-natively t)
+
 ;; ** LaTeX
+
+(setq org-latex-default-figure-position "H")
 
 ;; (setq org-latex-pdf-process
 ;;       '("pdflatex -interaction nonstopmode -output-directory %o %f"

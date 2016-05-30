@@ -11,6 +11,7 @@
 (let ((map my/global-map))
   (define-key map (kbd "C-?") 'help-command)
   (define-key map (kbd "C-x C-h") 'help-command)
+  (define-key map (kbd "C-x b") 'helm-mini)
 
   (define-key map (kbd "C-w") 'my/kill-region-or-backward-word)
   (define-key map (kbd "C-S-w") 'kill-ring-save)
@@ -32,7 +33,7 @@
   (define-key map (kbd "C-!") 'eshell-command)
   (define-key map (kbd "C-`") 'rename-buffer)
 
-  (define-key map (kbd "C-'") 'my/select-by-step)
+  (define-key map (kbd "C-'") 'er/expand-region)
   (define-key map (kbd "C-j") 'my/toggle-letter-case)
 
   (define-key map (kbd "C-,") 'backward-word)
@@ -53,8 +54,8 @@
   (define-key map (kbd "C-\\") 'redo)
   (define-key map (kbd "C-S-r") 'revert-buffer)
 
-  (define-key map (kbd "C-o") 'next-multiframe-window)
-  (define-key map (kbd "C-S-o") 'previous-multiframe-window)
+  (define-key map (kbd "C-o") 'other-window)
+  (define-key map (kbd "C-S-o") 'my/previous-window)
 
   (define-key map (kbd "C-S-p") 'my/move-line-or-region-above)
   (define-key map (kbd "C-S-n") 'my/move-line-or-region-below)

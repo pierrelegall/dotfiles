@@ -50,38 +50,6 @@
         (beginning-of-line)
         (comment-or-uncomment-region (point) end)))))
 
-(defun my/semantic-unit (arg)
-  "Go to the next semantic unit if arg is positive or to the previous one if negative."
-  (interactive "p")
-  (when (nth 3 (syntax-ppss))
-    (if (> arg 0)
-        (progn
-          (skip-syntax-forward "^\"")
-          (goto-char (1+ (point)))
-          (decf arg))
-      (skip-syntax-backward "^\"")
-      (goto-char (1- (point)))
-      (incf arg)))
-  (up-list arg))
-
-(defun my/select-by-step (arg &optional incremental)
-  "Select the current word. Subsequent calls expands the selection to larger semantic unit."
-  (interactive (list (prefix-numeric-value current-prefix-arg)
-                     (or (and transient-mark-mode mark-active)
-                         (eq last-command this-command))))
-  (if incremental
-      (progn
-        (my/semantic-unit (- arg))
-        (forward-sexp)
-        (mark-sexp -1))
-    (if (> arg 1)
-        (extend-selection (1- arg) t)
-      (if (looking-at "\\=\\(\\s_\\|\\sw\\)*\\_>")
-          (goto-char (match-end 0))
-        (unless (memq (char-before) '(?\) ?\"))
-          (forward-sexp)))
-      (mark-sexp -1))))
-
 (defun my/toggle-letter-case ()
   "Toggle the letter case of current word or text selection. Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
   (interactive)
@@ -170,8 +138,6 @@
       (eshell arg)
     (eshell-command)))
 
-(defun my/set-default-font-if-exists (fonts)
-  (unless (null (x-list-fonts (car fonts)))
-    (if (my/font-existsp (car fonts))
-        (set-default-font (car fonts))
-      (my/set-default-font-if-exists (cdr fonts)))))
+(defun my/previous-window ()
+   (interactive)
+   (other-window -1))
