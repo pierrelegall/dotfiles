@@ -11,6 +11,7 @@
 (let ((map my/global-map))
   (define-key map (kbd "C-?") 'help-command)
   (define-key map (kbd "C-x C-h") 'help-command)
+  (define-key map (kbd "C-x b") 'helm-mini)
 
   (define-key map (kbd "C-w") 'my/kill-region-or-backward-word)
   (define-key map (kbd "C-S-w") 'kill-ring-save)
