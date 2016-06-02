@@ -17,7 +17,6 @@
   (define-key map (kbd "C-S-w") 'kill-ring-save)
   (define-key map (kbd "C-S-y") 'yank-pop)
   (define-key map (kbd "C-x C-k") 'kill-this-buffer)
-  (define-key map (kbd "C-c C-k") 'my/kill-this-buffer-and-delete-file)
   (define-key map (kbd "C-%") 'query-replace)
 
   (define-key map (kbd "C-h") (kbd "<backspace>"))

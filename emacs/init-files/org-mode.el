@@ -16,7 +16,11 @@
   (define-key map (kbd "<M-up>") 'org-move-subtree-up)
   (define-key map (kbd "<M-down>") 'org-move-subtree-down))
 
-;; ** Source block
+;; ** Style
+
+(require 'org-bullets)
+
+(setq org-ellipsis " ⮧")
 
 (setq org-src-fontify-natively t)
 
@@ -38,3 +42,7 @@
           (lambda ()
             (visual-line-mode)
             (org-indent-mode)))
+
+(add-hook 'org-mode-hook
+          (lambda ()
+            (org-bullets-mode 1)))
