@@ -21,9 +21,6 @@
 
 (load-theme 'abyss t)
 
-(custom-set-faces
- '(term ((t (:inherit default)))))
-
 ;; ** Font
 
 (custom-set-faces
