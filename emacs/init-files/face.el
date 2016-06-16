@@ -19,7 +19,10 @@
 
 ;; ** Theme
 
-(load-theme 'solarized-dark t)
+(load-theme 'abyss t)
+
+(custom-set-faces
+ '(term ((t (:inherit default)))))
 
 ;; ** Font
 
