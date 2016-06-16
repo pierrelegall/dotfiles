@@ -20,7 +20,7 @@
 
 (require 'org-bullets)
 
-(setq org-ellipsis " ▶")
+(setq org-ellipsis " ...")
 
 (setq org-src-fontify-natively t)
 
