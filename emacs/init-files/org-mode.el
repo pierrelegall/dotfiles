@@ -2,7 +2,7 @@
 
 ;; ** Agenda
 
-(setq org-agenda-files '("~/Documents/Organizer/"))
+(setq org-agenda-files '("~/Documents/Organizer.org"))
 (setq org-agenda-todo-ignore-scheduled t)
 (setq org-agenda-todo-list-sublevels nil)
 
