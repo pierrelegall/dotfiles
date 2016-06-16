@@ -129,6 +129,7 @@ bindsym $mod+minus            exec "xbacklight -dec 15 -time 0"
 
 # Bar configuration
 bar {
+  position top
   status_command i3status
   colors {
     background #000000
