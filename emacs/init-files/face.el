@@ -24,4 +24,4 @@
 ;; ** Font
 
 (custom-set-faces
- '(default ((t (:inherit nil :height 120 :family "Inconsolata")))))
+ '(default ((t (:inherit nil :height 140 :family "Inconsolata")))))
