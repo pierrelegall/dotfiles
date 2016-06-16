@@ -8,7 +8,8 @@
 
 ;; ** Todo
 
-(setq org-todo-keywords '((sequence "TODO(t)" "|" "DONE(d)")))
+(setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "STARTED(s)"
+                                    "|" "DONE(d)" "CANCELED(c)")))
 
 ;; ** Map
 
