@@ -126,11 +126,11 @@
 
 (defun my/scroll-up ()
   (interactive)
-  (scroll-up 8))
+  (scroll-up 5))
 
 (defun my/scroll-down ()
   (interactive)
-  (scroll-down 8))
+  (scroll-down 5))
 
 (defun my/eshell (&optional arg)
   (interactive "P")
@@ -141,3 +141,24 @@
 (defun my/previous-window ()
    (interactive)
    (other-window -1))
+
+(defun my/kill-frame ()
+  (interactive)
+  (if (daemonp)
+      (delete-frame)
+    (save-buffers-kill-terminal)))
+
+(defun my/ido-recentf-open (&optional ARG)
+  "Use `ido-completing-read' to \\[find-file] a recent file"
+  (interactive)
+  (let ((abbreviated-recentf-list (mapcar 'abbreviate-file-name recentf-list)))
+       (if (find-file (ido-completing-read "Find recent file: " abbreviated-recentf-list))
+           (message "Opening file...")
+         (message "Aborting"))))
+
+(defun my/switch-to-minibuffer ()
+  "Switch to minibuffer window."
+  (interactive)
+  (if (active-minibuffer-window)
+      (select-window (active-minibuffer-window))
+    (error "Minibuffer is not active")))
