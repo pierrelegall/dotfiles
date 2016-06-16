@@ -9,9 +9,13 @@
 ;; ** Definition
 
 (let ((map my/global-map))
-  (define-key map (kbd "C-?") 'help-command)
+  (define-key map (kbd "C-x C-c") 'my/kill-frame)
+
+  (define-key map (kbd "C-,") 'repeat)
+
   (define-key map (kbd "C-x C-h") 'help-command)
-  (define-key map (kbd "C-x b") 'helm-mini)
+
+  (define-key map (kbd "C-x C-r") 'my/ido-recentf-open)
 
   (define-key map (kbd "C-w") 'my/kill-region-or-backward-word)
   (define-key map (kbd "C-S-w") 'kill-ring-save)
@@ -27,41 +31,50 @@
   (define-key map (kbd "M-v") 'my/scroll-down)
   (define-key map (kbd "C-S-v") 'my/scroll-down)
 
-  (define-key map (kbd "C-;") 'my/eshell)
-  (define-key map (kbd "C-:") 'execute-extended-command)
-  (define-key map (kbd "C-!") 'eshell-command)
+  (define-key map (kbd "C-;") 'smex)
+  (define-key map (kbd "C-:") 'smex-major-mode-commands)
+  (define-key map (kbd "C-x ;") 'shell-command)
   (define-key map (kbd "C-`") 'rename-buffer)
+
+  (define-key map (kbd "<C-tab>") 'next-buffer)
+  (define-key map (kbd "<C-iso-lefttab>") 'previous-buffer)
+
+  (define-key map (kbd "C-x t") 'multi-term-next)
+  (define-key map (kbd "C-x C-t") 'multi-term)
 
   (define-key map (kbd "C-'") 'er/expand-region)
   (define-key map (kbd "C-j") 'my/toggle-letter-case)
 
-  (define-key map (kbd "C-,") 'backward-word)
-  (define-key map (kbd "C-.") 'forward-word)
   (define-key map (kbd "C-S-b") 'backward-word)
   (define-key map (kbd "C-S-f") 'forward-word)
   (define-key map (kbd "C-<") 'beginning-of-buffer)
   (define-key map (kbd "C->") 'end-of-buffer)
-
-  (define-key map (kbd "<C-tab>") 'next-buffer)
-  (define-key map (kbd "<C-iso-lefttab>") 'previous-buffer)
 
   (define-key map (kbd "C-S-l") 'goto-line)
 
   (define-key map (kbd "C-#") 'my/comment-or-uncomment-line-or-region)
 
   (define-key map (kbd "C-/") 'undo)
+  (define-key map (kbd "C-?") 'redo)
   (define-key map (kbd "C-\\") 'redo)
-  (define-key map (kbd "C-S-r") 'revert-buffer)
+  (define-key map (kbd "C-x r") 'revert-buffer)
 
   (define-key map (kbd "C-o") 'other-window)
   (define-key map (kbd "C-S-o") 'my/previous-window)
+  (define-key map (kbd "C-x o") 'my/switch-to-minibuffer)
 
-  (define-key map (kbd "C-S-p") 'my/move-line-or-region-above)
-  (define-key map (kbd "C-S-n") 'my/move-line-or-region-below)
+  (define-key map (kbd "C-x p") 'my/move-line-or-region-above)
+  (define-key map (kbd "C-x n") 'my/move-line-or-region-below)
+
+  (define-key map (kbd "C-S-p") 'backward-paragraph)
+  (define-key map (kbd "C-S-n") 'forward-paragraph)
 
   (define-key map (kbd "C-c a") 'org-agenda)
   (define-key map (kbd "C-c l") 'org-store-link)
 
   (define-key map (kbd "C-c s") 'magit-status)
+  (define-key map (kbd "C-x g s") 'magit-status)
+  (define-key map (kbd "C-x g d") 'magit-diff-buffer-file)
+  (define-key map (kbd "C-x g l") 'magit-log-all)
 
-  (define-key map [C-f1] 'my/show-absolute-buffer-file-path))
+  (define-key map (kbd "C-<f1>") 'my/show-absolute-buffer-file-path))
