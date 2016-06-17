@@ -9,8 +9,8 @@
 ;; ** Cursor
 
 (blink-cursor-mode t)
-(setq blink-cursor-interval .1)
-(setq blink-cursor-blinks 2)
+(setq blink-cursor-interval .05)
+(setq blink-cursor-blinks 3)
 
 ;; ** Mode line
 
