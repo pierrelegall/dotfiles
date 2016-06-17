@@ -12,6 +12,11 @@
 (setq blink-cursor-interval .05)
 (setq blink-cursor-blinks 3)
 
+;; Indicators
+
+(setq-default indicate-empty-lines t)
+(setq-default indicate-buffer-boundaries t)
+
 ;; ** Mode line
 
 (setq line-number-mode 1)
