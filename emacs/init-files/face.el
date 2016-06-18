@@ -15,7 +15,7 @@
 ;; Indicators
 
 (setq-default indicate-empty-lines t)
-(setq-default indicate-buffer-boundaries t)
+(setq-default indicate-buffer-boundaries nil)
 
 ;; ** Mode line
 
