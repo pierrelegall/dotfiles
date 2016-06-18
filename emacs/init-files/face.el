@@ -29,4 +29,4 @@
 ;; ** Font
 
 (custom-set-faces
- '(default ((t (:inherit nil :height 140 :family "Inconsolata")))))
+ '(default ((t (:inherit nil :height 140 :family "Ubuntu Mono")))))
