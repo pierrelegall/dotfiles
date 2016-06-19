@@ -12,9 +12,11 @@
   (define-key map (kbd "<mouse-3>") 'menu-bar-open)
   (define-key map (kbd "<menu>") 'menu-bar-open)
 
+  (define-key map (kbd "C-S-u") 'negative-argument)
+
   (define-key map (kbd "C-x C-c") 'my/kill-frame)
 
-  (define-key map (kbd "C-,") 'repeat)
+  (define-key map (kbd "C-.") 'repeat)
 
   (define-key map (kbd "C-x C-h") 'help-command)
 
@@ -55,7 +57,7 @@
   (define-key map (kbd "C-x t") 'multi-term-next)
   (define-key map (kbd "C-x C-t") 'multi-term)
 
-  (define-key map (kbd "C-'") 'er/expand-region)
+  (define-key map (kbd "C-,") 'er/expand-region)
   (define-key map (kbd "C-j") 'my/toggle-letter-case)
 
   (define-key map (kbd "C-S-b") 'backward-word)
