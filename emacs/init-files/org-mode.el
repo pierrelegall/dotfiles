@@ -25,6 +25,40 @@
 
 (setq org-src-fontify-natively t)
 
+;; Babel
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((C . t)
+   ;;(cpp . t)
+   (css . t)
+   (ditaa . t)
+   (dot . t)
+   ;; (ebnf . t)
+   (emacs-lisp . t)
+   (gnuplot . t)
+   (haskell . t)
+   (java . t)
+   (js . t)
+   (latex . t)
+   (lisp . t)
+   (makefile . t)
+   (ocaml . t)
+   (org . t)
+   (perl . t)
+   (plantuml . t)
+   (python . t)
+   (ruby . t)
+   (sass . t)
+   (scala . t)
+   (scheme . t)
+   (sql . t)))
+   ;;(sed . t)
+   ;;(shell . t))
+
+(setq org-ditaa-jar-path "/usr/bin/ditaa")
+(setq org-ditaa-jar-options "")
+
 ;; ** LaTeX
 
 (setq org-latex-default-figure-position "H")
