@@ -15,6 +15,13 @@
 
   (define-key map (kbd "C-x C-h") 'help-command)
 
+  (define-key map (kbd "C-t C-t") 'transpose-chars)
+  (define-key map (kbd "C-t c") 'transpose-chars)
+  (define-key map (kbd "C-t w") 'transpose-words)
+  (define-key map (kbd "C-t l") 'transpose-lines)
+  (define-key map (kbd "C-t s") 'transpose-sentences)
+  (define-key map (kbd "C-t p") 'transpose-paragraphs)
+
   (define-key map (kbd "C-x C-r") 'my/ido-recentf-open)
 
   (define-key map (kbd "C-w") 'my/kill-region-or-backward-word)
