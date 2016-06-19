@@ -24,8 +24,8 @@
 
   (define-key map (kbd "C-x C-r") 'my/ido-recentf-open)
 
-  (define-key map (kbd "C-w") 'my/kill-region-or-backward-word)
-  (define-key map (kbd "C-S-w") 'kill-ring-save)
+  (define-key map (kbd "C-w") 'my/copy-region-or-line)
+  (define-key map (kbd "C-S-w") 'my/kill-region-or-line)
   (define-key map (kbd "C-S-y") 'yank-pop)
   (define-key map (kbd "C-x C-k") 'kill-this-buffer)
   (define-key map (kbd "C-%") 'query-replace)

@@ -86,11 +86,31 @@
   (interactive)
   (kill-new (buffer-file-name)))
 
-(defun my/kill-region-or-backward-word ()
+(defun my/copy-line (arg)
+  "Copy lines (as many as prefix argument) in the kill ring"
+  (interactive "p")
+  (kill-ring-save (line-beginning-position)
+                  (line-beginning-position (+ 1 arg)))
+  (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
+
+(defun my/kill-line (arg)
+  "Copy lines (as many as prefix argument) in the kill ring"
+  (interactive "p")
+  (kill-region (line-beginning-position)
+               (line-beginning-position (+ 1 arg)))
+  (message "%d line%s killed" arg (if (= 1 arg) "" "s")))
+
+(defun my/copy-region-or-line ()
   "If the region is active and non-empty, call `kill-region'. Otherwise, call `backward-kill-word'."
   (interactive)
   (call-interactively
-   (if (use-region-p) 'kill-region 'backward-kill-word)))
+   (if (use-region-p) 'kill-ring-save 'my/copy-line)))
+
+(defun my/kill-region-or-line ()
+  "If the region is active and non-empty, call `kill-region'. Otherwise, call `backward-kill-word'."
+  (interactive)
+  (call-interactively
+   (if (use-region-p) 'kill-region 'my/kill-line)))
 
 (defun my/kill-this-buffer-and-delete-file ()
   "Kill the current buffer and file it is visiting file."
