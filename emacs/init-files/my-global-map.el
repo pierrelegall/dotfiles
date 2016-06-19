@@ -22,10 +22,9 @@
 
   (define-key map (kbd "C-t C-t") 'transpose-chars)
   (define-key map (kbd "C-t c") 'transpose-chars)
-  (define-key map (kbd "C-t w") 'transpose-words)
-  (define-key map (kbd "C-t l") 'transpose-lines)
-  (define-key map (kbd "C-t s") 'transpose-sentences)
-  (define-key map (kbd "C-t p") 'transpose-paragraphs)
+  (define-key map (kbd "C-t w") 'transpose-word)
+  (define-key map (kbd "C-é") 'my/move-line-or-region-above)
+  (define-key map (kbd "C-ê") 'my/move-line-or-region-below)
 
   (define-key map (kbd "C-x r") 'rectangle-mark-mode)
   (define-key map (kbd "<mouse-2>") 'rectangle-mark-mode)
@@ -77,9 +76,6 @@
   (define-key map (kbd "C-o") 'other-window)
   (define-key map (kbd "C-S-o") 'my/previous-window)
   (define-key map (kbd "C-x o") 'my/switch-to-minibuffer)
-
-  (define-key map (kbd "C-x p") 'my/move-line-or-region-above)
-  (define-key map (kbd "C-x n") 'my/move-line-or-region-below)
 
   (define-key map (kbd "C-S-p") 'backward-paragraph)
   (define-key map (kbd "C-S-n") 'forward-paragraph)
