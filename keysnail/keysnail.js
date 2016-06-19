@@ -312,19 +312,19 @@ key.setViewKey([["C-p"], ["p"]], (event) => {
 //   key.generateKey(event.originalTarget, KeyEvent.DOM_VK_LEFT, true)
 // }, "Scroll left", false)
 
-key.setViewKey([["C-v"], ["f"]], (event) => {
+key.setViewKey([["C-v"], ["l"]], (event) => {
   goDoCommand("cmd_scrollPageDown")
 }, "Scroll page down", false)
 
-key.setViewKey([["M-v"], ["C-V"], ["b"]], (event) => {
+key.setViewKey([["M-v"], ["C-l"], ["l"]], (event) => {
   goDoCommand("cmd_scrollPageUp")
 }, "Scroll page up", false)
 
-key.setViewKey([["C-<"], ["g"]], (event) => {
+key.setViewKey([["C-L"], ["g"]], (event) => {
   goDoCommand("cmd_scrollTop")
 }, "Scroll to the top of the page", true)
 
-key.setViewKey([["C->"], ["G"]], (event) => {
+key.setViewKey([["C-V"], ["G"]], (event) => {
   goDoCommand("cmd_scrollBottom")
 }, "Scroll to the bottom of the page", true)
 
@@ -400,15 +400,15 @@ key.setCaretKey([["C-v"], ["SPC"]], (event) => {
   event.target.ksMarked ? goDoCommand("cmd_selectPageNext") : goDoCommand("cmd_movePageDown")
 }, "Move caret down by page", false)
 
-key.setCaretKey([["M-v"]], (event) => {
+key.setCaretKey([["C-l"]], (event) => {
   event.target.ksMarked ? goDoCommand("cmd_selectPagePrevious") : goDoCommand("cmd_movePageUp")
 }, "Move caret up by page", false)
 
-key.setCaretKey([["M-<"], ["g"]], (event) => {
+key.setCaretKey([["C-L"], ["g"]], (event) => {
   event.target.ksMarked ? goDoCommand("cmd_selectTop") : goDoCommand("cmd_scrollTop")
 }, "Move caret to the top of the page", false)
 
-key.setCaretKey([["M->"], ["G"]], (event) => {
+key.setCaretKey([["C-V"], ["G"]], (event) => {
   event.target.ksMarked ? goDoCommand("cmd_selectEndLine") : goDoCommand("cmd_endLine")
 }, "Move caret to the end of the line", false)
 
