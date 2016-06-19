@@ -20,11 +20,10 @@
 
   (define-key map (kbd "C-x C-h") 'help-command)
 
-  (define-key map (kbd "C-t C-t") 'transpose-chars)
-  (define-key map (kbd "C-t c") 'transpose-chars)
-  (define-key map (kbd "C-t w") 'transpose-word)
-  (define-key map (kbd "C-é") 'my/move-line-or-region-above)
-  (define-key map (kbd "C-ê") 'my/move-line-or-region-below)
+  (define-key map (kbd "C-t") 'transpose-chars)
+  (define-key map (kbd "C-S-t") 'transpose-word)
+  (define-key map (kbd "C-<") 'my/move-line-or-region-above)
+  (define-key map (kbd "C->") 'my/move-line-or-region-below)
 
   (define-key map (kbd "C-x r") 'rectangle-mark-mode)
   (define-key map (kbd "<mouse-2>") 'rectangle-mark-mode)
