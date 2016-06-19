@@ -34,6 +34,10 @@
   (define-key map (kbd "C-S-w") 'my/kill-region-or-line)
   (define-key map (kbd "C-S-y") 'yank-pop)
   (define-key map (kbd "C-x C-k") 'kill-this-buffer)
+  (define-key map (kbd "C-q") 'kill-this-buffer)
+
+  (define-key map (kbd "C-S-q") 'quote-insert)
+
   (define-key map (kbd "C-%") 'query-replace)
 
   (define-key map (kbd "C-h") (kbd "<backspace>"))
@@ -42,7 +46,9 @@
 
   (define-key map (kbd "C-v") 'my/scroll-up)
   (define-key map (kbd "M-v") 'my/scroll-down)
-  (define-key map (kbd "C-S-v") 'my/scroll-down)
+  (define-key map (kbd "C-l") 'my/scroll-down)
+
+  (define-key map (kbd "C-j") 'recenter-top-bottom)
 
   (define-key map (kbd "C-;") 'smex)
   (define-key map (kbd "C-:") 'smex-major-mode-commands)
@@ -56,14 +62,14 @@
   (define-key map (kbd "C-x C-t") 'multi-term)
 
   (define-key map (kbd "C-,") 'er/expand-region)
-  (define-key map (kbd "C-j") 'my/toggle-letter-case)
+  (define-key map (kbd "C-'") 'my/toggle-letter-case)
 
   (define-key map (kbd "C-S-b") 'backward-word)
   (define-key map (kbd "C-S-f") 'forward-word)
-  (define-key map (kbd "C-<") 'beginning-of-buffer)
-  (define-key map (kbd "C->") 'end-of-buffer)
+  (define-key map (kbd "C-S-l") 'beginning-of-buffer)
+  (define-key map (kbd "C-S-v") 'end-of-buffer)
 
-  (define-key map (kbd "C-S-l") 'goto-line)
+  (define-key map (kbd "C-S-g") 'goto-line)
 
   (define-key map (kbd "C-#") 'my/comment-or-uncomment-line-or-region)
 
@@ -86,5 +92,11 @@
   (define-key map (kbd "C-x g s") 'magit-status)
   (define-key map (kbd "C-x g d") 'magit-diff-buffer-file)
   (define-key map (kbd "C-x g l") 'magit-log-all)
+
+  (define-key map (kbd "ESC <f1>") 'emms-next)
+  (define-key map (kbd "ESC ESC <f1>") 'emms-previous)
+  (define-key map (kbd "ESC <f2>") 'emms-play-file)
+  (define-key map (kbd "ESC <f3>") 'emms-pause)
+  (define-key map (kbd "ESC <f4>") 'emms-playlist-g)
 
   (define-key map (kbd "C-<f1>") 'my/show-absolute-buffer-file-path))
