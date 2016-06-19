@@ -22,6 +22,9 @@
   (define-key map (kbd "C-t s") 'transpose-sentences)
   (define-key map (kbd "C-t p") 'transpose-paragraphs)
 
+  (define-key map (kbd "C-x r") 'rectangle-mark-mode)
+  (define-key map (kbd "<mouse-2>") 'rectangle-mark-mode)
+
   (define-key map (kbd "C-x C-r") 'my/ido-recentf-open)
 
   (define-key map (kbd "C-w") 'my/copy-region-or-line)
@@ -64,7 +67,7 @@
   (define-key map (kbd "C-/") 'undo)
   (define-key map (kbd "C-?") 'redo)
   (define-key map (kbd "C-\\") 'redo)
-  (define-key map (kbd "C-x r") 'revert-buffer)
+  (define-key map (kbd "C-<f12>") 'revert-buffer)
 
   (define-key map (kbd "C-o") 'other-window)
   (define-key map (kbd "C-S-o") 'my/previous-window)
