@@ -9,6 +9,9 @@
 ;; ** Definition
 
 (let ((map my/global-map))
+  (define-key map (kbd "<mouse-3>") 'menu-bar-open)
+  (define-key map (kbd "<menu>") 'menu-bar-open)
+
   (define-key map (kbd "C-x C-c") 'my/kill-frame)
 
   (define-key map (kbd "C-,") 'repeat)
