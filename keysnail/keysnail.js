@@ -473,14 +473,6 @@ key.setCaretKey("M-n", (event) => {
 hook.addToHook("PluginLoaded", () => {
   if (!plugins.hok) return
 
-  key.setGlobalKey(["C-c","C-f"], (event, arg) => {
-    ext.exec("hok-start-foreground-mode", arg)
-  }, "Hok - Foreground hint mode", true)
-
-  key.setGlobalKey(["C-c","C-b"] , (event, arg) => {
-    ext.exec("hok-start-background-mode", arg)
-  }, "HoK - Background hint mode", true)
-
   key.setViewKey(["o"], (event, arg) => {
     ext.exec("hok-start-foreground-mode", arg)
   }, "Hok - Foreground hint mode", true)
@@ -489,17 +481,17 @@ hook.addToHook("PluginLoaded", () => {
     ext.exec("hok-start-background-mode", arg)
   }, "HoK - Background hint mode", true)
 
+  key.setGlobalKey(["C-c","C-f"], (event, arg) => {
+    ext.exec("hok-start-foreground-mode", arg)
+  }, "Hok - Foreground hint mode", true)
+
+  key.setGlobalKey(["C-c","C-b"] , (event, arg) => {
+    ext.exec("hok-start-background-mode", arg)
+  }, "HoK - Background hint mode", true)
+
   key.setGlobalKey(["C-c","C-y"], (event, arg) => {
     ext.exec("hok-yank-foreground-mode", arg)
   }, "HoK - Background hint mode", true)
-
-  key.setGlobalKey(["C-c","C-"], (event, arg) => {
-    ext.exec("hok-start-extended-mode", arg)
-  }, "HoK - Extented hint mode", true)
-
-  key.setGlobalKey(["C-c", "C-e"], (event, arg) => {
-    ext.exec("hok-start-continuous-mode", arg)
-  }, "Start continuous HaH", true)
 })
 
 // Tanything
