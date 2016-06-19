@@ -249,35 +249,18 @@ key.setEditKey("C-k", (event) => {
 }, "Kill the rest of the line", false)
 
 key.setEditKey("C-w", (event) => {
-  if (!command.marked(event)) {
-    command.setMark(event)
-    command.backwardWord(event)
-  }
   goDoCommand("cmd_copy")
-  goDoCommand("cmd_delete")
   command.resetMark(event)
 }, "Cut current region or backward word", true)
 
-key.setEditKey([["M-y"], ["C-W"]], (event) => {
+key.setEditKey(["C-W"], (event) => {
   goDoCommand("cmd_copy")
+  goDoCommand("cmd_delete")
   command.resetMark(even)
 }, "Cut current region", true)
 
 key.setEditKey("C-y", command.yank, "Paste (yank)", true)
-key.setEditKey([["M-y"], ["C-Y"]], command.yankPop, "Paste pop (yank pop)", true)
-
-key.setEditKey("C-M-y", (event) => {
-  if (!command.kill.ring.length) return
-  let ct = command.getClipboardText()
-  (!command.kill.ring.length || ct != command.kill.ring[0]) && command.pushKillRing(ct)
-  prompt.selector({
-    message: "Paste:",
-    collection: command.kill.ring,
-    callback: (i) => {
-      if (i >= 0) key.insertText(command.kill.ring[i])
-    }
-  })
-}, "Show kill-ring and select text to paste", true)
+key.setEditKey(["C-Y"], command.yankPop, "Paste pop (yank pop)", true)
 
 key.setEditKey(["C-x", "r", "d"], (event, arg) => {
   command.replaceRectangle(event.originalTarget, "", false, !arg)
