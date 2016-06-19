@@ -28,5 +28,4 @@
 
 ;; ** Font
 
-(custom-set-faces
- '(default ((t (:inherit nil :height 140 :family "Ubuntu Mono")))))
+(add-to-list 'default-frame-alist '(font . "Ubuntu Mono-14"))
