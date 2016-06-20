@@ -1,3 +1,5 @@
+;; * Term mode
+
 (setq term-unbind-key-list
   '("C-z" "C-x" "C-c" "C-y" "<ESC>"))
 
@@ -16,5 +18,8 @@
     ("C-S-h" . term-send-backward-kill-word) ; ~
     ("C-S-f" . term-send-forward-word) ; x
     ("C-S-b" . term-send-backward-word) ; x
-    ("C-S-s" . isearch-forward)
-    ("C-S-r" . isearch-backward)))
+    ("C-{" . term-line-mode)))
+
+(add-hook 'term-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-{") 'term-char-mode)))
