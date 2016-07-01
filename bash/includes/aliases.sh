@@ -27,6 +27,10 @@ alias e='emacsclient --no-wait'
 alias ecf='emacsclient --no-wait --create-frame'
 alias enw='emacsclient -nw'
 
+alias start-emacs='emacs --daemon'
+alias kill-emacs='emacsclient --eval "(kill-emacs)"'
+alias restart-emacs='kill-emacs; start-emacs'
+
 sudo-e() {
   e /sudo::$1
 }
