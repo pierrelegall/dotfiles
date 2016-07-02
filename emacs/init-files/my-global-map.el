@@ -20,6 +20,8 @@
 
   (define-key map (kbd "C-x C-h") 'help-command)
 
+  (define-key map (kbd "C-S-i") 'ac-start)
+
   (define-key map (kbd "C-t") 'transpose-chars)
   (define-key map (kbd "C-S-t") 'transpose-words)
   (define-key map (kbd "C-<") 'my/move-line-or-region-above)
