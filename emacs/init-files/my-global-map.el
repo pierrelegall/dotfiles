@@ -75,7 +75,6 @@
 
   (define-key map (kbd "C-/") 'undo)
   (define-key map (kbd "C-?") 'redo)
-  (define-key map (kbd "C-\\") 'redo)
   (define-key map (kbd "C-<f12>") 'revert-buffer)
 
   (define-key map (kbd "C-o") 'other-window)
@@ -98,5 +97,7 @@
   (define-key map (kbd "ESC <f2>") 'emms-play-file)
   (define-key map (kbd "ESC <f3>") 'emms-pause)
   (define-key map (kbd "ESC <f4>") 'emms-playlist-g)
+
+  (define-key map (kbd "C-\\") 'my/translate)
 
   (define-key map (kbd "C-<f1>") 'my/show-absolute-buffer-file-path))
