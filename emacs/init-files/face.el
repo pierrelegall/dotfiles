@@ -12,10 +12,10 @@
 (setq blink-cursor-interval .05)
 (setq blink-cursor-blinks 3)
 
-;; Indicators
+;; ** Fringe
 
+(set-fringe-mode '(1 . 1))
 (setq-default indicate-empty-lines t)
-(setq-default indicate-buffer-boundaries nil)
 
 ;; ** Mode line
 
