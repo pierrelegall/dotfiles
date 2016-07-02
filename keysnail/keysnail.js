@@ -9,7 +9,7 @@
 
 key.quitKey              = "C-g"
 key.helpKey              = "<f1>"
-key.escapeKey            = "C-q"
+key.escapeKey            = "C-x q"
 key.macroStartKey        = "<f3>"
 key.macroEndKey          = "<f4>"
 key.suspendKey           = "<f2>"
@@ -98,7 +98,7 @@ key.setGlobalKey("C-r", (event) => {
   command.iSearchBackwardKs(event)
 }, "Emacs like incremental search backward", true)
 
-key.setGlobalKey([["C-x", "k"], ["C-x", "C-k"]], (event) => {
+key.setGlobalKey([["C-q"], ["C-x", "k"], ["C-x", "C-k"]], (event) => {
   BrowserCloseTabOrWindow()
 }, "Close tab / window", false)
 
