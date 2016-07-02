@@ -182,3 +182,32 @@
   (if (active-minibuffer-window)
       (select-window (active-minibuffer-window))
     (error "Minibuffer is not active")))
+
+(defun my/word-at-position ()
+  "Return the word where the cursor is."
+  (list (car (bounds-of-thing-at-point 'word))
+        (cdr (bounds-of-thing-at-point 'word))))
+
+(defun my/line-at-position ()
+  "Return the line where the cursor is."
+  (list (car (bounds-of-thing-at-point 'line))
+        (cdr (bounds-of-thing-at-point 'line))))
+
+(defun my/word-at-position-or-region ()
+  "Return the word where the cursor is or the region
+if a region currently selected."
+  (if (use-region-p)
+      (list (region-beginning) (region-end))
+    (my/string-at-position)))
+
+(defun my/line-at-position-or-region ()
+  "Return the line where the cursor is or the region
+if a region currently selected."
+  (if (use-region-p)
+      (list (region-beginning) (region-end))
+    (my/line-at-position)))
+
+(defun my/region-content ()
+  "Return the content of the region."
+  (buffer-substring (region-beginning) (region-end)))
+
