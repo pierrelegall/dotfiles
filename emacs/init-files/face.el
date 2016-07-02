@@ -24,7 +24,10 @@
 
 ;; ** Theme
 
-(load-theme 'abyss t)
+(load-theme 'grandshell t)
+(load-file (concat
+            (file-name-directory (or load-file-name buffer-file-name))
+            ".grandshell.el"))
 
 ;; ** Font
 
