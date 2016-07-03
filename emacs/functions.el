@@ -214,9 +214,9 @@ if a region currently selected."
 (defun my/translate ()
   "Open WordReference web browser to translate a word."
   (interactive)
-  (let ((website "http://www.wordreference.com")
-        (word (if (use-region-p) (my/region-content) (read-string "Word: "))))
-    (let ((type (read-string (format "Translate «%s» from ? to ?: " word) "enfr")))
-      (browse-url-generic (concat website "/" type "/" (url-he1xify-string word)))))
+  (let* ((website "http://www.wordreference.com")
+         (word (if (use-region-p) (my/region-content) (read-string "Word: ")))
+         (type (read-string (format "Translate «%s» from ? to ?: " word) "enfr")))
+    (browse-url-generic (concat website "/" type "/" (url-hexify-string word))))
   (message "Opened in your web browser."))
 
