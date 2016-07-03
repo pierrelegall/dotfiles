@@ -1,11 +1,9 @@
-// # French Colemak
-// 
-// Design to be simple and efficient.
+// # French Colemak: The Colemak layout, french friendly.
 //
-// - Pure Colemak, except for AltGr keys
-// - all french characters thanks to AltGr
-// - usefull character ergonomic access (+ - = ~ _ | () {} [] etc.)
-// - no dead key
+// Features:
+// - all the french characters available with AltGr
+// - truly usefull characters easy to reach thanks to AltGr
+// - dead keys removed
 
 default partial alphanumeric_keys
 xkb_symbols "basic" {
