@@ -32,7 +32,7 @@ alias start-emacs='emacs --daemon'
 alias kill-emacs='emacsclient --eval "(kill-emacs)"'
 alias restart-emacs='kill-emacs; start-emacs'
 
-alias kb='setxkbmap fr-colemak swap-ctrl-alt'
+alias kb='setxkbmap fr-colemak -option "ctrl:swap_lalt_lctl, ctrl:rctrl_ralt, shift:both_capslock"'
 alias azer='kb'
 alias qwer='kb'
 alias qwfp='kb'

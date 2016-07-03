@@ -69,11 +69,5 @@ xkb_symbols "basic" {
 		replace key <CAPS> { [ Shift_L ] };
     
     include "level3(ralt_switch)"
-};
 
-partial modifier_keys
-xkb_symbols "swap-ctrl-alt" {
-    include "fr-colemak"
-    replace key <LCTL> { [ Alt_L,     Alt_L     ] };
-    replace key <LALT> { [ Control_L, Control_L ] };
 };
