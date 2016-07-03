@@ -23,7 +23,7 @@ xkb_symbols "basic" {
     key <AE10> { [            0,   parenright, rightsinglequotemark, rightdoublequotemark ] };
     key <AE11> { [        minus,   underscore,          endash,           emdash ] };
     key <AE12> { [        equal,         plus,        multiply,         division ] };
-    
+
     key <AD01> { [            q,            Q,     acircumflex,      Acircumflex ] };
     key <AD02> { [            w,            W,      asciitilde,       asciitilde ] };
     key <AD03> { [            f,            F,           equal,       asciitilde ] };
@@ -37,7 +37,7 @@ xkb_symbols "basic" {
     key <AD11> { [  bracketleft,    braceleft,   guillemotleft,        0x1002039 ] };
     key <AD12> { [ bracketright,   braceright,  guillemotright,        0x100203a ] };
     key <BKSL> { [    backslash,          bar,      asciitilde,       asciitilde ] };
-    
+
     key <AC01> { [            a,            A,          agrave,           Agrave ] };
     key <AC02> { [            r,            R,            plus,       asciitilde ] };
     key <AC03> { [            s,            S,           minus,       asciitilde ] };
@@ -49,7 +49,7 @@ xkb_symbols "basic" {
     key <AC09> { [            i,            I,     icircumflex,      Icircumflex ] };
     key <AC10> { [            o,            O,     ocircumflex,      Ocircumflex ] };
     key <AC11> { [   apostrophe,     quotedbl,           grave,            acute ] };
-    
+
     key <AB01> { [            z,            Z,              ae,               AE ] };
     key <AB02> { [            x,            X,              oe,               OE ] };
     key <AB03> { [            c,            C,        ccedilla,         Ccedilla ] };
@@ -60,12 +60,11 @@ xkb_symbols "basic" {
     key <AB08> { [        comma,         less,      ediaeresis,       Ediaeresis ] };
     key <AB09> { [       period,      greater,        ellipsis,       asciitilde ] };
     key <AB10> { [        slash,     question,       backslash,     questiondown ] };
-    
+
     key <LSGT> { [        minus,   underscore,          endash,           emdash ] };
     key <SPCE> { [        space,        space,      underscore,     nobreakspace ] };
-    
-		replace key <CAPS> { [ Shift_L ] };
-    
-    include "level3(ralt_switch)"
 
+		replace key <CAPS> { [ Shift_L ] };
+
+    include "level3(ralt_switch)"
 };
