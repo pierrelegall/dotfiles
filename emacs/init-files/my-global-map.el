@@ -38,7 +38,7 @@
   (define-key map (kbd "C-x C-k") 'kill-this-buffer)
   (define-key map (kbd "C-q") 'kill-this-buffer)
 
-  (define-key map (kbd "C-S-q") 'quote-insert)
+  (define-key map (kbd "C-S-q") 'quoted-insert)
 
   (define-key map (kbd "C-%") 'query-replace)
 
