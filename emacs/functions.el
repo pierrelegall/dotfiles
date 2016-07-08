@@ -112,6 +112,17 @@
   (call-interactively
    (if (use-region-p) 'kill-region 'my/kill-line)))
 
+(defun my/kill-this-buffer ()
+  "Kill the current buffer.
+When called in the minibuffer, get out of the minibuffer
+using `abort-recursive-edit'."
+  (interactive)
+  (cond
+   ((menu-bar-non-minibuffer-window-p)
+    (kill-buffer (current-buffer)))
+   (t
+    (abort-recursive-edit))))
+
 (defun my/kill-this-buffer-and-delete-file ()
   "Kill the current buffer and file it is visiting file."
   (interactive)
