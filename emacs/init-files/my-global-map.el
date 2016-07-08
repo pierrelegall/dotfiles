@@ -38,6 +38,9 @@
   (define-key map (kbd "C-x C-k") 'kill-this-buffer)
   (define-key map (kbd "C-q") 'kill-this-buffer)
 
+  (define-key map (kbd "C-S-a") 'backward-sentence)
+  (define-key map (kbd "C-S-e") 'forward-sentence)
+
   (define-key map (kbd "C-S-q") 'quoted-insert)
 
   (define-key map (kbd "C-%") 'query-replace)
@@ -88,6 +91,8 @@
 
   (define-key map (kbd "C-c a") 'org-agenda)
   (define-key map (kbd "C-c l") 'org-store-link)
+
+  (define-key map (kbd "C-<f11>") 'diff-hl-mode)
 
   (define-key map (kbd "C-c s") 'magit-status)
   (define-key map (kbd "C-x g s") 'magit-status)
