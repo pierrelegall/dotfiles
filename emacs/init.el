@@ -24,6 +24,18 @@
 
 (my/load-functions)
 
+;; ** My global map initialization
+
+(defvar my/global-map-file
+  "~/.config/emacs/my-global-map.el"
+  "My global map file.")
+
+(defun my/load-global-map ()
+  "Load my global map file."
+  (load-file my/global-map-file))
+
+(my/load-global-map)
+
 ;; ** Init files loading
 
 (defvar my/init-files-directory
