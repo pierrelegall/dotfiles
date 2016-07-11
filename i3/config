@@ -17,7 +17,7 @@ set $WS0 "10"
 
 # Startup actions
 exec "i3lock --ignore-empty-password --image ~/.lockpaper"
-exec --no-startup-id "setxkbmap fr-colemak -option 'ctrl:swap_lalt_lctl, ctrl:rctrl_ralt, shift:both_capslock'"
+exec --no-startup-id "setxkbmap fr-colemak -option 'ctrl:swap_lalt_lctl, ctrl:rctrl_ralt'"
 exec --no-startup-id "feh --bg-scale ~/.wallpaper"
 exec "emacs --daemon"
 
