@@ -169,10 +169,6 @@ using `abort-recursive-edit'."
       (eshell arg)
     (eshell-command)))
 
-(defun my/previous-window ()
-   (interactive)
-   (other-window -1))
-
 (defun my/kill-frame ()
   (interactive)
   (if (daemonp)
@@ -231,3 +227,22 @@ if a region currently selected."
     (browse-url-generic (concat website "/" type "/" (url-hexify-string word))))
   (message "Opened in your web browser."))
 
+
+(defun my/other-window (jump)
+  "Go to another window skipping the minibuffer."
+  (interactive "p")
+  (other-window jump)
+  (if (minibufferp (current-buffer))
+      (if (< jump 0)
+          (my/previous-window)
+        (my/next-window))))
+
+(defun my/next-window ()
+  "Go to the next non-minibuffer window."
+  (interactive)
+  (my/other-window 1))
+
+(defun my/previous-window ()
+  "Go to the next non-minibuffer window."
+  (interactive)
+  (my/other-window -1))
