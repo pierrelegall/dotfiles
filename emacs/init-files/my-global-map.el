@@ -4,7 +4,7 @@
 
 (defvar my/global-map (make-keymap) "my global map")
 (define-minor-mode my/global-map-mode "my global map" :keymap my/global-map)
-(setq-default my/global-map-mode 1)
+(setq-default my/global-map-mode t)
 
 ;; ** Definition
 
@@ -24,8 +24,11 @@
 
   (define-key map (kbd "C-t") 'transpose-chars)
   (define-key map (kbd "C-S-t") 'transpose-words)
-  (define-key map (kbd "C-<") 'my/move-line-or-region-above)
-  (define-key map (kbd "C->") 'my/move-line-or-region-below)
+  (define-key map (kbd "C-<prior>") 'my/move-line-or-region-above)
+  (define-key map (kbd "C-<next>") 'my/move-line-or-region-below)
+
+  (define-key map (kbd "C-<") 'beginning-of-buffer)
+  (define-key map (kbd "C->") 'end-of-buffer)
 
   (define-key map (kbd "C-x r") 'rectangle-mark-mode)
   (define-key map (kbd "<mouse-2>") 'rectangle-mark-mode)
@@ -33,7 +36,8 @@
   (define-key map (kbd "C-x C-r") 'my/ido-recentf-open)
 
   (define-key map (kbd "C-w") 'my/copy-region-or-line)
-  (define-key map (kbd "C-S-w") 'my/kill-region-or-line)
+  (define-key map (kbd "C-S-w") 'kill-region)
+  (define-key map (kbd "C-k") 'my/kill-line-or-region)
   (define-key map (kbd "C-S-y") 'yank-pop)
   (define-key map (kbd "C-x C-k") 'my/kill-this-buffer)
   (define-key map (kbd "C-q") 'my/kill-this-buffer)
@@ -51,9 +55,7 @@
 
   (define-key map (kbd "C-v") 'my/scroll-up)
   (define-key map (kbd "M-v") 'my/scroll-down)
-  (define-key map (kbd "C-l") 'my/scroll-down)
-
-  (define-key map (kbd "C-j") 'recenter-top-bottom)
+  (define-key map (kbd "C-S-v") 'my/scroll-down)
 
   (define-key map (kbd "C-;") 'smex)
   (define-key map (kbd "C-:") 'smex-major-mode-commands)
@@ -71,8 +73,6 @@
 
   (define-key map (kbd "C-S-b") 'backward-word)
   (define-key map (kbd "C-S-f") 'forward-word)
-  (define-key map (kbd "C-S-l") 'beginning-of-buffer)
-  (define-key map (kbd "C-S-v") 'end-of-buffer)
 
   (define-key map (kbd "C-S-g") 'goto-line)
 
@@ -82,7 +82,7 @@
   (define-key map (kbd "C-?") 'redo)
   (define-key map (kbd "C-<f12>") 'revert-buffer)
 
-  (define-key map (kbd "C-o") 'other-window)
+  (define-key map (kbd "C-o") 'my/next-window)
   (define-key map (kbd "C-S-o") 'my/previous-window)
   (define-key map (kbd "C-x o") 'my/switch-to-minibuffer)
 
