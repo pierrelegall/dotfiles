@@ -227,6 +227,11 @@ if a region currently selected."
     (browse-url-generic (concat website "/" type "/" (url-hexify-string word))))
   (message "Opened in your web browser."))
 
+(defun my/relative-load-file (file-name)
+  "Load file relatively. The base directory is the current file directory."
+  (load-file (concat
+              (file-name-directory (or load-file-name buffer-file-name))
+              file-name)))
 
 (defun my/kill-line-or-region (beg end &optional region)
   "Kill line or the region if active."
