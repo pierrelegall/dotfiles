@@ -12,10 +12,10 @@
 
 (my/package-initialize)
 
-;; ** Functions initialization
+;; ** My functions initialization
 
 (defvar my/functions-file
-  "~/.config/emacs/functions.el"
+  "~/.config/emacs/my-functions.el"
   "My functions file.")
 
 (defun my/load-functions ()
