@@ -6,14 +6,14 @@
 // * Functions
 
 function isRegionActive() {
-  let selection = document.commandDispatcher.focusedElement.ksMarked
+  const selection = document.commandDispatcher.focusedElement.ksMarked
   if (selection == null) return false
   else return true
 }
 
 // * My commands
 
-let myCommand = {
+const myCommand = {
   copyRegion: function (event) {
     goDoCommand("cmd_copy")
     command.resetMark(event)
@@ -51,7 +51,7 @@ key.negativeArgument3Key = "M--"
 hook.addToHook("KeyBoardQuit", function (event) {
   if (key.currentKeySequence.length) return
   command.closeFindBar()
-  let marked = command.marked(event)
+  const marked = command.marked(event)
   if (util.isCaretEnabled()) {
     if (marked) {
       command.resetMark(event)
