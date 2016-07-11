@@ -1,5 +1,9 @@
 ;; * Face
 
+;; ** Line wrap
+
+(setq truncate-partial-width-windows t)
+
 ;; ** Bars
 
 (menu-bar-mode -1)
