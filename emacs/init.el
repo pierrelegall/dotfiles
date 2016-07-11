@@ -31,18 +31,18 @@
 
 ;; ** Init files loading
 
-(defvar my/init-files-directory
-  "~/.config/emacs/init-files"
+(defvar my/packages-init-files-directory
+  "~/.config/emacs/packages-init"
   "Directory of the initialization files.")
 
-(defvar my/init-files
-  (directory-files my/init-files-directory t "^[^.]")
+(defvar my/packages-init-files
+  (directory-files my/packages-init-files-directory t "^[^.]")
   "List of the initialization files.")
 
-(defun my/load-init-files ()
+(defun my/load-packages-init-files ()
   "Load all the initialization files."
-  (mapcar (lambda (init-file)
-            (load-file init-file))
-          my/init-files))
+  (mapcar (lambda (package-init-file)
+            (load-file package-init-file))
+          my/packages-init-files))
 
-(my/load-init-files)
+(my/load-packages-init-files)
