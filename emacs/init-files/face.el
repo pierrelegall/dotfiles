@@ -14,7 +14,6 @@
 
 ;; ** Fringe
 
-(set-fringe-mode '(1 . 1))
 (setq-default indicate-empty-lines t)
 
 ;; ** Mode line
