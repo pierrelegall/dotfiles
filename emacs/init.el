@@ -2,15 +2,8 @@
 
 ;; ** Package initialization
 
-(defvar my/package-initialize-file
-  "~/.config/emacs/package-initialize.el"
-  "Package initialization file.")
-
-(defun my/package-initialize ()
-  "Load my/package-initialize-file."
-  (load-file my/package-initialize-file))
-
-(my/package-initialize)
+(package-initialize)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
 ;; ** My functions initialization
 
