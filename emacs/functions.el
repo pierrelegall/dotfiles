@@ -228,6 +228,13 @@ if a region currently selected."
   (message "Opened in your web browser."))
 
 
+(defun my/kill-line-or-region (beg end &optional region)
+  "Kill line or the region if active."
+  (interactive (list (mark) (point) 'region))
+  (if (region-active-p)
+      (kill-region beg end region)
+    (kill-line)))
+
 (defun my/other-window (jump)
   "Go to another window skipping the minibuffer."
   (interactive "p")
