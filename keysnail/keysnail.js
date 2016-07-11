@@ -1,24 +1,52 @@
-//////// KeySnail Init File
+// KeySnail init file
 
-// Put all your code except special key, set*key, hook, blacklist.
 // {{%PRESERVE%
+// Put all your code except special key, set*key, hook, blacklist.
+
+// * Functions
+
+function isRegionActive() {
+  let selection = document.commandDispatcher.focusedElement.ksMarked
+  if (selection === null) return false
+  else return true
+}
+
+// * My commands
+
+let myCommand = {
+  copyRegion: function (event) {
+    goDoCommand("cmd_copy")
+    command.resetMark(event)
+  },
+
+  killRegion: function (event) {
+    goDoCommand("cmd_copy")
+    goDoCommand("cmd_delete")
+    command.resetMark(event)
+  },
+
+  killLineOrRegion: function (event) {
+    if (isRegionActive()) myCommand.killRegion(event)
+    else command.killLine(event)
+  }
+}
 
 // }}%PRESERVE%
 
-//// Special key settings
+// * Special key settings
 
 key.quitKey              = "C-g"
 key.helpKey              = "<f1>"
-key.escapeKey            = "C-x q"
+key.escapeKey            = "C-Q"
 key.macroStartKey        = "<f3>"
 key.macroEndKey          = "<f4>"
 key.suspendKey           = "<f2>"
 key.universalArgumentKey = "C-u"
-key.negativeArgument1Key = "C--"
+key.negativeArgument1Key = "C-U"
 key.negativeArgument2Key = "C-M--"
 key.negativeArgument3Key = "M--"
 
-//// Hooks
+// Hooks
 
 hook.addToHook("KeyBoardQuit", function (event) {
   if (key.currentKeySequence.length) return
@@ -40,27 +68,29 @@ hook.addToHook("KeyBoardQuit", function (event) {
   }
 })
 
-//// Key bindings
+// * Key bindings
 
-key.setGlobalKey("C-i", (event) => {
-  key.generateKey(event.originalTarget, KeyEvent.DOM_VK_TAB, true)
-}, "Emulate a the tabulation key", true)
+// ** Global bindings
 
-key.setGlobalKey("C-m", (event) => {
-  key.generateKey(event.originalTarget, KeyEvent.DOM_VK_RETURN, true)
-}, "Generate the return key code", false)
-
-key.setGlobalKey("C-M-r", (event) => {
+key.setGlobalKey(["<f12>"], (event) => {
   userscript.reload()
 }, "Reload the initialization file", true)
 
-key.setGlobalKey("M-x", (event, arg) => {
+key.setGlobalKey([["M-x"], ["C-;"]], (event) => {
+  command.interpreter()
+}, "Command interpreter", true)
+
+key.setGlobalKey(["C-:"], (event, arg) => {
   ext.select(arg, event)
 }, "List exts and execute selected one", true)
 
-key.setGlobalKey("M-:", (event) => {
-  command.interpreter()
-}, "Command interpreter", true)
+key.setGlobalKey(["C-i"], (event) => {
+  key.generateKey(event.originalTarget, KeyEvent.DOM_VK_TAB, true)
+}, "Emulate a the tabulation key", true)
+
+key.setGlobalKey(["C-m"], (event) => {
+  key.generateKey(event.originalTarget, KeyEvent.DOM_VK_RETURN, true)
+}, "Generate the return key code", false)
 
 key.setGlobalKey(["<f1>", "b"], (event) => {
   key.listKeyBindings()
@@ -70,11 +100,11 @@ key.setGlobalKey(["<f1>", "F"], (event) => {
   openHelpLink("firefox-help")
 }, "Display Firefox help", false)
 
-key.setGlobalKey(["C-x", "l"], (event) => {
+key.setGlobalKey(["C-l"], (event) => {
   command.focusToById("urlbar")
 }, "Focus to the location bar", true)
 
-key.setGlobalKey(["C-x", "g"], (event) => {
+key.setGlobalKey(["C-x", "s"], (event) => {
   command.focusToById("searchbar")
 }, "Focus to the search bar", true)
 
@@ -82,61 +112,41 @@ key.setGlobalKey(["C-x", "t"], (event) => {
   command.focusElement(command.elementsRetrieverTextarea, 0)
 }, "Focus to the first textarea", true)
 
-key.setGlobalKey(["C-x", "s"], (event) => {
+key.setGlobalKey(["C-x", "b"], (event) => {
   command.focusElement(command.elementsRetrieverButton, 0)
 }, "Focus to the first button", true)
 
-key.setGlobalKey([["M-w"], ["C-w"], ["C-W"]], (event) => {
+key.setGlobalKey(["C-w"], (event) => {
   command.copyRegion(event)
 }, "Copy selected text", true)
 
-key.setGlobalKey("C-s", (event) => {
+key.setGlobalKey(["C-s"], (event) => {
   command.iSearchForwardKs(event)
 }, "Emacs like incremental search forward", true)
 
-key.setGlobalKey("C-r", (event) => {
+key.setGlobalKey(["C-r"], (event) => {
   command.iSearchBackwardKs(event)
 }, "Emacs like incremental search backward", true)
 
-key.setGlobalKey([["C-q"], ["C-x", "k"], ["C-x", "C-k"]], (event) => {
+key.setGlobalKey([["C-q"], ["C-x", "C-k"]], (event) => {
   BrowserCloseTabOrWindow()
 }, "Close tab / window", false)
 
-key.setGlobalKey(["C-x", "C-c"], (event) => {
+key.setGlobalKey([["C-Q"], ["C-x", "C-c"]], (event) => {
   closeWindow(true)
 }, "Close the window", false)
 
-key.setGlobalKey(["C-c", "u"], (event) => {
-  undoCloseTab()
-}, "Undo closed tab", false)
-
-key.setGlobalKey(["C-x", "n"], (event) => {
-  OpenBrowserWindow()
-}, "Open new window", false)
-
-key.setGlobalKey("C-o", (event) => {
+key.setGlobalKey([["C-o"], ["C-x", "o"]], (event) => {
   getBrowser().mTabContainer.advanceSelectedTab(1, true)
 }, "Select next tab", false)
 
-key.setGlobalKey("C-O", (event) => {
+key.setGlobalKey([["C-O"], ["C-x", "o"]], (event) => {
   getBrowser().mTabContainer.advanceSelectedTab(-1, true)
 }, "Select previous tab", false)
 
-key.setGlobalKey(["C-x", "C-c"], (event) => {
-  goQuitApplication()
-}, "Exit Firefox", true)
-
-key.setGlobalKey(["C-x", "o"], (event, arg) => {
-  command.focusOtherFrame(arg)
-}, "Select next frame", false)
-
-key.setGlobalKey(["C-x", "1"], (event) => {
-  window.loadURI(event.target.ownerDocument.location.href)
-}, "Show current frame only", true)
-
 key.setGlobalKey(["C-x", "C-f"], (event) => {
   BrowserOpenFileWindow()
-}, "Open the local file", true)
+}, "Open a local file", true)
 
 key.setGlobalKey(["C-x", "C-s"], (event) => {
   saveDocument(window.content.document)
@@ -144,11 +154,13 @@ key.setGlobalKey(["C-x", "C-s"], (event) => {
 
 key.setGlobalKey(["C-c", "C-c", "C-v"], (event) => {
   toJavaScriptConsole()
-}, "Display JavaScript console", true)
+}, "Display JS console", true)
 
 key.setGlobalKey(["C-c", "C-c", "C-c"], (event) => {
   command.clearConsole()
-}, "Clear Javascript console", true)
+}, "Clear JS console", true)
+
+// ** Edit bindings
 
 key.setEditKey(["C-x", "h"], (event) => {
   command.selectAll(event)
@@ -158,29 +170,29 @@ key.setEditKey([["C-SPC"], ["C-@"]], (event) => {
   command.setMark(event)
 }, "Set the mark", true)
 
-key.setEditKey([["C-x", "u"], ["C-_"], ["C-/"]], (event) => {
+key.setEditKey(["C-/"], (event) => {
   display.echoStatusBar("Undo!", 2000)
   goDoCommand("cmd_undo")
 }, "Undo", false)
 
-key.setEditKey("C-\\", (event) => {
+key.setEditKey(["C-?"], (event) => {
   display.echoStatusBar("Redo!", 2000)
   goDoCommand("cmd_redo")
 }, "Redo", false)
 
-key.setEditKey("C-a", (event) => {
+key.setEditKey(["C-a"], (event) => {
   command.beginLine(event)
 }, "Beginning of the line", false)
 
-key.setEditKey("C-e", (event) => {
+key.setEditKey(["C-e"], (event) => {
   command.endLine(event)
 }, "End of the line", false)
 
-key.setEditKey("C-f", (event) => {
+key.setEditKey(["C-f"], (event) => {
   command.nextChar(event)
 }, "Forward char", false)
 
-key.setEditKey("C-b", (event) => {
+key.setEditKey(["C-b"], (event) => {
   command.previousChar(event)
 }, "Backward char", false)
 
@@ -192,15 +204,15 @@ key.setEditKey([["M-b"], ["C-B"]], (event) => {
   command.backwardWord(event)
 }, "Previous word", false)
 
-key.setEditKey("C-n", (event) => {
+key.setEditKey(["C-n"], (event) => {
   command.nextLine(event)
 }, "Next line", false)
 
-key.setEditKey("C-p", (event) => {
+key.setEditKey(["C-p"], (event) => {
   command.previousLine(event)
 }, "Previous line", false)
 
-key.setEditKey("C-v", (event) => {
+key.setEditKey(["C-v"], (event) => {
   command.pageDown(event)
 }, "Page down", false)
 
@@ -216,11 +228,11 @@ key.setEditKey([["M->"], ["C->"]], (event) => {
   command.moveBottom(event)
 }, "End of the text area", false)
 
-key.setEditKey("C-d", (event) => {
+key.setEditKey(["C-d"], (event) => {
   goDoCommand("cmd_deleteCharForward")
 }, "Delete forward char", false)
 
-key.setEditKey("C-h", (event) => {
+key.setEditKey(["C-h"], (event) => {
   goDoCommand("cmd_deleteCharBackward")
 }, "Delete backward char", false)
 
@@ -232,34 +244,31 @@ key.setEditKey([["M-h"], ["C-H"], ["C-<backspace>"]], (event) => {
   command.deleteBackwardWord(event)
 }, "Delete backward word", false)
 
-key.setEditKey("M-u", (event, arg) => {
+key.setEditKey(["M-u"], (event, arg) => {
   command.wordCommand(event, arg, command.upcaseForwardWord, command.upcaseBackwardWord)
 }, "Convert following word to upper case", false)
 
-key.setEditKey("M-l", (event, arg) => {
+key.setEditKey(["M-l"], (event, arg) => {
   command.wordCommand(event, arg, command.downcaseForwardWord, command.downcaseBackwardWord)
 }, "Convert following word to lower case", false)
 
-key.setEditKey("M-c", (event, arg) => {
+key.setEditKey(["M-c"], (event, arg) => {
   command.wordCommand(event, arg, command.capitalizeForwardWord, command.capitalizeBackwardWord)
 }, "Capitalize the following word", false)
 
-key.setEditKey("C-k", (event) => {
-  command.killLine(event)
-}, "Kill the rest of the line", false)
-
-key.setEditKey("C-w", (event) => {
-  goDoCommand("cmd_copy")
-  command.resetMark(event)
-}, "Cut current region or backward word", true)
+key.setEditKey(["C-w"], (event) => {
+  myCommand.copyRegion(event)
+}, "Copy current region", true)
 
 key.setEditKey(["C-W"], (event) => {
-  goDoCommand("cmd_copy")
-  goDoCommand("cmd_delete")
-  command.resetMark(even)
+  myCommand.killRegion(event)
 }, "Cut current region", true)
 
-key.setEditKey("C-y", command.yank, "Paste (yank)", true)
+key.setEditKey(["C-k"], (event) => {
+  myCommand.killLineOrRegion(event)
+}, "Cut line or region", true)
+
+key.setEditKey(["C-y"], command.yank, "Paste (yank)", true)
 key.setEditKey(["C-Y"], command.yankPop, "Paste pop (yank pop)", true)
 
 key.setEditKey(["C-x", "r", "d"], (event, arg) => {
@@ -284,59 +293,57 @@ key.setEditKey(["C-x", "r", "y"], (event) => {
   command.yankRectangle(event.originalTarget, command.kill.buffer)
 }, "Yank the last killed rectangle with upper left corner at point", true)
 
-key.setEditKey("M-n", (event) => {
+key.setEditKey(["M-n"], (event) => {
   command.walkInputElement(command.elementsRetrieverTextarea, true, true)
 }, "Focus to the next text area", false)
 
-key.setEditKey("M-p", (event) => {
+key.setEditKey(["M-p"], (event) => {
   command.walkInputElement(command.elementsRetrieverTextarea, false, true)
 }, "Focus to the previous text area", false)
+
+// ** View bindings
 
 key.setViewKey(["q"], (event) => {
   BrowserCloseTabOrWindow()
 }, "Close tab / window", false)
 
-key.setViewKey([["C-n"], ["n"]], (event) => {
+key.setViewKey(["l"], (event) => {
+  command.focusToById("urlbar")
+}, "Focus to the location bar", true)
+
+key.setViewKey(["n"], (event) => {
   key.generateKey(event.originalTarget, KeyEvent.DOM_VK_DOWN, true)
 }, "Scroll line down", false)
 
-key.setViewKey([["C-p"], ["p"]], (event) => {
+key.setViewKey(["p"], (event) => {
   key.generateKey(event.originalTarget, KeyEvent.DOM_VK_UP, true)
 }, "Scroll line up", false)
 
-// key.setViewKey([["C-f"], ["."]], (event) => {
-//   key.generateKey(event.originalTarget, KeyEvent.DOM_VK_RIGHT, true)
-// }, "Scroll right", false)
-
-// key.setViewKey([["C-b"], [","]], (event) => {
-//   key.generateKey(event.originalTarget, KeyEvent.DOM_VK_LEFT, true)
-// }, "Scroll left", false)
-
-key.setViewKey([["C-v"], ["l"]], (event) => {
+key.setViewKey(["v"], (event) => {
   goDoCommand("cmd_scrollPageDown")
 }, "Scroll page down", false)
 
-key.setViewKey([["M-v"], ["C-l"], ["l"]], (event) => {
+key.setViewKey(["V"], (event) => {
   goDoCommand("cmd_scrollPageUp")
 }, "Scroll page up", false)
 
-key.setViewKey([["C-L"], ["g"]], (event) => {
+key.setViewKey(["<"], (event) => {
   goDoCommand("cmd_scrollTop")
 }, "Scroll to the top of the page", true)
 
-key.setViewKey([["C-V"], ["G"]], (event) => {
+key.setViewKey([">"], (event) => {
   goDoCommand("cmd_scrollBottom")
 }, "Scroll to the bottom of the page", true)
 
-key.setViewKey("l", (event) => {
-  getBrowser().TmabContainer.advanceSelectedTab(1, true)
-}, "Select next tab", false)
-
-key.setViewKey("h", (event) => {
+key.setViewKey(["j"], (event) => {
   getBrowser().mTabContainer.advanceSelectedTab(-1, true)
 }, "Select previous tab", false)
 
-key.setViewKey(":", (event, arg) => {
+key.setViewKey(["J"], (event) => {
+  getBrowser().TmabContainer.advanceSelectedTab(1, true)
+}, "Select next tab", false)
+
+key.setViewKey([";"], (event, arg) => {
   shell.input(null, arg)
 }, "List and execute commands", true)
 
@@ -344,166 +351,60 @@ key.setViewKey(["r"], (event) => {
   BrowserReload()
 }, "Reload the page", true)
 
-key.setViewKey([["C-b"], ["b"]], (event) => {
+key.setViewKey(["b"], (event) => {
   BrowserBack()
 }, "Back", false)
 
-key.setViewKey([["C-f"], ["f"]], (event) => {
+key.setViewKey(["f"], (event) => {
   BrowserForward()
 }, "Forward", false)
 
-key.setViewKey(["C-x", "h"], (event) => {
-  goDoCommand("cmd_selectAll")
-}, "Select all", true)
+key.setViewKey(["C-r"], (event) => {
+  command.iSearchBackward(event)
+}, "Emacs like incremental search backward", true)
 
-key.setViewKey("M-p", (event) => {
-  command.walkInputElement(command.elementsRetrieverButton, true, true)
-}, "Focus to the next button", false)
+key.setViewKey(["C-s"], (event) => {
+  command.iSearchForward(event)
+}, "Emacs like incremental search forward", true)
 
-key.setViewKey("M-n", (event) => {
-  command.walkInputElement(command.elementsRetrieverButton, false, true)
-}, "Focus to the previous button", false)
+// * Plugins
 
-key.setCaretKey([["C-a"], ["^"]], (event) => {
-  event.target.ksMarked ? goDoCommand("cmd_selectBeginLine") : goDoCommand("cmd_beginLine")
-}, "Move caret to the beginning of the line", false)
-
-key.setCaretKey([["C-e"], ["$"]], (event) => {
-  event.target.ksMarked ? goDoCommand("cmd_selectEndLine") : goDoCommand("cmd_endLine")
-}, "Move caret to the end of the line", false)
-
-key.setCaretKey([["C-n"], ["j"]], (event) => {
-  event.target.ksMarked ? goDoCommand("cmd_selectLineNext") : goDoCommand("cmd_scrollLineDown")
-}, "Move caret to the next line", false)
-
-key.setCaretKey([["C-p"], ["k"]], (event) => {
-  event.target.ksMarked ? goDoCommand("cmd_selectLinePrevious") : goDoCommand("cmd_scrollLineUp")
-}, "Move caret to the previous line", false)
-
-key.setCaretKey([["C-f"], ["l"]], (event) => {
-  event.target.ksMarked ? goDoCommand("cmd_selectCharNext") : goDoCommand("cmd_scrollRight")
-}, "Move caret to the right", false)
-
-key.setCaretKey([["C-b"], ["h"], ["C-h"]], (event) => {
-  event.target.ksMarked ? goDoCommand("cmd_selectCharPrevious") : goDoCommand("cmd_scrollLeft")
-}, "Move caret to the left", false)
-
-key.setCaretKey([["M-f"], ["w"]], (event) => {
-  event.target.ksMarked ? goDoCommand("cmd_selectWordNext") : goDoCommand("cmd_wordNext")
-}, "Move caret to the right by word", false)
-
-key.setCaretKey([["M-b"], ["W"]], (event) => {
-  event.target.ksMarked ? goDoCommand("cmd_selectWordPrevious") : goDoCommand("cmd_wordPrevious")
-}, "Move caret to the left by word", false)
-
-key.setCaretKey([["C-v"], ["SPC"]], (event) => {
-  event.target.ksMarked ? goDoCommand("cmd_selectPageNext") : goDoCommand("cmd_movePageDown")
-}, "Move caret down by page", false)
-
-key.setCaretKey([["C-l"]], (event) => {
-  event.target.ksMarked ? goDoCommand("cmd_selectPagePrevious") : goDoCommand("cmd_movePageUp")
-}, "Move caret up by page", false)
-
-key.setCaretKey([["C-L"], ["g"]], (event) => {
-  event.target.ksMarked ? goDoCommand("cmd_selectTop") : goDoCommand("cmd_scrollTop")
-}, "Move caret to the top of the page", false)
-
-key.setCaretKey([["C-V"], ["G"]], (event) => {
-  event.target.ksMarked ? goDoCommand("cmd_selectEndLine") : goDoCommand("cmd_endLine")
-}, "Move caret to the end of the line", false)
-
-key.setCaretKey("J", (event) => {
-  util.getSelectionController().scrollLine(true)
-}, "Scroll line down", false)
-
-key.setCaretKey("K", (event) => {
-  util.getSelectionController().scrollLine(false)
-}, "Scroll line up", false)
-
-key.setCaretKey(",", (event) => {
-  util.getSelectionController().scrollHorizontal(true)
-  goDoCommand("cmd_scrollLeft")
-}, "Scroll left", false)
-
-key.setCaretKey(".", (event) => {
-  goDoCommand("cmd_scrollRight")
-  util.getSelectionController().scrollHorizontal(false)
-}, "Scroll right", false)
-
-key.setCaretKey("z", (event) => {
-  command.recenter(event)
-}, "Scroll to the cursor position", false)
-
-key.setCaretKey([["C-SPC"], ["C-@"]], (event) => {
-  command.setMark(event)
-}, "Set the mark", true)
-
-key.setCaretKey(":", (event, arg) => {
-  shell.input(null, arg)
-}, "List and execute commands", true)
-
-key.setCaretKey("r", (event) => {
-  BrowserReload()
-}, "Reload the page", true)
-
-key.setCaretKey("B", (event) => {
-  BrowserBack()
-}, "Back", false)
-
-key.setCaretKey("F", (event) => {
-  BrowserForward()
-}, "Forward", false)
-
-key.setCaretKey(["C-x", "h"], (event) => {
-  goDoCommand("cmd_selectAll")
-}, "Select all", true)
-
-key.setCaretKey("M-p", (event) => {
-  command.walkInputElement(command.elementsRetrieverButton, true, true)
-}, "Focus to the next button", false)
-
-key.setCaretKey("M-n", (event) => {
-  command.walkInputElement(command.elementsRetrieverButton, false, true)
-}, "Focus to the previous button", false)
-
-//// Plugins
-
-// HoK
+// ** HoK
 
 hook.addToHook("PluginLoaded", () => {
   if (!plugins.hok) return
+
+  key.setGlobalKey(["C-c", "C-f"], (event, arg) => {
+    ext.exec("hok-start-foreground-mode", arg)
+  }, "Hok - Foreground hint mode", true)
+
+  key.setGlobalKey(["C-c", "C-b"] , (event, arg) => {
+    ext.exec("hok-start-background-mode", arg)
+  }, "HoK - Background hint mode", true)
+
+  key.setGlobalKey(["C-c", "C-y"], (event, arg) => {
+    ext.exec("hok-yank-foreground-mode", arg)
+  }, "HoK - Background hint mode", true)
 
   key.setViewKey(["o"], (event, arg) => {
     ext.exec("hok-start-foreground-mode", arg)
   }, "Hok - Foreground hint mode", true)
 
-  key.setViewKey(["O"] , (event, arg) => {
+  key.setViewKey(["O"], (event, arg) => {
     ext.exec("hok-start-background-mode", arg)
-  }, "HoK - Background hint mode", true)
-
-  key.setGlobalKey(["C-c","C-f"], (event, arg) => {
-    ext.exec("hok-start-foreground-mode", arg)
-  }, "Hok - Foreground hint mode", true)
-
-  key.setGlobalKey(["C-c","C-b"] , (event, arg) => {
-    ext.exec("hok-start-background-mode", arg)
-  }, "HoK - Background hint mode", true)
-
-  key.setGlobalKey(["C-c","C-y"], (event, arg) => {
-    ext.exec("hok-yank-foreground-mode", arg)
   }, "HoK - Background hint mode", true)
 })
 
-// Tanything
+// ** Tanything
 
 hook.addToHook("PluginLoaded", () => {
   // if (!plugins.tanything) return
 
-  key.setGlobalKey([["C-x", "b"], ["C-x", "C-b"]], (event, arg) => {
+  key.setGlobalKey(["C-x", "b"], (event, arg) => {
     ext.exec("tanything", arg)
   }, "Tanything - View all tabs", true)
 
-  key.setViewKey("t", (event, arg) => {
+  key.setViewKey(["t"], (event, arg) => {
     ext.exec("tanything", arg)
   }, "Tanything - View all tabs", true)
 })
