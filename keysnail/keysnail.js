@@ -7,7 +7,7 @@
 
 function isRegionActive() {
   let selection = document.commandDispatcher.focusedElement.ksMarked
-  if (selection === null) return false
+  if (selection == null) return false
   else return true
 }
 
