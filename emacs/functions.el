@@ -118,10 +118,10 @@ When called in the minibuffer, get out of the minibuffer
 using `abort-recursive-edit'."
   (interactive)
   (cond
-   ((menu-bar-non-minibuffer-window-p)
-    (kill-buffer (current-buffer)))
+   ((minibufferp (current-buffer))
+    (abort-recursive-edit))
    (t
-    (abort-recursive-edit))))
+    (kill-buffer (current-buffer)))))
 
 (defun my/kill-this-buffer-and-delete-file ()
   "Kill the current buffer and file it is visiting file."
