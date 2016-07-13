@@ -11,12 +11,6 @@
 (setq org-todo-keywords '((sequence "TODO(t)" "MAYBE(m)" "WAITING(w)" "STARTED(s)"
                                     "|" "DONE(d)" "CANCELED(c)")))
 
-;; ** Map
-
-(let ((map my/global-map))
-  (define-key map (kbd "<M-up>") 'org-move-subtree-up)
-  (define-key map (kbd "<M-down>") 'org-move-subtree-down))
-
 ;; ** Style
 
 (require 'org-bullets)
@@ -70,6 +64,12 @@
 ;;         "pdflatex -interaction nonstopmode -output-directory %o %f"))
 
 (setq org-latex-to-pdf-process (list "latexmk -pdf -bibtex %f"))
+
+;; Keybindings
+
+(let ((map org-mode-map))
+  (define-key map (kbd "<prior>") 'org-move-subtree-up)
+  (define-key map (kbd "<next>") 'org-move-subtree-down))
 
 ;; ** Hooks
 
