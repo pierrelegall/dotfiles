@@ -12,6 +12,8 @@
   (define-key map (kbd "<mouse-3>") 'menu-bar-open)
   (define-key map (kbd "<menu>") 'menu-bar-open)
 
+  (define-key map (kbd "C-x ;") 'shell-command)
+
   (define-key map (kbd "C-S-u") 'negative-argument)
 
   (define-key map (kbd "C-x C-c") 'my/kill-frame)
@@ -57,9 +59,6 @@
   (define-key map (kbd "M-v") 'my/scroll-down)
   (define-key map (kbd "C-S-v") 'my/scroll-down)
 
-  (define-key map (kbd "C-;") 'smex)
-  (define-key map (kbd "C-:") 'smex-major-mode-commands)
-  (define-key map (kbd "C-x ;") 'shell-command)
   (define-key map (kbd "C-`") 'rename-buffer)
 
   (define-key map (kbd "<C-tab>") 'next-buffer)
