@@ -1,7 +1,7 @@
 ;; * Helm
 
 (require 'helm)
-(helm-mode t)
+(helm-mode)
 
 ;; ** Key bindings
 
@@ -12,7 +12,7 @@
   (define-key map (kbd "C-x a") 'helm-apropos))
 
 (let ((map helm-map))
-  (define-key map (kbd "<tab>") 'helm-execute-persistent-action)
+  (define-key map (kbd "C-i") 'helm-execute-persistent-action)
   (define-key map (kbd "C-h") (kbd "<backspace>"))
   (define-key map (kbd "C-S-h") (kbd "C-<backspace>"))
   (define-key map (kbd "C-v") 'helm-next-page)
