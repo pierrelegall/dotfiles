@@ -71,6 +71,10 @@
 
 ;; Maps
 
+(let ((map my/global-map))
+  (define-key map (kbd "C-c a") 'org-agenda)
+  (define-key map (kbd "C-c l") 'org-store-link))
+
 (let ((map org-mode-map))
   (define-key map (kbd "<prior>") 'org-move-subtree-up)
   (define-key map (kbd "<next>") 'org-move-subtree-down))

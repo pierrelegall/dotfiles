@@ -89,9 +89,6 @@
   (define-key map (kbd "C-S-p") 'backward-paragraph)
   (define-key map (kbd "C-S-n") 'forward-paragraph)
 
-  (define-key map (kbd "C-c a") 'org-agenda)
-  (define-key map (kbd "C-c l") 'org-store-link)
-
   (define-key map (kbd "C-<f11>") 'diff-hl-mode)
 
   (define-key map (kbd "C-c s") 'magit-status)
