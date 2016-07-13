@@ -52,6 +52,8 @@
    ;;(sed . t)
    ;;(shell . t))
 
+;; ** Ditaa
+
 (setq org-ditaa-jar-path "/usr/bin/ditaa")
 (setq org-ditaa-jar-options "")
 
@@ -67,7 +69,7 @@
 
 (setq org-latex-to-pdf-process (list "latexmk -pdf -bibtex %f"))
 
-;; Keybindings
+;; Maps
 
 (let ((map org-mode-map))
   (define-key map (kbd "<prior>") 'org-move-subtree-up)
