@@ -87,11 +87,6 @@
 
   (define-key map (kbd "C-<f11>") 'diff-hl-mode)
 
-  (define-key map (kbd "C-c s") 'magit-status)
-  (define-key map (kbd "C-x g s") 'magit-status)
-  (define-key map (kbd "C-x g d") 'magit-diff-buffer-file)
-  (define-key map (kbd "C-x g l") 'magit-log-all)
-
   (define-key map (kbd "ESC <f1>") 'emms-next)
   (define-key map (kbd "ESC ESC <f1>") 'emms-previous)
   (define-key map (kbd "ESC <f2>") 'emms-play-file)
