@@ -64,9 +64,6 @@
   (define-key map (kbd "<C-tab>") 'next-buffer)
   (define-key map (kbd "<C-iso-lefttab>") 'previous-buffer)
 
-  (define-key map (kbd "C-x t") 'multi-term-next)
-  (define-key map (kbd "C-x C-t") 'multi-term)
-
   (define-key map (kbd "C-,") 'er/expand-region)
   (define-key map (kbd "C-'") 'my/toggle-letter-case)
 
