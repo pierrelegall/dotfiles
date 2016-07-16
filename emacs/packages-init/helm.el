@@ -17,3 +17,7 @@
   (define-key map (kbd "C-S-h") (kbd "C-<backspace>"))
   (define-key map (kbd "C-v") 'helm-next-page)
   (define-key map (kbd "C-S-v") 'helm-previous-page))
+
+(let ((map helm-find-files-map))
+  (define-key map (kbd "C-h") 'helm-ff-delete-char-backward)
+  (define-key map (kbd "C-S-h") 'backward-kill-word))
