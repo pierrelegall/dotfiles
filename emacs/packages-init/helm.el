@@ -3,7 +3,7 @@
 (require 'helm)
 (helm-mode)
 
-;; ** Key bindings
+;; ** Maps
 
 (let ((map my/global-map))
   (define-key map (kbd "C-;") 'helm-M-x)

@@ -69,7 +69,7 @@
 
 (setq org-latex-to-pdf-process (list "latexmk -pdf -bibtex %f"))
 
-;; Maps
+;; ** Maps
 
 (let ((map my/global-map))
   (define-key map (kbd "C-c a") 'org-agenda)
