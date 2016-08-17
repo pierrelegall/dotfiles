@@ -64,7 +64,7 @@ xkb_symbols "basic" {
     key <LSGT> { [        minus,   underscore,          endash,           emdash ] };
     key <SPCE> { [        space,        space,      underscore,     nobreakspace ] };
 
-		replace key <CAPS> { [ Shift_L ] };
+    replace key <CAPS> { [ Shift_L ] };
 
     include "level3(ralt_switch)"
 };
