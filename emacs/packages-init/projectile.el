@@ -3,6 +3,10 @@
 (require 'projectile)
 (projectile-global-mode)
 
+;; ** Actions
+
+(setq projectile-switch-project-action 'projectile-dired)
+
 ;; ** Keybindings
 
 (let ((map projectile-mode-map))
