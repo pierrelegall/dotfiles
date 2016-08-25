@@ -35,3 +35,13 @@
   "Clear the eshell buffer."
   (let ((inhibit-read-only t))
     (erase-buffer)))
+
+(defun pcomplete/sudo ()
+  "Make the sudo command completion compatible."
+  (let ((prec (pcomplete-arg 'last -1)))
+    (cond ((string= "sudo" prec)
+           (while (pcomplete-here*
+                   (funcall pcomplete-command-completion-function)
+                   (pcomplete-arg 'last) t))))))
+
+(defun eshell/top ()
