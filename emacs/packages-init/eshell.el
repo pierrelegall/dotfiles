@@ -53,3 +53,9 @@
 (let ((map my/global-map))
   (define-key map (kbd "C-:") 'eshell-command))
 
+;; ** Hooks
+
+(add-hook 'eshell-mode-hook
+          (lambda ()
+            (eshell-cmpl-initialize)
+            (define-key eshell-mode-map [remap eshell-pcomplete] 'helm-esh-pcomplete)))
