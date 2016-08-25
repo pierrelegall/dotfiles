@@ -48,3 +48,8 @@
   "Use helm-top instead of top with eshell."
   (helm-top))
 
+;; ** Maps
+
+(let ((map my/global-map))
+  (define-key map (kbd "C-:") 'eshell-command))
+
