@@ -45,3 +45,6 @@
                    (pcomplete-arg 'last) t))))))
 
 (defun eshell/top ()
+  "Use helm-top instead of top with eshell."
+  (helm-top))
+
