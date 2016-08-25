@@ -27,10 +27,10 @@
 
 ;; ** Theme
 
-(load-theme 'grandshell t)
+(load-theme 'spacemacs-dark t)
 (load-file (concat
             (file-name-directory (or load-file-name buffer-file-name))
-            ".grandshell.el"))
+            ".spacemacs-dark-theme.el"))
 
 ;; ** Font
 
