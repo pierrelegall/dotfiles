@@ -27,7 +27,7 @@ alias grep='grep --color=auto'
 alias e='emacsclient --no-wait'
 alias ecf='emacsclient --no-wait --create-frame'
 alias et='emacsclient --no-wait --create-frame --eval "(multi-term)"'
-alias enw='emacsclient --no-window-system'
+alias enw='emacsclient --nw'
 
 alias start-emacs='emacs --daemon'
 alias kill-emacs='emacsclient --eval "(kill-emacs)"'
