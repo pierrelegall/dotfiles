@@ -3,6 +3,8 @@
 (setq spacemacs-theme-org-height nil)
 (setq spacemacs-theme-comment-bg nil)
 
+(load-theme 'spacemacs-dark t)
+
 (custom-theme-set-faces
  `spacemacs-dark
  `(cursor         ((t (:foreground nil       :background "#dd2222"))))

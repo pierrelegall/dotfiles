@@ -27,7 +27,6 @@
 
 ;; ** Theme
 
-(load-theme 'spacemacs-dark t)
 (load-file (concat
             (file-name-directory (or load-file-name buffer-file-name))
             ".spacemacs-dark-theme.el"))
