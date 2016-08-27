@@ -2,13 +2,14 @@
 
 ;; ** Agenda
 
-(setq org-agenda-files '("~/Documents/Organizer.org"))
+(setq org-agenda-files '("~/Documents/Tasks.org"))
 (setq org-agenda-todo-ignore-scheduled t)
 (setq org-agenda-todo-list-sublevels nil)
 
 ;; ** Todo
 
-(setq org-todo-keywords '((sequence "TODO(t)" "MAYBE(m)" "WAITING(w)" "STARTED(s)"
+(setq org-todo-keywords '((sequence "STARTED(s)" "WAITING(w)"
+                                    "TODO(t)" "MAYBE(m)"
                                     "|" "DONE(d)" "CANCELED(c)")))
 
 ;; ** Style
