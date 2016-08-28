@@ -8,6 +8,7 @@
 
 ;; ** Todo
 
+(setq org-log-done t)
 (setq org-todo-keywords '((sequence "STARTED(s)" "WAITING(w)"
                                     "TODO(t)" "MAYBE(m)"
                                     "|" "DONE(d)" "CANCELED(c)")))
