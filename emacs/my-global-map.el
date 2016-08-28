@@ -93,4 +93,4 @@
 
   (define-key map (kbd "C-\\") 'my/translate)
 
-  (define-key map (kbd "C-<f1>") 'my/show-absolute-buffer-file-path))
+  (define-key map (kbd "C-<f1>") 'my/show-buffer-visiting-file))

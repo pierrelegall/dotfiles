@@ -76,7 +76,7 @@
      ((string= "all caps" (get this-command 'state))
       (downcase-region p1 p2) (put this-command 'state "all lower")))))
 
-(defun my/show-absolute-buffer-file-path ()
+(defun my/show-buffer-visiting-file ()
   "Show the absolute path of the current buffer file in the minibuffer."
   (interactive)
   (if (buffer-file-name)
