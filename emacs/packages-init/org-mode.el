@@ -5,6 +5,11 @@
 (setq org-agenda-files '("~/Documents/Tasks.org"))
 (setq org-agenda-todo-ignore-scheduled t)
 (setq org-agenda-todo-list-sublevels nil)
+(setq org-agenda-sorting-strategy
+      '((agenda habit-down time-up priority-down category-keep)
+        (todo todo-state-up priority-down category-keep)
+        (tags priority-down category-keep)
+        (search category-keep)))
 
 ;; ** Todo
 
