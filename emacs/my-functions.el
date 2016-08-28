@@ -79,7 +79,11 @@
 (defun my/show-absolute-buffer-file-path ()
   "Show the absolute path of the current buffer file in the minibuffer."
   (interactive)
-  (message (buffer-file-name)))
+  (if (buffer-file-name)
+      (message (concat (buffer-name) " is visiting: "
+                       (propertize (abbreviate-file-name (buffer-file-name))
+                                   'face '(:foreground "yellow"))))
+    (message (concat (buffer-name) " is not linked to a file."))))
 
 (defun my/yank-absolute-buffer-file-path ()
   "Yank the absolute path of the current buffer file."
