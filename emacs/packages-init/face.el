@@ -27,9 +27,7 @@
 
 ;; ** Theme
 
-(load-file (concat
-            (file-name-directory (or load-file-name buffer-file-name))
-            ".spacemacs-dark-theme.el"))
+(my/load-file-relative ".spacemacs-dark-theme.el")
 
 ;; ** Font
 
