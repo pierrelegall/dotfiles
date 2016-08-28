@@ -227,7 +227,7 @@ if a region currently selected."
     (browse-url-generic (concat website "/" type "/" (url-hexify-string word))))
   (message "Opened in your web browser."))
 
-(defun my/relative-load-file (file-name)
+(defun my/load-file-relative (file-name)
   "Load file relatively. The base directory is the current file directory."
   (load-file (concat
               (file-name-directory (or load-file-name buffer-file-name))
