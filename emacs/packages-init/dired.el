@@ -9,7 +9,9 @@
 ;; ** Maps
 
 (let ((map dired-mode-map))
-  (define-key map (kbd "h") 'dired-omit-mode))
+  (define-key map (kbd "h") 'dired-omit-mode)
+  (define-key map (kbd "P") 'dired-up-directory)
+  (define-key map (kbd "b") 'dired-up-directory))
 
 ;; ** Hooks
 
