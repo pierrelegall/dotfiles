@@ -16,3 +16,7 @@
 (spaceline-toggle-version-control-on)
 ;;(spaceline-toggle-projectile-root-on) ; doesn't work
 ;;(spaceline-toggle-flycheck-warning-on) ; doesn't work
+
+;; Anzu case
+
+(setq anzu-cons-mode-line-p nil)
