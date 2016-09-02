@@ -3,8 +3,7 @@
 ;; ** Saving hook
 
 (add-hook 'write-file-hooks
-  (lambda ()
-    (delete-trailing-whitespace)))
+          'delete-trailing-whitespace)
 
 ;; ** C
 
