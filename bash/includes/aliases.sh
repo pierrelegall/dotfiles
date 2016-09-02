@@ -29,9 +29,9 @@ alias ecf='emacsclient --no-wait --create-frame'
 alias et='emacsclient --no-wait --create-frame --eval "(multi-term)"'
 alias enw='emacsclient --nw'
 
-alias start-emacs='emacs --daemon'
-alias kill-emacs='emacsclient --eval "(kill-emacs)"'
-alias restart-emacs='kill-emacs; start-emacs'
+alias emacsd-start='emacs --daemon'
+alias emacsd-stop='emacsclient --eval "(kill-emacs)"'
+alias emacsd-restart='emacsd-stop; emacsd-start'
 
 alias frkb='setxkbmap fr -option'
 alias kb='setxkbmap fr-colemak -option "ctrl:swap_lalt_lctl, ctrl:rctrl_ralt"'
