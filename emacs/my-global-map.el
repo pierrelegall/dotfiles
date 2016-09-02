@@ -2,9 +2,16 @@
 
 ;; ** Initialization
 
-(defvar my/global-map (make-keymap) "my global map")
-(define-minor-mode my/global-map-mode "my global map" :keymap my/global-map)
-(setq-default my/global-map-mode t)
+(defvar my/global-map
+  (make-keymap)
+  "Personal global key-bindings.")
+
+(define-minor-mode my/global-map-mode
+  "Personal global key-bindings mode."
+  :keymap my/global-map
+  :global t)
+
+(my/global-map-mode t)
 
 ;; ** Definition
 
