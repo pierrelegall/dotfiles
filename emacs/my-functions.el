@@ -263,3 +263,11 @@ if a region currently selected."
   "Go to the next non-minibuffer window."
   (interactive)
   (my/other-window -1))
+
+(defun my/rename-buffer ()
+  "Interative buffer renaming with pre-filled default name."
+  (interactive)
+  (let ((new-name
+         (read-string "Rename buffer: "
+                      (buffer-name))))
+    (rename-buffer new-name)))

@@ -66,7 +66,7 @@
   (define-key map (kbd "M-v") 'my/scroll-down)
   (define-key map (kbd "C-S-v") 'my/scroll-down)
 
-  (define-key map (kbd "C-`") 'rename-buffer)
+  (define-key map (kbd "C-`") 'my/rename-buffer)
 
   (define-key map (kbd "<C-tab>") 'next-buffer)
   (define-key map (kbd "<C-iso-lefttab>") 'previous-buffer)
