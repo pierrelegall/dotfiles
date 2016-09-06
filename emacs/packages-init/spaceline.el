@@ -4,7 +4,7 @@
 
 ;; ** Theme
 
-(spaceline-emacs-theme)
+(spaceline-emacs-theme '(projectile-root))
 
 ;; ** Customization
 
