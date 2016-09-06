@@ -3,6 +3,10 @@
 (require 'helm)
 (helm-mode)
 
+;; ** M-x
+
+(setq helm-M-x-reverse-history t)
+
 ;; ** Maps
 
 (let ((map my/global-map))
