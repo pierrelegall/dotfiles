@@ -4,6 +4,7 @@
 (diff-hl-flydiff-mode)
 
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+(add-hook 'dired-mode-hook 'diff-hl-dired-mode)
 
 ;; ** Map
 
