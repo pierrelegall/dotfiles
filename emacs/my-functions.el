@@ -40,15 +40,13 @@
   (my/move-line-or-region arg))
 
 (defun my/comment-or-uncomment-line-or-region ()
-  "Like `comment-or-uncomment-region' but if there is no region selected, the current line is comment or uncomment."
+  "Like `comment-or-uncomment-region' but if there is no active region, the line is the region."
   (interactive)
   (if (region-active-p)
-      (comment-or-uncomment-region (region-beginning) (region-end))
-    (progn
-      (end-of-line)
-      (let ((end (point)))
-        (beginning-of-line)
-        (comment-or-uncomment-region (point) end)))))
+      (comment-or-uncomment-region (region-beginning)
+                                   (region-end))
+    (comment-or-uncomment-region (line-beginning-position)
+                                 (line-end-position))))
 
 (defun my/toggle-letter-case ()
   "Toggle the letter case of current word or text selection. Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
