@@ -18,7 +18,7 @@
 
 (custom-theme-set-faces
  `spacemacs-dark
- `(cursor         ((t (:foreground nil       :background "#dd2222"))))
+ `(cursor         ((t (:foreground nil       :background "#ff1493"))))
  `(lazy-highlight ((t (:foreground "#33cc33" :background nil))))
  `(isearch        ((t (:foreground "#cc3333" :background nil))))
  `(diff-added                        ((t (:foreground "#55bb55" :background nil))))
