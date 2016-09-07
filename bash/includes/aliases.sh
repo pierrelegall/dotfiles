@@ -38,3 +38,8 @@ alias kb='setxkbmap fr-colemak -option "ctrl:swap_lalt_lctl, ctrl:rctrl_ralt"'
 alias azer='kb'
 alias qwer='kb'
 alias qwfp='kb'
+
+alias eshell-aliases-update="\
+  alias | \
+  sed -E \"s/^alias ([^=]+)='(.*)'$/alias \1 \2 \$*/g; s/'\\\''/'/g;\" \
+  >~/.emacs.d/eshell/alias"
