@@ -32,4 +32,5 @@
  `(magit-diff-hunk-heading           ((t (:foreground nil       :background nil))))
  `(magit-diff-hunk-heading-selection ((t (:foreground nil       :background nil))))
  `(magit-diff-hunk-heading-highlight ((t (:foreground nil       :background nil))))
- `(magit-diff-context-highlight      ((t (:foreground nil       :background nil)))))
+ `(magit-diff-context-highlight      ((t (:foreground nil       :background nil))))
+ `(magit-section-highlight           ((t (:foreground nil       :background nil)))))
