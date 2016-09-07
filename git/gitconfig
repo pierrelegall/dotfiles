@@ -7,6 +7,10 @@
 	diff = true
 	interactive = true
 
+[diff]
+  algorithm = patience
+  compactionHeuristic = false
+
 [alias]
 	ignore-file = "! f() { curl https://www.gitignore.io/api/$@; } ; f"
 	staged = diff --staged
