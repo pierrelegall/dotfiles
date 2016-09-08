@@ -100,4 +100,12 @@
 
   (define-key map (kbd "C-\\") 'my/translate)
 
-  (define-key map (kbd "C-<f1>") 'my/show-buffer-visiting-file))
+  (define-key map (kbd "C-<f1>") 'my/show-buffer-visiting-file)
+
+  (define-key map (kbd "C-S-l") 'toggle-truncate-lines)
+
+  (define-key map (kbd "M-[") 'rotate-window)
+  (define-key map (kbd "M-]") 'rotate-layout))
+
+(global-set-key (kbd "C-h") (kbd "<backspace>"))
+(global-set-key (kbd "C-S-h") (kbd "C-<backspace>"))
