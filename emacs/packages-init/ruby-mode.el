@@ -18,12 +18,6 @@
 
 (define-key robe-mode-map (kbd "C-x C-e") 'my/ruby-send-region-or-line)
 
-;; ** Flymake
-
-(require 'flymake-ruby)
-
-(add-hook 'ruby-mode-hook 'flymake-ruby-load)
-
 ;; ** Company
 
 (eval-after-load 'company '(push 'company-robe company-backends))
