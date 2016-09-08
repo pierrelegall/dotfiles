@@ -14,8 +14,6 @@
 (spaceline-toggle-buffer-encoding-abbrev-off)
 (spaceline-toggle-version-control-off)
 
-;;(spaceline-toggle-flycheck-warning-off) ; doesn't work
-
 ;; Anzu case
 
 (setq anzu-cons-mode-line-p nil)
