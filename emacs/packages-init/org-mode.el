@@ -93,8 +93,6 @@
 
 ;; ** Hooks
 
-(add-hook 'org-mode-hook
-          (lambda ()
-            (visual-line-mode)
-            (org-indent-mode)
-            (org-bullets-mode)))
+(add-hook 'org-mode-hook 'visual-line-mode)
+(add-hook 'org-mode-hook 'org-indent-mode)
+(add-hook 'org-mode-hook 'org-bullets-mode)
