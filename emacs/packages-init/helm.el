@@ -12,7 +12,7 @@
 (let ((map my/global-map))
   (define-key map (kbd "C-;") 'helm-M-x)
   (define-key map (kbd "C-x C-f") 'helm-find-files)
-  (define-key map (kbd "C-x b") 'helm-mini)
+  (define-key map (kbd "C-t") 'helm-mini)
   (define-key map (kbd "C-x a") 'helm-apropos))
 
 (let ((map helm-map))
