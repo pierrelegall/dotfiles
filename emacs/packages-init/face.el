@@ -2,7 +2,7 @@
 
 ;; ** Line wrap
 
-(setq truncate-partial-width-windows t)
+(setq-default truncate-lines t)
 
 ;; ** Bars
 
