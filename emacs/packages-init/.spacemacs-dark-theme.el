@@ -34,3 +34,8 @@
  `(magit-diff-hunk-heading-highlight ((t (:foreground nil       :background nil))))
  `(magit-diff-context-highlight      ((t (:foreground nil       :background nil))))
  `(magit-section-highlight           ((t (:foreground nil       :background nil)))))
+
+;; ** Mode line
+
+(my/load-file-relative ".powerline-top-theme.el")
+(my/powerline-top-theme)
