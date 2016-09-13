@@ -1,0 +1,3 @@
+;; * Beacon
+
+(beacon-mode t)

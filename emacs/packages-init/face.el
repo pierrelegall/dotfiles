@@ -13,8 +13,8 @@
 ;; ** Cursor
 
 (blink-cursor-mode t)
-(setq blink-cursor-interval 0.05)
-(setq blink-cursor-blinks 8)
+(setq blink-cursor-interval 0.5)
+(setq blink-cursor-blinks 0)
 
 ;; ** Fringe
 
