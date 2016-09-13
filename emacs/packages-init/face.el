@@ -12,7 +12,6 @@
 
 ;; ** Cursor
 
-(global-hl-line-mode 0)
 (blink-cursor-mode t)
 (setq blink-cursor-interval 0.05)
 (setq blink-cursor-blinks 8)
