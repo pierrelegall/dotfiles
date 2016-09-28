@@ -182,9 +182,9 @@ using `abort-recursive-edit'."
   "Use `ido-completing-read' to \\[find-file] a recent file"
   (interactive)
   (let ((abbreviated-recentf-list (mapcar 'abbreviate-file-name recentf-list)))
-       (if (find-file (ido-completing-read "Find recent file: " abbreviated-recentf-list))
-           (message "Opening file...")
-         (message "Aborting"))))
+    (if (find-file (ido-completing-read "Find recent file: " abbreviated-recentf-list))
+        (message "Opening file...")
+      (message "Aborting"))))
 
 (defun my/switch-to-minibuffer ()
   "Switch to minibuffer window."
