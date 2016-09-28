@@ -1,5 +1,7 @@
 ;; * Diff HL
 
+(my/ensure-package-installed 'diff-hl)
+
 (global-diff-hl-mode)
 (diff-hl-flydiff-mode)
 

@@ -1,5 +1,7 @@
 ;; * Anzu
 
+(my/ensure-package-installed 'anzu)
+
 (require 'anzu)
 (global-anzu-mode)
 

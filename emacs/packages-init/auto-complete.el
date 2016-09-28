@@ -1,5 +1,7 @@
 ;; * Auto completely
 
+(my/ensure-package-installed 'auto-complete)
+
 (require 'auto-complete)
 
 (add-hook 'prog-mode-hook 'auto-complete-mode)

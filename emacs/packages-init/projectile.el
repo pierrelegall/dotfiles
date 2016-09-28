@@ -1,5 +1,7 @@
 ;; * Projectile
 
+(my/ensure-package-installed 'projectile)
+
 (require 'projectile)
 (projectile-global-mode)
 

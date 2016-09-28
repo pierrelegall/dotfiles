@@ -1,5 +1,7 @@
 ;; * Org mode
 
+(my/ensure-package-installed 'org-bullets)
+
 ;; ** Agenda
 
 (setq org-agenda-files '("~/Documents/Tasks.org"))

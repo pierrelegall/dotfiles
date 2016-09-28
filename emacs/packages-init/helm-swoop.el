@@ -1,5 +1,7 @@
 ;; * Helm swoop
 
+(my/ensure-package-installed 'helm-swoop)
+
 (require 'helm-swoop)
 
 ;; ** Maps

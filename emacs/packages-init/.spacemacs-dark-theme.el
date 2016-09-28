@@ -1,5 +1,7 @@
 ;; * Spacemacs theme
 
+(my/ensure-package-installed 'spacemacs-theme)
+
 ;; ** Pre-customization
 
 (setq spacemacs-theme-org-height nil)

@@ -1,5 +1,7 @@
 ;; * Web mode
 
+(my/ensure-package-installed 'web-mode)
+
 (require 'web-mode)
 
 ;; ** Extensions

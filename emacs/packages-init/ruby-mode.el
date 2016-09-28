@@ -1,5 +1,7 @@
 ;; * Ruby mode
 
+(my/ensure-package-installed 'robe)
+
 (require 'ruby-mode)
 
 (set 'ruby-insert-encoding-magic-comment nil)

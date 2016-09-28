@@ -5,6 +5,18 @@
 (package-initialize)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
+(defvar my/package-last-refresh-contents
+  nil
+  "Last date of the package list refresh.")
+
+(defun my/ensure-package-installed (package-name)
+  "Install the package named PACKAGE-NAME if not already installed."
+  (unless (package-installed-p package-name)
+    (unless my/package-last-refresh-contents
+      (package-refresh-contents)
+      (setq my/package-last-refresh-contents (current-time)))
+    (package-install package-name)))
+
 ;; ** My functions initialization
 
 (defvar my/functions-file

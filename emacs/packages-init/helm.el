@@ -1,5 +1,7 @@
 ;; * Helm
 
+(my/ensure-package-installed 'helm)
+
 (require 'helm)
 (helm-mode)
 
