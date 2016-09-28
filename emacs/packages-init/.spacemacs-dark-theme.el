@@ -39,5 +39,4 @@
 
 ;; ** Mode line
 
-(my/load-file-relative ".powerline-top-theme.el")
-(my/powerline-top-theme)
+(my/load-file-relative ".spaceline.el")
