@@ -11,7 +11,8 @@
 (require 'robe)
 
 (add-hook 'ruby-mode-hook 'robe-mode)
-(add-hook 'robe-mode-hook 'ac-robe-setup)
+(eval-after-load 'company
+  '(push 'company-robe company-backends))
 
 (defun my/ruby-send-region-or-line ()
   (interactive)

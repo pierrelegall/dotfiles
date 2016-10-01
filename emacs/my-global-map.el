@@ -29,7 +29,7 @@
 
   (define-key map (kbd "C-x C-h") 'help-command)
 
-  (define-key map (kbd "C-S-i") 'ac-start)
+  (define-key map (kbd "C-S-i") 'company-complete)
 
   (define-key map (kbd "C-t") 'transpose-chars)
   (define-key map (kbd "C-S-t") 'transpose-words)
