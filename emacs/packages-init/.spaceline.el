@@ -1,5 +1,7 @@
 ;; * Spaceline
 
+(my/ensure-package-installed 'spaceline)
+
 (require 'spaceline-config)
 
 ;; ** Theme
