@@ -17,10 +17,17 @@
       (setq my/package-last-refresh-contents (current-time)))
     (package-install package-name)))
 
+;; ** Config root
+
+(defvar my/config-root
+  (cond ((or (eq system-type 'ms-dos) (eq system-type 'windows-nt)) "_config/emacs")
+        (t ".config/emacs"))
+  "Root of the Emacs configuration files.")
+
 ;; ** My functions initialization
 
 (defvar my/functions-file
-  "~/.config/emacs/my-functions.el"
+  (concat my/config-root "/my-functions.el")
   "My functions file.")
 
 (defun my/load-functions ()
@@ -32,7 +39,7 @@
 ;; ** My global map initialization
 
 (defvar my/global-map-file
-  "~/.config/emacs/my-global-map.el"
+  (concat my/config-root "/my-global-map.el")
   "My global map file.")
 
 (defun my/load-global-map ()
@@ -44,7 +51,7 @@
 ;; ** Init files loading
 
 (defvar my/packages-init-files-directory
-  "~/.config/emacs/packages-init"
+  (concat my/config-root "/packages-init")
   "Directory of the initialization files.")
 
 (defvar my/packages-init-files
