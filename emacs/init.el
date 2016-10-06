@@ -20,9 +20,13 @@
 ;; ** Config root
 
 (defvar my/config-root
-  (cond ((or (eq system-type 'ms-dos) (eq system-type 'windows-nt)) "_config/emacs")
-        (t ".config/emacs"))
-  "Root of the Emacs configuration files.")
+  (concat (getenv "HOME")
+          (cond ((or (eq system-type 'ms-dos)
+                     (eq system-type 'windows-nt))
+                 (concat "/_config/emacs"))
+                (t
+                 (concat "/.config/emacs"))))
+  "Root directory of the Emacs configuration files.")
 
 ;; ** My functions initialization
 
