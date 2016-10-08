@@ -1,6 +1,7 @@
 ;; * Projectile
 
 (my/ensure-package-installed 'projectile)
+(my/ensure-package-installed 'helm-projectile)
 
 (require 'projectile)
 (projectile-global-mode)
