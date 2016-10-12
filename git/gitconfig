@@ -23,6 +23,9 @@
 [push]
 	default = current
 
+[pull]
+  rebase = true
+
 [user]
 	name = Pierre Le Gall
 	email = pierre@legall.im
