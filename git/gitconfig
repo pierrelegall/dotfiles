@@ -5,16 +5,16 @@
 	interactive = true
 
 [log]
-  abbrevCommit = true
-  decorate = true
-  date = relative
+	abbrevCommit = true
+	decorate = true
+	date = relative
 
 [diff]
-  algorithm = patience
-  compactionHeuristic = false
+	algorithm = patience
+	compactionHeuristic = false
 
 [merge]
-  ff = false
+	ff = false
 
 [alias]
 	ignore-file = "! f() { curl https://www.gitignore.io/api/$@; } ; f"
@@ -24,7 +24,7 @@
 	default = current
 
 [pull]
-  rebase = true
+	rebase = true
 
 [user]
 	name = Pierre Le Gall
