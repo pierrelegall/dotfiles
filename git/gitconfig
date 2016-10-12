@@ -21,7 +21,7 @@
 	sta = "! git staged"
 
 [push]
-	default = simple
+	default = current
 
 [user]
 	name = Pierre Le Gall
