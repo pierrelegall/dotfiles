@@ -311,11 +311,11 @@ key.setViewKey(["l"], (event) => {
   command.focusToById("urlbar")
 }, "Focus to the location bar", true)
 
-key.setViewKey(["n"], (event) => {
+key.setViewKey([["n"], ["C-n"]], (event) => {
   key.generateKey(event.originalTarget, KeyEvent.DOM_VK_DOWN, true)
 }, "Scroll line down", false)
 
-key.setViewKey(["p"], (event) => {
+key.setViewKey([["p"], ["C-p"]], (event) => {
   key.generateKey(event.originalTarget, KeyEvent.DOM_VK_UP, true)
 }, "Scroll line up", false)
 
