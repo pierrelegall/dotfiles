@@ -16,6 +16,9 @@
   algorithm = patience
   compactionHeuristic = false
 
+[merge]
+  ff = false
+
 [alias]
 	ignore-file = "! f() { curl https://www.gitignore.io/api/$@; } ; f"
 	staged = diff --staged
