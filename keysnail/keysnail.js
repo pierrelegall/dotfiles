@@ -335,14 +335,6 @@ key.setViewKey([">"], (event) => {
   goDoCommand("cmd_scrollBottom")
 }, "Scroll to the bottom of the page", true)
 
-key.setViewKey(["j"], (event) => {
-  getBrowser().mTabContainer.advanceSelectedTab(-1, true)
-}, "Select previous tab", false)
-
-key.setViewKey(["J"], (event) => {
-  getBrowser().TmabContainer.advanceSelectedTab(1, true)
-}, "Select next tab", false)
-
 key.setViewKey([";"], (event, arg) => {
   shell.input(null, arg)
 }, "List and execute commands", true)
