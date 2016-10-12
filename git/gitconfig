@@ -1,6 +1,3 @@
-[core]
-	editor = "nano"
-
 [color]
 	status = true
 	branch = true
