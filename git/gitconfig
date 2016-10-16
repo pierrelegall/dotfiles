@@ -1,3 +1,7 @@
+[user]
+	name = Pierre Le Gall
+	email = pierre@legall.im
+
 [color]
 	status = true
 	branch = true
@@ -26,6 +30,3 @@
 [pull]
 	rebase = true
 
-[user]
-	name = Pierre Le Gall
-	email = pierre@legall.im
