@@ -30,3 +30,5 @@
 [pull]
 	rebase = true
 
+[include]
+	path = .gitlocalconfig
