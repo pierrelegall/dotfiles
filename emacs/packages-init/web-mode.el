@@ -1,8 +1,11 @@
 ;; * Web mode
 
 (my/ensure-package-installed 'web-mode)
+(my/ensure-package-installed 'company-web)
 
 (require 'web-mode)
+(require 'company-web)
+(require 'company-web-html)
 
 ;; ** Extensions
 
@@ -15,3 +18,9 @@
 (setq web-mode-css-indent-offset 2)
 (setq web-mode-code-indent-offset 2)
 (setq web-mode-attr-indent-offset 2)
+
+;; ** Company
+
+(add-hook 'web-mode-hook (lambda ()
+                           (set(make-local-variable 'company-backends) '(company-web-html))
+                           (company-mode t)))
