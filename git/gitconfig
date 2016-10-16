@@ -22,7 +22,7 @@
 
 [alias]
 	ignore-file = "! f() { curl https://www.gitignore.io/api/$@; } ; f"
-	update = "! git fetch --all --prune; git fetch --tags"
+	update = "! git fetch --all --tags --prune"
 
 [push]
 	default = current
