@@ -27,7 +27,7 @@
 
 ;; ** Theme
 
-(my/load-file-relative ".spacemacs-dark-theme.el")
+(my/load-file-relative ".yoshi-theme.el")
 
 ;; ** Font
 
