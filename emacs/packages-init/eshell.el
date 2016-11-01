@@ -1,5 +1,7 @@
 ;; * Eshell
 
+(my/ensure-package-installed 'eshell-fringe-status)
+
 ;; ** Title
 
 (setq eshell-banner-message ";; Welcome to the Emacs shell\n")
@@ -63,3 +65,5 @@
           (lambda ()
             (eshell-cmpl-initialize)
             (define-key eshell-mode-map [remap eshell-pcomplete] 'helm-esh-pcomplete)))
+
+(add-hook 'eshell-mode-hook 'eshell-fringe-status-mode)
