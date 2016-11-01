@@ -1,5 +1,6 @@
 ;; * Eshell
 
+(my/ensure-package-installed 'shell-switcher)
 (my/ensure-package-installed 'eshell-fringe-status)
 
 ;; ** Title
@@ -55,6 +56,10 @@
   (helm-top))
 
 ;; ** Maps
+
+(let ((map my/global-map))
+  (define-key map (kbd "C-x t") 'shell-switcher-switch-buffer)
+  (define-key map (kbd "C-x T") 'shell-switcher-new-shell))
 
 (let ((map my/global-map))
   (define-key map (kbd "C-:") 'eshell-command))
