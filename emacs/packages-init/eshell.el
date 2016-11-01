@@ -20,6 +20,10 @@
      (propertize (system-name) 'face `(:foreground "#d23681" :weight bold))
      (propertize " ")
      (propertize (abbreviate-file-name (eshell/pwd)) 'face `(:foreground "#2aa097" :weight bold))
+     (when (vc-git-root (pwd))
+       (concat
+        (propertize " ")
+        (propertize (format "(%s)" (car (vc-git-branches))) 'face `(:foreground "#ffff55" :weight bold))))
      (propertize "]" 'face `(:foreground "dodger blue" :weight bold))
      (propertize "\n")
      (if (= (user-uid) 0)
