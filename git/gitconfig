@@ -15,7 +15,7 @@
 
 [diff]
 	algorithm = patience
-	compactionHeuristic = false
+	compactionHeuristic = true
 
 [merge]
 	ff = false
