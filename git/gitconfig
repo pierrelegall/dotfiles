@@ -30,5 +30,8 @@
 [pull]
 	rebase = true
 
+[rebase]
+  autoStash = true
+
 [include]
 	path = .gitlocalconfig
