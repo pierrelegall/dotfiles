@@ -8,6 +8,8 @@
 (setq eshell-prompt-regexp "^[#$] ")
 (setq eshell-prompt-function 'my/eshell-prompt-function)
 
+(require 'vc-git)
+
 (defun my/eshell-prompt-function ()
   (concat
    (propertize "\n")
@@ -17,7 +19,7 @@
    (propertize (system-name) 'face `(:foreground "#d23681" :weight bold))
    (propertize " ")
    (propertize (abbreviate-file-name (eshell/pwd)) 'face `(:foreground "#2aa097" :weight bold))
-   (when (vc-git-root (pwd))
+   (when (vc-git-root (eshell/pwd))
      (concat
       (propertize " ")
       (propertize (format "(%s)" (car (vc-git-branches))) 'face `(:foreground "#ffff55" :weight bold))))
