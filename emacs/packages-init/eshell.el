@@ -50,10 +50,6 @@
                    (pcomplete-arg 'last) t))))))
 
 (let ((map my/global-map))
-  (define-key map (kbd "C-x t") 'shell-switcher-switch-buffer)
-  (define-key map (kbd "C-x T") 'shell-switcher-new-shell))
-
-(let ((map my/global-map))
   (define-key map (kbd "C-:") 'eshell-command))
 
 (add-hook 'eshell-mode-hook
