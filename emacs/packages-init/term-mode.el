@@ -23,3 +23,7 @@
 (add-hook 'term-mode-hook
           (lambda ()
             (local-set-key (kbd "C-{") 'term-char-mode)))
+
+(add-hook 'term-mode-hook
+          (lambda ()
+            (setq-local scroll-margin 0)))
