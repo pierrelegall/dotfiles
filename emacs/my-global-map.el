@@ -40,8 +40,6 @@
   (define-key map (kbd "C-x r") 'rectangle-mark-mode)
   (define-key map (kbd "<mouse-2>") 'rectangle-mark-mode)
 
-  (define-key map (kbd "C-x C-r") 'my/ido-recentf-open)
-
   (define-key map (kbd "C-w") 'my/copy-region-or-line)
   (define-key map (kbd "C-S-w") 'kill-region)
   (define-key map (kbd "C-S-y") 'yank-pop)
