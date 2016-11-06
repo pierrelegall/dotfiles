@@ -4,6 +4,5 @@
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
-;; ** Flycheck
-
+(setq js-indent-level 2)
 (setq js2-strict-missing-semi-warning nil)
