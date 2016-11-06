@@ -46,7 +46,6 @@
 
   (define-key map (kbd "C-w") 'my/copy-region-or-line)
   (define-key map (kbd "C-S-w") 'kill-region)
-  (define-key map (kbd "C-k") 'my/kill-line-or-region)
   (define-key map (kbd "C-S-y") 'yank-pop)
   (define-key map (kbd "C-x C-k") 'my/kill-this-buffer)
   (define-key map (kbd "C-q") 'my/kill-this-buffer)
