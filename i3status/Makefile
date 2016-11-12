@@ -1,4 +1,4 @@
-CONFIG     = i3status
+CONFIG = i3status
 CONFIG_DIR = $(HOME)/.config/i3status
 
 all: print-info setup

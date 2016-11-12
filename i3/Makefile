@@ -1,9 +1,5 @@
-# Variables
-
-CONFIG     = i3
+CONFIG = i3
 CONFIG_DIR = $(HOME)/.config/i3
-
-# Actions
 
 all: print-info setup
 

@@ -1,4 +1,4 @@
-CONFIG     = Xkb
+CONFIG = Xkb
 CONFIG_DIR = $(HOME)/.config/xkb
 
 all: print-info setup
