@@ -1,4 +1,4 @@
-# Includes
+# Bashrc
 
 source $HOME/.config/bash/includes/exports.sh
 source $HOME/.config/bash/includes/aliases.sh
