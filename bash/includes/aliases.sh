@@ -8,9 +8,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
 alias mv='mv --interactive'
-alias rm='trash-put'
-alias tl='trash-list'
-alias trm='rm --interactive=once'
+alias rm='rm --interactive=once'
 
 alias ls='ls --color=auto --literal --group-directories-first --human-readable --format=vertical --indicator-style=slash'
 alias ll='ls -l'
