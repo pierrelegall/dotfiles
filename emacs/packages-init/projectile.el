@@ -10,6 +10,11 @@
 
 (setq projectile-switch-project-action 'projectile-dired)
 
+;; ** Behavior overrided
+
+(defun projectile-relevant-known-projects () projectile-known-projects)
+(defun projectile-relevant-open-projects () (projectile-open-projects))
+
 ;; ** Keybindings
 
 (let ((map projectile-mode-map))
