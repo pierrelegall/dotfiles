@@ -20,10 +20,6 @@
 [merge]
 	ff = false
 
-[alias]
-	ignore-file = "! f() { curl https://www.gitignore.io/api/$@; } ; f"
-	update = "! git fetch --all --tags --prune"
-
 [push]
 	default = current
 
