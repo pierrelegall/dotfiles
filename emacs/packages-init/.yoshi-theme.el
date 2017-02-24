@@ -8,9 +8,10 @@
 
 (custom-theme-set-faces
  `yoshi
+ `(default                           ((t (:foreground "#dfcfce" :background "#050505"))))
  `(cursor                            ((t (:foreground nil       :background "#eead0e"))))
- `(isearch                           ((t (:foreground "#cc3333" :background nil))))
- `(lazy-highlight                    ((t (:foreground "#33cc33" :background nil))))
+ `(isearch                           ((t (:foreground "#dd3333" :background "#222222" :underline t))))
+ `(lazy-highlight                    ((t (:foreground "#dd3333" :background nil :underline t))))
  `(diff-added                        ((t (:foreground "#55bb55" :background nil))))
  `(magit-diff-added                  ((t (:foreground "#55bb55" :background nil))))
  `(magit-diff-added-highlight        ((t (:foreground "#55bb55" :background nil))))
