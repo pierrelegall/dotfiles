@@ -327,11 +327,11 @@ key.setViewKey(['V'], (event) => {
   goDoCommand('cmd_scrollPageUp')
 }, 'Scroll page up', false)
 
-key.setViewKey(['<'], (event) => {
+key.setViewKey([['<'], ['C-<']], (event) => {
   goDoCommand('cmd_scrollTop')
 }, 'Scroll to the top of the page', true)
 
-key.setViewKey(['>'], (event) => {
+key.setViewKey([['>'], ['C->']], (event) => {
   goDoCommand('cmd_scrollBottom')
 }, 'Scroll to the bottom of the page', true)
 
