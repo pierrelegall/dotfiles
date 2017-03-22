@@ -1,5 +1,5 @@
-CONFIG = Xkb
-CONFIG_DIR = $(HOME)/.config/xkb
+CONFIG = Resolv.conf
+CONFIG_DIR = $(HOME)/.config/resolvconf
 
 all: print-info setup
 
@@ -14,4 +14,4 @@ set-symlinks:
 	@ ln -v -i -s -T $(CURDIR) $(CONFIG_DIR)
 
 set-system-symlinks:
-	@ ln -v -i -s -T $(CONFIG_DIR)/fr-colemak /usr/share/X11/xkb/symbols/fr-colemak
+	@ ln -v -i -s -T $(CONFIG_DIR)/resolv.head.conf /etc/resolvconf/resolv.conf.d/head
