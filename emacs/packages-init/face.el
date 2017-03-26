@@ -8,7 +8,10 @@
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
+
+(set-scroll-bar-mode 'left)
 (scroll-bar-mode -1)
+(setq scroll-bar-adjust-thumb-portion nil)
 
 ;; ** Cursor
 
