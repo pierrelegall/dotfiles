@@ -6,7 +6,7 @@ all: print-info setup
 print-info:
 	@ echo "[$(CONFIG)]"
 	@ echo "Root privileges needed, you have to run manually:"
-	@ echo "$ sudo make -C $(CURDIR) set-system-symlinks --quiet"
+	@ echo "$ sudo -E make -C $(CURDIR) set-system-symlinks --quiet"
 
 setup: set-symlinks
 
