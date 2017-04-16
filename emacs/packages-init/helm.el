@@ -7,11 +7,11 @@
 
 (setq helm-M-x-reverse-history t)
 
-;; (let ((map my/global-map))
+(let ((map my/global-map))
 ;;   (define-key map (kbd "C-;") 'helm-M-x)
 ;;   (define-key map (kbd "C-x C-f") 'helm-find-files)
 ;;   (define-key map (kbd "C-t") 'helm-mini)
-;;   (define-key map (kbd "C-x a") 'helm-apropos))
+   (define-key map (kbd "C-x a") 'helm-apropos))
 
 ;; (let ((map helm-map))
 ;;   (define-key map (kbd "C-i") 'helm-execute-persistent-action)
