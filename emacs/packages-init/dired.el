@@ -1,6 +1,7 @@
 ;; * Dired
 
 (require 'dired)
+(require 'dired-x)
 
 (setq dired-listing-switches "--group-directories-first -Alh --indicator-style=slash")
 (put 'dired-find-alternate-file 'disabled nil)
