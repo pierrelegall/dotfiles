@@ -37,7 +37,7 @@
  `(diff-refine-removed
    ((t (:background "#382b2e"))))
  `(linum
-   ((t (:background "#212026" :slant italic :inherit fringe)))))
+   ((t (:background "#212026" :slant italic :weight normal :underline nil :inherit fringe)))))
 
 ;; ** Mode line
 
