@@ -37,10 +37,6 @@
   (let ((inhibit-read-only t))
     (erase-buffer)))
 
-(defun eshell/top ()
-  "Use helm-top instead of top with eshell."
-  (helm-top))
-
 (defun pcomplete/sudo ()
   "Make the sudo command completion compatible."
   (let ((prec (pcomplete-arg 'last -1)))
@@ -51,11 +47,6 @@
 
 (let ((map my/global-map))
   (define-key map (kbd "C-:") 'eshell-command))
-
-(add-hook 'eshell-mode-hook
-          (lambda ()
-            (eshell-cmpl-initialize)
-            (define-key eshell-mode-map [remap eshell-pcomplete] 'helm-esh-pcomplete)))
 
 (add-hook 'eshell-mode-hook
           'eshell-fringe-status-mode)
