@@ -13,7 +13,3 @@
   (define-key map (kbd "h") 'dired-omit-mode)
   (define-key map (kbd "P") 'dired-up-directory)
   (define-key map (kbd "b") 'dired-up-directory))
-
-;; ** Hooks
-
-(add-hook 'dired-mode-hook 'dired-omit-mode)
