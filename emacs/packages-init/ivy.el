@@ -9,6 +9,17 @@
 (counsel-mode +1)
 (counsel-projectile-on)
 
+(defun my/ivy--sort-by-length (_name candidates)
+  "Alphanumeric sort for ivy results."
+  (seq-sort 'string-lessp (seq-copy candidates)))
+
+(setq ivy-re-builders-alist
+      '((t . ivy--regex-ignore-order)))
+
+(setq ivy-sort-matches-functions-alist
+      '((ivy-switch-buffer . ivy-sort-function-buffer)
+        (t . my/ivy--sort-by-length)))
+
 (define-key isearch-mode-map (kbd "TAB") 'swiper-from-isearch)
 ;(define-key swiper-map (kbd "TAB") 'swiper-projectile-from-swiper)
 
