@@ -36,6 +36,8 @@
    ((t (:background "#28372e"))))
  `(diff-refine-removed
    ((t (:background "#382b2e"))))
+ `(highlight-indent-guides-character-face
+   ((t (:foreground "#38354A"))))
  `(linum
    ((t (:background "#212026" :slant italic :weight normal :underline nil :inherit fringe)))))
 
