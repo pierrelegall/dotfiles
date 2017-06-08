@@ -6,7 +6,6 @@
 
 (remove-hook 'magit-section-highlight-hook 'magit-section-highlight)
 (remove-hook 'magit-section-highlight-hook 'magit-diff-highlight)
-(remove-hook 'magit-section-highlight-hook 'magit-section-highlight-selection)
 
 ;; ** Map
 
