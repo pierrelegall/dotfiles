@@ -6,3 +6,6 @@
 
 (setq flycheck-indication-mode nil)
 (setq flycheck-display-errors-delay 100) ; workaround to disable it
+
+(let ((map my/global-map))
+  (define-key map [f10] 'flycheck-mode))
