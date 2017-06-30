@@ -9,3 +9,16 @@ class BasicObject
     return defined_methods
   end
 end
+
+# Kernel monkey patch
+module Kernel
+  # Open Emacs at method source
+  def emacs(method_name)
+    source_location = method(method_name).source_location
+    raise 'source location not found' if source_location.nil?
+    file, line = source_location
+    `emacsclient --no-wait +#{line} '#{file}'`
+  end
+
+  alias_method :e, :emacs
+end
