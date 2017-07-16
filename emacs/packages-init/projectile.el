@@ -8,7 +8,7 @@
 
 ;; ** Actions
 
-(setq projectile-switch-project-action 'projectile-dired)
+(setq projectile-switch-project-action 'neotree-projectile-action)
 
 ;; ** Behavior overrided
 
