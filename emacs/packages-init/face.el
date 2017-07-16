@@ -35,3 +35,8 @@
 ;; ** Font
 
 (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-13"))
+
+;; ** Frame
+
+(add-to-list 'default-frame-alist '(height . 50))
+(add-to-list 'default-frame-alist '(width . 140))
