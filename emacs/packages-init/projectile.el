@@ -10,6 +10,12 @@
 
 (setq projectile-switch-project-action 'neotree-projectile-action)
 
+;; ** Mode line
+
+(setq projectile-mode-line
+      '(:eval (if (projectile-project-p)
+                  (format " [%s]" (projectile-project-name)) "")))
+
 ;; ** Behavior overrided
 
 (defun projectile-relevant-known-projects () projectile-known-projects)
