@@ -64,3 +64,7 @@
           my/packages-init-files))
 
 (my/load-packages-init-files)
+
+;; What to do at least.
+;; /!\ A hook should be set for this kind of operations.
+(my/diminish-modes minor-mode-alist)
