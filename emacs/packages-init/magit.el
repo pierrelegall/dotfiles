@@ -2,7 +2,7 @@
 
 (my/ensure-package-installed 'magit)
 
-(setq magit-diff-refine-hunk `all)
+(setq magit-diff-refine-hunk nil)
 
 (remove-hook 'magit-section-highlight-hook 'magit-section-highlight)
 (remove-hook 'magit-section-highlight-hook 'magit-diff-highlight)
