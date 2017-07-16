@@ -1,5 +1,7 @@
 ;; * Face
 
+(my/ensure-package-installed 'zerodark-theme)
+
 ;; ** Line wrap
 
 (setq-default truncate-lines t)
@@ -30,7 +32,10 @@
 
 ;; ** Theme
 
-(my/load-file-relative ".spacemacs-dark-theme.el")
+(load-theme 'zerodark t)
+
+(require 'flycheck)
+(zerodark-setup-modeline-format)
 
 ;; ** Font
 
