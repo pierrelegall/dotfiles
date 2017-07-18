@@ -239,10 +239,9 @@ if a region currently selected."
   "Go to another window skipping the minibuffer."
   (interactive "p")
   (other-window jump)
-  (if (minibufferp (current-buffer))
-      (if (< jump 0)
-          (my/previous-window)
-        (my/next-window))))
+  (while (or (minibufferp (current-buffer))
+             (eq (neo-global--get-buffer) (current-buffer)))
+    (other-window jump)))
 
 (defun my/next-window ()
   "Go to the next non-minibuffer window."

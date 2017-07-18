@@ -85,6 +85,7 @@
   (define-key map (kbd "C-o") 'my/next-window)
   (define-key map (kbd "C-S-o") 'my/previous-window)
   (define-key map (kbd "C-x o") 'my/switch-to-minibuffer)
+  (define-key map (kbd "C-x O") 'neotree)
 
   (define-key map (kbd "C-S-p") 'backward-paragraph)
   (define-key map (kbd "C-S-n") 'forward-paragraph)
