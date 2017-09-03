@@ -8,10 +8,7 @@
 
 ;; ** Actions
 
-(setq projectile-switch-project-action (lambda ()
-                                         (when (neo-global--window-exists-p)
-                                           (neotree-projectile-action))
-                                         (projectile-commander)))
+(setq projectile-switch-project-action (lambda () (projectile-ibuffer 0)))
 
 ;; ** Mode line
 
