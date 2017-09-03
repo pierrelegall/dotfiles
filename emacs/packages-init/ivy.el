@@ -1,5 +1,7 @@
 ;; ivy
 
+(when nil
+
 (my/ensure-package-installed 'ivy)
 (my/ensure-package-installed 'swiper)
 (my/ensure-package-installed 'counsel)
@@ -20,3 +22,5 @@
 
 (let ((map counsel-mode-map))
   (define-key map (kbd "C-c g g") 'counsel-git-grep))
+
+)

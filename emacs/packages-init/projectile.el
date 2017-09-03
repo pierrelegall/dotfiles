@@ -31,4 +31,4 @@
 
 ;; ** Helm
 
-(setq projectile-completion-system 'ivy)
+(setq projectile-completion-system 'helm)
