@@ -6,6 +6,8 @@
 (require 'projectile)
 (projectile-global-mode)
 
+(setq projectile-use-git-grep t)
+
 ;; ** Actions
 
 (setq projectile-switch-project-action (lambda () (projectile-ibuffer 0)))
