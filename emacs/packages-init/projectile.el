@@ -4,7 +4,7 @@
 (my/ensure-package-installed 'helm-projectile)
 
 (require 'projectile)
-(projectile-global-mode)
+(projectile-mode)
 
 (setq projectile-use-git-grep t)
 
