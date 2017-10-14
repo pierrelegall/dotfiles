@@ -235,24 +235,6 @@ if a region currently selected."
       (kill-region beg end region)
     (kill-line)))
 
-(defun my/other-window (jump)
-  "Go to another window skipping the minibuffer."
-  (interactive "p")
-  (other-window jump)
-  (while (or (minibufferp (current-buffer))
-             (eq (neo-global--get-buffer) (current-buffer)))
-    (other-window jump)))
-
-(defun my/next-window ()
-  "Go to the next non-minibuffer window."
-  (interactive)
-  (my/other-window 1))
-
-(defun my/previous-window ()
-  "Go to the next non-minibuffer window."
-  (interactive)
-  (my/other-window -1))
-
 (defun my/rename-buffer ()
   "Interative buffer renaming with pre-filled default name."
   (interactive)

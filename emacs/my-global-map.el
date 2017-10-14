@@ -82,11 +82,6 @@
   (define-key map (kbd "C-?") 'redo)
   (define-key map (kbd "C-<f12>") 'revert-buffer)
 
-  (define-key map (kbd "C-o") 'my/next-window)
-  (define-key map (kbd "C-S-o") 'my/previous-window)
-  (define-key map (kbd "C-x o") 'my/switch-to-minibuffer)
-  (define-key map (kbd "C-x O") 'neotree)
-
   (define-key map (kbd "C-S-p") 'backward-paragraph)
   (define-key map (kbd "C-S-n") 'forward-paragraph)
 
@@ -102,8 +97,8 @@
 
   (define-key map (kbd "C-S-l") 'visual-line-mode)
 
-  (define-key map (kbd "M-[") 'rotate-window)
-  (define-key map (kbd "M-]") 'rotate-layout))
+  (define-key map (kbd "C-M-[") 'rotate-window)
+  (define-key map (kbd "C-M-]") 'rotate-layout))
 
 (global-set-key (kbd "C-h") (kbd "<backspace>"))
 (global-set-key (kbd "C-S-h") (kbd "C-<backspace>"))
