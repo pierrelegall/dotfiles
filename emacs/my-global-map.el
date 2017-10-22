@@ -85,12 +85,6 @@
   (define-key map (kbd "C-S-p") 'backward-paragraph)
   (define-key map (kbd "C-S-n") 'forward-paragraph)
 
-  (define-key map (kbd "ESC <f1>") 'emms-next)
-  (define-key map (kbd "ESC ESC <f1>") 'emms-previous)
-  (define-key map (kbd "ESC <f2>") 'emms-play-file)
-  (define-key map (kbd "ESC <f3>") 'emms-pause)
-  (define-key map (kbd "ESC <f4>") 'emms-playlist-g)
-
   (define-key map (kbd "C-\\") 'my/translate)
 
   (define-key map (kbd "C-<f1>") 'my/show-buffer-visiting-file)
