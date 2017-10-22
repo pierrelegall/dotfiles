@@ -85,8 +85,6 @@
   (define-key map (kbd "C-S-p") 'backward-paragraph)
   (define-key map (kbd "C-S-n") 'forward-paragraph)
 
-  (define-key map (kbd "C-\\") 'my/translate)
-
   (define-key map (kbd "C-<f1>") 'my/show-buffer-visiting-file)
 
   (define-key map (kbd "C-S-l") 'visual-line-mode)

@@ -213,15 +213,6 @@ if a region currently selected."
   "Return the content of the region."
   (buffer-substring (region-beginning) (region-end)))
 
-(defun my/translate ()
-  "Open WordReference web browser to translate a word."
-  (interactive)
-  (let* ((website "http://www.wordreference.com")
-         (word (if (use-region-p) (my/region-content) (read-string "Word: ")))
-         (type (read-string (format "Translate «%s» from ? to ?: " word) "enfr")))
-    (browse-url-generic (concat website "/" type "/" (url-hexify-string word))))
-  (message "Opened in your web browser."))
-
 (defun my/load-file-relative (file-name)
   "Load file relatively. The base directory is the current file directory."
   (load-file (concat
