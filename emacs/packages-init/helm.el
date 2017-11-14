@@ -9,6 +9,11 @@
 (setq helm-display-header-line nil)
 (setq helm-buffer-details-flag nil)
 
+(setq helm-mini-default-sources '(helm-source-buffers-list
+                                  helm-source-projectile-files-list
+                                  helm-source-recentf
+                                  helm-source-buffer-not-found))
+
 (let ((map my/global-map))
   (define-key map (kbd "C-;") 'helm-M-x)
   (define-key map (kbd "C-x C-f") 'helm-find-files)
