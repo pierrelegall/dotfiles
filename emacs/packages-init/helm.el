@@ -25,3 +25,12 @@
 (let ((map helm-find-files-map))
   (define-key map (kbd "C-h") 'helm-ff-delete-char-backward)
   (define-key map (kbd "C-S-h") 'backward-kill-word))
+
+(defun my/kill-helm-buffers ()
+  "Kills all the helm buffers."
+  (interactive)
+  (let ((helm-buffers
+         (seq-filter
+          (lambda (buffer) (string-match "^\\*helm.*\\*$" (buffer-name buffer)))
+          (buffer-list))))
+    (kill-some-buffers helm-buffers)))
