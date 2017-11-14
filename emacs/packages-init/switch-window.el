@@ -1,5 +1,7 @@
 ;; switch-window
 
+(my/ensure-package-installed 'switch-window)
+
 (require 'switch-window)
 
 (setq switch-window-shortcut-style 'qwerty)
