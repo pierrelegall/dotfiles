@@ -34,8 +34,7 @@
 (defun my/kill-helm-buffers ()
   "Kills all the helm buffers."
   (interactive)
-  (let ((helm-buffers
-         (seq-filter
-          (lambda (buffer) (string-match "^\\*helm.*\\*$" (buffer-name buffer)))
-          (buffer-list))))
-    (kill-some-buffers helm-buffers)))
+  (let ((helm-buffers (seq-filter
+                       (lambda (buffer) (string-match "^\\*helm.*\\*$" (buffer-name buffer)))
+                       (buffer-list))))
+    (seq-do 'kill-buffer helm-buffers)))
