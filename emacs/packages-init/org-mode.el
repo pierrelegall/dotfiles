@@ -87,11 +87,15 @@
 (let ((map org-mode-map))
   (define-key map (kbd "C-c i") 'outline-show-all)
   (define-key map (kbd "C-c h") 'outline-hide-sublevels)
-  ;(define-key map (kbd "C-x p") 'org-promote-subtree)
-  ;(define-key map (kbd "C-x d") 'org-demote-subtree)
+  (define-key map (kbd "M-p") 'org-move-subtree-up)
+  (define-key map (kbd "M-n") 'org-move-subtree-down)
   (define-key map (kbd "<prior>") 'org-move-subtree-up)
   (define-key map (kbd "<next>") 'org-move-subtree-down)
-  (define-key map (kbd "C-c d") 'org-cut-subtree))
+  (define-key map (kbd "M-S-p") 'org-promote-subtree)
+  (define-key map (kbd "M-S-n") 'org-demote-subtree)
+  (define-key map (kbd "<prior>") 'org-move-subtree-up)
+  (define-key map (kbd "<next>") 'org-move-subtree-down)
+  (define-key map (kbd "C-x w") 'org-cut-subtree))
 
 ;; ** Hooks
 
