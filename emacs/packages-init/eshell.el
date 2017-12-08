@@ -48,5 +48,4 @@
 (let ((map my/global-map))
   (define-key map (kbd "C-:") 'eshell-command))
 
-(add-hook 'eshell-mode-hook
-          'eshell-fringe-status-mode)
+(add-hook 'eshell-mode-hook 'eshell-fringe-status-mode)
