@@ -4,7 +4,7 @@
 
 ;; ** Agenda
 
-(setq org-agenda-files '("~/Documents/Tasks.org"))
+(setq org-agenda-files '("~/Documents/Notes.org"))
 (setq org-agenda-todo-ignore-scheduled t)
 (setq org-agenda-todo-list-sublevels nil)
 (setq org-agenda-sorting-strategy
