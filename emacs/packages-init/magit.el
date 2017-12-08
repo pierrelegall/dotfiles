@@ -7,6 +7,11 @@
 (remove-hook 'magit-section-highlight-hook 'magit-section-highlight)
 (remove-hook 'magit-section-highlight-hook 'magit-diff-highlight)
 
+(defun my/magit-diff-master-head ()
+  "magit-diff master..HEAD"
+  (interactive)
+  (magit-diff "master..HEAD"))
+
 ;; ** Map
 
 (let ((map my/global-map))
