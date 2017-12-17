@@ -316,6 +316,7 @@ you should place your code here."
   (setq default-tab-width 2)
   (fset 'yes-or-no-p 'y-or-n-p)
   (spacemacs/toggle-smartparens-globally-off)
+  (spacemacs/toggle-highlight-current-line-globally-off)
   ;; Scrolling
   (setq scroll-margin 2)
   (setq scroll-step 1)
