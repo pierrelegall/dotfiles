@@ -315,6 +315,7 @@ you should place your code here."
   (setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
   (setq default-tab-width 2)
   (fset 'yes-or-no-p 'y-or-n-p)
+  (spacemacs/toggle-smartparens-globally-off)
   ;; Scrolling
   (setq scroll-margin 2)
   (setq scroll-step 1)
