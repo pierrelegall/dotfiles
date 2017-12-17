@@ -365,6 +365,14 @@ you should place your code here."
   (defun projectile-relevant-known-projects () projectile-known-projects)
   (defun projectile-relevant-open-projects () (projectile-open-projects))
   (spacemacs/set-leader-keys "pg" 'helm-projectile-grep)
+  ;; Magit
+  (setq magit-diff-refine-hunk nil)
+  (remove-hook 'magit-section-highlight-hook 'magit-section-highlight)
+  (remove-hook 'magit-section-highlight-hook 'magit-diff-highlight)
+  (defun my/magit-diff-master-head ()
+    "magit-diff master..HEAD"
+    (interactive)
+    (magit-diff "master..HEAD"))
   ;; Beacon
   (beacon-mode 1)
   )
