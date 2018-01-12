@@ -391,6 +391,28 @@ you should place your code here."
   ;; (define-key company-filter-map (kbd "C-n") #'company-select-next)
   ;; (define-key company-filter-map (kbd "C-p") #'company-select-previous)
   ;; (define-key helm-company-map (kbd "C-?") #'helm-company-run-show-doc-buffer) ; does not work
+  ;; Eshell
+  (require 'vc-git)
+  (defun my/eshell-prompt-function ()
+    (concat
+     (propertize "\n")
+     (propertize "[" 'face `(:foreground "dodger blue" :weight bold))
+     (propertize (user-login-name) 'face `(:foreground "#d23681" :weight bold))
+     (propertize "@" 'face `(:foreground "dodger blue" :weight bold))
+     (propertize (system-name) 'face `(:foreground "#d23681" :weight bold))
+     (propertize " ")
+     (propertize (abbreviate-file-name (eshell/pwd)) 'face `(:foreground "#2aa097" :weight bold))
+     (when (vc-git-root (eshell/pwd))
+       (concat
+        (propertize " ")
+        (propertize (format "(%s)" (car (vc-git-branches))) 'face `(:foreground "#ffff55" :weight bold))))
+     (propertize "]" 'face `(:foreground "dodger blue" :weight bold))
+     (propertize "\n")
+     (if (= (user-uid) 0)
+         (propertize "#" 'face `(:foreground "orange red"))
+       (propertize "$" 'face `(:foreground "medium sea green" :weight bold)))
+     (propertize " ")))
+  (setq eshell-prompt-function 'my/eshell-prompt-function)
   ;; Projectile
   (setq projectile-use-git-grep t)
   (setq projectile-switch-project-action (lambda () (projectile-ibuffer 0)))
