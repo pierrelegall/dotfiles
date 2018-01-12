@@ -394,6 +394,9 @@ you should place your code here."
     "magit-diff master..HEAD"
     (interactive)
     (magit-diff "master..HEAD"))
+  (spacemacs/set-leader-keys "gl" 'magit-log-head)
+  (spacemacs/set-leader-keys "gL" 'magit-log-all)
+  (setq git-magit-status-fullscreen t)
   ;; Beacon
   (beacon-mode 1)
   )
