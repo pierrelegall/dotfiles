@@ -382,6 +382,15 @@ you should place your code here."
   (global-set-key (kbd "C-#") 'comment-dwim)
   (global-set-key (kbd "C-=") 'zoom-frm-in)
   (global-set-key (kbd "C--") 'zoom-frm-out)
+  ;; Company
+  (auto-completion/init-helm-company)
+  ;; (setq company--auto-completion t)
+  (define-key company-active-map (kbd "C-s") #'company-filter-candidates)
+  (define-key company-active-map (kbd "C-?") #'company-show-doc-buffer)
+  (define-key company-active-map (kbd "C-S-i") #'company-show-doc-buffer)
+  ;; (define-key company-filter-map (kbd "C-n") #'company-select-next)
+  ;; (define-key company-filter-map (kbd "C-p") #'company-select-previous)
+  ;; (define-key helm-company-map (kbd "C-?") #'helm-company-run-show-doc-buffer) ; does not work
   ;; Projectile
   (setq projectile-use-git-grep t)
   (setq projectile-switch-project-action (lambda () (projectile-ibuffer 0)))
