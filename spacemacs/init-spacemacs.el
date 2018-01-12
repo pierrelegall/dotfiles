@@ -363,7 +363,7 @@ you should place your code here."
   (global-set-key (kbd "C-v") 'my/scroll-up)
   (global-set-key (kbd "M-v") 'my/scroll-down)
   (global-set-key (kbd "C-S-v") 'my/scroll-down)
-  (global-set-key (kbd "C-x C-k") 'kill-this-buffer)
+  (global-set-key (kbd "C-x C-k") 'spacemacs/kill-this-buffer)
   (global-set-key (kbd "C-w") 'kill-ring-save)
   (global-set-key (kbd "M-w") 'kill-region)
   (global-set-key (kbd "C-<") 'beginning-of-buffer)
