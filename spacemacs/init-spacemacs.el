@@ -334,7 +334,8 @@ you should place your code here."
   (setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
   (setq default-tab-width 2)
   (fset 'yes-or-no-p 'y-or-n-p)
-  (spacemacs/toggle-smartparens-globally-off)
+  (setq hl-paren-colors '("Springgreen3"))
+  (setq show-trailing-whitespace nil)
   (spacemacs/toggle-highlight-current-line-globally-off)
   ;; Scrolling
   (setq scroll-margin 2)
