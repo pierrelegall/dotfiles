@@ -317,6 +317,7 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   (setq spacemacs-theme-comment-bg nil)
+  (setq spacemacs-theme-org-height nil)
   )
 
 (defun dotspacemacs/user-config ()
