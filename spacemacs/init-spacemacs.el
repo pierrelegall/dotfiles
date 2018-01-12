@@ -432,4 +432,22 @@ you should place your code here."
   (setq git-magit-status-fullscreen t)
   ;; Beacon
   (beacon-mode 1)
+  ;; Flycheck
+  (setq flycheck-indication-mode nil)
+  ;; Miscellaneous
+  (global-set-key (kbd "C-'") 'my/toggle-letter-case)
+  (global-set-key (kbd "C-`") 'my/show-buffer-visiting-file)
+  ;; Javascript
+  (defun my/use-eslint-from-node-modules ()
+    (let ((root (locate-dominating-file
+                 (or (buffer-file-name) default-directory)
+                 (lambda (dir)
+                   (let ((eslint (expand-file-name "node_modules/eslint/bin/eslint.js" dir)))
+                     (and eslint (file-executable-p eslint)))))))
+      (when root
+        (let ((eslint (expand-file-name "node_modules/eslint/bin/eslint.js" root)))
+          (setq-local flycheck-javascript-eslint-executable eslint)))))
+  (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
+  (add-hook 'js2-mode-hook #'js2-mode-hide-warnings-and-errors)
+  )
   )
