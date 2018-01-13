@@ -1,6 +1,6 @@
 CONFIG = Spacemacs
 CONFIG_DIR = $(HOME)/.config/spacemacs
-SPACEMACS_DIR = $(HOME)/.spacemacs.dddd
+SPACEMACS_DIR = $(HOME)/.spacemacs.d
 SPACEMACS_REPO = https://github.com/syl20bnr/spacemacs
 
 all: print-info setup

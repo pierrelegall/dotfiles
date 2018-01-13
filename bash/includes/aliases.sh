@@ -22,13 +22,13 @@ alias du='du --human-readable'
 
 alias grep='grep --color=auto'
 
-alias e='emacsclient --no-wait'
-alias ecf='emacsclient --no-wait --create-frame'
-alias et='emacsclient --no-wait --create-frame --eval "(multi-term)"'
-alias enw='emacsclient --nw'
+alias e='emacsclient25 --no-wait'
+alias ecf='emacsclient25 --no-wait --create-frame'
+alias et='emacsclient25 --no-wait --create-frame --eval "(multi-term)"'
+alias enw='emacsclient25 --nw'
 
-alias emacsd-start='emacs --daemon'
-alias emacsd-stop='emacsclient --eval "(kill-emacs)"'
+alias emacsd-start='emacs25 --daemon'
+alias emacsd-stop='emacsclient25 --eval "(kill-emacs)"'
 alias emacsd-restart='emacsd-stop; emacsd-start'
 
 alias frkb='setxkbmap fr -option'
