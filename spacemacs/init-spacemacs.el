@@ -63,7 +63,6 @@ values."
    dotspacemacs-additional-packages
    '(
      beacon
-     company-flx
      emojify
      projectile
      )
