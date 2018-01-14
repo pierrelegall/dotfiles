@@ -370,6 +370,7 @@ you should place your code here."
   (global-set-key (kbd "C-<") 'beginning-of-buffer)
   (global-set-key (kbd "C->") 'end-of-buffer)
   (global-set-key (kbd "C-S-l") 'visual-line-mode)
+  (global-set-key (kbd "C-.") 'company-complete)
   (global-set-key (kbd "C-,") 'er/expand-region)
   (global-set-key (kbd "C-S-n") 'forward-paragraph)
   (global-set-key (kbd "C-S-p") 'backward-paragraph)
@@ -382,13 +383,14 @@ you should place your code here."
   (global-set-key (kbd "C-=") 'zoom-frm-in)
   (global-set-key (kbd "C--") 'zoom-frm-out)
   ;; Company
-  (auto-completion/init-helm-company)
-  ;; (setq company--auto-completion t)
-  (define-key company-active-map (kbd "C-s") #'company-filter-candidates)
+  (require 'company)
+  (require 'helm-company)
+  (unbind-key (kbd "C-f") company-active-map)
+  (unbind-key (kbd "C-m") company-active-map)
+  (define-key company-active-map (kbd "TAB") #'company-complete-selection)
+  (define-key company-active-map (kbd "C-h") #'backward-delete-char-untabify)
+  (define-key company-active-map (kbd "C-.") #'helm-company)
   (define-key company-active-map (kbd "C-?") #'company-show-doc-buffer)
-  (define-key company-active-map (kbd "C-S-i") #'company-show-doc-buffer)
-  ;; (define-key company-filter-map (kbd "C-n") #'company-select-next)
-  ;; (define-key company-filter-map (kbd "C-p") #'company-select-previous)
   ;; (define-key helm-company-map (kbd "C-?") #'helm-company-run-show-doc-buffer) ; does not work
   ;; Eshell
   (require 'vc-git)
