@@ -422,6 +422,7 @@ you should place your code here."
   (spacemacs/set-leader-keys "pg" 'helm-projectile-grep)
   ;; Magit
   (setq magit-diff-refine-hunk nil)
+  (setq git-magit-status-fullscreen t)
   (remove-hook 'magit-section-highlight-hook 'magit-section-highlight)
   (remove-hook 'magit-section-highlight-hook 'magit-diff-highlight)
   (defun my/magit-diff-master-head ()
@@ -430,7 +431,6 @@ you should place your code here."
     (magit-diff "master..HEAD"))
   (spacemacs/set-leader-keys "gl" 'magit-log-head)
   (spacemacs/set-leader-keys "gL" 'magit-log-all)
-  (setq git-magit-status-fullscreen t)
   ;; Beacon
   (beacon-mode 1)
   ;; Flycheck
