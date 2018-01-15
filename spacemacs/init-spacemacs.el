@@ -73,6 +73,7 @@ values."
    dotspacemacs-excluded-packages
    '(
      fill-column-indicator
+     paradox
      magit-gitflow
      smartparens
      )
