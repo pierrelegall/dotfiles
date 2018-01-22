@@ -396,6 +396,10 @@ you should place your code here."
   ;; (define-key helm-company-map (kbd "C-?") #'helm-company-run-show-doc-buffer) ; does not work
   ;; Eshell
   (require 'vc-git)
+  (setq eshell-banner-message ";; Welcome to the Emacs shell\n")
+  (setq eshell-cmpl-ignore-case t)
+  (setq eshell-prompt-regexp "^[#$] ")
+  (setq eshell-prompt-function 'my/eshell-prompt-function)
   (defun my/eshell-prompt-function ()
     (concat
      (propertize "\n")
@@ -415,7 +419,20 @@ you should place your code here."
          (propertize "#" 'face `(:foreground "orange red"))
        (propertize "$" 'face `(:foreground "medium sea green" :weight bold)))
      (propertize " ")))
-  (setq eshell-prompt-function 'my/eshell-prompt-function)
+  (defun eshell/clear ()
+    "Clear the eshell buffer."
+    (let ((inhibit-read-only t))
+      (erase-buffer)))
+  (defun eshell/e (filename &optional wildcards)
+    "Find file alias"
+    (find-file filename wildcards))
+  (defun pcomplete/sudo ()
+    "Make the sudo command completion compatible."
+    (let ((prec (pcomplete-arg 'last -1)))
+      (cond ((string= "sudo" prec)
+             (while (pcomplete-here*
+                     (funcall pcomplete-command-completion-function)
+                     (pcomplete-arg 'last) t))))))
   ;; Projectile
   (setq projectile-use-git-grep t)
   (setq projectile-switch-project-action (lambda () (projectile-ibuffer 0)))
