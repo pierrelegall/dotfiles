@@ -340,6 +340,7 @@ you should place your code here."
   (setq hl-paren-colors '("Springgreen3"))
   (setq show-trailing-whitespace nil)
   (spacemacs/toggle-highlight-current-line-globally-off)
+  (global-visual-line-mode)
   ;; Scrolling
   (setq scroll-margin 2)
   (setq scroll-step 1)
