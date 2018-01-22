@@ -434,6 +434,10 @@ you should place your code here."
              (while (pcomplete-here*
                      (funcall pcomplete-command-completion-function)
                      (pcomplete-arg 'last) t))))))
+  ;; Powerline
+  (setq powerline-default-separator 'bar)
+  (setq spaceline-separator-dir-left '(left . left))
+  (setq spaceline-separator-dir-right '(right . right))
   ;; Projectile
   (setq projectile-use-git-grep t)
   (setq projectile-switch-project-action (lambda () (projectile-ibuffer 0)))
