@@ -319,6 +319,8 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (add-to-list 'default-frame-alist '(height . 44))
+  (add-to-list 'default-frame-alist '(width . 120))
   (setq spacemacs-theme-comment-bg nil)
   (setq spacemacs-theme-org-height nil)
   )
