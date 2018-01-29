@@ -38,6 +38,7 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      ;; better-defaults
+     clojure
      elixir
      emacs-lisp
      erlang
