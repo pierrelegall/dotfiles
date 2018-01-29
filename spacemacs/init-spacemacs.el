@@ -53,6 +53,7 @@ values."
      ;;        shell-default-position 'bottom)
      ;; spell-checking
      ruby
+     rust
      syntax-checking
      typescript
      version-control
