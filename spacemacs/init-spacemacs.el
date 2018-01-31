@@ -342,6 +342,7 @@ you should place your code here."
   (setq default-tab-width 2)
   (fset 'yes-or-no-p 'y-or-n-p)
   (setq hl-paren-colors '("Springgreen3"))
+  (setq spacemacs-show-trailing-whitespace nil)
   (setq show-trailing-whitespace nil)
   (spacemacs/toggle-highlight-current-line-globally-off)
   (global-visual-line-mode)
