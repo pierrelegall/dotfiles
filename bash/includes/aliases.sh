@@ -24,7 +24,8 @@ alias grep='grep --color=auto'
 
 alias e='emacsclient25 --no-wait'
 alias ecf='emacsclient25 --no-wait --create-frame'
-alias et='emacsclient25 --no-wait --create-frame --eval "(multi-term)"'
+alias et='emacsclient25 --no-wait --eval "(progn (select-frame-set-input-focus (selected-frame)) (eshell))"'
+alias ef='emacsclient25 --no-wait --eval "(select-frame-set-input-focus (selected-frame))"'
 alias enw='emacsclient25 --nw'
 
 alias emacsd-start='emacs25 --daemon'
