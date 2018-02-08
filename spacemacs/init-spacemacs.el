@@ -69,6 +69,7 @@ values."
      emojify
      projectile
      eshell-fringe-status
+     eshell-z
      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -408,6 +409,9 @@ you should place your code here."
   (setq eshell-prompt-regexp "^[#$] ")
   (setq eshell-prompt-function 'my/eshell-prompt-function)
   (add-hook 'eshell-mode-hook 'eshell-fringe-status-mode)
+  (add-hook 'eshell-mode-hook
+            (defun my-eshell-mode-hook ()
+              (require 'eshell-z)))
   (defun my/eshell-prompt-function ()
     (concat
      (propertize "\n")
