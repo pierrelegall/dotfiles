@@ -66,6 +66,7 @@ values."
    dotspacemacs-additional-packages
    '(
      beacon
+     editorconfig
      emojify
      projectile
      eshell-fringe-status
@@ -402,6 +403,9 @@ you should place your code here."
   (define-key company-active-map (kbd "C-.") #'helm-company)
   (define-key company-active-map (kbd "C-?") #'company-show-doc-buffer)
   ;; (define-key helm-company-map (kbd "C-?") #'helm-company-run-show-doc-buffer) ; does not work
+  ;; Editorconfig
+  (editorconfig-mode t)
+  (setq editorconfig-mode-lighter "")
   ;; Eshell
   (require 'vc-git)
   (setq eshell-banner-message ";; Welcome to the Emacs shell\n")
