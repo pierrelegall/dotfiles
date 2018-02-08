@@ -447,8 +447,22 @@ you should place your code here."
     (find-file filename wildcards))
   (defun pcomplete/sudo ()
     "Make the sudo command completion compatible."
+    (my/pcomplete-after-eshell-prefix "sudo"))
+  (defun eshell/t (&rest command)
+    "Run the command (with bash) in an external terminal emulator."
+    ;; Support only terminal emulators supporting `--hold` like `xfce4-terminal`
+    (shell-command (concat "x-terminal-emulator --hold "
+                           "--command='bash -i -c \""
+                           (string-join command " ")
+                           "\"'"))
+    "Command run in an external terminal emulator.")
+  (defun pcomplete/t ()
+    "Make the sudo command completion compatible."
+    (my/pcomplete-after-eshell-prefix "t"))
+  (defun my/pcomplete-after-eshell-prefix (command-prefix)
+    "Make a command completion compatible."
     (let ((prec (pcomplete-arg 'last -1)))
-      (cond ((string= "sudo" prec)
+      (cond ((string= command-prefix prec)
              (while (pcomplete-here*
                      (funcall pcomplete-command-completion-function)
                      (pcomplete-arg 'last) t))))))
