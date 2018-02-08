@@ -406,6 +406,10 @@ you should place your code here."
   ;; Editorconfig
   (editorconfig-mode t)
   (setq editorconfig-mode-lighter "")
+  ;; Emojify
+  (setq emojify-display-style 'image)
+  (setq emojify-emoji-styles '(unicode))
+  (global-emojify-mode)
   ;; Eshell
   (require 'vc-git)
   (setq eshell-banner-message ";; Welcome to the Emacs shell\n")
