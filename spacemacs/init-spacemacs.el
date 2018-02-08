@@ -410,6 +410,12 @@ you should place your code here."
   (setq eshell-prompt-function 'my/eshell-prompt-function)
   (add-hook 'eshell-mode-hook 'eshell-fringe-status-mode)
   (add-hook 'eshell-mode-hook
+            (lambda ()
+              (eshell-cmpl-initialize)
+              (define-key eshell-mode-map [remap eshell-pcomplete]  'helm-esh-pcomplete)
+              (define-key eshell-mode-map (kbd "M-h") 'helm-eshell-history)
+              (define-key eshell-mode-map (kbd "M-l") 'eshell/clear)))
+  (add-hook 'eshell-mode-hook
             (defun my-eshell-mode-hook ()
               (require 'eshell-z)))
   (defun my/eshell-prompt-function ()
