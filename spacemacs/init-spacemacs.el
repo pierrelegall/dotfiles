@@ -375,6 +375,7 @@ you should place your code here."
   (global-set-key (kbd "C-v") 'my/scroll-up)
   (global-set-key (kbd "M-v") 'my/scroll-down)
   (global-set-key (kbd "C-S-v") 'my/scroll-down)
+  (spacemacs/set-leader-keys "C-n" 'neotree)
   (global-set-key (kbd "C-x C-k") 'spacemacs/kill-this-buffer)
   (global-set-key (kbd "C-w") 'kill-ring-save)
   (global-set-key (kbd "M-w") 'kill-region)
@@ -474,6 +475,9 @@ you should place your code here."
              (while (pcomplete-here*
                      (funcall pcomplete-command-completion-function)
                      (pcomplete-arg 'last) t))))))
+  ;; Neotree
+  (setq neo-show-updir-line nil)
+  (setq neo-banner-message nil)
   ;; Powerline
   (setq powerline-default-separator 'bar)
   (setq spaceline-separator-dir-left '(left . left))
