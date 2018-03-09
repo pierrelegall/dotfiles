@@ -348,7 +348,6 @@ you should place your code here."
   (setq spacemacs-show-trailing-whitespace nil)
   (setq show-trailing-whitespace nil)
   (spacemacs/toggle-highlight-current-line-globally-off)
-  (global-visual-line-mode)
   ;; Scrolling
   (setq scroll-margin 2)
   (setq scroll-step 1)
@@ -517,6 +516,8 @@ you should place your code here."
           (setq-local flycheck-javascript-eslint-executable eslint)))))
   (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
   (add-hook 'js2-mode-hook #'js2-mode-hide-warnings-and-errors)
+  ;; Org-mode
+  (add-hook 'org-mode-hook 'visual-line-mode)
   )
 
 (defun my/load-my-functions ()
