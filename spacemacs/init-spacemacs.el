@@ -371,7 +371,6 @@ you should place your code here."
   ;; Key bindings
   (global-set-key (kbd "C-;") 'helm-M-x)
   (spacemacs/set-leader-keys "C-t" 'helm-mini)
-  (global-set-key (kbd "C-o") 'other-window)
   (global-set-key (kbd "C-v") 'my/scroll-up)
   (global-set-key (kbd "M-v") 'my/scroll-down)
   (global-set-key (kbd "C-S-v") 'my/scroll-down)
