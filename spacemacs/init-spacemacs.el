@@ -68,9 +68,9 @@ values."
      beacon
      editorconfig
      emojify
-     projectile
      eshell-fringe-status
      eshell-z
+     projectile
      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
