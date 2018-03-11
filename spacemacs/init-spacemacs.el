@@ -65,6 +65,7 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages
    '(
+     bash-completion
      beacon
      editorconfig
      emojify
@@ -452,9 +453,6 @@ you should place your code here."
   (defun eshell/e (filename &optional wildcards)
     "Find file alias"
     (find-file filename wildcards))
-  (defun pcomplete/sudo ()
-    "Make the sudo command completion compatible."
-    (my/pcomplete-after-eshell-prefix "sudo"))
   (defun eshell/t (&rest command)
     "Run the command (with bash) in an external terminal emulator."
     ;; Support only terminal emulators supporting `--hold` like `xfce4-terminal`
@@ -473,6 +471,12 @@ you should place your code here."
              (while (pcomplete-here*
                      (funcall pcomplete-command-completion-function)
                      (pcomplete-arg 'last) t))))))
+  (when (require 'bash-completion nil t)
+    (setq eshell-default-completion-function 'eshell-bash-completion))
+  (defun eshell-bash-completion ()
+    "Use bash-completion for Eshell."
+    (while (pcomplete-here (nth 2 (bash-completion-dynamic-complete-nocomint (save-excursion (eshell-bol) (point)) (point))))))
+  (setq bash-completion-nospace t)
   ;; Neotree
   (setq neo-show-updir-line nil)
   (setq neo-banner-message nil)
