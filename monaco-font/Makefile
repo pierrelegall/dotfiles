@@ -10,4 +10,5 @@ print-info:
 setup: download-ttf
 
 download-ttf:
+	@ mkdir -p $(HOME)/.fonts
 	@ wget $(REMOTE_FONT) -O $(HOME)/.fonts/Monaco.ttf
