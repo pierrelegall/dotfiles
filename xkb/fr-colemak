@@ -43,7 +43,7 @@ xkb_symbols "basic" {
     key <AC03> { [            s,            S,           minus,       asciitilde ] };
     key <AC04> { [            t,            T,       parenleft,  leftdoublequotemark ] };
     key <AC05> { [            d,            D,      parenright, rightdoublequotemark ] };
-    key <AC06> { [            h,            H,      underscore,       asciitilde ] };
+    key <AC06> { [            h,            H,          0x00b7,       asciitilde ] };
     key <AC07> { [            n,            N,          egrave,           Egrave ] };
     key <AC08> { [            e,            E,          eacute,           Eacute ] };
     key <AC09> { [            i,            I,     icircumflex,      Icircumflex ] };
