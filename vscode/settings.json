@@ -1,0 +1,24 @@
+{
+  "editor.autoClosingBrackets": false,
+  "editor.autoIndent": false,
+  "editor.fontFamily": "'Monaco', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.minimap.enabled": false,
+  "editor.minimap.showSlider": "always",
+  "editor.quickSuggestions": {
+    "other": false,
+    "comments": false,
+    "strings": false
+  },
+  "editor.tabSize": 2,
+  "files.trimTrailingWhitespace": true,
+  "scm.diffDecorationsGutterWidth": 3,
+  "search.location": "panel",
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+  "update.channel": "none",
+  "window.menuBarVisibility": "hidden",
+  "window.title": "${rootName}",
+  "window.zoomLevel": 1,
+  "workbench.colorTheme": "Dracula",
+  "workbench.editor.showTabs": false
+}
