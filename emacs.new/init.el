@@ -24,8 +24,8 @@
   (setq-default indent-tabs-mode nil)
   (setq default-tab-width 2)
   (setq-default message-log-max nil)
-  (delete-selection-mode 1)
-  (show-paren-mode 1)
+  (delete-selection-mode t)
+  (show-paren-mode t)
   (setq shift-select-mode nil)
   (setq x-select-enable-clipboard t)
   (setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
@@ -35,6 +35,7 @@
   (setq mouse-wheel-progressive-speed nil)
   (setq mouse-wheel-scroll-amount (quote (3 ((shift) . 1))))
   (add-hook 'prog-mode-hook #'linum-mode)
+  (global-auto-revert-mode)
   (global-set-key (kbd "C-h") (kbd "<backspace>"))
   (global-set-key (kbd "C-S-h") (kbd "C-<backspace>"))
   (global-set-key (kbd "C-x C-k") 'kill-this-buffer)
@@ -81,7 +82,7 @@
   (setq company-tooltip-align-annotations t)
   (add-hook 'prog-mode-hook #'company-mode)
   :config
-  (company-flx-mode +1))
+  (company-flx-mode t))
 
 (use-package company-flx)
 
@@ -114,7 +115,9 @@
   (global-diff-hl-mode)
   (diff-hl-flydiff-mode))
 
-(use-package diminish)
+(use-package diminish
+  :config
+  (diminish 'auto-revert-mode))
 
 (use-package editorconfig
   :diminish editorconfig-mode
@@ -135,7 +138,6 @@
   :init
   (add-hook 'prog-mode-hook #'flycheck-mode))
 
-;; TODO: blame in git-timemachine mode
 (use-package git-timemachine
   :bind
   (:map leader-key-map
@@ -159,13 +161,13 @@
   (my/use-eslint-from-node-modules)
   (js2-mode-hide-warnings-and-errors))
 
-(use-package hacker-typer)
-
 (use-package ivy
   :diminish ivy-mode
   :bind
   (:map leader-key-map
         ("i" . ivy-resume))
+  :init
+  (setq ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
   :config
   (ivy-mode))
 
@@ -191,10 +193,10 @@
         ("v l" . magit-log-current)
         ("v L" . magit-log-all))
   :init
+  (setq magit-display-buffer-function 'my/magit-display-buffer-function)
   (setq magit-diff-refine-hunk nil)
   (remove-hook 'magit-section-highlight-hook 'magit-section-highlight)
   (remove-hook 'magit-section-highlight-hook 'magit-diff-highlight)
-  (setq magit-display-buffer-function 'my/magit-display-buffer-function)
   (defun my/magit-display-buffer-function (buffer)
     (display-buffer buffer '(display-buffer-same-window)))
   (defun my/magit-diff-master-head ()
@@ -210,14 +212,14 @@
         ("o c" . org-goto-calendar)
         ("o t" . org-todo-list))
   :init
-  (require 'org) ;; long
-  (unbind-key "C-," org-mode-map)
+  (setq org-agenda-files '("~/Documents/Notes.org"))
   (setq org-agenda-todo-ignore-scheduled t)
   (setq org-todo-keywords '((sequence "TODO(t)"
                                       "MAYBE(m)"
                                       "WAITING(w)"
                                       "|" "DONE(d)")))
-  (setq org-agenda-files '("~/Documents/Notes.org")))
+  :config
+  (unbind-key "C-," org-mode-map))
 
 (use-package projectile
   :bind
@@ -242,6 +244,11 @@
   :init
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
+(use-package restclient
+  :mode "\\.http\\'"
+  :config
+  (restclient-mode))
+
 (use-package rotate
   :bind
   ("C-{" . rotate-window)
@@ -254,7 +261,7 @@
 
 (use-package smooth-scrolling
   :config
-  (smooth-scrolling-mode 1))
+  (smooth-scrolling-mode t))
 
 (use-package sudo-edit)
 
@@ -277,6 +284,14 @@
   (treemacs-git-mode 'extended))
 
 (use-package treemacs-projectile)
+
+(use-package undo-tree
+  :diminish undo-tree-mode
+  :bind
+  (:map undo-tree-visualizer-mode-map
+        ("RET" . kill-this-buffer))
+  :init
+  (global-undo-tree-mode))
 
 (use-package zerodark-theme
   :config
