@@ -133,9 +133,9 @@
   (("C-," . 'er/expand-region)))
 
 (use-package flycheck
-  :disabled t
   :diminish flycheck-mode
   :init
+  (setq flycheck-indication-mode nil)
   (add-hook 'prog-mode-hook #'flycheck-mode))
 
 (use-package git-timemachine
@@ -148,17 +148,17 @@
   :interpreter "node"
   :init
   (setq js-indent-level 2)
+  (setq js2-strict-missing-semi-warning nil)
   (defun my/use-eslint-from-node-modules ()
-    (let ((root (locate-dominating-file
-                 (or (buffer-file-name) default-directory)
-                 (lambda (dir)
-                   (let ((eslint (expand-file-name "node_modules/eslint/bin/eslint.js" dir)))
-                     (and eslint (file-executable-p eslint)))))))
-      (when root
-        (let ((eslint (expand-file-name "node_modules/eslint/bin/eslint.js" root)))
-          (setq-local flycheck-javascript-eslint-executable eslint)))))
+    (let* ((root
+            (locate-dominating-file (or (buffer-file-name) default-directory)
+                                    "node_modules"))
+           (eslint
+            (and root (expand-file-name "node_modules/.bin/eslint" root))))
+      (when (and eslint (file-executable-p eslint))
+        (setq-local flycheck-javascript-eslint-executable eslint))))
+  (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
   :config
-  (my/use-eslint-from-node-modules)
   (js2-mode-hide-warnings-and-errors))
 
 (use-package ivy
