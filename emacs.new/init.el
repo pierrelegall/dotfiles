@@ -273,6 +273,8 @@
         ("C-s" . ivy-next-line)
         ("C-r" . ivy-previous-line)))
 
+(use-package tide)
+
 (use-package treemacs
   :bind
   (:map treemacs-mode-map
@@ -284,6 +286,9 @@
   (treemacs-git-mode 'extended))
 
 (use-package treemacs-projectile)
+
+(use-package typescript-mode
+  :mode "\\.ts\\'")
 
 (use-package undo-tree
   :diminish undo-tree-mode
