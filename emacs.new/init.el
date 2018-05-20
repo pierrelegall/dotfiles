@@ -34,6 +34,7 @@
   (setq mouse-wheel-mode t)
   (setq mouse-wheel-progressive-speed nil)
   (setq mouse-wheel-scroll-amount (quote (3 ((shift) . 1))))
+  (recentf-mode)
   (add-hook 'prog-mode-hook #'linum-mode)
   (global-auto-revert-mode)
   (global-set-key (kbd "C-h") (kbd "<backspace>"))
