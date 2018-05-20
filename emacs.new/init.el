@@ -224,6 +224,7 @@
 (use-package projectile
   :bind
   (:map leader-key-map
+        ("p r" . projectile-recentf) ; not counsel :(
         ("p p" . projectile-switch-project)
         ("p d" . projectile-dired)
         ("p f" . projectile-find-file)
