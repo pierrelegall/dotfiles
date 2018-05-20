@@ -93,11 +93,11 @@
   ("C-x C-r" . counsel-recentf)
   (:map leader-key-map
         ("s f" . counsel-locate)
-        ("d a" . counsel-apropos)
-        ("d k" . counsel-descbinds)
-        ("d v" . counsel-describe-variable)
-        ("d f" . counsel-describe-function)
-        ("d F" . counsel-describe-face))
+        ("h a" . counsel-apropos)
+        ("h k" . counsel-descbinds)
+        ("h v" . counsel-describe-variable)
+        ("h f" . counsel-describe-function)
+        ("h F" . counsel-describe-face))
   :init
   (setq counsel-projectile-switch-project-action 'counsel-projectile-switch-project-action-vc))
 
