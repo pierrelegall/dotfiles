@@ -18,7 +18,7 @@
   "update.channel": "none",
   "window.menuBarVisibility": "hidden",
   "window.title": "${rootName}",
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 1.5,
   "workbench.colorTheme": "Dracula",
   "workbench.editor.showTabs": false
 }
