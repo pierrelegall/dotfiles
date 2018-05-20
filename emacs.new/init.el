@@ -305,6 +305,9 @@
   :init
   (global-undo-tree-mode))
 
+(use-package yaml-mode
+  :mode "\\.yml\\'")
+
 (use-package zerodark-theme
   :config
   (load-theme 'zerodark t)
