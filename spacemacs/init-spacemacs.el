@@ -348,6 +348,7 @@ you should place your code here."
   (setq hl-paren-colors '("Springgreen3"))
   (setq spacemacs-show-trailing-whitespace nil)
   (setq show-trailing-whitespace nil)
+  (setq-default truncate-lines t)
   (spacemacs/toggle-highlight-current-line-globally-off)
   ;; Scrolling
   (setq scroll-margin 2)
@@ -364,8 +365,8 @@ you should place your code here."
     (scroll-down 5))
   ;; Helm
   (require 'helm-projectile)
-  (setq helm-mini-default-sources '(helm-source-buffers-list
-                                    helm-source-projectile-files-list
+  (setq helm-mini-default-sources '(helm-source-projectile-buffers-list
+                                    helm-source-buffers-list
                                     helm-source-recentf
                                     helm-source-buffer-not-found))
   ;; Key bindings
@@ -400,7 +401,7 @@ you should place your code here."
   (unbind-key (kbd "C-m") company-active-map)
   (define-key company-active-map (kbd "TAB") #'company-complete-selection)
   (define-key company-active-map (kbd "C-h") #'backward-delete-char-untabify)
-  (define-key company-active-map (kbd "C-.") #'helm-company)
+  (define-key company-active-map (kbd "C-o") #'helm-company)
   (define-key company-active-map (kbd "C-?") #'company-show-doc-buffer)
   ;; (define-key helm-company-map (kbd "C-?") #'helm-company-run-show-doc-buffer) ; does not work
   ;; Editorconfig
@@ -420,8 +421,9 @@ you should place your code here."
   (add-hook 'eshell-mode-hook
             (lambda ()
               (eshell-cmpl-initialize)
-              (define-key eshell-mode-map [remap eshell-pcomplete]  'helm-esh-pcomplete)
-              (define-key eshell-mode-map (kbd "M-h") 'helm-eshell-history)
+              (define-key eshell-mode-map (kbd "C-.") 'helm-esh-pcomplete)
+              (define-key eshell-mode-map (kbd "C-o") 'helm-esh-pcomplete)
+              (define-key eshell-mode-map (kbd "C-S-o") 'helm-eshell-history)
               (define-key eshell-mode-map (kbd "M-l") 'eshell/clear)))
   (add-hook 'eshell-mode-hook
             (defun my-eshell-mode-hook ()
@@ -521,8 +523,9 @@ you should place your code here."
   (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
   (add-hook 'js2-mode-hook #'js2-mode-hide-warnings-and-errors)
   ;; Org-mode
+  (require 'org)
   (add-hook 'org-mode-hook 'visual-line-mode)
-  )
+  (define-key org-mode-map (kbd "C-,") nil))
 
 (defun my/load-my-functions ()
   "Define my interactive functions."
