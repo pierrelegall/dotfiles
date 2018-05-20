@@ -90,6 +90,7 @@
 (use-package counsel
   :diminish counsel-mode
   :bind
+  ("C-x C-r" . counsel-recentf)
   (:map leader-key-map
         ("s f" . counsel-locate)
         ("d a" . counsel-apropos)
