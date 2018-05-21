@@ -30,4 +30,4 @@
 	autoStash = true
 
 [include]
-	path = .gitlocalconfig
+	path = .gitconfig-local
