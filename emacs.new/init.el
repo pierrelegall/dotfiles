@@ -212,6 +212,8 @@
     (interactive)
     (magit-diff "develop..HEAD")))
 
+(use-package markdown-mode)
+
 (use-package org
   :bind
   (:map leader-key-map
