@@ -121,6 +121,8 @@
   :config
   (diminish 'auto-revert-mode))
 
+(use-package dockerfile-mode)
+
 (use-package editorconfig
   :diminish editorconfig-mode
   :config
