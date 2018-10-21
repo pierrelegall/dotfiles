@@ -14,4 +14,5 @@ set-symlinks:
 	@ ln -v -i -s -T $(CURDIR) $(CONFIG_DIR)
 
 set-system-symlinks:
+	@ mkdir -p /etc/resolvconf/resolv.conf.d
 	@ ln -v -i -s -T $(CONFIG_DIR)/resolv.head.conf /etc/resolvconf/resolv.conf.d/head
