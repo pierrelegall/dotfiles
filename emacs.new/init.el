@@ -191,7 +191,7 @@
         ( "l m" . langtool-show-message-at-point)
         ( "l c" . langtool-correct-buffer))
   :init
-  (setq langtool-language-tool-jar "~/.bin/languagetool/languagetool-commandline.jar")
+  (setq langtool-language-tool-jar "~/.opt/languagetool/languagetool-commandline.jar")
   (setq langtool-default-language "en-US")
   (setq langtool-mother-tongue "fr"))
 
