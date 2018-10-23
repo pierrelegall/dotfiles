@@ -230,7 +230,7 @@
         ("o c" . org-goto-calendar)
         ("o t" . org-todo-list))
   :init
-  (setq org-agenda-files '("~/Documents/Notes.org"))
+  (setq org-agenda-files '("~/Documents/Brain.org"))
   (setq org-agenda-todo-ignore-scheduled t)
   (setq org-todo-keywords '((sequence "TODO(t)"
                                       "MAYBE(m)"
