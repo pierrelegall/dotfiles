@@ -220,6 +220,7 @@
 (use-package markdown-mode)
 
 (use-package org
+  :diminish org-indent-mode
   :bind
   (:map leader-key-map
         ("o c" . org-goto-calendar)
@@ -232,7 +233,8 @@
                                       "WAITING(w)"
                                       "|" "DONE(d)")))
   :config
-  (unbind-key "C-," org-mode-map))
+  (unbind-key "C-," org-mode-map)
+  (add-hook 'org-mode-hook #'org-indent-mode))
 
 (use-package php-mode)
 
