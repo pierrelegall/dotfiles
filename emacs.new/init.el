@@ -10,6 +10,7 @@
   (setq-default indicate-empty-lines t)
   (setq inhibit-splash-screen t)
   (setq inhibit-startup-screen t)
+  (setq tab-width 2)
   (setq ring-bell-function (lambda () nil))
   (add-to-list 'default-frame-alist '(font . "Monaco-13"))
   (add-to-list 'default-frame-alist '(height . 40))
