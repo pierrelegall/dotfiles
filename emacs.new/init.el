@@ -231,6 +231,8 @@
   :config
   (unbind-key "C-," org-mode-map))
 
+(use-package php-mode)
+
 (use-package projectile
   :bind
   (:map leader-key-map
