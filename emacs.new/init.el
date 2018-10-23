@@ -122,7 +122,8 @@
 
 (use-package diminish
   :config
-  (diminish 'auto-revert-mode))
+  (diminish 'auto-revert-mode)
+  (diminish 'eldoc-mode))
 
 (use-package dockerfile-mode)
 
