@@ -141,6 +141,7 @@
 
 (use-package flycheck
   :diminish flycheck-mode
+  :diminish flycheck-error-list-mode
   :init
   (setq flycheck-indication-mode nil)
   (add-hook 'prog-mode-hook #'flycheck-mode))
