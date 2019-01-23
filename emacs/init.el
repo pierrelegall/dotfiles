@@ -213,7 +213,7 @@
         ("v L" . magit-log-all))
   :init
   (setq magit-display-buffer-function 'my/magit-display-buffer-function)
-  (setq magit-diff-refine-hunk nil)
+  (setq magit-diff-refine-hunk t)
   (remove-hook 'magit-section-highlight-hook 'magit-section-highlight)
   (remove-hook 'magit-section-highlight-hook 'magit-diff-highlight)
   (defun my/magit-display-buffer-function (buffer)
