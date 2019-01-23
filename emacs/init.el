@@ -108,6 +108,8 @@
   :config
   (counsel-projectile-mode))
 
+(use-package darkroom)
+
 (use-package default-text-scale
   :config
   (default-text-scale-mode))
