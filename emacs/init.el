@@ -178,6 +178,8 @@
   :config
   (js2-mode-hide-warnings-and-errors))
 
+(use-package json-mode)
+
 (use-package ivy
   :diminish ivy-mode
   :bind
