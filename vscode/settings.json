@@ -1,5 +1,6 @@
 {
   "breadcrumbs.enabled": false,
+  "diffEditor.renderSideBySide": false,
   "editor.autoClosingBrackets": false,
   "editor.autoIndent": false,
   "editor.cursorStyle": "block",
@@ -14,16 +15,16 @@
   },
   "editor.renderLineHighlight": "none",
   "editor.tabSize": 2,
+  "explorer.openEditors.visible": 5,
   "files.trimTrailingWhitespace": true,
   "scm.diffDecorationsGutterWidth": 3,
-  "search.location": "panel",
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
   "update.channel": "none",
-  "window.menuBarVisibility": "hidden",
+  "window.menuBarVisibility": "toggle",
   "window.title": "${rootName}",
+  "window.titleBarStyle": "native",
   "window.zoomLevel": 1.5,
-  "workbench.colorTheme": "Dracula",
   "workbench.editor.showTabs": false,
   "workbench.statusBar.feedback.visible": false
 }
