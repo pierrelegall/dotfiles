@@ -249,15 +249,16 @@
 (use-package projectile
   :bind
   (:map leader-key-map
-        ("p r" . projectile-recentf) ; not counsel :(
+        ("p r" . projectile-recentf)
         ("p p" . projectile-switch-project)
         ("p d" . projectile-dired)
         ("p f" . projectile-find-file)
-        ("p F" . projectile-find-file-in-known-projects) ; not counsel :(
+        ("p F" . projectile-find-file-in-known-projects)
         ("p g" . projectile-grep)
         ("p t" . treemacs-projectile)
         ("p v" . projectile-vc))
   :init
+  (setq projectile-completion-system 'ivy)
   (setq projectile-switch-project-action 'projectile-dired)
   (setq projectile-use-git-grep t)
   (setq projectile-keymap-prefix (kbd "C-t p"))
