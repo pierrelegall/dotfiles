@@ -129,6 +129,13 @@
 
 (use-package dockerfile-mode)
 
+(use-package doom-modeline
+  :init
+  (doom-modeline-mode)
+  :config
+  (setq doom-modeline-height 10)
+  (setq doom-modeline-bar-width 3))
+
 (use-package editorconfig
   :diminish editorconfig-mode
   :config
@@ -335,8 +342,7 @@
 
 (use-package zerodark-theme
   :config
-  (load-theme 'zerodark t)
-  (zerodark-setup-modeline-format))
+  (load-theme 'zerodark t))
 
 (use-package zoom
   :disabled t
