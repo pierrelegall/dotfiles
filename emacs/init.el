@@ -23,7 +23,7 @@
   (add-hook 'write-file-hooks 'delete-trailing-whitespace)
   (fset 'yes-or-no-p 'y-or-n-p)
   (setq-default indent-tabs-mode nil)
-  (setq default-tab-width 2)
+  (setq-default tab-width 2)
   (setq-default message-log-max nil)
   (delete-selection-mode t)
   (show-paren-mode t)
