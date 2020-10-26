@@ -317,6 +317,9 @@
   :bind
   (:map treemacs-mode-map
         ("C-h" . treemacs-toggle-show-dotfiles))
+  (:map leader-key-map
+        ("C-t" . treemacs-select-window)
+        ("t" . treemacs-find-file))
   :config
   (add-hook 'treemacs-mode-hook #'treemacs-toggle-fixed-width)
   (treemacs-follow-mode)
