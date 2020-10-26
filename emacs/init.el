@@ -324,6 +324,8 @@
   (treemacs-filewatch-mode)
   (treemacs-git-mode 'extended))
 
+(use-package treemacs-all-the-icons)
+
 (use-package treemacs-projectile)
 
 (use-package typescript-mode
