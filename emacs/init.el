@@ -56,8 +56,6 @@
   (define-key leader-key-map (kbd "<SPC>") 'execute-extended-command)
   (define-key leader-key-map (kbd "r") 'rectangle-mark-mode))
 
-(use-package alchemist)
-
 (use-package all-the-icons) ; do not forget to run M-x all-the-icons-install-fonts
 
 (use-package anzu
