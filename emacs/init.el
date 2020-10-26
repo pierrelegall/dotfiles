@@ -136,6 +136,16 @@
   (setq doom-modeline-height 10)
   (setq doom-modeline-bar-width 3))
 
+(use-package doom-themes
+  :config
+  (setq doom-themes-enable-bold t)
+  (setq doom-themes-enable-italic t)
+  (load-theme 'doom-one t)
+  ;(doom-themes-visual-bell-config)
+  (setq doom-themes-treemacs-theme "doom-colors")
+  (doom-themes-treemacs-config)
+  (doom-themes-org-config))
+
 (use-package editorconfig
   :diminish editorconfig-mode
   :config
@@ -340,9 +350,6 @@
 (use-package yaml-mode
   :mode "\\.yml\\'")
 
-(use-package zerodark-theme
-  :config
-  (load-theme 'zerodark t))
 
 (use-package zoom
   :disabled t
