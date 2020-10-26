@@ -167,12 +167,6 @@
   (setq flycheck-indication-mode nil)
   (add-hook 'prog-mode-hook #'flycheck-mode))
 
-(use-package flycheck-mix
-  :init
-  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
-  :config
-  (flycheck-mix-setup))
-
 (use-package git-timemachine
   :bind
   (:map leader-key-map
