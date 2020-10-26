@@ -267,7 +267,6 @@
         ("p f" . projectile-find-file)
         ("p F" . projectile-find-file-in-known-projects)
         ("p g" . projectile-grep)
-        ("p t" . treemacs-projectile)
         ("p v" . projectile-vc))
   :init
   (setq projectile-completion-system 'ivy)
@@ -326,7 +325,10 @@
 
 (use-package treemacs-all-the-icons)
 
-(use-package treemacs-projectile)
+(use-package treemacs-projectile
+  :bind
+  (:map leader-key-map
+        ("p t" . treemacs-projectile)))
 
 (use-package typescript-mode
   :mode "\\.ts\\'")
