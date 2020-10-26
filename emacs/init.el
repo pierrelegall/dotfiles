@@ -320,6 +320,8 @@
   (:map leader-key-map
         ("C-t" . treemacs-select-window)
         ("t" . treemacs-find-file))
+  :init
+  (setq treemacs-is-never-other-window t)
   :config
   (add-hook 'treemacs-mode-hook #'treemacs-toggle-fixed-width)
   (treemacs-follow-mode)
