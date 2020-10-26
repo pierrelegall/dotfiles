@@ -56,23 +56,19 @@
   (define-key leader-key-map (kbd "<SPC>") 'execute-extended-command)
   (define-key leader-key-map (kbd "r") 'rectangle-mark-mode))
 
-(use-package alchemist
-  :diminish alchemist-mode)
+(use-package alchemist)
 
 (use-package all-the-icons) ; do not forget to run M-x all-the-icons-install-fonts
 
 (use-package anzu
-  :diminish anzu-mode
   :config
   (global-anzu-mode))
 
 (use-package beacon
-  :diminish beacon-mode
   :config
   (beacon-mode))
 
 (use-package company
-  :diminish company-mode
   :bind
   (:map company-mode-map
         ("C-o" . company-complete))
@@ -92,7 +88,6 @@
 (use-package company-flx)
 
 (use-package counsel
-  :diminish counsel-mode
   :bind
   ("C-x C-r" . counsel-recentf)
   (:map leader-key-map
@@ -123,11 +118,6 @@
   (global-diff-hl-mode)
   (diff-hl-flydiff-mode))
 
-(use-package diminish
-  :config
-  (diminish 'auto-revert-mode)
-  (diminish 'eldoc-mode))
-
 (use-package dockerfile-mode)
 
 (use-package doom-modeline
@@ -148,7 +138,6 @@
   (doom-themes-org-config))
 
 (use-package editorconfig
-  :diminish editorconfig-mode
   :config
   (editorconfig-mode t))
 
@@ -161,8 +150,6 @@
   (("C-," . 'er/expand-region)))
 
 (use-package flycheck
-  :diminish flycheck-mode
-  :diminish flycheck-error-list-mode
   :init
   (setq flycheck-indication-mode nil)
   (add-hook 'prog-mode-hook #'flycheck-mode))
@@ -193,7 +180,6 @@
 (use-package json-mode)
 
 (use-package ivy
-  :diminish ivy-mode
   :bind
   (:map leader-key-map
         ("i" . ivy-resume))
@@ -240,7 +226,6 @@
 (use-package markdown-mode)
 
 (use-package org
-  :diminish org-indent-mode
   :bind
   (:map leader-key-map
         ("o c" . org-goto-calendar)
@@ -339,7 +324,6 @@
   :mode "\\.ts\\'")
 
 (use-package undo-tree
-  :diminish undo-tree-mode
   :bind
   (:map undo-tree-visualizer-mode-map
         ("RET" . kill-this-buffer))
@@ -347,17 +331,14 @@
   (global-undo-tree-mode))
 
 (use-package which-key
-  :diminish which-key-mode
   :config
   (which-key-mode))
 
 (use-package yaml-mode
   :mode "\\.yml\\'")
 
-
 (use-package zoom
   :disabled t
-  :diminish zoom-mode
   :init
   (setq zoom-ignored-major-modes '(treemacs-mode))
   :config
