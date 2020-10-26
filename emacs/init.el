@@ -35,7 +35,6 @@
   (setq mouse-wheel-mode t)
   (setq mouse-wheel-progressive-speed nil)
   (setq mouse-wheel-scroll-amount (quote (3 ((shift) . 1))))
-  (recentf-mode)
   (if (>= emacs-major-version 26)
       (add-hook 'prog-mode-hook #'display-line-numbers-mode)
     (add-hook 'prog-mode-hook #'linum-mode))
