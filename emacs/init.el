@@ -60,6 +60,8 @@
 (use-package alchemist
   :diminish alchemist-mode)
 
+(use-package all-the-icons) ; do not forget to run M-x all-the-icons-install-fonts
+
 (use-package anzu
   :diminish anzu-mode
   :config
