@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <MixxxControllerPreset mixxxVersion="2.1.0+" schemaVersion="1">
     <info>
-        <name>Hercules P32 DJ</name>
+        <name>Hercules P32 Dwellmind</name>
         <author>Be</author>
-        <description>4-deck mapping for Hercules P32 controller</description>
+        <description>4-deck mapping for Hercules P32 controller (Dwellmind version)a</description>
         <forums>https://mixxx.discourse.group/t/hercules-p32-dj-controller-mapping/15804</forums>
         <manual>hercules_p32_dj</manual>
     </info>
@@ -11,7 +11,7 @@
         <scriptfiles>
             <file filename="lodash.mixxx.js"/>
             <file filename="midi-components-0.0.js"/>
-            <file functionprefix="P32" filename="Hercules-P32-scripts.js"/>
+            <file functionprefix="P32" filename="Hercules-P32-Dwellmind-scripts.js"/>
         </scriptfiles>
         <controls>
             <control>
@@ -512,7 +512,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>P32.leftDeck.effectUnit.dryWetKnob.input</key>
+                <key>P32.leftDeck.dryWetKnobOrPregain.input</key>
                 <status>0xB1</status>
                 <midino>0x09</midino>
                 <options>
@@ -521,7 +521,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>P32.leftDeck.effectUnit.dryWetKnob.input</key>
+                <key>P32.leftDeck.dryWetKnobOrPregain.input</key>
                 <status>0xB4</status>
                 <midino>0x09</midino>
                 <options>
@@ -704,6 +704,42 @@
                 <key>P32.leftDeck.alignBeats.input</key>
                 <status>0x94</status>
                 <midino>0x46</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+           <control>
+                <group>[Channel1]</group>
+                <key>P32.leftDeck.syncKey.input</key>
+                <status>0x91</status>
+                <midino>0x53</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>P32.leftDeck.pitchUp.input</key>
+                <status>0x91</status>
+                <midino>0x4F</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>P32.leftDeck.pitchDown.input</key>
+                <status>0x91</status>
+                <midino>0x4B</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>P32.leftDeck.resetKey.input</key>
+                <status>0x91</status>
+                <midino>0x47</midino>
                 <options>
                     <script-binding/>
                 </options>
@@ -1512,7 +1548,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>P32.rightDeck.effectUnit.dryWetKnob.input</key>
+                <key>P32.rightDeck.dryWetKnobOrPregain.input</key>
                 <status>0xB2</status>
                 <midino>0x09</midino>
                 <options>
@@ -1521,7 +1557,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>P32.rightDeck.effectUnit.dryWetKnob.input</key>
+                <key>P32.rightDeck.dryWetKnobOrPregain.input</key>
                 <status>0xB5</status>
                 <midino>0x09</midino>
                 <options>
@@ -2280,6 +2316,42 @@
                 <key>P32.rightDeck.alignBeats.input</key>
                 <status>0x95</status>
                 <midino>0x46</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+           <control>
+                <group>[Channel1]</group>
+                <key>P32.rightDeck.syncKey.input</key>
+                <status>0x92</status>
+                <midino>0x53</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>P32.rightDeck.pitchUp.input</key>
+                <status>0x92</status>
+                <midino>0x4F</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>P32.rightDeck.pitchDown.input</key>
+                <status>0x92</status>
+                <midino>0x4B</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>P32.rightDeck.resetKey.input</key>
+                <status>0x92</status>
+                <midino>0x47</midino>
                 <options>
                     <script-binding/>
                 </options>
