@@ -39,8 +39,8 @@ xkb_symbols "basic" {
   key <BKSL> {[backslash, bar, asciitilde, asciitilde]};
 
   key <AC01> {[a, A, agrave, Agrave]};
-  key <AC02> {[r, R, plus, asciitilde]};
-  key <AC03> {[s, S, minus, asciitilde]};
+  key <AC02> {[r, R, plus, U1E9E]};
+  key <AC03> {[s, S, minus, ssharp]};
   key <AC04> {[t, T, parenleft, leftdoublequotemark]};
   key <AC05> {[d, D, parenright, rightdoublequotemark]};
   key <AC06> {[h, H, 0x00b7, asciitilde]};
