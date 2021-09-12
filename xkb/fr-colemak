@@ -1,9 +1,31 @@
-// # French Colemak: The Colemak layout, french friendly.
+// # French Colemak: The Colemak layout, french & coder friendly
 //
 // Features:
 // - all the french characters available with AltGr
 // - truly usefull characters easy to reach thanks to AltGr
 // - dead keys removed
+//
+// Note any non-AltGr keys are changed from the classic Colemak.
+//
+// Overview:
+//  _________________________________________________________________________
+// | ~ ~| ! ¹| @ ²| # ³| $ £| % ¥| ^ ħ| & ð| * Þ| ( “| ) ’| - —| + ×|        |
+// | ` ~| 1 ¡| 2 º| 3 #| 4 ¢| 5 €| 6 Ħ| 7 Ð| 8 Þ| 9 ‘| 0 ”| _ –| = ÷| Back   |
+// |=========================================================================|
+// |     | q â| w ~| f =| p {| g }| j ü| l û| u ù| y ï| ; ÿ| [ «| ] »| | ~   |
+// | Tab | Q Â| W ~| F ~| P “| G ”| J ~| L ~| U Ù| Y Ï| : Ÿ| { ‹| } ›| \ ~   |
+// |=========================================================================|
+// |       | a à| r +| s -| t (| d )| h ·| n è| e é| i î| o ô| ' `|          |
+// | Shift | A À| R ß| S ß| T «| D »| H ~| N È| E É| I Î| O Ô| " ´| Enter    |
+// |=========================================================================|
+// |         | z æ| x œ| c ç| v [| b ]| k || m ê| , ë| . …| / \|             |
+// | Shift   | Z Æ| X Œ| C Ç| V ‘| B ’| K ~| M Ê| < Ë| > ~| ? ¿| Shift       |
+// |=========================================================================|
+// |      |       |     | Space _              |       |       |      |      |
+// | Ctrl | Super | Alt | Space Nobreakspace   | AltGr | Super | Menu | Ctrl |
+//  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+//
+// Author: Pierre Le Gall <pierre@legall.im>
 
 default partial alphanumeric_keys
 xkb_symbols "basic" {
