@@ -42,8 +42,3 @@ alias notify='\
   notify-send "Something coming to its end…"; \
   echo; echo "Notified!"; \
   (paplay $HOME/.config/bash/assets/sounds/notify.ogg &)'
-
-alias eshell-aliases-update="\
-  alias | \
-  sed -E \"s/^alias ([^=]+)='(.*)'$/alias \1 \2 \$\*/g; s/'\\\''/'/g;\" \
-  >~/.emacs.d/eshell/alias"
