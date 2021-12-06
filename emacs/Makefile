@@ -1,6 +1,8 @@
 CONFIG = Emacs
 CONFIG_DIR = $(HOME)/.config/emacs
 
+disabled:
+
 all: print-info setup
 
 print-info:
