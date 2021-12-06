@@ -31,6 +31,7 @@ alias emacsd-stop='emacsclient --eval "(kill-emacs)"'
 alias emacsd-restart='emacsd-stop; emacsd-start'
 
 alias frkb='setxkbmap fr -option'
+alias uskb='setxkbmap us -option'
 alias kb='setxkbmap fr-colemak -option "ctrl:swap_lalt_lctl"'
 alias azer='kb'
 alias qwer='kb'
