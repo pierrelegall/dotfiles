@@ -22,11 +22,9 @@ alias du='du --human-readable'
 
 alias grep='grep --color=auto'
 
-alias e='emacsclient --no-wait'
-alias ecf='emacsclient --no-wait --create-frame'
-alias et='emacsclient --no-wait --eval "(progn (select-frame-set-input-focus (selected-frame)) (eshell))"'
-alias ef='emacsclient --no-wait --eval "(select-frame-set-input-focus (selected-frame))"'
-alias enw='emacsclient --nw'
+alias emacs-focus='emacsclient --eval "(select-frame-set-input-focus (selected-frame))" &>/dev/null'
+alias e='emacs-focus; emacsclient --no-wait'
+alias ef='emacsclient --no-wait --create-frame'
 
 alias emacsd-start='emacs --daemon'
 alias emacsd-stop='emacsclient --eval "(kill-emacs)"'
