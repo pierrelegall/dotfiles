@@ -80,6 +80,7 @@
 (global-set-key (kbd "C-h") (kbd "<backspace>"))
 (global-set-key (kbd "C-S-h") (kbd "C-<backspace>"))
 
+(global-set-key (kbd "C-x i") 'indent-for-tab-command)
 (global-set-key (kbd "C-o") 'help-command)
 (global-set-key (kbd "C-S-v") 'scroll-down-command)
 (global-set-key (kbd "C-S-f") 'forward-word)
