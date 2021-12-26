@@ -1,22 +1,22 @@
 {
-  "breadcrumbs.enabled": false,
   "diffEditor.renderSideBySide": false,
   "editor.autoClosingBrackets": false,
   "editor.autoIndent": false,
-  "editor.cursorStyle": "block",
+  "editor.folding": false,
+  "editor.foldingHighlight": false,
   "editor.fontFamily": "'Monaco', 'Droid Sans Mono', 'monospace', 'Droid Sans Fallback'",
   "editor.minimap.enabled": false,
   "editor.minimap.showSlider": "always",
   "editor.occurrencesHighlight": false,
   "editor.quickSuggestions": {
-    "other": false,
     "comments": false,
+    "other": false,
     "strings": false
   },
   "editor.renderLineHighlight": "none",
   "editor.tabSize": 2,
-  "explorer.openEditors.visible": 5,
   "files.trimTrailingWhitespace": true,
+  "magit.display-buffer-function": "same-column",
   "scm.diffDecorationsGutterWidth": 3,
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
@@ -24,7 +24,9 @@
   "window.menuBarVisibility": "toggle",
   "window.title": "${rootName}",
   "window.titleBarStyle": "native",
-  "window.zoomLevel": 1.5,
-  "workbench.editor.showTabs": false,
-  "workbench.statusBar.feedback.visible": false
+  "window.zoomLevel": 1.2,
+  "workbench.colorTheme": "One Dark Pro Flat",
+  "workbench.editor.showTabs": true,
+  "workbench.statusBar.feedback.visible": false,
+  "workbench.editor.enablePreview": false
 }
