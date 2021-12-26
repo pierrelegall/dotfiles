@@ -109,16 +109,17 @@
 (map! :leader
       "?" #'help-command
       "<SPC> "#'execute-extended-command
-      "C-t" #'+ivy/switch-buffer
-      "<" #'treemacs-select-window
+      "C-t" #'counsel-projectile-switch-to-buffer
       "p" #'projectile-command-map
       "v v" #'magit-status
-      "b" #'my/switch-to-last-buffer
+      "b" #'+ivy/switch-buffer
       "C-k" #'my/kill-this-buffer
       "w" #'winner-undo
       "W" #'winner-redo
       "=" #'text-scale-adjust
-      "r" #'rename-buffer)
+      "r" #'rename-buffer
+      "<" #'treemacs-select-window
+      ">" #'minimap-mode)
 
 (map! :map prog-mode-map
       "C-i" 'company-complete)
