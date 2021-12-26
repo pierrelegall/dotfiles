@@ -29,8 +29,15 @@
 
 default partial alphanumeric_keys
 xkb_symbols "basic" {
-  include "us"
   name[Group1]="French (Colemak)";
+
+  include "us(basic)"
+  include "level3(ralt_switch)"
+
+  replace key <CAPS> {[Shift_L]};
+
+  key <LSGT> {[minus, underscore, endash, emdash]};
+  key <SPCE> {[space, space, underscore, nobreakspace]};
 
   key <TLDE> {[grave, asciitilde, dead_tilde, asciitilde]};
   key <AE01> {[1, exclam, exclamdown, onesuperior]};
@@ -82,11 +89,4 @@ xkb_symbols "basic" {
   key <AB08> {[comma, less, ediaeresis, Ediaeresis]};
   key <AB09> {[period, greater, ellipsis, asciitilde]};
   key <AB10> {[slash, question, backslash, questiondown]};
-
-  key <LSGT> {[minus, underscore, endash, emdash]};
-  key <SPCE> {[space, space, underscore, nobreakspace]};
-
-  replace key <CAPS> {[Shift_L]};
-
-  include "level3(ralt_switch)"
 };
