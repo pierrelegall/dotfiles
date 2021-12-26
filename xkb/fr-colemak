@@ -35,8 +35,8 @@ xkb_symbols "basic" {
   include "level3(ralt_switch)"
 
   replace key <CAPS> {[Shift_L]};
+  replace key <LSGT> {[Shift_L]};
 
-  key <LSGT> {[minus, underscore, endash, emdash]};
   key <SPCE> {[space, space, underscore, nobreakspace]};
 
   key <TLDE> {[grave, asciitilde, dead_tilde, asciitilde]};
