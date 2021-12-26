@@ -5,13 +5,12 @@ all: print-info setup
 
 print-info:
 	@ echo "[$(CONFIG)]"
-	@ echo "Root privileges needed, you have to run manually:"
-	@ echo "$ sudo -E make -C $(CURDIR) set-system-symlinks --quiet"
 
 setup: set-symlinks
 
 set-symlinks:
-	@ ln -v -i -s -T $(CURDIR) $(CONFIG_DIR)
+	@ mkdir -p $(CONFIG_DIR)
+	@ ln -v -i -s -T $(CURDIR)/symbols $(CONFIG_DIR)/symbols
 
 set-system-symlinks:
-	@ ln -v -i -s -T $(CONFIG_DIR)/fr-colemak /usr/share/X11/xkb/symbols/fr-colemak
+	@ ln -v -i -s -T $(CONFIG_DIR)/symbols/fr-colemak /usr/share/X11/xkb/symbols/fr-colemak
