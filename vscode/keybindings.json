@@ -1,10 +1,10 @@
 [
   {
-    "key": "ctrl+t",
+    "key": "ctrl+t f",
     "command": "workbench.action.quickOpen"
   },
   {
-    "key": "ctrl+.",
+    "key": "ctrl+. g",
     "command": "editor.action.goToDeclaration",
     "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
   },
@@ -37,37 +37,18 @@
     "when": "editorTextFocus"
   },
   {
-    "key": "ctrl+x 0",
-    "command": "workbench.action.closeEditorsInGroup"
-  },
-  {
     "key": "ctrl+k w",
     "command": "-workbench.action.closeEditorsInGroup"
   },
   {
-    "key": "ctrl+o",
+    "key": "ctrl+i",
     "command": "editor.action.triggerSuggest",
     "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+'",
-    "command": "-editor.action.triggerSuggest",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+i",
-    "command": "acceptSelectedSuggestion",
-    "when": "editorTextFocus && suggestWidgetVisible"
   },
   {
     "key": "tab",
     "command": "-acceptSelectedSuggestion",
     "when": "editorTextFocus && suggestWidgetVisible"
-  },
-  {
-    "key": "ctrl+i",
-    "command": "emacs-tab.reindentCurrentLine",
-    "when": "editorTextFocus && !suggestWidgetVisible"
   },
   {
     "key": "ctrl+shift+n",
@@ -80,5 +61,79 @@
   {
     "key": "ctrl+m",
     "command": "-editor.action.toggleTabFocusMode"
+  },
+  {
+    "key": "ctrl+t space",
+    "command": "workbench.action.showCommands"
+  },
+  {
+    "key": "ctrl+t v",
+    "command": "magit.status"
+  },
+  {
+    "key": "ctrl+x ctrl+q",
+    "command": "workbench.action.closeAllEditors",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+x ctrl+k",
+    "command": "-workbench.action.closeAllEditors",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+x ctrl+k",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+x k",
+    "command": "-workbench.action.closeActiveEditor",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+i",
+    "command": "magit.toggle-fold",
+    "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
+  },
+  {
+    "key": "ctrl+m",
+    "command": "magit.visit-at-point",
+    "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
+  },
+  {
+    "key": "ctrl+t p",
+    "command": "projectManager.listProjects"
+  },
+  {
+    "key": "shift+alt+p",
+    "command": "-projectManager.listProjects"
+  },
+  {
+    "key": "ctrl+t ctrl+t",
+    "command": "workbench.action.showAllEditorsByMostRecentlyUsed",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+t i",
+    "command": "editor.action.reindentselectedlines"
+  },
+  {
+    "key": "ctrl+x i",
+    "command": "editor.action.reindentselectedlines"
+  },
+  {
+    "key": "ctrl+t c",
+    "command": "maximizeterminal.openMaximizedTerminal",
+    "when": "!activePanel && !config.maximizeterminal.useAlternativeKeybinding"
+  },
+  {
+    "key": "ctrl+t c",
+    "command": "maximizeterminal.openMinimizedTerminal",
+    "when": "config.maximizeterminal.useAlternativeKeybinding && !activePanel"
+  },
+  {
+    "key": "ctrl+t c",
+    "command": "maximizeterminal.closeMaximizedTerminal",
+    "when": "activePanel"
   }
 ]
