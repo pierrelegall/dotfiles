@@ -166,8 +166,7 @@
   :init
   (setq magit-diff-refine-hunk nil))
 
-;(use-package! languagetool
-;  :init
-;  (setq languagetool-language-tool-jar "~/.opt/languagetool/languagetool-commandline.jar")
-;  (setq languagetool-default-language "en-US")
-;  (setq languagetool-mother-tongue "fr"))
+(use-package! treemacs
+  :init
+  (setq treemacs-project-follow-cleanup t)
+  (treemacs-follow-mode +1))
