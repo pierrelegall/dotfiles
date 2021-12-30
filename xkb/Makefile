@@ -1,10 +1,9 @@
-CONFIG = Xkb
 CONFIG_DIR = $(HOME)/.config/xkb
 
 all: print-info setup
 
 print-info:
-	@ echo "[$(CONFIG)]"
+	@ echo "[xkb]"
 
 setup: set-symlinks
 

@@ -1,15 +1,11 @@
-CONFIG = Bash
-CONFIG_DIR = $(HOME)/.config/bash
-
 all: print-info setup
 
 print-info:
-	@ echo "[$(CONFIG)]"
+	@ echo "[Bash]"
 
 setup: set-symlinks
 
 set-symlinks:
-	@ ln -v -i -s -T $(CURDIR) $(CONFIG_DIR)
-	@ ln -v -i -s -T $(CONFIG_DIR)/bashrc.sh $(HOME)/.bashrc
-	@ ln -v -i -s -T $(CONFIG_DIR)/bash_profile.sh $(HOME)/.bash_profile
-	@ ln -v -i -s -T $(CONFIG_DIR)/inputrc $(HOME)/.inputrc
+	@ ln -v -i -s -T $(CURDIR)/bashrc.sh $(HOME)/.bashrc
+	@ ln -v -i -s -T $(CURDIR)/bash_profile.sh $(HOME)/.bash_profile
+	@ ln -v -i -s -T $(CURDIR)/inputrc $(HOME)/.inputrc

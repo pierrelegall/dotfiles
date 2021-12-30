@@ -1,10 +1,9 @@
-CONFIG_NAME = Emacs: Doom
 CONFIG_DIR = $(HOME)/.doom.d
 
 all: print-info setup
 
 print-info:
-	@ echo "[$(CONFIG_NAME)]"
+	@ echo "[emacs-doom]"
 
 setup: set-symlinks
 
