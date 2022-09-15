@@ -15,7 +15,7 @@ var loopEnabledDot = false;
 // and samplers on right side of the controller to the right side of the crossfader
 var samplerCrossfaderAssign = true;
 // Toggle effect units between 1 & 3 on left and 2 & 4 on right when toggling decks
-var toggleEffectUnitsWithDecks = false;
+var toggleEffectUnitsWithDecks = true;
 // Set the dry/wet knob as a pregain
 var dryWetKnobAsPregain = true;
 
