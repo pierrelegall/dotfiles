@@ -36,8 +36,3 @@ alias kb='setxkbmap fr-colemak -option "ctrl:swap_lalt_lctl"'
 alias azer='kb'
 alias qwer='kb'
 alias qwfp='kb'
-
-alias notify='\
-  notify-send "Something coming to its end…"; \
-  echo; echo "Notified!"; \
-  (paplay $HOME/.config/bash/assets/sounds/notify.ogg &)'
