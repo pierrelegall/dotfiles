@@ -52,11 +52,13 @@
   },
   {
     "key": "ctrl+shift+n",
-    "command": "workbench.action.terminal.focusNext"
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus"
   },
   {
     "key": "ctrl+shift+p",
-    "command": "workbench.action.terminal.focusPrevious"
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus"
   },
   {
     "key": "ctrl+m",
@@ -122,18 +124,123 @@
     "command": "editor.action.reindentselectedlines"
   },
   {
-    "key": "ctrl+t c",
+    "key": "ctrl+j",
     "command": "maximizeterminal.openMaximizedTerminal",
     "when": "!activePanel && !config.maximizeterminal.useAlternativeKeybinding"
   },
   {
-    "key": "ctrl+t c",
+    "key": "ctrl+j",
     "command": "maximizeterminal.openMinimizedTerminal",
     "when": "config.maximizeterminal.useAlternativeKeybinding && !activePanel"
   },
   {
-    "key": "ctrl+t c",
+    "key": "ctrl+j",
     "command": "maximizeterminal.closeMaximizedTerminal",
-    "when": "activePanel"
+    "when": "activePanel | terminalFocus"
+  },
+  {
+    "key": "ctrl+t g",
+    "command": "grep.git"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "-editor.action.startFindReplaceAction",
+    "when": "editorFocus || editorIsOpen"
+  },
+  {
+    "key": "ctrl+shift+,",
+    "command": "emacs-mcx.beginningOfBuffer",
+    "when": "editorTextFocus && !config.emacs-mcx.useMetaPrefixMacCmd"
+  },
+  {
+    "key": "shift+alt+,",
+    "command": "-emacs-mcx.beginningOfBuffer",
+    "when": "editorTextFocus && !config.emacs-mcx.useMetaPrefixMacCmd"
+  },
+  {
+    "key": "ctrl+shift+,",
+    "command": "emacs-mcx.beginningOfBuffer",
+    "when": "config.emacs-mcx.useMetaPrefixMacCmd && editorTextFocus"
+  },
+  {
+    "key": "shift+alt+,",
+    "command": "-emacs-mcx.beginningOfBuffer",
+    "when": "config.emacs-mcx.useMetaPrefixMacCmd && editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+.",
+    "command": "emacs-mcx.endOfBuffer",
+    "when": "editorTextFocus && !config.emacs-mcx.useMetaPrefixMacCmd"
+  },
+  {
+    "key": "shift+alt+.",
+    "command": "-emacs-mcx.endOfBuffer",
+    "when": "editorTextFocus && !config.emacs-mcx.useMetaPrefixMacCmd"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "emacs-mcx.killLine",
+    "when": "terminalFocus || editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "-emacs-mcx.killLine",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "-magit.move-next-entity",
+    "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "-emacs-mcx.newLine",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+x right",
+    "command": "workbench.action.nextEditor",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+x right",
+    "command": "-workbench.action.nextEditor"
+  },
+  {
+    "key": "ctrl+x left",
+    "command": "workbench.action.previousEditor",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+x left",
+    "command": "-workbench.action.previousEditor"
+  },
+  {
+    "key": "ctrl+shift+n",
+    "command": "-workbench.action.newWindow"
+  },
+  {
+    "key": "ctrl+shift+n",
+    "command": "workbench.action.nextEditor",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+p",
+    "command": "workbench.action.previousEditor",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+j",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
+  },
+  {
+    "key": "ctrl+shift+`",
+    "command": "-workbench.action.terminal.new",
+    "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
+  },
+  {
+    "key": "ctrl+x ctrl+c",
+    "command": "-workbench.action.closeWindow"
   }
 ]
