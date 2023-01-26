@@ -2,7 +2,7 @@
 
 # Colors
 set fish_color_normal 5f5f5f
-set fish_color_user cyan
+set fish_color_user cyan --bold
 set fish_color_host cyan
 set fish_color_command 5f87ff
 set fish_color_quote brown
