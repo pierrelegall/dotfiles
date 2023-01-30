@@ -87,6 +87,7 @@
 (global-set-key (kbd "C-S-b") 'backward-word)
 (global-set-key [remap kill-region] 'kill-ring-save)
 (global-set-key [remap kill-ring-save] 'kill-region)
+(global-set-key (kbd "C-S-w") 'kill-ring-save)
 (global-set-key (kbd "C-S-l") 'visual-line-mode)
 
 (global-set-key (kbd "C-x O") 'my/switch-to-minibuffer)
@@ -94,11 +95,13 @@
 (global-set-key (kbd "C->") 'end-of-buffer)
 (global-set-key (kbd "C-;") 'comment-line)
 (global-set-key (kbd "C-x C-k") 'my/kill-this-buffer)
+(global-set-key (kbd "C-q") 'my/kill-this-buffer)
 (global-set-key (kbd "C-,") 'er/expand-region)
+(global-set-key (kbd "C-.") 'er/contract-region)
 (global-set-key (kbd "C-x C-r") 'counsel-recentf)
-
-(global-set-key (kbd "C--") 'text-scale-decrease)
-(global-set-key (kbd "C-+") 'text-scale-increase)
+(global-set-key (kbd "C-0") 'doom/reset-font-size)
+(global-set-key (kbd "C--") 'doom/decrease-font-size)
+(global-set-key (kbd "C-=") 'doom/increase-font-size)
 
 (setq shift-select-mode nil)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
@@ -109,20 +112,29 @@
 (map! :leader
       "?" #'help-command
       "<SPC> "#'execute-extended-command
-      "C-t" #'counsel-projectile-switch-to-buffer
+      "C-t" #'switch-to-buffer
       "p" #'projectile-command-map
       "v v" #'magit-status
       "b" #'+ivy/switch-buffer
       "C-k" #'my/kill-this-buffer
+      "0" #'text-scale-adjust
+      "-" #'text-scale-decrease
+      "=" #'text-scale-increase
       "w" #'winner-undo
       "W" #'winner-redo
       "=" #'text-scale-adjust
       "r" #'rename-buffer
       "<" #'treemacs-select-window
-      ">" #'minimap-mode)
+      ">" #'minimap-mode
+      "h" #'+lookup/documentation)
 
 (map! :map prog-mode-map
       "C-i" 'company-complete)
+
+(map! :map company-active-map
+      "C-i" 'company-complete-selection
+      "C-h" nil
+      "RET" nil)
 
 (map! :map isearch-mode-map
       "C-i" #'swiper-from-isearch)
@@ -156,16 +168,20 @@
 
 (use-package! lsp
   :init
-  (setq lsp-keymap-prefix "C-.")
+  (setq lsp-keymap-prefix "C-t l")
   (setq lsp-ui-doc-enable nil)
-  (setq lsp-enable-symbol-highlighting t)
+  (setq lsp-enable-symbol-highlighting nil)
   (setq lsp-signature-render-documentation nil)
   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
-  (setq lsp-clients-elixir-server-executable '("~/.opt/elixir-ls/language_server.sh")))
+  :config
+  (setq lsp-elixir-suggest-specs nil)
+  (setq lsp-enable-snippet nil)
+  (add-to-list 'exec-path "elixir-ls"))
 
 (use-package! magit
   :init
-  (setq magit-diff-refine-hunk nil))
+  (setq magit-diff-refine-hunk nil)
+  (remove-hook 'magit-section-highlight-hook 'magit-section-highlight))
 
 (use-package! treemacs
   :init
