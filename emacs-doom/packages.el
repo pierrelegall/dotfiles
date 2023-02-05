@@ -48,3 +48,9 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
+
+(package! beacon)
+(package! diff-hl)
+(package! doom-themes)
+(package! nano-modeline)
+(package! nano-theme)
