@@ -165,6 +165,7 @@
   :init
   (beacon-mode)
   :config
+  (setq beacon-size 10)
   (setq beacon-blink-when-window-scrolls nil)
   (setq beacon-blink-when-window-changes t)
   (setq beacon-blink-when-point-moves t))
