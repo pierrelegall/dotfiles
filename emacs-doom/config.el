@@ -31,16 +31,58 @@
 (setq doom-theme 'doom-ayu-dark)
 
 (custom-set-faces!
-  '(line-number :foreground "#353a3f")
-  '(line-number-current-line :foreground "#858a8f")
-  '(helm-selection :background "#1d2027")
-  '(diff-refine-added :inverse-video nil)
-  '(region :background "#1d2027")
-  '(isearch :background "#1d2027" :inherit t)
-  '(treemacs-file-face :inherit nil)
-  '(treemacs-directory-face :inherit nil)
-  '(treemacs-marked-file-face :inherit nil)
-  '(treemacs-tags-face :inherit nil))
+  '(isearch
+    :inherit nil)
+  '(line-number
+    :foreground "#353a3f")
+  '(line-number-current-line
+    :foreground "#858a8f")
+  '(helm-selection
+    :background "#1d2027")
+  '(magit-diff-hunk-heading
+    :background nil
+    :foreground "#4a425c")
+  '(magit-diff-hunk-heading-highlight
+    :background nil
+    :foreground "#dbb7ff")
+  '(diff-refine-added
+    :inherit magit-diff-added-highlight
+    :background nil
+    :inverse-video nil
+    :weight ultra-bold)
+  '(diff-refine-removed
+    :inherit magit-diff-removed-highlight
+    :background nil
+    :inverse-video nil
+    :weight ultra-bold)
+  '(magit-diff-added
+    :background nil
+    :weight normal)
+  '(magit-diff-removed
+    :background nil
+    :weight normal)
+  '(magit-diff-added-highlight
+    :background nil
+    :weight normal)
+  '(magit-diff-removed-highlight
+    :background nil
+    :weight normal)
+  '(magit-diff-context
+    :background nil)
+  '(region
+    :background "#1d2027")
+  '(isearch
+    :background "#1d2027"
+    :inherit t)
+  '(treemacs-file-face
+    :inherit nil)
+  '(treemacs-directory-face
+    :inherit nil)
+  '(treemacs-marked-file-face
+    :inherit nil)
+  '(treemacs-tags-face :inherit
+    nil))
+
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/Documents/")
