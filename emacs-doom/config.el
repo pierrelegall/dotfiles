@@ -234,6 +234,15 @@
   :config
   (setq helm-ff-skip-git-ignored-files t))
 
+(use-package isearch
+  :custom
+  (isearch-wrap-pause nil)
+  :config
+  (defun my/isearch-post-action ()
+    (unless (isearch-fail-pos) (recenter)))
+  :hook
+  (isearch-update-post . my/isearch-post-action))
+
 (use-package! projectile
   :init
   (setq projectile-enable-caching nil)
