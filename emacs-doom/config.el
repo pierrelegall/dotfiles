@@ -270,7 +270,13 @@
 (use-package! magit
   :init
   ;(advice-add 'magit-set-header-line-format :override #'ignore) ; need for nano-modeline?
-  (setq magit-diff-refine-hunk 'all))
+  (setq magit-diff-refine-hunk nil)
+  :config
+  (defun my/show-paren-local-disable-mode ()
+    (show-paren-local-mode -1))
+  :hook
+  (magit-status-mode-hook . my/show-paren-local-disable-mode)
+  (magit-section-movement-hook . magit-hunk-maybe-recenter))
 
 (use-package! nano-modeline
   :init
