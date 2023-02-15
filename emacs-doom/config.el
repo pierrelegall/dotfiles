@@ -310,10 +310,8 @@
   ;(add-to-list 'lsp-language-id-configuration '(".*\\.ex$" . "html")))
 
 (use-package! magit
-  :init
-  ;(advice-add 'magit-set-header-line-format :override #'ignore) ; need for nano-modeline?
-  (setq magit-diff-refine-hunk nil)
   :config
+  (setq magit-diff-refine-hunk nil)
   (defun my/show-paren-local-disable-mode ()
     (show-paren-local-mode -1))
   :hook
