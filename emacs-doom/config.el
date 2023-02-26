@@ -150,8 +150,8 @@
 
 (global-set-key (kbd "C-x i") 'indent-for-tab-command)
 (global-set-key (kbd "C-o") 'other-window)
-(global-set-key (kbd "C-v") (lambda () (interactive) (scroll-up-command 5)))
-(global-set-key (kbd "C-S-v") (lambda () (interactive) (scroll-down-command 5)))
+(global-set-key (kbd "C-v") (cmd! (scroll-up-command 5)))
+(global-set-key (kbd "C-S-v") (cmd! (scroll-down-command 5)))
 (global-set-key (kbd "C-S-f") 'forward-word)
 (global-set-key (kbd "C-S-b") 'backward-word)
 (global-set-key [remap kill-region] 'kill-ring-save)
