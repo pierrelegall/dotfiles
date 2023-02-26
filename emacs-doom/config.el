@@ -125,11 +125,26 @@
   (interactive)
   (kill-buffer (current-buffer)))
 
+(defun my/move-line-up ()
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2))
+
+(defun my/move-line-down ()
+  (interactive)
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1))
+
 (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-14"))
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(width . 90))
 ;(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
+(global-set-key (kbd "C-S-n") #'forward-paragraph)
+(global-set-key (kbd "C-S-p") #'backward-paragraph)
+(global-set-key (kbd "C-{") #'my/move-line-up)
+(global-set-key (kbd "C-è") #'my/move-line-down)
 (global-set-key (kbd "C-h") (kbd "<backspace>"))
 (global-set-key (kbd "C-S-h") (kbd "C-<backspace>"))
 
