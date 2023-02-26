@@ -195,6 +195,7 @@
       "h h" #'+lookup/documentation
       "<SPC> "#'execute-extended-command
       "C-t" #'switch-to-buffer
+      "g" #'helm-rg
       "p" #'projectile-command-map
       "v v" #'magit-status
       "v RET" #'magit-status-here
@@ -212,6 +213,9 @@
 
 (map! :map prog-mode-map
       "C-i" 'company-complete)
+
+(map! :map projectile-command-map
+      "g" #'helm-projectile-rg)
 
 (map! :map company-active-map
       "C-i" 'company-complete-selection
