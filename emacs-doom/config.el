@@ -272,8 +272,8 @@
 
 (use-package! diff-hl
   :init
-  (global-diff-hl-mode t)
-  (diff-hl-flydiff-mode))
+  (global-diff-hl-mode 1)
+  (diff-hl-flydiff-mode 1))
 
 (use-package! eldoc
   :init
