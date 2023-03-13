@@ -3,8 +3,8 @@ var XoneK2 = {};
 XoneK2.seekRateFast = 3.0;
 XoneK2.seekRateSlow = 0.5;
 
-XoneK2.decksInMiddleMidiChannel = 0xE;
-XoneK2.effectsInMiddleMidiChannel = 0xD;
+XoneK2.effectsInMiddleMidiChannel = 0xE;
+XoneK2.decksInMiddleMidiChannel = 0xD;
 XoneK2.decksOnLeftMidiChannel = 0xC;
 XoneK2.decksOnRightMidiChannel = 0xB;
 XoneK2.fourDecksMidiChannel3124 = 0xA;
@@ -45,18 +45,20 @@ for (var ch = 0; ch <= 0xF; ++ch) {
 }
 
 XoneK2.init = function (id) {
-    var channel = XoneK2.decksInMiddleMidiChannel;
-    XoneK2.controllers[channel].columns[1] = new XoneK2.EffectUnit(1, 1, channel, true);
-    XoneK2.controllers[channel].columns[2] = new XoneK2.Deck(2, 1, channel);
-    XoneK2.controllers[channel].columns[3] = new XoneK2.Deck(3, 2, channel);
-    XoneK2.controllers[channel].columns[4] = new XoneK2.EffectUnit(4, 2, channel, true);
-    XoneK2.decksLayerButton(channel, null, null, 0x90 + channel, null);
+    var channel;
 
     channel = XoneK2.effectsInMiddleMidiChannel;
     XoneK2.controllers[channel].columns[1] = new XoneK2.Deck(1, 1, channel);
     XoneK2.controllers[channel].columns[2] = new XoneK2.EffectUnit(2, 1, channel, true);
     XoneK2.controllers[channel].columns[3] = new XoneK2.EffectUnit(3, 2, channel, true);
     XoneK2.controllers[channel].columns[4] = new XoneK2.Deck(4, 2, channel);
+    XoneK2.decksLayerButton(channel, null, null, 0x90 + channel, null);
+
+    channel = XoneK2.decksInMiddleMidiChannel;
+    XoneK2.controllers[channel].columns[1] = new XoneK2.EffectUnit(1, 1, channel, true);
+    XoneK2.controllers[channel].columns[2] = new XoneK2.Deck(2, 1, channel);
+    XoneK2.controllers[channel].columns[3] = new XoneK2.Deck(3, 2, channel);
+    XoneK2.controllers[channel].columns[4] = new XoneK2.EffectUnit(4, 2, channel, true);
     XoneK2.decksLayerButton(channel, null, null, 0x90 + channel, null);
 
     channel = XoneK2.decksOnLeftMidiChannel;
