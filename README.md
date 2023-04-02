@@ -1,3 +1,3 @@
-# Shared config
+# Dotfiles
 
-My shared configuration files with auto setup makefiles.
+My configuration files with auto setup makefiles.
