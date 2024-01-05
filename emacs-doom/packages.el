@@ -49,13 +49,33 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-(package! beacon)
+(package! flycheck-popup-tip :disable t)
 
+(package! consult)
+(package! consult-projectile)
+(package! corfu)
 (package! diff-hl)
 (package! doom-themes)
+(package! elixir-ts-mode)
+(package! exunit)
+(package! flycheck-languagetool)
+(package! isearch-dabbrev)
+(package! olivetti)
+(package! marginalia)
 (package! nano-modeline)
-(package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
+(package! orderless)
+(package! vertico)
+(package! vertico-posframe)
 (package! web-mode)
+(package! wordreference)
+(package! writeroom-mode)
 
-(package! transient :pin "c2bdf7e12c530eb85476d3aef317eb2941ab9440")
-(package! with-editor :pin "391e76a256aeec6b9e4cbd733088f30c677d965b")
+(package! doom-nano-modeline
+  :recipe
+  (:host github :repo "ronisbr/doom-nano-modeline"))
+
+(package! copilot
+  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
+
+(package! org-excalidraw
+  :recipe (:host github :repo "wdavew/org-excalidraw" :files ("*.el" "dist")))
