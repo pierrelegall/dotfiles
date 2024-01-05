@@ -22,21 +22,15 @@ alias du='du --human-readable'
 
 alias grep='grep --color=auto'
 
-alias enw='emacsclient --no-window-system'
+alias emacs-focus='emacsclient --no-wait --eval "(select-frame-set-input-focus (selected-frame))" &>/dev/null'
 alias e='emacsclient --no-wait'
-alias ecf='emacsclient --no-wait --create-frame'
+alias ecf='emacsclient --no-wait --create-frame; emacs-focus'
 alias es='emacsclient --no-wait --eval "(progn (raise-frame) (select-frame-set-input-focus (selected-frame)))"'
+alias enw='emacsclient --no-window-system'
 
 alias emacsd-start='emacs --daemon'
 alias emacsd-stop='emacsclient --eval "(kill-emacs)"'
-alias emacsd-restart='emacsd-stop; emacsd-start'
+alias emacsd-restart='emacsd-stop && emacsd-start'
 
 alias se='sudo emacs --no-window-system --user $USER'
 alias sew='sudo emacs --no-window-system --user $USER'
-
-alias frkb='setxkbmap fr -option'
-alias uskb='setxkbmap us -option'
-alias kb='setxkbmap fr-colemak -option "ctrl:swap_lalt_lctl"'
-alias azer='kb'
-alias qwer='kb'
-alias qwfp='kb'
