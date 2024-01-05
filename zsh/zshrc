@@ -1,0 +1,80 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.zsh_history
+HISTSIZE=1000
+SAVEHIST=1000
+setopt notify
+unsetopt autocd beep extendedglob
+bindkey -e
+
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename "/home/pierre/.zshrc"
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+# Shell title
+# autoload -U add-zsh-hook
+# set-title-as-pwd() { export TITLE=$PWD }
+# add-zsh-hook chpwd set-title-as-pwd
+# set-title-as-cmd() { export TITLE=$CMD }
+# add-zsh-hook preexec set-title-as-cmd
+
+# Case insensitive completion
+zstyle ":completion:*" matcher-list "" "m:{[:lower:][:upper:]}={[:upper:][:lower:]}" \
+       "+l:|?=** r:|?=**"
+
+# load module for list-style selection
+zmodload zsh/complist
+
+# use the module above for autocomplete selection
+zstyle ":completion:*" menu select=0 search
+
+# Pure prompt
+source ~/.dotfiles/zsh/deps/pure-prompt/async.zsh
+source ~/.dotfiles/zsh/deps/pure-prompt/pure.zsh
+zstyle :prompt:pure:git:stash show yes
+
+# Autosuggestions
+AUTOSUGGESTION_FILE=/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [[ -f ${AUTOSUGGESTION_FILE} ]]; then
+  source ${AUTOSUGGESTION_FILE}
+fi
+
+# Syntax highlighting
+SYNTAX_HIGHLIGHTING_FILE=/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [[ -f ${SYNTAX_HIGHLIGHTING_FILE} ]]; then
+  source ${SYNTAX_HIGHLIGHTING_FILE}
+fi
+
+# History substring search
+HISTORY_SUBSTRING_SEARCH_FILE=/usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+if [[ -f ${HISTORY_SUBSTRING_SEARCH_FILE} ]]; then
+  source ${HISTORY_SUBSTRING_SEARCH_FILE}
+  bindkey "^P" history-substring-search-up
+  bindkey "^N" history-substring-search-down
+fi
+
+# Get bash aliases
+ALIASES_FILE=~/.dotfiles/bash/includes/aliases.sh
+if [[ -f ${ALIASES_FILE} ]]; then
+  source ${ALIASES_FILE}
+fi
+
+# ASDF
+ASDF_FILE=/opt/asdf-vm/asdf.sh
+if [[ -f ${ASDF_FILE} ]]; then
+  source ${ASDF_FILE}
+fi
+
+# Vterm for Emacs
+if [[ "$INSIDE_EMACS" = "vterm" ]] \
+    && [[ -n ${EMACS_VTERM_PATH} ]] \
+    && [[ -f ${EMACS_VTERM_PATH}etc/emacs-vterm-zsh.sh ]]; then
+  source ${EMACS_VTERM_PATH}etc/emacs-vterm-zsh.sh
+  # add-zsh-hook -Uz precmd () { print -Pn "\e]2;%2~\a" }
+  add-zsh-hook -Uz chpwd () { print -Pn "\e]2;%2~\a" }
+  # add-zsh-hook -Uz preexec () { print -Pn "\e]2;%2~\a" }
+fi
+
