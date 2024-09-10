@@ -946,50 +946,50 @@
                     }
                     this.inSetParameter(this.inValueScale(value));
 
-                    if (this.previousValueReceived === undefined) {
-                        var effect = "[EffectRack1_EffectUnit" + eu.currentUnitNumber +
-                                    "_Effect" + this.number + "]";
-                        engine.softTakeover(effect, "meta", true);
-                        engine.softTakeover(effect, "parameter1", true);
-                        engine.softTakeover(effect, "parameter2", true);
-                        engine.softTakeover(effect, "parameter3", true);
-                    }
-                    this.previousValueReceived = value;
+                    // if (this.previousValueReceived === undefined) {
+                    //     var effect = "[EffectRack1_EffectUnit" + eu.currentUnitNumber +
+                    //                 "_Effect" + this.number + "]";
+                    //     engine.softTakeover(effect, "meta", true);
+                    //     engine.softTakeover(effect, "parameter1", true);
+                    //     engine.softTakeover(effect, "parameter2", true);
+                    //     engine.softTakeover(effect, "parameter3", true);
+                    // }
+                    // this.previousValueReceived = value;
                 };
             },
             shift: function() {
-                engine.softTakeoverIgnoreNextValue(this.group, this.inKey);
-                this.valueAtLastEffectSwitch = this.previousValueReceived;
-                // Floor the threshold to ensure that every effect can be selected
-                this.changeThreshold = Math.floor(this.max /
-                    engine.getValue("[Master]", "num_effectsavailable"));
+                // engine.softTakeoverIgnoreNextValue(this.group, this.inKey);
+                // this.valueAtLastEffectSwitch = this.previousValueReceived;
+                // // Floor the threshold to ensure that every effect can be selected
+                // this.changeThreshold = Math.floor(this.max /
+                //     engine.getValue("[Master]", "num_effectsavailable"));
 
-                this.input = function(channel, control, value, _status, _group) {
-                    if (this.MSB !== undefined) {
-                        value = (this.MSB << 7) + value;
-                    }
+                // this.input = function(channel, control, value, _status, _group) {
+                //     if (this.MSB !== undefined) {
+                //         value = (this.MSB << 7) + value;
+                //     }
 
-                    // Prevent attempt to set the effect_selector CO to NaN
-                    if (this.valueAtLastEffectSwitch === undefined) {
-                        this.valueAtLastEffectSwitch = value;
-                        this.previousValueReceived = value;
-                        return;
-                    }
+                //     // Prevent attempt to set the effect_selector CO to NaN
+                //     if (this.valueAtLastEffectSwitch === undefined) {
+                //         this.valueAtLastEffectSwitch = value;
+                //         this.previousValueReceived = value;
+                //         return;
+                //     }
 
-                    var change = value - this.valueAtLastEffectSwitch;
-                    if (Math.abs(change) >= this.changeThreshold
-                        // this.valueAtLastEffectSwitch can be undefined if
-                        // shift was pressed before the first MIDI value was received.
-                        || this.valueAtLastEffectSwitch === undefined) {
-                        var effectGroup = "[EffectRack1_EffectUnit" +
-                                           eu.currentUnitNumber + "_Effect" +
-                                           this.number + "]";
-                        engine.setValue(effectGroup, "effect_selector", change);
-                        this.valueAtLastEffectSwitch = value;
-                    }
+                //     var change = value - this.valueAtLastEffectSwitch;
+                //     if (Math.abs(change) >= this.changeThreshold
+                //         // this.valueAtLastEffectSwitch can be undefined if
+                //         // shift was pressed before the first MIDI value was received.
+                //         || this.valueAtLastEffectSwitch === undefined) {
+                //         var effectGroup = "[EffectRack1_EffectUnit" +
+                //                            eu.currentUnitNumber + "_Effect" +
+                //                            this.number + "]";
+                //         engine.setValue(effectGroup, "effect_selector", change);
+                //         this.valueAtLastEffectSwitch = value;
+                //     }
 
-                    this.previousValueReceived = value;
-                };
+                //     this.previousValueReceived = value;
+                // };
             },
             outKey: "focused_effect",
             connect: function() {
