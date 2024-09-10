@@ -1,6 +1,7 @@
 # Aliases
 
 alias sudo='sudo '
+alias x='exit'
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -34,3 +35,12 @@ alias emacsd-restart='emacsd-stop && emacsd-start'
 
 alias se='sudo emacs --no-window-system --user $USER'
 alias sew='sudo emacs --no-window-system --user $USER'
+
+alias s='ddgr --gui-browser --noprompt !ddg'
+alias j='z'
+alias jj='z -d'
+alias b='prevd'
+alias f='nextd'
+
+alias iex='iex --erl "-kernel shell_history enabled"'
+alias zed="zeditor"
