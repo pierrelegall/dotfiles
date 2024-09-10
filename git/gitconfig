@@ -25,5 +25,8 @@
 [rebase]
 	autoStash = true
 
+[core]
+	excludesFile = ~/.gitignore-global
+
 [include]
 	path = .gitconfig-local
