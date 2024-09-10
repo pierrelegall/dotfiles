@@ -919,18 +919,7 @@ TraktorS2MK2.samplerModeButton = function(field) {
 };
 
 TraktorS2MK2.introOutroModeButton = function(field) {
-    if (field.value === 0) {
-        return;
-    }
-    var padMode = TraktorS2MK2.currentPadMode[field.group];
-    if (padMode !== TraktorS2MK2.padModes.introOutro) {
-        TraktorS2MK2.setPadMode(field.group, TraktorS2MK2.padModes.introOutro);
-        TraktorS2MK2.controller.setOutput(field.group, "!flux_button", ButtonBrightnessOn, false);
-        TraktorS2MK2.controller.setOutput(field.group, "!remix_button", ButtonBrightnessOff, !TraktorS2MK2.batchingLEDUpdate);
-    } else {
-        TraktorS2MK2.setPadMode(field.group, TraktorS2MK2.padModes.hotcue);
-        TraktorS2MK2.controller.setOutput(field.group, "!flux_button", ButtonBrightnessOff, !TraktorS2MK2.batchingLEDUpdate);
-    }
+    engine.setValue(field.group, "rate", 0)
 };
 
 TraktorS2MK2.loopInButton = function(field) {
@@ -940,7 +929,7 @@ TraktorS2MK2.loopInButton = function(field) {
 
 TraktorS2MK2.loopOutButton = function(field) {
     var group = field.id.split(".")[0];
-    engine.setValue(group, "loop_out", field.value);
+    script.triggerControl(group, "reloop_toggle");
 };
 
 // Refer to https://github.com/mixxxdj/mixxx/wiki/standard-effects-mapping for how to use this.
@@ -1152,7 +1141,7 @@ TraktorS2MK2.topEncoder = function(field) {
     var delta = 0.03333 * TraktorS2MK2.encoderDirection(field.value, TraktorS2MK2.previousPregain[field.group]);
     TraktorS2MK2.previousPregain[field.group] = field.value;
 
-    if (TraktorS2MK2.shiftPressed[field.group]) {
+    if (!TraktorS2MK2.shiftPressed[field.group]) {
         var currentPregain = engine.getParameter(field.group, "pregain");
         engine.setParameter(field.group, "pregain", currentPregain + delta);
     } else {
@@ -1172,7 +1161,7 @@ TraktorS2MK2.topEncoderPress = function(field) {
         if (TraktorS2MK2.shiftPressed[field.group]) {
             script.triggerControl(field.group, "pregain_set_default");
         } else {
-            script.triggerControl("[QuickEffectRack1_" + field.group + "]", "super1_set_default");
+            script.triggerControl(field.group, "beats_translate_curpos");
         }
     } else {
         TraktorS2MK2.topEncoderPressed[field.group] = false;
