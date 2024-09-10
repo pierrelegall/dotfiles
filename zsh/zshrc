@@ -4,6 +4,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt notify
 unsetopt autocd beep extendedglob
+unsetopt BANG_HIST
 bindkey -e
 
 # End of lines configured by zsh-newuser-install
