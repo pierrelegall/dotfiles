@@ -50,7 +50,9 @@
 ;(unpin! t)
 
 (package! flycheck-popup-tip :disable t)
+(package! solaire-mode :disable t)
 
+(package! all-the-icons)
 (package! consult)
 (package! consult-projectile)
 (package! corfu)
@@ -58,24 +60,27 @@
 (package! doom-themes)
 (package! elixir-ts-mode)
 (package! exunit)
+(package! feature-mode)
 (package! flycheck-languagetool)
 (package! isearch-dabbrev)
 (package! olivetti)
+(package! spacious-padding)
 (package! marginalia)
 (package! nano-modeline)
 (package! orderless)
 (package! vertico)
 (package! vertico-posframe)
+(package! svelte-mode)
+(package! tidal)
+(package! treesit-auto)
+(package! rotate)
 (package! web-mode)
 (package! wordreference)
-(package! writeroom-mode)
 
-(package! doom-nano-modeline
-  :recipe
-  (:host github :repo "ronisbr/doom-nano-modeline"))
+;; (package! eglot-booster
+;;   :recipe (:host github :repo "jdtsmith/eglot-booster"))
 
+(package! rustic
+  :recipe (:host github :repo "emacs-rustic/rustic" :files ("*.el" "dist")))
 (package! copilot
-  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
-
-(package! org-excalidraw
-  :recipe (:host github :repo "wdavew/org-excalidraw" :files ("*.el" "dist")))
+  :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el" "dist")))
