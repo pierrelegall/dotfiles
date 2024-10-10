@@ -1,6 +1,7 @@
 # Aliases
 
 alias sudo='sudo '
+alias q='exit'
 alias x='exit'
 
 alias ..='cd ..'
