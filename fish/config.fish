@@ -12,6 +12,5 @@ bind \cg cancel
 bind --erase --all \cj
 
 # This should be set in a local only config file
-# WARNING: Does not work, maybe an issue with fish or asdf?
-#          Worked arround with an iex alias
+# WARNING: it works, however saving is not done instantly
 set -U ERL_AFLAGS "-kernel shell_history enabled"
