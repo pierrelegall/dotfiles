@@ -28,9 +28,12 @@ end
 # shell. See, http://tldp.org/HOWTO/Xterm-Title-4.html, for the meaning of the
 # various symbols.
 function fish_title
-  hostname
-  echo ":"
+  # hostname
+  # echo ":"
   prompt_pwd
+  if [ -n "$argv" ]
+    echo " ❯ $argv"
+  end
 end
 
 # With vterm_cmd you can execute Emacs commands directly from the shell.
