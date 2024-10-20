@@ -80,7 +80,5 @@
 ;; (package! eglot-booster
 ;;   :recipe (:host github :repo "jdtsmith/eglot-booster"))
 
-(package! rustic
-  :recipe (:host github :repo "emacs-rustic/rustic" :files ("*.el" "dist")))
 (package! copilot
   :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el" "dist")))
