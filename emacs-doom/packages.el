@@ -61,6 +61,7 @@
 (package! elixir-ts-mode)
 (package! exunit)
 (package! feature-mode)
+(package! fish-mode)
 (package! flycheck-languagetool)
 (package! isearch-dabbrev)
 (package! olivetti)
