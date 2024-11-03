@@ -467,7 +467,17 @@ If search string is empty, just beep."
   (setq doom-themes-treemacs-theme "doom-atom")
   (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
+  (doom-themes-org-config)
+  :bind
+  (:map +doom-dashboard-mode-map
+        ("a" . 'org-agenda)
+        ("b" . 'switch-to-buffer)
+        ("f" . 'find-file)
+        ("F" . 'fireplace)
+        ("l" . 'my/switch-to-last-buffer)
+        ("p" . 'projectile-switch-project)
+        ("r" . 'recentf)
+        ("t" . '+vterm/here)))
 
 (use-package! eglot
   :init
