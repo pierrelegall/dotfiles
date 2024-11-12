@@ -14,3 +14,12 @@ bind --erase --all \cj
 # This should be set in a local only config file
 # WARNING: it works, however saving is not done instantly
 set -U ERL_AFLAGS "-kernel shell_history enabled"
+
+function sudo -d "sudo wrapper that handles aliases"
+  if functions -q -- $argv[1]
+    set -l new_args (string join ' ' -- (string escape -- $argv))
+    set argv fish -c "$new_args"
+  end
+
+  command sudo $argv
+end
