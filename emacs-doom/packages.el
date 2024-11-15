@@ -63,6 +63,7 @@
 (package! feature-mode)
 (package! fish-mode)
 (package! flycheck-languagetool)
+(package! goggles)
 (package! isearch-dabbrev)
 (package! olivetti)
 (package! spacious-padding)

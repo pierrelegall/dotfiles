@@ -568,6 +568,11 @@ If search string is empty, just beep."
   (text-mode . flycheck-languagetool-setup))
 
 (use-package isearch
+(use-package! goggles
+  :hook ((prog-mode text-mode) . goggles-mode)
+  :config
+  (setq-default goggles-pulse t))
+
   :config
   (setq isearch-lazy-highlight t)
   ;; (setq isearch-lazy-highlight-error t)
