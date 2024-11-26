@@ -486,17 +486,9 @@ If search string is empty, just beep."
   (setq eglot-events-buffer-config '(:size 0 :format full))
   (setq-default eglot-inlay-hints-mode nil)
   :config
-  ;; (add-to-list 'eglot-server-programs
-  ;;              `((elixir-ts-mode heex-ts-mode) .
-  ;;                ,(if (and (fboundp 'w32-shell-dos-semantics)
-  ;;                          (w32-shell-dos-semantics))
-  ;;                     '("language_server.bat")
-  ;;                   (eglot-alternatives
-  ;;                    '("language_server.sh" "start_lexical.sh" "/home/pierre/Code/lexical/_build/dev/package/lexical/bin/start_lexical.sh")))))
   (add-to-list 'eglot-server-programs
-               ;; '(elixir-mode . ("/home/pierre/Code/lexical/_build/dev/package/lexical/bin/start_lexical.sh"))))
-               '((elixir-ts-mode heex-ts-mode) . ("/home/pierre/Factory/lexical/_build/dev/package/lexical/bin/start_lexical.sh")))
-               ;; '((elixir-ts-mode heex-ts-mode) . ("/home/pierre/Factory/next-ls/burrito_out/next_ls_linux_amd64" "--stdio=true" :initializationOptions (:experimental (:completions (:enable t))))))
+               '((elixir-ts-mode heex-ts-mode) . ("elixir-ls")))
+               ;; '((elixir-ts-mode heex-ts-mode) . ("/home/pierre/Factory/lexical/_build/dev/package/lexical/bin/start_lexical.sh")))
   :hook
   (eglot-mode . flycheck-eglot-mode))
 
