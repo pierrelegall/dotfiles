@@ -66,6 +66,7 @@
 (package! goggles)
 (package! isearch-dabbrev)
 (package! olivetti)
+(package! magit-todos)
 (package! spacious-padding)
 (package! marginalia)
 (package! nano-modeline)

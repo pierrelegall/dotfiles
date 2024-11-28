@@ -629,6 +629,10 @@ If search string is empty, just beep."
         ("i" . magit-section-toggle)
         ("I" . magit-gitignore)))
 
+
+(use-package magit-todos
+  :after magit
+  :config (magit-todos-mode 1))
 (use-package! marginalia
   :after vertico
   :init
