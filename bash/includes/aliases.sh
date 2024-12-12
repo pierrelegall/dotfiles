@@ -29,6 +29,7 @@ alias e='emacsclient --no-wait'
 alias ecf='emacsclient --no-wait --create-frame; emacs-focus'
 alias es='emacsclient --no-wait --eval "(progn (raise-frame) (select-frame-set-input-focus (selected-frame)))"'
 alias enw='emacsclient --no-window-system'
+alias nano='emacs -q -nw'
 
 alias emacsd-start='emacs --daemon'
 alias emacsd-stop='emacsclient --eval "(kill-emacs)"'
