@@ -28,11 +28,10 @@ end
 # shell. See, http://tldp.org/HOWTO/Xterm-Title-4.html, for the meaning of the
 # various symbols.
 function fish_title
-  # hostname
-  # echo ":"
-  prompt_pwd
   if [ -n "$argv" ]
-    echo " ❯ $argv"
+    echo "$PWD: $argv" | sed -e "s|^$HOME|~|"
+  else
+    echo $PWD | sed -e "s|^$HOME|~|"
   end
 end
 
