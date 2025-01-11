@@ -565,6 +565,8 @@ If search string is empty, just beep."
   :config
   (setq-default goggles-pulse t))
 
+(use-package! golden-ratio)
+
   :config
   (setq isearch-lazy-highlight t)
   ;; (setq isearch-lazy-highlight-error t)

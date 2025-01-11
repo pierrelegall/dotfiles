@@ -64,6 +64,7 @@
 (package! fish-mode)
 (package! flycheck-languagetool)
 (package! goggles)
+(package! golden-ratio)
 (package! isearch-dabbrev)
 (package! olivetti)
 (package! magit-todos)
