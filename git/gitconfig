@@ -1,3 +1,6 @@
+[init]
+	defaultBranch = main
+
 [color]
 	status = true
 	branch = true
