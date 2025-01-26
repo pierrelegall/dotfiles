@@ -631,6 +631,14 @@ If search string is empty, just beep."
         ("i" . magit-section-toggle)
         ("I" . magit-gitignore)))
 
+(use-package! magit-file-icons
+  :after magit
+  :init
+  (magit-file-icons-mode 1)
+  :custom
+  (magit-file-icons-enable-diff-file-section-icons t)
+  (magit-file-icons-enable-untracked-icons t)
+  (magit-file-icons-enable-diffstat-icons t))
 
 (use-package magit-todos
   :after magit

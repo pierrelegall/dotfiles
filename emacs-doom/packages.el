@@ -67,6 +67,7 @@
 (package! golden-ratio)
 (package! isearch-dabbrev)
 (package! olivetti)
+(package! magit-file-icons)
 (package! magit-todos)
 (package! spacious-padding)
 (package! marginalia)
