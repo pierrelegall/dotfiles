@@ -484,7 +484,7 @@ If search string is empty, just beep."
   (fset #'jsonrpc--log-event #'ignore)
   (setq eglot-send-changes-idle-time 0.25)
   (setq eglot-events-buffer-config '(:size 0 :format full))
-  (setq-default eglot-inlay-hints-mode nil)
+  (add-hook 'eglot-managed-mode-hook (lambda () (eglot-inlay-hints-mode -1)))
   :config
   (add-to-list 'eglot-server-programs
                '((elixir-ts-mode heex-ts-mode) . ("elixir-ls")))
