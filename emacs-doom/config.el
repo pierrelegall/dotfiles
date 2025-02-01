@@ -149,7 +149,6 @@
   '(window-divider
     :foreground "#252525"))
 
-(setq org-indent-indentation-per-level 2)
 
 (fringe-mode '(4 . 4))
 (setq scroll-bar-adjust-thumb-portion nil)
@@ -666,6 +665,7 @@ If search string is empty, just beep."
 (use-package! org
   :init
   (setq org-directory "~/Documents/")
+  (setq org-indent-indentation-per-level 1)
   :config
   (setq org-startup-folded t)
   (setq org-hide-block-startup nil)
