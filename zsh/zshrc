@@ -64,9 +64,15 @@ if [[ -f ${ALIASES_FILE} ]]; then
 fi
 
 # ASDF
-ASDF_FILE=/opt/asdf-vm/asdf.sh
-if [[ -f ${ASDF_FILE} ]]; then
-  source ${ASDF_FILE}
+# ASDF_FILE=/opt/asdf-vm/asdf.sh
+# if [[ -f ${ASDF_FILE} ]]; then
+#   source ${ASDF_FILE}
+# fi
+
+# Mise (a.k.a. mise-en-place)
+MISE_SETUP=./mise_setup.zsh
+if [[ -f ${MISE_SETUP} ]]; then
+  source ${MISE_SETUP}
 fi
 
 # Vterm for Emacs
@@ -78,4 +84,3 @@ if [[ "$INSIDE_EMACS" = "vterm" ]] \
   add-zsh-hook -Uz chpwd () { print -Pn "\e]2;%2~\a" }
   # add-zsh-hook -Uz preexec () { print -Pn "\e]2;%2~\a" }
 fi
-
