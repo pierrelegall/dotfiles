@@ -4,13 +4,15 @@
 // The Colemak layout, but more french & coder friendly.
 //
 // Features:
+//
+// - base from Colemak, no non-AltGr keybing changed, except:
+//   - Capslock key map to Shift instead
 // - all the french characters available with AltGr
-// - truly usefull characters easy to reach thanks to AltGr
-// - dead keys removed
+// - coding characters easier to reach thanks to AltGr
+// - no dead keys, except:
+//   - top left "~" + AltGr for the spanish "ñ"
 //
-// Note: none of the non-AltGr keys are changed from the classic Colemak.
-//
-// Lite overview (same as Colemak, except for Shift on Capslock key):
+// Lite overview:
 //  _________________________________________________________________________
 // | ~  | !  | @  | #  | $  | %  | ^  | &  | *  | (  | )  | -  | +  |        |
 // | `  | 1  | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9  | 0  | _  | =  | Back   |
