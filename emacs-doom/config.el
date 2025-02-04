@@ -289,6 +289,7 @@ If search string is empty, just beep."
 (global-set-key (kbd "C-S-d") #'doom/delete-for)
 (global-set-key (kbd "C-x i") 'indent-for-tab-command)
 (global-set-key (kbd "C-o") 'other-window)
+(global-set-key (kbd "C-S-o") (cmd! (other-window -1)))
 (global-set-key (kbd "C-v") (cmd! (scroll-up-command 5) (forward-line 5)))
 (global-set-key (kbd "C-S-v") (cmd! (scroll-down-command 5) (forward-line -5)))
 (global-set-key (kbd "C-S-f") 'forward-word)
