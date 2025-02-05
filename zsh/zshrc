@@ -69,10 +69,11 @@ fi
 #   source ${ASDF_FILE}
 # fi
 
-# Mise (a.k.a. mise-en-place)
-MISE_SETUP=./mise_setup.zsh
-if [[ -f ${MISE_SETUP} ]]; then
-  source ${MISE_SETUP}
+# Mise
+MISE_BIN=/bin/mise
+if [[ -f ${MISE_BIN} ]]; then
+  eval "$(~/.local/bin/mise activate zsh)"
+  MISE_ENABLED=1
 fi
 
 # Vterm for Emacs
