@@ -677,6 +677,7 @@ If search string is empty, just beep."
       (67 . "#6D3434"))))
   :bind
   (:map org-mode-map
+        ("C-c f" . org-toggle-narrow-to-subtree)
         ("C-S-g" . org-tree-slide-mode)
         ("C-c i" . org-toggle-inline-images)
         ("C-c >" . org-do-demote)
