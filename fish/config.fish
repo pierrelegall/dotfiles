@@ -8,9 +8,11 @@ source $HOME/.dotfiles/bash/includes/aliases.sh
 #   source $ASDF_CONFIG
 # end
 
-set MISE_CONFIG ./mise_setup.fish
-if test -f $MISE_CONFIG
-  source $MISE_CONFIG
+# Mise
+set MISE_BIN /bin/mise
+if test -f $MISE_BIN
+  $MISE_BIN activate fish | source
+  set MISE_ENABLED 1
 end
 
 bind \cg cancel
