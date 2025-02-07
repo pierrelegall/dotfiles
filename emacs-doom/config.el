@@ -764,8 +764,7 @@ If search string is empty, just beep."
 (use-package! vertico
   :init
   (vertico-mode)
-  (vertico-buffer-mode)
-  (vertico-mouse-mode -1)
+  (vertico-posframe-mode)
   (add-to-list
    'display-buffer-alist
    '("\\*vertico"
