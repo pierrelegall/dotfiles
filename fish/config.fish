@@ -10,6 +10,14 @@ if test -f $STARSHIP_BIN
   set STARSHIP_ENABLED 1
 end
 
+# Zoxide
+set ZOXIDE_BIN /usr/bin/zoxide
+set ZOXIDE_CMD cd
+if test -f $ZOXIDE_BIN
+  $ZOXIDE_BIN init fish --cmd $ZOXIDE_CMD | source
+  set ZOXIDE_ENABLED 1
+end
+
 # set ASDF_CONFIG /opt/asdf-vm/asdf.fish
 # if test -f $ASDF_CONFIG
 #   source $ASDF_CONFIG
