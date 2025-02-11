@@ -18,11 +18,6 @@ if test -f $ZOXIDE_BIN
   set ZOXIDE_ENABLED 1
 end
 
-# set ASDF_CONFIG /opt/asdf-vm/asdf.fish
-# if test -f $ASDF_CONFIG
-#   source $ASDF_CONFIG
-# end
-
 # Mise
 set MISE_BIN /bin/mise
 if test -f $MISE_BIN
