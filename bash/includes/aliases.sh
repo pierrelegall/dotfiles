@@ -12,10 +12,8 @@ alias .....='cd ../../../..'
 alias mv='mv --interactive'
 alias rm='rm --interactive=once'
 
-alias ls='ls --color=auto --literal --group-directories-first --human-readable --format=vertical --indicator-style=slash'
-alias ll='ls -l'
-alias la='la --almost-all'
-alias lla='lla -l --almost-all'
+alias ls='eza -F'
+alias tree='eza --tree'
 
 alias ln='ln --interactive'
 
