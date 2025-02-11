@@ -73,12 +73,6 @@ if [[ -f ${ZOXIDE_BIN} ]]; then
   ZOXIDE_ENABLED=1
 fi
 
-# ASDF
-# ASDF_FILE=/opt/asdf-vm/asdf.sh
-# if [[ -f ${ASDF_FILE} ]]; then
-#   source ${ASDF_FILE}
-# fi
-
 # Mise
 MISE_BIN=/bin/mise
 if [[ -f ${MISE_BIN} ]]; then
