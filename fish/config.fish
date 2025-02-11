@@ -3,6 +3,13 @@ set -U fish_greeting
 source $HOME/.dotfiles/fish/emacs-vterm.fish
 source $HOME/.dotfiles/bash/includes/aliases.sh
 
+# Starship
+set STARSHIP_BIN /usr/bin/starship
+if test -f $STARSHIP_BIN
+  $STARSHIP_BIN init fish | source
+  set STARSHIP_ENABLED 1
+end
+
 # set ASDF_CONFIG /opt/asdf-vm/asdf.fish
 # if test -f $ASDF_CONFIG
 #   source $ASDF_CONFIG
