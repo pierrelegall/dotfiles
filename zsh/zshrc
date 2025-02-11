@@ -72,7 +72,7 @@ fi
 # Mise
 MISE_BIN=/bin/mise
 if [[ -f ${MISE_BIN} ]]; then
-  eval "$(~/.local/bin/mise activate zsh)"
+  eval "$($MISE_BIN activate zsh)"
   MISE_ENABLED=1
 fi
 
