@@ -58,6 +58,13 @@ if [[ -f ${ALIASES_FILE} ]]; then
   source ${ALIASES_FILE}
 fi
 
+# Sharship
+STARSHIP_BIN=/usr/bin/starship
+if [[ -f ${STARSHIP_BIN} ]]; then
+  eval "$(starship init zsh)"
+  STARSHIP_ENABLED=1
+fi
+
 # ASDF
 # ASDF_FILE=/opt/asdf-vm/asdf.sh
 # if [[ -f ${ASDF_FILE} ]]; then
