@@ -32,11 +32,6 @@ zmodload zsh/complist
 # use the module above for autocomplete selection
 zstyle ":completion:*" menu select=0 search
 
-# Pure prompt
-source ~/.dotfiles/zsh/deps/pure-prompt/async.zsh
-source ~/.dotfiles/zsh/deps/pure-prompt/pure.zsh
-zstyle :prompt:pure:git:stash show yes
-
 # Autosuggestions
 AUTOSUGGESTION_FILE=/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 if [[ -f ${AUTOSUGGESTION_FILE} ]]; then
