@@ -65,6 +65,14 @@ if [[ -f ${STARSHIP_BIN} ]]; then
   STARSHIP_ENABLED=1
 fi
 
+# Zoxide
+ZOXIDE_BIN=/usr/bin/zoxide
+ZOXIDE_CMD=cd
+if [[ -f ${ZOXIDE_BIN} ]]; then
+  eval "$($ZOXIDE_BIN init zsh --cmd $ZOXIDE_CMD)"
+  ZOXIDE_ENABLED=1
+fi
+
 # ASDF
 # ASDF_FILE=/opt/asdf-vm/asdf.sh
 # if [[ -f ${ASDF_FILE} ]]; then
