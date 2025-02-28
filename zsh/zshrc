@@ -68,7 +68,7 @@ fi
 # Zoxide
 ZOXIDE_BIN=/usr/bin/zoxide
 ZOXIDE_CMD=cd
-if [[ -f ${ZOXIDE_BIN} ]]; then
+if [[ -f ${ZOXIDE_BIN} && "$TERM" != "dumb" ]]; then
   eval "$($ZOXIDE_BIN init zsh --cmd $ZOXIDE_CMD)"
   ZOXIDE_ENABLED=1
 fi
