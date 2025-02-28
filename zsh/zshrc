@@ -60,7 +60,7 @@ fi
 
 # Sharship
 STARSHIP_BIN=/usr/bin/starship
-if [[ -f ${STARSHIP_BIN} ]]; then
+if [[ -f ${STARSHIP_BIN} && "$TERM" != "dumb" ]]; then
   eval "$(starship init zsh)"
   STARSHIP_ENABLED=1
 fi
