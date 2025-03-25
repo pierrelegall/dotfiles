@@ -52,16 +52,16 @@ if [[ -f ${HISTORY_SUBSTRING_SEARCH_FILE} ]]; then
   bindkey "^N" history-substring-search-down
 fi
 
-# Get bash aliases
+# Load bash aliases
 ALIASES_FILE=~/.dotfiles/bash/includes/aliases.sh
 if [[ -f ${ALIASES_FILE} ]]; then
   source ${ALIASES_FILE}
 fi
 
-# Sharship
+# Starship
 STARSHIP_BIN=/usr/bin/starship
 if [[ -f ${STARSHIP_BIN} && "$TERM" != "dumb" ]]; then
-  eval "$(starship init zsh)"
+  eval "$($STARSHIP_BIN init zsh)"
   STARSHIP_ENABLED=1
 fi
 
