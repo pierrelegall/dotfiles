@@ -55,6 +55,7 @@
 (package! all-the-icons)
 (package! consult)
 (package! consult-projectile)
+(package! consult-notmuch)
 (package! corfu)
 (package! diff-hl)
 (package! doom-themes)
