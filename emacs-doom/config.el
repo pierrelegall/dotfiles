@@ -654,6 +654,13 @@ If search string is empty, just beep."
 
 (use-package! notmuch
   :config
+  (setq notmuch-saved-searches
+        '((:name "inbox" :query "tag:inbox" :sort-order newest-first :key "i")
+          (:name "unread" :query "tag:unread" :sort-order newest-first :key "u")
+          (:name "flagged" :query "tag:flagged" :sort-order newest-first :key "f")
+          (:name "sent" :query "tag:sent" :sort-order newest-first :key "t")
+          (:name "drafts" :query "tag:draft" :sort-order newest-first :key "d")
+          (:name "all mail" :query "*" :sort-order newest-first :key "a")))
   (setq notmuch-hello-logo nil))
 
 (use-package! olivetti
