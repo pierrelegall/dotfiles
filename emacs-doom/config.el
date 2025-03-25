@@ -346,6 +346,8 @@ If search string is empty, just beep."
 (setq global-text-scale-adjust-resizes-frames nil)
 
 (map! :leader
+      "m" #'notmuch-jump-search
+      "M" #'compose-mail
       "q" #'delete-window
       "1" #'delete-other-windows
       "2" #'split-window-below
@@ -475,6 +477,8 @@ If search string is empty, just beep."
         ("f" . 'find-file)
         ("F" . 'fireplace)
         ("l" . 'my/switch-to-last-buffer)
+        ("m" . 'notmuch-jump-search)
+        ("M" . 'compose-mail)
         ("p" . 'projectile-switch-project)
         ("r" . 'recentf)
         ("t" . '+vterm/here)))
