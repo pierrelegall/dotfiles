@@ -617,6 +617,7 @@ If search string is empty, just beep."
         ("n" . my/projectile-open-notes)))
 
 (use-package! magit
+  :after nerd-icons
   :config
   (setq magit-region-highlight-hook nil)
   (setq magit-section-highlight-hook nil)
@@ -625,6 +626,8 @@ If search string is empty, just beep."
   (setq magit-diff-refine-hunk nil)
   (defun my/show-paren-local-disable-mode ()
     (show-paren-local-mode -1))
+  :custom
+  (magit-format-file-function #'magit-format-file-nerd-icons)
   :hook
   (magit-status-mode-hook . my/show-paren-local-disable-mode)
   (magit-section-movement-hook . magit-hunk-maybe-recenter)
