@@ -5,7 +5,7 @@ source $HOME/.dotfiles/bash/includes/aliases.sh
 
 # Starship
 set STARSHIP_BIN /usr/bin/starship
-if test -f $STARSHIP_BIN
+if test -f $STARSHIP_BIN && test $TERM != "dumb"
   $STARSHIP_BIN init fish | source
   set STARSHIP_ENABLED 1
 end
@@ -13,7 +13,7 @@ end
 # Zoxide
 set ZOXIDE_BIN /usr/bin/zoxide
 set ZOXIDE_CMD cd
-if test -f $ZOXIDE_BIN
+if test -f $ZOXIDE_BIN && test $TERM != "dumb"
   $ZOXIDE_BIN init fish --cmd $ZOXIDE_CMD | source
   set ZOXIDE_ENABLED 1
 end
