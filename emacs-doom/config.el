@@ -643,6 +643,8 @@ If search string is empty, just beep."
   :init
   (marginalia-mode -1))
 
+(use-package nerd-icons)
+
 (use-package! notmuch
   :config
   (setq notmuch-saved-searches

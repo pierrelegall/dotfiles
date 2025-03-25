@@ -68,6 +68,7 @@
 (package! isearch-dabbrev)
 (package! olivetti)
 (package! magit-todos)
+(package! nerd-icons)
 (package! spacious-padding)
 (package! marginalia)
 (package! nano-modeline)
