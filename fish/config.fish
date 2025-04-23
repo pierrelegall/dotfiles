@@ -1,7 +1,5 @@
 set -U fish_greeting
 
-source $HOME/.dotfiles/bash/includes/aliases.sh
-
 # Starship
 set STARSHIP_BIN /usr/bin/starship
 if test -f $STARSHIP_BIN && test $TERM != "dumb"
@@ -22,6 +20,13 @@ set MISE_BIN /bin/mise
 if test -f $MISE_BIN
   $MISE_BIN activate fish | source
   set MISE_ENABLED 1
+end
+
+# Bash aliases
+set BASH_ALIASES $HOME/.dotfiles/bash/includes/aliases.sh
+if test -f $BASH_ALIASES
+  source $BASH_ALIASES
+  set BASH_ALIASES_ENABLED 1
 end
 
 bind \cg cancel
