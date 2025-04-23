@@ -1,6 +1,5 @@
 set -U fish_greeting
 
-source $HOME/.dotfiles/fish/emacs-vterm.fish
 source $HOME/.dotfiles/bash/includes/aliases.sh
 
 # Starship
@@ -39,4 +38,9 @@ function sudo -d "sudo wrapper that handles aliases"
   end
 
   command sudo $argv
+end
+
+# This need to be at the end to work properly
+if test -n $INSIDE_EMACS
+  source $HOME/.dotfiles/fish/emacs-vterm.fish
 end
