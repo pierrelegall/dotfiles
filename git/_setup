@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+ln -v -i -s -T $PWD/gitconfig $HOME/.gitconfig
+ln -v -i -s -T $PWD/gitignore-global $HOME/.gitignore-global
