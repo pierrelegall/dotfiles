@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+CONFIG_DIR=$HOME/.doom.d
+
+mkdir -p $CONFIG_DIR
+
+ln -v -i -s -T $PWD/config.el $CONFIG_DIR/config.el
+ln -v -i -s -T $PWD/custom.el $CONFIG_DIR/custom.el
+ln -v -i -s -T $PWD/init.el $CONFIG_DIR/init.el
+ln -v -i -s -T $PWD/packages.el $CONFIG_DIR/packages.el
