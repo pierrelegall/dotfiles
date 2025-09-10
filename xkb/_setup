@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+CONFIG_DIR=$HOME/.config/xkb
+
+mkdir -p $CONFIG_DIR
+ln -v -i -s -T $PWD/symbols $CONFIG_DIR/symbols
+ln -v -i -s -T $CONFIG_DIR/symbols/fr-colemak $CONFIG_DIR/symbols/custom
+
+echo
+echo "See _setup.root script for system specific configuration."
