@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+CONFIG_DIR=$HOME/.mixxx
+
+ln -v -i -s -T $PWD/controllers $CONFIG_DIR/controllers
