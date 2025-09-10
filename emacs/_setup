@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+ln -v -i -s -T $PWD/init.el $HOME/.emacs
