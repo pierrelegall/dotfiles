@@ -7,10 +7,15 @@ DIRS=$(ls -d $PWD/*/)
 for DIR in $DIRS; do
   echo
   echo "[$(basename $DIR)]"
+
   if test -x $DIR/_setup; then
     cd $DIR
     ./_setup
   else
-    echo "No setup instruction found."
+    echo "No _setup found, nothing done."
+  fi
+
+  if test -x $DIR/_setup.root; then
+    echo "See _setup.root script for system specific configuration."
   fi
 done
