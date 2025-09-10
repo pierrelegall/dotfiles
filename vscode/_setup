@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+CONFIG_DIR="$HOME/.config/Code - OSS/User"
+
+ln -v -i -s -T $PWD/settings.json "$CONFIG_DIR"/settings.json
+ln -v -i -s -T $PWD/keybindings.json "$CONFIG_DIR"/keybindings.json
