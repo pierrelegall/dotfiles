@@ -1,9 +1,6 @@
-all: print-info setup
-
-print-info:
-	@ echo "[starship]"
+all: setup
 
 setup: set-symlinks
 
 set-symlinks:
-	@ ln -v -i -s -T $(CURDIR)/starship.toml $(HOME)/.config/starship.toml
+	@ ln -v -i -s -T $(CURDIR)/.toml $(HOME)/.config/starship.toml

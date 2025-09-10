@@ -1,7 +1,4 @@
-all: print-info setup
-
-print-info:
-	@ echo "[irb]"
+all: setup
 
 setup: set-symlinks
 

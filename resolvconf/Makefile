@@ -1,7 +1,6 @@
 all: print-info setup
 
 print-info:
-	@ echo "[resolvconf]"
 	@ echo "Root privileges needed, you have to run manually:"
 	@ echo "$ sudo -E make -C $(CURDIR) set-system-symlinks --quiet"
 

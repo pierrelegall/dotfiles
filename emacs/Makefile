@@ -1,7 +1,4 @@
-all: print-info setup
-
-print-info:
-	@ echo "[emacs]"
+all: setup
 
 setup: set-symlinks
 

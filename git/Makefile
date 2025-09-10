@@ -1,7 +1,4 @@
-all: print-info setup
-
-print-info:
-	@ echo "[git]"
+all: setup
 
 setup: set-symlinks
 

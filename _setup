@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+# Runs all sub directories setup script or makefile
+
+DIRS=$(ls -d $PWD/*/)
+
+for DIR in $DIRS; do
+  echo
+  echo "[$(basename $DIR)]"
+  if test -x $DIR/_setup; then
+    cd $DIR
+    ./_setup
+  elif test -e $DIR/Makefile; then
+    make -C $DIR --quiet
+  else
+    echo "No setup instruction found."
+  fi
+done

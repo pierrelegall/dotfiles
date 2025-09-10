@@ -1,7 +1,4 @@
-all: print-info setup
-
-print-info:
-	@ echo "[Bash]"
+all: setup
 
 setup: set-symlinks
 

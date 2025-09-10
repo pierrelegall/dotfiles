@@ -1,9 +1,6 @@
 CONFIG_DIR = $(HOME)/.config/fish
 
-all: print-info setup
-
-print-info:
-	@ echo "[fish]"
+all: setup
 
 setup: set-symlinks
 

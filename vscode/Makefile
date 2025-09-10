@@ -1,9 +1,6 @@
 CONFIG_DIR = "$(HOME)/.config/Code - OSS/User"
 
-all: print-info setup
-
-print-info:
-	@ echo "[vscode]"
+all: setup
 
 setup: set-symlinks
 
