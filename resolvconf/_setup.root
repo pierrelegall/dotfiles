@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+mkdir -p /etc/resolvconf/resolv.conf.d
+
+ln -v -i -s -T $PWD/resolv.head.conf /etc/resolvconf/resolv.conf.d/head
