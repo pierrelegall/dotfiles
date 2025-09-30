@@ -80,6 +80,9 @@ fi
 if [ -f "$HOME/.claude.json" ]; then
   BWRAP_ARGS+=(--bind "$HOME/.claude.json" "$HOME/.claude.json")
 fi
+if [ -d "$HOME/.config/claude" ]; then
+  BWRAP_ARGS+=(--bind "$HOME/.config/claude" "$HOME/.config/claude")
+fi
 
 # Run in a bubblewrap sandbox
 echo "Starting claude in bubblewrap sandbox…"
