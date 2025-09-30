@@ -14,9 +14,11 @@ CLAUDE_BIN=$(command -pv claude)
 NODE_PATH="$(which node)"
 CLAUDE_NODE_PATH="$(readlink -f $(which claude))"
 
-# Check if running in HOME directory
-if [ "$CURRENT_DIR" = "$HOME" ]; then
-  echo "Warning: You are about to run Claude in your HOME directory ($HOME)."
+# Check and prompt if running in an risky directory
+# $HOME itself and outside HOME are considered risky
+if ! [[ "$CURRENT_DIR" =~ ^"$HOME"/.+ ]]; then
+  echo "⚠ You are about to run Claude in a risky directory."
+  echo -e "Current directory: \033[1;33m$CURRENT_DIR\033[0m"
   echo -n "Are you sure you want to continue? (y/N): "
   read -r response
   if [ "$response" != "y" ] && [ "$response" != "Y" ]; then
