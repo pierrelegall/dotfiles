@@ -1,5 +1,16 @@
 set -U fish_greeting
 
+function prepend_to_path_if_absent -a new_path
+  contains -- $new_path $PATH; or set -px PATH $new_path
+end
+
+# Commands
+set COMMANDS_DIR $HOME/.dotfiles/commands
+if test -d $COMMANDS_DIR && test $TERM != "dumb"
+  prepend_to_path_if_absent $COMMANDS_DIR
+  # set PATH $COMMANDS_DIR:$PATH
+end
+
 # Starship
 set STARSHIP_BIN /usr/bin/starship
 if test -f $STARSHIP_BIN && test $TERM != "dumb"
