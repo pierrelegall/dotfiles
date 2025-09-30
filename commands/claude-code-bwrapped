@@ -1,0 +1,90 @@
+#!/usr/bin/sh
+
+# Claude Code Bwrapped
+
+# Run Claude Code in a sandboxed bubblewrap environment.
+# This script runs Claude in bubblewrap with filesystem isolation
+# while maintaining access to current directory and Claude configuration.
+
+set -euo pipefail
+
+# Capture current environment
+CURRENT_DIR="$(pwd)"
+CLAUDE_BIN=$(command -pv claude)
+NODE_PATH="$(which node)"
+CLAUDE_NODE_PATH="$(readlink -f $(which claude))"
+
+# Check if running in HOME directory
+if [ "$CURRENT_DIR" = "$HOME" ]; then
+  echo "Warning: You are about to run Claude in your HOME directory ($HOME)."
+  echo -n "Are you sure you want to continue? (y/N): "
+  read -r response
+  if [ "$response" != "y" ] && [ "$response" != "Y" ]; then
+    echo "Aborting."
+    exit 1
+  fi
+fi
+
+# Build bubblewrap command arguments
+BWRAP_ARGS=(
+  # Create new namespaces
+  --unshare-user            # New user namespace
+  --unshare-pid             # New PID namespace
+  --unshare-ipc             # New IPC namespace
+  --unshare-uts             # New UTS namespace (hostname)
+  --die-with-parent         # Kill sandbox if parent dies
+
+  # Security restrictions
+  --new-session             # New session
+  --cap-drop ALL            # Drop all capabilities
+
+  # Mount essential system directories (read-only)
+  --ro-bind /usr /usr
+  --ro-bind /lib /lib
+  --ro-bind /bin /bin
+  --ro-bind /sbin /sbin
+  --proc /proc
+  --tmpfs /tmp
+
+  # Mount only necessary /etc files (avoid exposing sensitive configs)
+  --ro-bind-try /etc/resolv.conf /etc/resolv.conf
+  --ro-bind-try /etc/hosts /etc/hosts
+  --ro-bind-try /etc/hostname /etc/hostname
+  --ro-bind-try /etc/localtime /etc/localtime
+  --ro-bind-try /etc/ssl /etc/ssl
+  --ro-bind-try /etc/ca-certificates /etc/ca-certificates
+
+  # Minimal /dev access (no hardware devices)
+  --dev-bind /dev/null /dev/null
+  --dev-bind /dev/zero /dev/zero
+  --dev-bind /dev/full /dev/full
+  --dev-bind /dev/random /dev/random
+  --dev-bind /dev/urandom /dev/urandom
+  --dev-bind /dev/tty /dev/tty
+  --ro-bind-try /dev/pts /dev/pts
+
+  # Bind current directory (read-write)
+  --bind "$CURRENT_DIR" "$CURRENT_DIR"
+  --chdir "$CURRENT_DIR"
+)
+
+# Add lib64 if it exists
+if [ -d /lib64 ]; then
+  BWRAP_ARGS+=(--ro-bind /lib64 /lib64)
+fi
+
+# Add Claude configuration access if files/directories exist
+if [ -d "$HOME/.claude" ]; then
+  BWRAP_ARGS+=(--bind "$HOME/.claude" "$HOME/.claude")
+fi
+if [ -f "$HOME/.claude.json" ]; then
+  BWRAP_ARGS+=(--bind "$HOME/.claude.json" "$HOME/.claude.json")
+fi
+
+# Run Claude in bubblewrap sandbox
+echo "Starting claude in bubblewrap sandbox…"
+if test $CLAUDE_BIN; then
+  exec bwrap "${BWRAP_ARGS[@]}" $CLAUDE_BIN "$@"
+else
+  exec bwrap "${BWRAP_ARGS[@]}" $NODE_PATH $CLAUDE_NODE_PATH "$@"
+fi
