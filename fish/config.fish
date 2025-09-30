@@ -4,6 +4,13 @@ function prepend_to_path_if_absent -a new_path
   contains -- $new_path $PATH; or set -px PATH $new_path
 end
 
+# Aliases
+set ALIASES_DIR $HOME/.dotfiles/aliases
+if test -d $ALIASES_DIR && test $TERM != "dumb"
+  prepend_to_path_if_absent $ALIASES_DIR
+  # contains -- $ALIASES_DIR $PATH or set -ax PATH $ALIASES_DIR:$PATH
+end
+
 # Commands
 set COMMANDS_DIR $HOME/.dotfiles/commands
 if test -d $COMMANDS_DIR && test $TERM != "dumb"
