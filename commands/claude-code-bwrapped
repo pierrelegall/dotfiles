@@ -11,8 +11,6 @@ set -euo pipefail
 # Capture current environment
 CURRENT_DIR="$(pwd)"
 CLAUDE_BIN=$(command -pv claude)
-NODE_PATH="$(which node)"
-CLAUDE_NODE_PATH="$(readlink -f $(which claude))"
 
 # Check and prompt if running in an risky directory
 # $HOME itself and outside HOME are considered risky
@@ -83,10 +81,13 @@ if [ -f "$HOME/.claude.json" ]; then
   BWRAP_ARGS+=(--bind "$HOME/.claude.json" "$HOME/.claude.json")
 fi
 
-# Run Claude in bubblewrap sandbox
+# Run in a bubblewrap sandbox
 echo "Starting claude in bubblewrap sandbox…"
-if test $CLAUDE_BIN; then
+if [ -x $CLAUDE_BIN ]; then
   exec bwrap "${BWRAP_ARGS[@]}" $CLAUDE_BIN "$@"
+elif npx claude --version &>/dev/null; then
+  exec bwrap "${BWRAP_ARGS[@]}" npx claude "$@"
 else
-  exec bwrap "${BWRAP_ARGS[@]}" $NODE_PATH $CLAUDE_NODE_PATH "$@"
+  echo "⚠ Nor Claude Code binary nor Node package command found."
+  exit 1
 fi
