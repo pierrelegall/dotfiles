@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+cd "$(dirname "$0")"
+
 ln -v -i -s -T $PWD/bashrc.sh $HOME/.bashrc
 ln -v -i -s -T $PWD/bash_profile.sh $HOME/.bash_profile
 ln -v -i -s -T $PWD/inputrc $HOME/.inputrc

@@ -1,3 +1,5 @@
 #!/usr/bin/env sh
 
+cd "$(dirname "$0")"
+
 ln -v -i -s -T $PWD/init.el $HOME/.emacs

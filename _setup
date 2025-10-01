@@ -2,6 +2,8 @@
 
 # Runs all directories setup script
 
+cd "$(dirname "$0")"
+
 DIRS=$(ls -d $PWD/*/)
 
 for DIR in $DIRS; do
@@ -9,10 +11,9 @@ for DIR in $DIRS; do
   echo "[$(basename $DIR)]"
 
   if test -x $DIR/_setup; then
-    cd $DIR
-    ./_setup
+    $DIR/_setup
   else
-    echo "No _setup found, nothing done."
+    echo "No _setup found, nothing to do."
   fi
 
   if test -x $DIR/_setup.root; then

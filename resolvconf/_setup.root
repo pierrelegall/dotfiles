@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+cd "$(dirname "$0")"
+
 mkdir -p /etc/resolvconf/resolv.conf.d
 
 ln -v -i -s -T $PWD/resolv.head.conf /etc/resolvconf/resolv.conf.d/head

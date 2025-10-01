@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+cd "$(dirname "$0")"
+
 CONFIG_DIR=$HOME/.config/xkb
 
 ln -v -i -s -T $CONFIG_DIR/symbols/fr-colemak /usr/share/X11/xkb/symbols/fr-colemak
