@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+
+DIR="${1:-$PWD}"
+
+SUB_DIRS=$(
+  find "$DIR" \
+    -mindepth 1 -maxdepth 1 \
+    -type d \
+    -exec test -d "{}/.git" \; -print \
+    | sort
+)
+
+if [[ -z "$SUB_DIRS" ]]; then
+  echo "$(basename "$0"): nothing to do"
+  exit 0
+fi
+
+for SUB_DIR in $SUB_DIRS;do
+  echo
+  echo "[$(basename $SUB_DIR)]"
+  git -C $SUB_DIR pull
+done
