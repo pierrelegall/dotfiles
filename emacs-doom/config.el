@@ -1,8 +1,10 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-(setq package-enable-at-startup nil ; don't auto-initialize!
-      ;; don't add that `custom-set-variables' block to my init.el!
-      package--init-file-ensured t)
+;; Do not auto-initialize
+(setq package-enable-at-startup nil)
+
+;; Do not add that `custom-set-variables' block to my init.el
+(setq package--init-file-ensured t)
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
@@ -74,7 +76,7 @@
 (add-to-list
  'display-buffer-alist
  '("\\*eglot-help "
- (display-buffer-reuse-window display-buffer-same-window)
+   (display-buffer-reuse-window display-buffer-same-window)
    (reusable-frames . visible)))
 
 ;; Workaround to not show *Compile-Log* popping buffer
@@ -83,7 +85,7 @@
  '("\\*Compile-Log\\*"
    (display-buffer-use-some-frame)))
 
-; TODO validate
+;; TODO validate
 (add-to-list
  'display-buffer-alist
  '("\\*"
@@ -120,124 +122,124 @@
 ;; they are implemented.
 
 (defun my/abbreviate-path (path)
-  "Abbreviate the path, replacing home directory by ~/."
-  (s-replace-regexp abbreviated-home-dir "~/" path))
+ "Abbreviate the path, replacing home directory by ~/."
+ (s-replace-regexp abbreviated-home-dir "~/" path))
 
 (defun my/abbreviate-file-path-or-buffer-name (file-path)
-  "Get abbreviate file path or buffer name if not linked to a file."
-  (cond
-    ((eq file-path nil)
-      (->
-        (current-buffer)
-        (buffer-name)))
-    ('else
-      (my/abbreviate-path file-path))))
+ "Get abbreviate file path or buffer name if not linked to a file."
+ (cond
+  ((eq file-path nil)
+   (->
+    (current-buffer)
+    (buffer-name)))
+  ('else
+   (my/abbreviate-path file-path))))
 
 (defun my/pop-to-mark-command ()
-  (interactive)
-  (pop-to-mark-command)
-  (my/maybe-recenter))
+ (interactive)
+ (pop-to-mark-command)
+ (my/maybe-recenter))
 
 (defun my/lines-between-cursor-and-window-top ()
-  "Get the number of lines between the cursor and the top."
-  (- (line-number-at-pos) (line-number-at-pos (window-start)))
+ "Get the number of lines between the cursor and the top."
+ (- (line-number-at-pos) (line-number-at-pos (window-start))))
 
 (defun my/lines-between-cursor-and-window-bottom ()
-  "Get the number of lines between the cursor and the top."
-  (- (line-number-at-pos (window-end)) (line-number-at-pos)))
+ "Get the number of lines between the cursor and the top."
+ (- (line-number-at-pos (window-end)) (line-number-at-pos)))
 
 (defun my/maybe-recenter ()
-  (cond
-   ((<= (my/lines-between-cursor-and-window-top) 10)
-    (recenter))
-   ((<= (my/lines-between-cursor-and-window-bottom) 10)
-    (recenter)))))
+ (cond
+  ((<= (my/lines-between-cursor-and-window-top) 10)
+   (recenter))
+  ((<= (my/lines-between-cursor-and-window-bottom) 10)
+   (recenter))))
 
 (defun my/build-frame-name ()
-  "Build the frame string name for `frame-title-format`."
-  (let ((main "E.M.A.C.S"))
-    (cond
-     ((org-clocking-p)
-      ;; (format "%s: %s" main (org-clock-get)))
-      (concat main ": " (org-clock-get)))
-     ('else
-      main))))
+ "Build the frame string name for `frame-title-format`."
+ (let ((main "E.M.A.C.S"))
+  (cond
+   ((org-clocking-p)
+    ;; (format "%s: %s" main (org-clock-get)))
+    (concat main ": " (org-clock-get)))
+   ('else
+    main))))
 
 (defun my/switch-to-minibuffer ()
-  "Switch to minibuffer window."
-  (interactive)
-  (cond
-   ((active-minibuffer-window)
-    (select-window (active-minibuffer-window)))
-   ('else
-    (error "Minibuffer is not active"))))
+ "Switch to minibuffer window."
+ (interactive)
+ (cond
+  ((active-minibuffer-window)
+   (select-window (active-minibuffer-window)))
+  ('else
+   (error "Minibuffer is not active"))))
 
 (defun my/kill-this-buffer ()
-  "Kill the current buffer."
-  (interactive)
-  (kill-buffer (current-buffer)))
+ "Kill the current buffer."
+ (interactive)
+ (kill-buffer (current-buffer)))
 
 (defun my/move-line-up ()
-  (interactive)
-  (transpose-lines 1)
-  (forward-line -2))
+ (interactive)
+ (transpose-lines 1)
+ (forward-line -2))
 
 (defun my/move-line-down ()
-  (interactive)
-  (forward-line 1)
-  (transpose-lines 1)
-  (forward-line -1))
+ (interactive)
+ (forward-line 1)
+ (transpose-lines 1)
+ (forward-line -1))
 
 (defun my/consult-projectile-or-buffer ()
-  (interactive)
-  (cond
-   ((projectile-project-p)
-    (call-interactively #'consult-projectile))
-   ('else
-    (call-interactively #'consult-buffer))))
+ (interactive)
+ (cond
+  ((projectile-project-p)
+   (call-interactively #'consult-projectile))
+  ('else
+   (call-interactively #'consult-buffer))))
 
 (defun my/expand-region (arg)
-  (interactive "p")
-  (cond
-   ((> arg 1)
-    (er/contract-region 1))
-   ('else
-    (er/expand-region 1))))
+ (interactive "p")
+ (cond
+  ((> arg 1)
+   (er/contract-region 1))
+  ('else
+   (er/expand-region 1))))
 
 (defun my/isearch-del-word (&optional arg)
-  "Delete word from end of search string and search again.
+ "Delete word from end of search string and search again.
 If search string is empty, just beep."
-  (interactive "p")
-  (if (= 0 (length isearch-string))
-      (ding)
-    (setq isearch-string (substring isearch-string 0
-                                    (- (min (or arg 1)
-                                            (length isearch-string))))
-          isearch-message (mapconcat 'isearch-text-char-description
-                                     isearch-string "")))
-  ;; Do the following before moving point.
-  (funcall (or isearch-message-function #'isearch-message) nil t)
-  ;; Use the isearch-other-end as new starting point to be able
-  ;; to find the remaining part of the search string again.
-  ;; This is like what `isearch-search-and-update' does,
-  ;; but currently it doesn't support deletion of characters
-  ;; for the case where unsuccessful search may become successful
-  ;; by deletion of characters.
-  (if isearch-other-end (goto-char isearch-other-end))
-  (isearch-search)
-  (isearch-push-state)
-  (isearch-update))
+ (interactive "p")
+ (if (= 0 (length isearch-string))
+  (ding)
+  (setq isearch-string
+   (substring isearch-string 0
+    (- (min (or arg 1) (length isearch-string)))))
+  (setq isearch-message
+   (mapconcat 'isearch-text-char-description isearch-string "")))
+ ;; Do the following before moving point.
+ (funcall (or isearch-message-function #'isearch-message) nil t)
+ ;; Use the isearch-other-end as new starting point to be able
+ ;; to find the remaining part of the search string again.
+ ;; This is like what `isearch-search-and-update' does,
+ ;; but currently it doesn't support deletion of characters
+ ;; for the case where unsuccessful search may become successful
+ ;; by deletion of characters.
+ (if isearch-other-end (goto-char isearch-other-end))
+ (isearch-search)
+ (isearch-push-state)
+ (isearch-update))
 
 (defun my/vterm-in-current-directory ()
-  "Open a VTerm in current directory."
-  (interactive)
-  (cond
-    ((buffer-file-name)
-      (let (default-directory)
-        (setq default-directory (file-name-directory (buffer-file-name)))
-        (vterm)))
-    ('else
-      (vterm))))
+ "Open a VTerm in current directory."
+ (interactive)
+ (cond
+  ((buffer-file-name)
+   (let (default-directory)
+    (setq default-directory (file-name-directory (buffer-file-name)))
+    (vterm)))
+  ('else
+   (vterm))))
 
 (add-to-list 'default-frame-alist '(font . "Cascadia Code-13"))
 (add-to-list 'default-frame-alist '(height . 45))
@@ -321,262 +323,261 @@ If search string is empty, just beep."
 (setq global-text-scale-adjust-resizes-frames nil)
 
 (defun my/insert-tab ()
-  "Insert a tab at point."
-  (interactive)
-  (insert "	"))
+ "Insert a tab at point."
+ (interactive)
+ (insert "	"))
 
 (map! :leader
-      "!" #'shell-command
-      "TAB" #'my/insert-tab
-      "m" #'notmuch-jump-search
-      "M" #'compose-mail
-      "I" #'indent-region
-      "o t" #'my/vterm-in-current-directory
-      "o T" #'+vterm/here
-      "t" #'my/consult-term-buffers
-      "T" #'consult-buffer
-      "q" #'delete-window
-      "1" #'delete-other-windows
-      "2" #'split-window-below
-      "3" #'split-window-right
-      "j" #'consult-imenu
-      "J" #'consult-imenu-multi
-      "d" #'help-command
-      "d c" #'describe-command
-      "d d" #'+lookup/documentation
-      "d K" #'describe-keymap
-      "h" #'help-command
-      "h h" #'eldoc
-      "x" #'consult-mode-command
-      "<SPC>" #'execute-extended-command
-      "C-<SPC>" #'execute-extended-command
-      "_" #'vertico-repeat-select
-      "C-t" #'my/consult-projectile-or-buffer
-      "p" #'projectile-command-map
-      "g" #'consult-ripgrep
-      "v" #'magit-status
-      "V" #'magit-status-here
-      "b" #'switch-to-buffer
-      "B" #'switch-to-buffer-other-window
-      "C-k" #'my/kill-this-buffer
-      "=" #'text-scale-adjust
-      "0" #'text-scale-adjust
-      "-" #'text-scale-decrease
-      "+" #'text-scale-increase
-      "w" #'winner-undo
-      "W" #'winner-redo
-      "l" #'rotate-layout
-      "L" #'rotate-window
-      "r b" #'rename-buffer
-      "r f" #'rename-file
-      "," #'treemacs-select-window
-      "." #'treemacs-narrow-to-current-file
-      "e" #'consult-flycheck)
+ "!" #'shell-command
+ "TAB" #'my/insert-tab
+ "m" #'notmuch-jump-search
+ "M" #'compose-mail
+ "I" #'indent-region
+ "o t" #'my/vterm-in-current-directory
+ "o T" #'+vterm/here
+ "t" #'my/consult-term-buffers
+ "T" #'consult-buffer
+ "q" #'delete-window
+ "1" #'delete-other-windows
+ "2" #'split-window-below
+ "3" #'split-window-right
+ "j" #'consult-imenu
+ "J" #'consult-imenu-multi
+ "d" #'help-command
+ "d c" #'describe-command
+ "d d" #'+lookup/documentation
+ "d K" #'describe-keymap
+ "h" #'help-command
+ "h h" #'eldoc
+ "x" #'consult-mode-command
+ "<SPC>" #'execute-extended-command
+ "C-<SPC>" #'execute-extended-command
+ "_" #'vertico-repeat-select
+ "C-t" #'my/consult-projectile-or-buffer
+ "p" #'projectile-command-map
+ "g" #'consult-ripgrep
+ "v" #'magit-status
+ "V" #'magit-status-here
+ "b" #'switch-to-buffer
+ "B" #'switch-to-buffer-other-window
+ "C-k" #'my/kill-this-buffer
+ "=" #'text-scale-adjust
+ "0" #'text-scale-adjust
+ "-" #'text-scale-decrease
+ "+" #'text-scale-increase
+ "w" #'winner-undo
+ "W" #'winner-redo
+ "l" #'rotate-layout
+ "L" #'rotate-window
+ "r b" #'rename-buffer
+ "r f" #'rename-file
+ "," #'treemacs-select-window
+ "." #'treemacs-narrow-to-current-file
+ "e" #'consult-flycheck)
 
 (map! :map prog-mode-map
  "C-i" 'completion-at-point)
 
 (use-package all-the-icons
-  :if (display-graphic-p))
+ :if (display-graphic-p))
 
 (use-package! consult
-  :init
-  (defun my/consult-buffer-with-search (search)
-    "Run consult-buffer with SEARCH pre-filled in the minibuffer."
-    (interactive)
-    (minibuffer-with-setup-hook
-        (lambda ()
-          (insert search))
-      (consult-buffer)))
-  (defun my/consult-term-buffers ()
-    "Run consult-buffer with SEARCH pre-filled in the minibuffer."
-    (interactive)
-    (my/consult-buffer-with-search "Term: "))
-  (defun my/consult-kill-buffer ()
-    (interactive)
-    (if-let ((buffer-name (substring (consult--vertico-candidate) 0 -1))
-             (buffer (get-buffer buffer-name)))
-        (progn (kill-buffer buffer)
-               (minibuffer-keyboard-quit))
-      (message "Not a buffer")))
-  :config
-  (setq consult--source-buffer
-        (plist-put consult--source-buffer :items
-                   (lambda ()
-                     (mapcar #'buffer-name
-                             (seq-filter (lambda (buf)
-                                           (and (buffer-live-p buf)
-                                                (not (string-prefix-p " " (buffer-name buf)))))
-                                         (buffer-list))))))
-  (setq consult-preview-key "C-.")
-  :bind
-  (:map minibuffer-mode-map
-        ("C-q" . my/consult-kill-buffer)
-        ("C-r" . vertico-previous)
-        ("C-s" . vertico-next)))
+ :init
+ (defun my/consult-buffer-with-search (search)
+  "Run consult-buffer with SEARCH pre-filled in the minibuffer."
+  (interactive)
+  (minibuffer-with-setup-hook
+   (lambda ()
+    (insert search))
+   (consult-buffer)))
+ (defun my/consult-term-buffers ()
+  "Run consult-buffer with SEARCH pre-filled in the minibuffer."
+  (interactive)
+  (my/consult-buffer-with-search "Term: "))
+ (defun my/consult-kill-buffer ()
+  (interactive)
+  (if-let ((buffer-name (substring (consult--vertico-candidate) 0 -1))
+           (buffer (get-buffer buffer-name)))
+   (progn (kill-buffer buffer)
+    (minibuffer-keyboard-quit))
+   (message "Not a buffer")))
+ :config
+ (setq consult--source-buffer
+  (plist-put consult--source-buffer :items
+   (lambda ()
+    (mapcar #'buffer-name
+     (seq-filter (lambda (buf)
+                  (and (buffer-live-p buf)
+                   (not (string-prefix-p " " (buffer-name buf)))))
+      (buffer-list))))))
+ (setq consult-preview-key "C-.")
+ :bind
+ (:map minibuffer-mode-map
+  ("C-q" . my/consult-kill-buffer)
+  ("C-r" . vertico-previous)
+  ("C-s" . vertico-next)))
 
 (use-package! consult-projectile
-  :after projectile
-  :config
-  (setq consult-projectile-display-info nil)
-  (setq cosult-projectile-use-projectile-switch-project #'magit-status)
-  (setq consult-projectile--source-projectile-buffer
-        (list :name     "Project Buffer"
-              :narrow   '(?b . "Buffer")
-              :category 'buffer
-              :face     'consult-buffer
-              :history  'buffer-name-history
-              :state    #'consult--buffer-state
-              :enabled  #'projectile-project-root
-              :items
-              (lambda ()
-                (when-let (root (projectile-project-root))
-                  (mapcar #'buffer-name
-                          (seq-filter (lambda (buffer)
-                                        (when-let (directory (buffer-local-value 'default-directory buffer))
-                                          (and (not (string-match-p "^\*.+\*$" (buffer-name buffer)))
-                                               (string-prefix-p root directory))))
-                                      (consult--buffer-query :sort 'nil))))))))
+ :after projectile
+ :config
+ (setq consult-projectile-display-info nil)
+ (setq cosult-projectile-use-projectile-switch-project #'magit-status)
+ (setq consult-projectile--source-projectile-buffer
+  (list :name     "Project Buffer"
+   :narrow   '(?b . "Buffer")
+   :category 'buffer
+   :face     'consult-buffer
+   :history  'buffer-name-history
+   :state    #'consult--buffer-state
+   :enabled  #'projectile-project-root
+   :items
+   (lambda ()
+    (when-let (root (projectile-project-root))
+     (mapcar #'buffer-name
+      (seq-filter (lambda (buffer)
+                   (when-let (directory (buffer-local-value 'default-directory buffer))
+                    (and (not (string-match-p "^\*.+\*$" (buffer-name buffer)))
+                     (string-prefix-p root directory))))
+       (consult--buffer-query :sort 'nil))))))))
 
 (use-package! copilot
-  :bind
-  (:map copilot-completion-map
-        ("C-<return>" . 'copilot-accept-completion)
-        ("C-S-<return>" . 'copilot-accept-completion-by-word)))
+ :bind
+ (:map copilot-completion-map
+  ("C-<return>" . 'copilot-accept-completion)
+  ("C-S-<return>" . 'copilot-accept-completion-by-word)))
 
 (setq completion-in-region-function
-      (lambda (&rest args)
-        (apply (if vertico-mode
-                   #'consult-completion-in-region
-                 #'completion--in-region)
-               args)))
+ (lambda (&rest args)
+  (apply (if vertico-mode
+          #'consult-completion-in-region
+          #'completion--in-region)
+   args)))
 
 (use-package! corfu
-  :config
-  (setq-default corfu-auto nil)
-  (setq corfu-popupinfo-delay '(0.8 . 0.4))
-  (corfu-popupinfo-mode -1)
-  (setq corfu-preview-current nil)
-  (setq corfu-quit-at-boundary nil)
-  (setq corfu-cycle t)
-  :bind
-  (:map corfu-map
-        ("C-S-n" . corfu-popupinfo-scroll-up)
-        ("C-S-p" . corfu-popupinfo-scroll-down)
-        ("C-." . corfu-info-documentation)))
+ :config
+ (setq-default corfu-auto nil)
+ (setq corfu-popupinfo-delay '(0.8 . 0.4))
+ (corfu-popupinfo-mode -1)
+ (setq corfu-preview-current nil)
+ (setq corfu-quit-at-boundary nil)
+ (setq corfu-cycle t)
+ :bind
+ (:map corfu-map
+  ("C-S-n" . corfu-popupinfo-scroll-up)
+  ("C-S-p" . corfu-popupinfo-scroll-down)
+  ("C-." . corfu-info-documentation)))
 
 (use-package! diff-hl
-  :after magit
-  :hook
-  (magit-pre-refresh . diff-hl-magit-pre-refresh)
-  (magit-post-refresh . diff-hl-magit-post-refresh)
-  :init
-  (global-diff-hl-mode 1)
-  (diff-hl-flydiff-mode 1))
-  ;;:config
-  ;;(set-fringe-mode '(1 . 1)))
+ :after magit
+ :hook
+ (magit-pre-refresh . diff-hl-magit-pre-refresh)
+ (magit-post-refresh . diff-hl-magit-post-refresh)
+ :init
+ (global-diff-hl-mode 1)
+ (diff-hl-flydiff-mode 1))
+ ;; :config
+ ;; (set-fringe-mode '(1 . 1)))
 
 ;; Used as a global config (not related to a package)
 ;;
 ;; TODO cleanup "emacs" config
 (use-package! emacs
-  :config
-  (add-hook 'window-size-change-functions 'frame-hide-title-bar-when-maximized)
-  (setq my/doom-dashboard-ascii-banner
-        '(",---.,-.-.,---.,---.,---."
-          "|--- | | |,---||    `---."
-          "`---'` ' '`---^`---'`---'"))
-  (defun my/doom-dashboard-draw-ascii-banner-fn ()
-    (let* ((longest-line (apply #'max (mapcar #'length my/doom-dashboard-ascii-banner))))
-      (put-text-property
-       (point)
-       (dolist (line my/doom-dashboard-ascii-banner (point))
-         (insert (+doom-dashboard--center
-                  +doom-dashboard--width
-                  (concat
-                   line
-                   (make-string (max 0 (- longest-line (length line))) 32)))
-                 "\n"))
-       'face 'doom-dashboard-banner)))
-  (defun my/doom-dashboard-widget-loaded ()
-    (when doom-init-time
-      (insert
-       "\n\n"
-       (propertize
-        (+doom-dashboard--center
-         +doom-dashboard--width
-         (my/doom-display-benchmark-h 'return))
-        'face 'doom-dashboard-loaded))))
-  (defun my/doom-display-benchmark-h (&optional return-p)
-    "Display a benchmark including number of packages and modules loaded.
+ :config
+ (add-hook 'window-size-change-functions 'frame-hide-title-bar-when-maximized)
+ (setq my/doom-dashboard-ascii-banner
+  '(",---.,-.-.,---.,---.,---."
+    "|--- | | |,---||    `---."
+    "`---'` ' '`---^`---'`---'"))
+ (defun my/doom-dashboard-draw-ascii-banner-fn ()
+  (let* ((longest-line (apply #'max (mapcar #'length my/doom-dashboard-ascii-banner))))
+   (put-text-property
+    (point)
+    (dolist (line my/doom-dashboard-ascii-banner (point))
+     (insert
+      (+doom-dashboard--center
+       +doom-dashboard--width
+       (concat line (make-string (max 0 (- longest-line (length line))) 32)))
+      "\n"))
+    'face 'doom-dashboard-banner)))
+ (defun my/doom-dashboard-widget-loaded ()
+  (when doom-init-time
+   (insert
+    "\n\n"
+    (propertize
+     (+doom-dashboard--center
+      +doom-dashboard--width
+      (my/doom-display-benchmark-h 'return))
+     'face 'doom-dashboard-loaded))))
+ (defun my/doom-display-benchmark-h (&optional return-p)
+  "Display a benchmark including number of packages and modules loaded.
 
 If RETURN-P, return the message as a string instead of displaying it."
-    (funcall (if return-p #'format #'message)
-             "%d packages, %d modules, loaded in %.03fs"
-             (- (length load-path) (length (get 'load-path 'initial-value)))
-             (if doom-modules (hash-table-count doom-modules) -1)
-             doom-init-time))
-  (setq +doom-dashboard-ascii-banner-fn #'my/doom-dashboard-draw-ascii-banner-fn)
-  (setq +doom-dashboard-functions `(doom-dashboard-widget-banner my/doom-dashboard-widget-loaded))
-  :bind
-  (:map +doom-dashboard-mode-map
-        ("a" . 'org-agenda)
-        ("b" . 'switch-to-buffer)
-        ("f" . 'find-file)
-        ("p" . 'projectile-switch-project)
-        ("r" . 'recentf)
-        ("t" . '+vterm/here)))
+  (funcall (if return-p #'format #'message)
+   "%d packages, %d modules, loaded in %.03fs"
+   (- (length load-path) (length (get 'load-path 'initial-value)))
+   (if doom-modules (hash-table-count doom-modules) -1)
+   doom-init-time))
+ (setq +doom-dashboard-ascii-banner-fn #'my/doom-dashboard-draw-ascii-banner-fn)
+ (setq +doom-dashboard-functions `(doom-dashboard-widget-banner my/doom-dashboard-widget-loaded))
+ :bind
+ (:map +doom-dashboard-mode-map
+  ("a" . 'org-agenda)
+  ("b" . 'switch-to-buffer)
+  ("f" . 'find-file)
+  ("p" . 'projectile-switch-project)
+  ("r" . 'recentf)
+  ("t" . '+vterm/here)))
 
 (use-package! doom-themes
-  :config
-  (setq doom-themes-enable-bold t)
-  (setq doom-themes-enable-italic t)
-  ;; or for treemacs users
-  (setq doom-themes-treemacs-theme "doom-atom")
-  (doom-themes-treemacs-config)
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config)
-  :bind
-  (:map +doom-dashboard-mode-map
-        ("a" . 'org-agenda)
-        ("b" . 'switch-to-buffer)
-        ("f" . 'find-file)
-        ("m" . 'notmuch-jump-search)
-        ("M" . 'compose-mail)
-        ("p" . 'projectile-switch-project)
-        ("r" . 'recentf)
-        ("t" . '+vterm/here)))
+ :config
+ (setq doom-themes-enable-bold t)
+ (setq doom-themes-enable-italic t)
+ ;; or for treemacs users
+ (setq doom-themes-treemacs-theme "doom-atom")
+ (doom-themes-treemacs-config)
+ ;; Corrects (and improves) org-mode's native fontification.
+ (doom-themes-org-config)
+ :bind
+ (:map +doom-dashboard-mode-map
+  ("a" . 'org-agenda)
+  ("b" . 'switch-to-buffer)
+  ("f" . 'find-file)
+  ("m" . 'notmuch-jump-search)
+  ("M" . 'compose-mail)
+  ("p" . 'projectile-switch-project)
+  ("r" . 'recentf)
+  ("t" . '+vterm/here)))
 
 (use-package! eglot
-  :init
-  (fset #'jsonrpc--log-event #'ignore)
-  (setq eglot-send-changes-idle-time 0.25)
-  (setq eglot-events-buffer-config '(:size 0 :format full))
-  (add-hook 'eglot-managed-mode-hook (lambda () (eglot-inlay-hints-mode -1)))
-  :config
-  (add-to-list 'eglot-server-programs
-               '((elixir-mode elixir-ts-mode heex-mode heex-ts-mode) . ("elixir-ls")))
-  (add-to-list 'eglot-server-programs
-               '(svelte-mode . ("svelteserver" "--stdio")))
-  :hook
-  (eglot-mode . flycheck-eglot-mode))
+ :init
+ (fset #'jsonrpc--log-event #'ignore)
+ (setq eglot-send-changes-idle-time 0.25)
+ (setq eglot-events-buffer-config '(:size 0 :format full))
+ (add-hook 'eglot-managed-mode-hook (lambda () (eglot-inlay-hints-mode -1)))
+ :config
+ (add-to-list 'eglot-server-programs
+  '((elixir-mode elixir-ts-mode heex-mode heex-ts-mode) . ("elixir-ls")))
+ (add-to-list 'eglot-server-programs
+  '(svelte-mode . ("svelteserver" "--stdio")))
+ :hook
+ (eglot-mode . flycheck-eglot-mode))
 
 (use-package! eldoc
-  :init
-  (global-eldoc-mode -1)
-  :config
-  (setq eldoc-idle-delay most-positive-fixnum) ;; pseudo disable delay
-  (setq eldoc-echo-area-use-multiline-p nil)
-  (setq eldoc-echo-area-display-truncation-message t)
-  (setq eldoc-echo-area-prefer-doc-buffer t)
-  (setq eldoc-doc-buffer-separator "\n\n")) ;; does not seem to work 🤔
+ :init
+ (global-eldoc-mode -1)
+ :config
+ (setq eldoc-idle-delay most-positive-fixnum) ;; pseudo disable delay
+ (setq eldoc-echo-area-use-multiline-p nil)
+ (setq eldoc-echo-area-display-truncation-message t)
+ (setq eldoc-echo-area-prefer-doc-buffer t)
+ (setq eldoc-doc-buffer-separator "\n\n")) ;; does not seem to work 🤔
 
 (use-package! elixir-mode
-  :after eglot
-  :hook
-  (elixir-mode . exunit-mode)
-  (elixir-mode . eglot-ensure)
-  (before-save . eglot-format-buffer))
+ :after eglot
+ :hook
+ (elixir-mode . exunit-mode)
+ (elixir-mode . eglot-ensure)
+ (before-save . eglot-format-buffer))
 
 ;; (use-package! elixir-ts-mode
 ;;   :init
@@ -589,27 +590,23 @@ If RETURN-P, return the message as a string instead of displaying it."
 ;;   (before-save . eglot-format-buffer))
 
 (use-package! exunit
-  :init
-  (add-to-list
-   'display-buffer-alist
-   '("\\*exunit-compilation\\*"
-     (display-buffer-reuse-window display-buffer-same-window)
-     (reusable-frames . visible)))
-  :bind
-  (:map exunit-mode-map
-        ("C-c t" . 'exunit-transient))
-  (:map exunit-compilation-mode-map
-        ("C-o" . nil)
-        ("r" . 'recompile)))
-
-;; (use-package! feature-mode
-;;   :init
-;;   (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode)))
+ :init
+ (add-to-list
+  'display-buffer-alist
+  '("\\*exunit-compilation\\*"
+    (display-buffer-reuse-window display-buffer-same-window)
+    (reusable-frames . visible)))
+ :bind
+ (:map exunit-mode-map
+  ("C-c t" . 'exunit-transient))
+ (:map exunit-compilation-mode-map
+  ("C-o" . nil)
+  ("r" . 'recompile)))
 
 (use-package! flycheck
-  :init
-  (setq flycheck-indication-mode 'left-fringe)
-  (setq flycheck-display-errors-delay 0.2))
+ :init
+ (setq flycheck-indication-mode 'left-fringe)
+ (setq flycheck-display-errors-delay 0.2))
 
 ;; (use-package! flycheck-languagetool
 ;;   :init
@@ -624,431 +621,382 @@ If RETURN-P, return the message as a string instead of displaying it."
 ;;   (org-mode . flycheck-languagetool-setup))
 
 (use-package! goggles
-  :hook ((prog-mode text-mode) . goggles-mode)
-  :config
-  (setq-default goggles-pulse t))
+ :hook ((prog-mode text-mode) . goggles-mode)
+ :config
+ (setq-default goggles-pulse t))
 
 (use-package! isearch
-  :config
-  (setq isearch-lazy-highlight t)
-  ;; (setq isearch-lazy-highlight-error t)
-  (setq lazy-highlight-initial-delay 0)
-  (setq isearch-wrap-pause nil)
-  (setq isearch-lazy-count nil)
-  (setq isearch-allow-motion t)
-  (setq isearch-allow-scroll 'unlimited)
-  (defun my/isearch-post-action () nil
-         (when (not (isearch-fail-pos)) (my/maybe-recenter)))
-  :hook
-  (isearch-update-post . my/isearch-post-action)
-  :bind
-  (:map isearch-mode-map
-        ("C-/" . isearch-delete-char)
-        ("<backspace>" . isearch-del-char)
-        ("C-h" . isearch-del-char)
-        ("C-S-h" . isearch-del-char) ; isearch-del-word
-        ("C-i" . isearch-dabbrev-expand)
-        ("C-." . consult-line)))
+ :config
+ (setq isearch-lazy-highlight t)
+ ;; (setq isearch-lazy-highlight-error t)
+ (setq lazy-highlight-initial-delay 0)
+ (setq isearch-wrap-pause nil)
+ (setq isearch-lazy-count nil)
+ (setq isearch-allow-motion t)
+ (setq isearch-allow-scroll 'unlimited)
+ (defun my/isearch-post-action () nil
+  (when (not (isearch-fail-pos)) (my/maybe-recenter)))
+ :hook
+ (isearch-update-post . my/isearch-post-action)
+ :bind
+ (:map isearch-mode-map
+  ("C-/" . isearch-delete-char)
+  ("<backspace>" . isearch-del-char)
+  ("C-h" . isearch-del-char)
+  ("C-S-h" . isearch-del-char) ; isearch-del-word
+  ("C-i" . isearch-dabbrev-expand)
+  ("C-." . consult-line)))
 
 (use-package! projectile
-  :init
-  (setq projectile-command-map nil)
-  (setq projectile-enable-caching nil)
-  (setq projectile-switch-project-action 'magit-status)
-  (setq projectile-current-project-on-switch 'keep)
-  ;; (defun my/projectile-ignore-project (directory)
-  ;;   (mapcar (lambda (project-root) (string-prefix-p project-root directory))
-  ;;           projectile-known-projects))
-  ;; (setq projectile-ignored-project-function #'my/projectile-ignore-project)
-  (defun my/projectile-open-notes ()
-    "Open the note file at the root of the project."
-    (interactive)
-    (find-file
-     (concat (projectile-project-root) ".local/Notes.org")))
-  (defun my/projectile-relative-buffer-name ()
-    (ignore-errors
-      (rename-buffer
-       (file-relative-name buffer-file-name (projectile-project-root)))))
-  (add-hook 'find-file-hook #'my/projectile-relative-buffer-name))
+ :init
+ (setq projectile-command-map nil)
+ (setq projectile-enable-caching nil)
+ (setq projectile-switch-project-action 'magit-status)
+ (setq projectile-current-project-on-switch 'keep)
+ ;; (defun my/projectile-ignore-project (directory)
+ ;;   (mapcar (lambda (project-root) (string-prefix-p project-root directory))
+ ;;           projectile-known-projects))
+ ;; (setq projectile-ignored-project-function #'my/projectile-ignore-project)
+ (defun my/projectile-open-notes ()
+  "Open the note file at the root of the project."
+  (interactive)
+  (find-file
+   (concat (projectile-project-root) ".local/Notes.org")))
+ (defun my/projectile-relative-buffer-name ()
+  (ignore-errors
+   (rename-buffer
+    (file-relative-name buffer-file-name (projectile-project-root)))))
+ (add-hook 'find-file-hook #'my/projectile-relative-buffer-name))
 ;; :bind
 ;; (:map projectile-command-map
 ;;       ("g" . consult-ripgrep)
 ;;       ("n" . my/projectile-open-notes)))
 
 (use-package! python-mode
-  :after eglot
-  :hook
-  (python-mode-hook . eglot-ensure)
-  (before-save . eglot-format-buffer))
+ :after eglot
+ 
+ :hook
+ (python-mode-hook . eglot-ensure)
+ (before-save . eglot-format-buffer))
 ;; :init
 ;; (add-to-list 'eglot-server-programs '(python-mode . ("ruff" "server"))))
 
 (use-package! magit
-  :after nerd-icons
-  :config
-  (setq magit-region-highlight-hook nil)
-  (setq magit-section-highlight-hook nil)
-  (setq magit-section-unhighlight-hook nil)
-  (setq magit-verbose-messages t)
-  (setq magit-diff-refine-hunk nil)
-  (defun my/show-paren-local-disable-mode ()
-    (show-paren-local-mode -1))
-  (setq magit-display-buffer-function
-        (lambda (buffer)
-          (display-buffer buffer '(display-buffer-same-window))))
-  :custom
-  (magit-format-file-function #'magit-format-file-nerd-icons)
-  :hook
-  (magit-status-mode-hook . my/show-paren-local-disable-mode)
-  (magit-section-movement-hook . magit-hunk-maybe-recenter)
-  :bind
-  (:map magit-mode-map
-        ("C-S-i" . #'magit-section-cycle-diffs))
-  (:map magit-status-mode-map
-        ("i" . magit-section-toggle)
-        ("I" . magit-gitignore)))
+ :after nerd-icons
+ :config
+ (setq magit-region-highlight-hook nil)
+ (setq magit-section-highlight-hook nil)
+ (setq magit-section-unhighlight-hook nil)
+ (setq magit-verbose-messages t)
+ (setq magit-diff-refine-hunk nil)
+ (defun my/show-paren-local-disable-mode ()
+  (show-paren-local-mode -1))
+ (setq magit-display-buffer-function
+  (lambda (buffer)
+   (display-buffer buffer '(display-buffer-same-window))))
+ :custom
+ (magit-format-file-function #'magit-format-file-nerd-icons)
+ :hook
+ (magit-status-mode-hook . my/show-paren-local-disable-mode)
+ (magit-section-movement-hook . magit-hunk-maybe-recenter)
+ :bind
+ (:map magit-mode-map
+  ("C-S-i" . #'magit-section-cycle-diffs))
+ (:map magit-status-mode-map
+  ("i" . magit-section-toggle)
+  ("I" . magit-gitignore)))
 
 (use-package! magit-todos
-  :after magit
-  :config
-  ;;(setq magit-todos-insert-after '(bottom))
-  (magit-todos-mode 1))
+ :after magit
+ :config
+ ;;(setq magit-todos-insert-after '(bottom))
+ (magit-todos-mode 1))
 
 (use-package! marginalia
-  :after vertico
-  :init
-  (marginalia-mode -1))
+ :after vertico
+ :init
+ (marginalia-mode -1))
 
 (use-package! markdown-mode
-  :config
-  (with-eval-after-load 'eglot
-    (add-to-list 'eglot-server-programs
-                 '(markdown-mode . ("harper-ls" "--stdio")))))
+ :config
+ (with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+   '(markdown-mode . ("harper-ls" "--stdio")))))
 
 (use-package nerd-icons)
 
 (use-package! notmuch
-  :config
-  (setq notmuch-saved-searches
-        '((:name "inbox" :query "tag:inbox" :sort-order newest-first :key "i")
-          (:name "unread" :query "tag:unread" :sort-order newest-first :key "u")
-          (:name "flagged" :query "tag:flagged" :sort-order newest-first :key "f")
-          (:name "sent" :query "tag:sent" :sort-order newest-first :key "t")
-          (:name "drafts" :query "tag:draft" :sort-order newest-first :key "d")
-          (:name "all mail" :query "*" :sort-order newest-first :key "a")))
-  (setq notmuch-hello-logo nil))
+ :config
+ (setq notmuch-saved-searches
+  '((:name "inbox" :query "tag:inbox" :sort-order newest-first :key "i")
+    (:name "unread" :query "tag:unread" :sort-order newest-first :key "u")
+    (:name "flagged" :query "tag:flagged" :sort-order newest-first :key "f")
+    (:name "sent" :query "tag:sent" :sort-order newest-first :key "t")
+    (:name "drafts" :query "tag:draft" :sort-order newest-first :key "d")
+    (:name "all mail" :query "*" :sort-order newest-first :key "a")))
+ (setq notmuch-hello-logo nil))
 
 (use-package! nov
-  :hook
-  (nov-mode . my/nov-font-setup)
-  :config
-  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
-  (defun my/nov-font-setup ()
-    (face-remap-add-relative 'variable-pitch
-                             :family "Liberation Serif"
-                             :height 140)))
+ :hook
+ (nov-mode . my/nov-font-setup)
+ :config
+ (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+ (defun my/nov-font-setup ()
+  (face-remap-add-relative 'variable-pitch
+   :family "Liberation Serif"
+   :height 140)))
 
 (use-package! olivetti
-  :init
-  (define-global-minor-mode global-olivetti-mode
-    olivetti-mode olivetti-mode)
-  (setq-default olivetti-body-width 124))
+ :init
+ (define-global-minor-mode global-olivetti-mode olivetti-mode olivetti-mode)
+ (setq-default olivetti-body-width 124))
 
 (use-package! orderless
-  :init
-  (setq completion-ignore-case t)
-  (setq completion-styles '(orderless)))
+ :init
+ (setq completion-ignore-case t)
+ (setq completion-styles '(orderless)))
 
 (use-package! org
-  :init
-  (setq org-cycle-include-plain-lists 'integrate)
-  (setq org-table-convert-region-max-lines 9999)
-  (setq org-directory "~/Notes")
-  (setq org-indent-indentation-per-level 1)
-  (setq org-agenda-skip-deadline-if-done t)
-  (defun my/org-skip-subtree-if-priority (priority)
-    "Skip an agenda subtree if it has a priority of PRIORITY.
-
-  PRIORITY may be one of the characters ?A, ?B, or ?C."
-    (let ((subtree-end (save-excursion (org-end-of-subtree t)))
-          (pri-value (* 1000 (- org-lowest-priority priority)))
-          (pri-current (org-get-priority (thing-at-point 'line t))))
-      (if (= pri-value pri-current)
-          subtree-end
-        nil)))
-  (setq org-agenda-custom-commands
-        '(
-          ("f" "Focus view"
-           (
-            (todo "IN-PROGRESS" ((org-agenda-overriding-header "Now:")))
-            ;; Display items with priority A
-            (tags-todo "PRIORITY=\"A\"" ((org-agenda-overriding-header "Next:")))
-            ;; View 7 days in the calendar view
-            (agenda "" ((org-agenda-span 7)))
-            )
-           ;; Don't compress things (change to suite your tastes)
-           ((org-agenda-compact-blocks nil)))
-          ))
-  ;; :hook
-  ;; (org-mode-hook . auto-save-visited-mode)
-  :config
-  (defun my-indent-relative-to-list-item ()
-    "Indent to same level as previous line if it's a list item."
-    (cond
-     ((and
-       (looking-at "^[ \t]*$")  ; Current line is empty/whitespace
-       (save-excursion (forward-line -1) (looking-at "^\\([ \t]*\\)[-*+][ \t]+")))
-      (let ((prev-indent (save-excursion (forward-line -1) (current-indentation))))
-        (delete-region (line-beginning-position) (point))
-        (indent-to prev-indent))
-      t)  ; Return t to indicate we handled indentation
-     ('else nil)))  ; Explicitly return nil when we don't handle it
-  (defun my/org-advice-indent-line (orig-fun &rest args)
-    "Use custom indentation for list items, otherwise use default."
-    (unless (my/org-indent-relative-to-list-item)
-      (apply orig-fun args)))
-  (advice-add 'org-indent-line :around #'my/org-advice-indent-line)
-
-  (with-eval-after-load 'eglot
-    (add-to-list 'eglot-server-programs
-                 '(org-mode . ("harper-ls" "--stdio"))))
-  (defun my/org-sort-entries ()
-    (interactive)
-    (org-mark-element)
-    (mark-whole-buffer)
-    (org-sort-entries nil ?O)
-    (org-fold-hide-sublevels 1)
-    (my/pop-to-mark-command)
-    (my/pop-to-mark-command)
-    (my/pop-to-mark-command))
-  (defun my/org-move-subtree-or-item-or-line-up ()
-    (interactive)
-    (cond ((org-at-heading-p)
-           (org-move-subtree-up))
-          ((org-at-item-p)
-           (org-move-item-up))
-          ('else
-           (my/move-line-up))))
-  (defun my/org-move-subtree-or-item-or-line-down ()
-    (interactive)
-    (cond ((org-at-heading-p)
-           (org-move-subtree-down))
-          ((org-at-item-p)
-           (org-move-item-down))
-          ('else
-           (my/move-line-down))))
-  (setq org-startup-folded t)
-  (setq org-hide-block-startup nil)
-  (setq org-priority-faces
-        (quote
-         ((65 . "#E05A5A")
-          (66 . "#AB5353")
-          (67 . "#6D3434"))))
-  (setq org-todo-keywords
-        '((sequence
-           "TODO(t)"
-           "GOAL(g)"
-           "WIP!(w)"
-           "|"
-           "DONE(d)"
-           "KILL(k)")))
-  (setq org-todo-keyword-faces
-        '(("TODO" . log-edit-summary)
-          ("GOAL!" . +org-todo-active)
-          ("WIP!" . mode-line)
-          ("SLOW" . +org-todo-active)
-          ("PROJECT" . nerd-icons-orange)
-          ("BLOK" . +org-todo-onhold)
-          ("DONE" . org-done)
-          ("KILL" . org-done)))
-  :bind
-  (:map org-mode-map
-        ("C-c w" . org-cut-subtree)
-        ("C-c t" . org-todo)
-        ("C-c f" . org-toggle-narrow-to-subtree)
-        ("C-c p" . org-priority)
-        ("C-c o" . my/org-sort-entries)
-        ("C-è" . my/org-move-subtree-or-item-or-line-down)
-        ("C-{" . my/org-move-subtree-or-item-or-line-up)
-        ("C-S-g" . org-tree-slide-mode)
-        ("C-c i" . org-toggle-inline-images)
-        ("C-c >" . org-do-demote)
-        ("C-c C->" . org-demote-subtree)
-        ("C-c <" . org-do-promote)
-        ("C-c C-<" . org-promote-subtree)
-        ("C-c a" . org-archive-subtree)
-        ("C-," . nil)))
+ :init
+ (setq org-cycle-include-plain-lists 'integrate)
+ (setq org-table-convert-region-max-lines 9999)
+ (setq org-directory "~/Notes")
+ (setq org-indent-indentation-per-level 1)
+ (setq org-agenda-skip-deadline-if-done t)
+ ;; :hook
+ ;; (org-mode-hook . auto-save-visited-mode)
+ :config
+ (defun my/org-advice-indent-line (orig-fun &rest args)
+  "Use custom indentation for list items, otherwise use default."
+  (unless (my/org-indent-relative-to-list-item)
+   (apply orig-fun args)))
+ (advice-add 'org-indent-line :around #'my/org-advice-indent-line)
+ (with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+   '(org-mode . ("harper-ls" "--stdio"))))
+ (defun my/org-move-subtree-or-item-or-line-up ()
+  (interactive)
+  (cond
+   ((org-at-heading-p)
+    (org-move-subtree-up))
+   ((org-at-item-p)
+    (org-move-item-up))
+   ('else
+    (my/move-line-up))))
+ (defun my/org-move-subtree-or-item-or-line-down ()
+  (interactive)
+  (cond
+   ((org-at-heading-p)
+    (org-move-subtree-down))
+   ((org-at-item-p)
+    (org-move-item-down))
+   ('else
+    (my/move-line-down))))
+ (setq org-startup-folded t)
+ (setq org-hide-block-startup nil)
+ (setq org-priority-faces
+  (quote
+   ((65 . "#E05A5A")
+    (66 . "#AB5353")
+    (67 . "#6D3434"))))
+ (setq org-todo-keywords
+  '((sequence
+     "TODO(t)"
+     "WIP!(w)"
+     "|"
+     "DONE(d)")))
+ (setq org-todo-keyword-faces
+  '(("TODO" . log-edit-summary)
+    ("WIP!" . mode-line)
+    ("DONE" . org-done)))
+ :bind
+ (:map org-mode-map
+  ("C-c w" . org-cut-subtree)
+  ("C-c t" . org-todo)
+  ("C-c f" . org-toggle-narrow-to-subtree)
+  ("C-c p" . org-priority)
+  ("C-c o" . my/org-sort-entries)
+  ("C-è" . my/org-move-subtree-or-item-or-line-down)
+  ("C-{" . my/org-move-subtree-or-item-or-line-up)
+  ("C-S-g" . org-tree-slide-mode)
+  ("C-c i" . org-toggle-inline-images)
+  ("C-c >" . org-do-demote)
+  ("C-c C->" . org-demote-subtree)
+  ("C-c <" . org-do-promote)
+  ("C-c C-<" . org-promote-subtree)
+  ("C-c a" . org-archive-subtree)
+  ("C-," . nil)))
 
 (use-package! org-roam
-  :custom
-  (org-roam-directory (file-truename "~/Notes"))
-  :bind
-  (:map doom-leader-map
-        ("n" . org-roam-node-find))
-  :config
-  ;; If you're using a vertical completion framework, you might want a more informative completion interface
-  (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
-  (org-roam-db-autosync-mode)
-  ;; If using org-roam-protocol
-  (require 'org-roam-protocol))
+ :custom
+ (org-roam-directory (file-truename "~/Notes"))
+ :bind
+ (:map doom-leader-map
+  ("n" . org-roam-node-find))
+ :config
+ ;; If you're using a vertical completion framework, you might want a more informative completion interface
+ (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+ (org-roam-db-autosync-mode)
+ ;; If using org-roam-protocol
+ (require 'org-roam-protocol))
 
 (use-package! org-tree-slide-mode
-  :bind
-  (:map org-tree-slide-mode-map
-        ("C-S-g" . org-tree-slide-mode)
-        ("<mouse-1>" . transient-noop)
-        ("<mouse-3>" . transient-noop)
-        ("<down-mouse-1>" . org-tree-slide-move-next-tree)
-        ("<down-mouse-3>" . org-tree-slide-move-previous-tree)))
+ :bind
+ (:map org-tree-slide-mode-map
+  ("C-S-g" . org-tree-slide-mode)
+  ("<mouse-1>" . transient-noop)
+  ("<mouse-3>" . transient-noop)
+  ("<down-mouse-1>" . org-tree-slide-move-next-tree)
+  ("<down-mouse-3>" . org-tree-slide-move-previous-tree)))
 
 (use-package! doom-nano-modeline
-  :init
-  ;; (doom-modeline-mode -1)
-  (doom-nano-modeline-mode 1)
-  (global-hide-mode-line-mode 1)
-  :config
-  (defun doom-nano-modeline--magit-status-mode ()
-    "Render the modeline in `magit-status-mode'."
-    (doom-nano-modeline--render
-     `(("Magit:" . nil)
-       (" " . nil)
-       (,(file-name-nondirectory
-          (directory-file-name
-           (file-name-directory default-directory))) . nil)
-       (" " . nil)
-       (,(concat "[#" (magit-get-current-branch) "]") . nil))
-     nil
-     t))
-  (setq doom-nano-modeline-top-padding 0)
-  (setq doom-nano-modeline-bottom-padding 0)
-  (setq doom-nano-modeline-position 'top))
+ :init
+ ;; (doom-modeline-mode -1)
+ (doom-nano-modeline-mode 1)
+ (global-hide-mode-line-mode 1)
+ :config
+ (defun doom-nano-modeline--magit-status-mode ()
+  "Render the modeline in `magit-status-mode'."
+  (doom-nano-modeline--render
+   `(("Magit:" . nil)
+     (" " . nil)
+     (,(file-name-nondirectory
+        (directory-file-name
+         (file-name-directory default-directory))) . nil)
+     (" " . nil)
+     (,(concat "[#" (magit-get-current-branch) "]") . nil))
+   nil
+   t))
+ (setq doom-nano-modeline-top-padding 0)
+ (setq doom-nano-modeline-bottom-padding 0)
+ (setq doom-nano-modeline-position 'top))
 
 (use-package! rustic
-  :config
-  (add-to-list
-   'display-buffer-alist
-   '("\\*cargo-run\\*"
-     (display-buffer-reuse-window display-buffer-same-window)
-     (reusable-frames . visible)))
-  (add-to-list
-   'display-buffer-alist
-   '("\\*cargo-test\\*"
-     (display-buffer-reuse-window display-buffer-same-window)
-     (reusable-frames . visible)))
-  (add-hook 'rustic-mode-hook (lambda () (setq tab-width 2)))
-  :bind
-  (:map rustic-mode-map
-        ("C-c t a" . rustic-cargo-test)
-        ("C-c t s" . rustic-cargo-current-test)
-        ("C-c t r" . rustic-cargo-test-rerun))
-  (:map rustic-cargo-run-mode-map
-        ("r" . rustic-cargo-run-rerun))
-  (:map rustic-cargo-test-mode-map
-        ("r" . rustic-cargo-test-rerun))
-  (:map rustic-compilation-mode-map
-        ("C-o" . nil)
-        ("p" . nil) ; prev error
-        ("n" . nil) ; next error
-        ("r" . rustic-build)))
+ :config
+ (add-to-list
+  'display-buffer-alist
+  '("\\*cargo-run\\*"
+    (display-buffer-reuse-window display-buffer-same-window)
+    (reusable-frames . visible)))
+ (add-to-list
+  'display-buffer-alist
+  '("\\*cargo-test\\*"
+    (display-buffer-reuse-window display-buffer-same-window)
+    (reusable-frames . visible)))
+ (add-hook 'rustic-mode-hook (lambda () (setq tab-width 2)))
+ :bind
+ (:map rustic-mode-map
+  ("C-c t a" . rustic-cargo-test)
+  ("C-c t s" . rustic-cargo-current-test)
+  ("C-c t r" . rustic-cargo-test-rerun))
+ (:map rustic-cargo-run-mode-map
+  ("r" . rustic-cargo-run-rerun))
+ (:map rustic-cargo-test-mode-map
+  ("r" . rustic-cargo-test-rerun))
+ (:map rustic-compilation-mode-map
+  ("C-o" . nil)
+  ("p" . nil) ; prev error
+  ("n" . nil) ; next error
+  ("r" . rustic-build)))
 
 (use-package ultra-scroll
-  :init
-  (setq scroll-conservatively 101) ; important!
-  (setq scroll-margin 0)
-  :config
-  (ultra-scroll-mode 1))
+ :init
+ (setq scroll-conservatively 101) ; important!
+ (setq scroll-margin 0)
+ :config
+ (ultra-scroll-mode 1))
 
 (use-package! spacious-padding
-  :config
-  (setq spacious-padding-widths
-        '(:internal-border-width 12
-          :header-line-width 0
-          :mode-line-width 2
-          :tab-width 4
-          :right-divider-width 20
-          :scroll-bar-width 8))
-          ;;:fringe-width 4))
-  :init
-  (spacious-padding-mode 1))
+ :config
+ (setq spacious-padding-widths
+  '(:internal-border-width 12
+    :header-line-width 0
+    :mode-line-width 2
+    :tab-width 4
+    :right-divider-width 20
+    :scroll-bar-width 8))
+ ;;:fringe-width 4))
+ :init
+ (spacious-padding-mode 1))
 
 (use-package! treemacs
-  :config
-  (treemacs-git-mode 'deferred)
-  (treemacs-filewatch-mode)
-  (treemacs-add-and-display-current-project-exclusively)
-  (treemacs-project-follow-mode)
-  (treemacs-fringe-indicator-mode -1)
-  (setq treemacs--project-follow-delay 0.1)
-  (setq doom-variable-pitch-font (font-spec :family "Cascadia Mono"))
-  (setq doom-themes-treemacs-enable-variable-pitch nil)
-  :bind
-  (:map treemacs-mode-map
-    ("i" . treemacs-TAB-action)))
+ :config
+ (treemacs-git-mode 'deferred)
+ (treemacs-filewatch-mode)
+ (treemacs-add-and-display-current-project-exclusively)
+ (treemacs-project-follow-mode)
+ (treemacs-fringe-indicator-mode -1)
+ (setq treemacs--project-follow-delay 0.1)
+ (setq doom-variable-pitch-font (font-spec :family "Cascadia Mono"))
+ (setq doom-themes-treemacs-enable-variable-pitch nil)
+ :bind
+ (:map treemacs-mode-map
+  ("i" . treemacs-TAB-action)))
 
 (use-package! treesit-auto
-  :custom
-  (treesit-auto-install 'prompt)
-  :config
-  (setq treesit-auto-langs '(elixir))
-  ;; (treesit-auto-add-to-auto-mode-alist 'all)
-  (global-treesit-auto-mode))
+ :custom
+ (treesit-auto-install 'prompt)
+ :config
+ (setq treesit-auto-langs '(elixir))
+ ;; (treesit-auto-add-to-auto-mode-alist 'all)
+ (global-treesit-auto-mode))
 
 (use-package! vertico
-  :init
-  (vertico-mode)
+ :init
+ (vertico-mode)
+ (vertico-posframe-mode -1)
+ (vertico-buffer-mode)
+ (add-to-list
+  'display-buffer-alist
+  '("\\*vertico"
+    (display-buffer-same-window)))
+ :config
+ (defun my/vertico-posframe-reload ()
+  (interactive)
   (vertico-posframe-mode -1)
   (vertico-buffer-mode)
-  (add-to-list
-   'display-buffer-alist
-   '("\\*vertico"
-      (display-buffer-same-window)))
-  :config
-  (defun my/vertico-posframe-reload ()
-    (interactive)
-    (vertico-posframe-mode -1)
-    (vertico-buffer-mode)
-    (vertico-buffer-mode -1)
-    (vertico-posframe-mode))
-  (setq vertico-posframe-border-width 6)
-  (setq vertico-posframe-border-width 6)
-  (setq vertico-posframe-width 100)
-  (setq vertico-posframe-height nil)
-  :bind
-  (:map vertico-map
-    ("C-v" . vertico-next-group)
-    ("C-S-v" . vertico-previous-group)
-    ("C-S-n" . next-history-element)
-    ("C-S-p" . previous-history-element)))
+  (vertico-buffer-mode -1)
+  (vertico-posframe-mode))
+ (setq vertico-posframe-border-width 6)
+ (setq vertico-posframe-border-width 6)
+ (setq vertico-posframe-width 100)
+ (setq vertico-posframe-height nil)
+ :bind
+ (:map vertico-map
+  ("C-v" . vertico-next-group)
+  ("C-S-v" . vertico-previous-group)
+  ("C-S-n" . next-history-element)
+  ("C-S-p" . previous-history-element)))
 
 (add-hook 'minibuffer-mode #'hide-mode-line-mode)
 
 (use-package! vterm
-  :config
-  (setq vterm-buffer-name "Term")
-  (setq vterm-buffer-name-string "Term: %s")
-  (defun my/vterm-set-buffer-font ()
-    "Set font to a variable width  fonts in current buffer"
-    (interactive)
-    (setq buffer-face-mode-face '(:family "Cascadia"))
-    (buffer-face-mode))
-  :hook
-  (vterm-mode . my/vterm-set-buffer-font)
-  :bind
-  (:map vterm-mode-map
-        ("C-q" . nil) ; looking for a better "exit"
-        ("C-S-h" . vterm-send-C-w) ; lambda?
-        ("C-g" . vterm--self-insert)
-        ("C-." . vterm-copy-mode)
-        ("C-/" . vterm-undo)
-        ("C-<" . vterm-send-C-a)
-        ("C->" . vterm-send-C-e)
-        ("C-j" . woman)
-        ("C-v" . nil)
-        ("C-l" . vterm-clear)
-        ("C-o" . nil))
-  (:map vterm-copy-mode-map
-        ("C-." . vterm-copy-mode-done)))
+ :config
+ (setq vterm-buffer-name "Term")
+ (setq vterm-buffer-name-string "Term: %s")
+ (defun my/vterm-set-buffer-font ()
+  "Set font to a variable width  fonts in current buffer"
+  (interactive)
+  (setq buffer-face-mode-face '(:family "Cascadia"))
+  (buffer-face-mode))
+ :hook
+ (vterm-mode . my/vterm-set-buffer-font)
+ :bind
+ (:map vterm-mode-map
+  ("C-q" . nil) ; looking for a better "exit"
+  ("C-S-h" . vterm-send-C-w) ; lambda?
+  ("C-g" . vterm--self-insert)
+  ("C-." . vterm-copy-mode)
+  ("C-/" . vterm-undo)
+  ("C-<" . vterm-send-C-a)
+  ("C->" . vterm-send-C-e)
+  ("C-j" . woman)
+  ("C-v" . nil)
+  ("C-l" . vterm-clear)
+  ("C-o" . nil))
+ (:map vterm-copy-mode-map
+  ("C-." . vterm-copy-mode-done)))
 
 (use-package! winner
-  :config
-  (setq winner-boring-buffers-regexp "*Minibuf-"))
+ :config
+ (setq winner-boring-buffers-regexp "*Minibuf-"))
