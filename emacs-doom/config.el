@@ -984,7 +984,8 @@ If RETURN-P, return the message as a string instead of displaying it."
  :bind
  (:map vterm-mode-map
   ("C-q" . nil) ; looking for a better "exit"
-  ("C-S-h" . vterm-send-C-w) ; lambda?
+  ("C-S-h" . vterm-send-C-w)
+  ("C-S-d" . vterm-send-M-d)
   ("C-g" . vterm--self-insert)
   ("C-." . vterm-copy-mode)
   ("C-/" . vterm-undo)
