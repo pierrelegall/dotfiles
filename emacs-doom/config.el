@@ -994,7 +994,8 @@ If RETURN-P, return the message as a string instead of displaying it."
   ("C-j" . woman)
   ("C-v" . nil)
   ("C-l" . vterm-clear)
-  ("C-o" . nil))
+  ("C-o" . nil)
+  ("C-<return>" . vterm-send-C-m))
  (:map vterm-copy-mode-map
   ("C-." . vterm-copy-mode-done)))
 
