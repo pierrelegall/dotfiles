@@ -689,6 +689,7 @@ If RETURN-P, return the message as a string instead of displaying it."
  (setq magit-section-unhighlight-hook nil)
  (setq magit-verbose-messages t)
  (setq magit-diff-refine-hunk nil)
+ (setq magit-commit-show-diff nil)
  (defun my/show-paren-local-disable-mode ()
   (show-paren-local-mode -1))
  (setq magit-display-buffer-function
