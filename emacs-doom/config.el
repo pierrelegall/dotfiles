@@ -335,8 +335,12 @@ If search string is empty, just beep."
  "I" #'indent-region
  "o t" #'my/vterm-in-current-directory
  "o T" #'+vterm/here
- "t" #'my/consult-term-buffers
+ "y" #'my/swtich-to-vterm-buffer
+ "C-y" #'my/swtich-to-vterm-buffer
  "T" #'consult-buffer
+ "C-T" #'consult-buffer
+ "t" #'my/consult-projectile-or-buffer
+ "C-t" #'my/consult-projectile-or-buffer
  "q" #'delete-window
  "1" #'delete-other-windows
  "2" #'split-window-below
@@ -353,7 +357,6 @@ If search string is empty, just beep."
  "<SPC>" #'execute-extended-command
  "C-<SPC>" #'execute-extended-command
  "_" #'vertico-repeat-select
- "C-t" #'my/consult-projectile-or-buffer
  "p" #'projectile-command-map
  "g" #'consult-ripgrep
  "v" #'magit-status
@@ -390,10 +393,20 @@ If search string is empty, just beep."
    (lambda ()
     (insert search))
    (consult-buffer)))
- (defun my/consult-term-buffers ()
-  "Run consult-buffer with SEARCH pre-filled in the minibuffer."
+ (defun my/swtich-to-vterm-buffer ()
+  "Switch to a vterm buffer."
   (interactive)
-  (my/consult-buffer-with-search "Term: "))
+  (let* ((vterm-buffers
+          (seq-filter
+           (lambda (buf)
+            (eq (buffer-local-value 'major-mode buf) 'vterm-mode))
+           (buffer-list)))
+         (buffer-names (mapcar #'buffer-name vterm-buffers)))
+   (cond
+    (buffer-names
+     (switch-to-buffer (completing-read "Switch to vterm buffer: " buffer-names nil t)))
+    (t
+     (message "No vterm-mode buffers found")))))
  (defun my/consult-kill-buffer ()
   (interactive)
   (if-let ((buffer-name (substring (consult--vertico-candidate) 0 -1))
