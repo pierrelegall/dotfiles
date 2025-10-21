@@ -3,6 +3,11 @@
 # shell to send information to `vterm` via properly escaped sequences. A
 # function that helps in this task, `vterm_printf`, is defined below.
 
+# Set editor variables to emacsclient when running inside Emacs
+set -gx EDITOR "emacsclient --no-wait"
+set -gx VISUAL $EDITOR
+set -gx GIT_EDITOR $EDITOR
+
 function vterm_printf;
   if begin; [  -n "$TMUX" ]  ; and  string match -q -r "screen|tmux" "$TERM"; end
     # tell tmux to pass the escape sequences through
