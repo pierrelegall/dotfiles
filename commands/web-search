@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+query=$@
+search_engine_url=https://duckduckgo.com
+
+xdg-open "$search_engine_url/?q=$query" &> /dev/null
