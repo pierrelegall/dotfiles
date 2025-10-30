@@ -6,43 +6,41 @@ end
 
 # Aliases
 set ALIASES_DIR $HOME/.dotfiles/aliases
-if test -d $ALIASES_DIR && test $TERM != "dumb"
+if test -d "$ALIASES_DIR" && test $TERM != "dumb"
   prepend_to_path_if_absent $ALIASES_DIR
-  # contains -- $ALIASES_DIR $PATH or set -ax PATH $ALIASES_DIR:$PATH
 end
 
 # Commands
 set COMMANDS_DIR $HOME/.dotfiles/commands
-if test -d $COMMANDS_DIR && test $TERM != "dumb"
+if test -d "$COMMANDS_DIR" && test $TERM != "dumb"
   prepend_to_path_if_absent $COMMANDS_DIR
-  # set PATH $COMMANDS_DIR:$PATH
 end
 
 # Starship
 set STARSHIP_BIN /usr/bin/starship
-if test -f $STARSHIP_BIN && test $TERM != "dumb"
+if test -x "$STARSHIP_BIN" && test $TERM != "dumb"
   $STARSHIP_BIN init fish | source
   set STARSHIP_ENABLED 1
 end
 
 # Zoxide
 set ZOXIDE_BIN /usr/bin/zoxide
-set ZOXIDE_CMD cd
-if test -f $ZOXIDE_BIN && test $TERM != "dumb"
+if test -f "$ZOXIDE_BIN" && test $TERM != "dumb"
+  set ZOXIDE_CMD cd
   $ZOXIDE_BIN init fish --cmd $ZOXIDE_CMD | source
   set ZOXIDE_ENABLED 1
 end
 
 # Mise
 set MISE_BIN /bin/mise
-if test -f $MISE_BIN
+if test -x "$MISE_BIN"
   $MISE_BIN activate fish | source
   set MISE_ENABLED 1
 end
 
 # Bash aliases
 set BASH_ALIASES $HOME/.dotfiles/bash/includes/aliases.sh
-if test -f $BASH_ALIASES
+if test -f "$BASH_ALIASES"
   source $BASH_ALIASES
   set BASH_ALIASES_ENABLED 1
 end
