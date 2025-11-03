@@ -1,35 +1,35 @@
 [init]
-	defaultBranch = main
+defaultBranch = "main"
 
 [color]
-	status = true
-	branch = true
-	diff = true
-	interactive = true
+status = true
+branch = true
+diff = true
+interactive = true
 
 [log]
-	abbrevCommit = true
-	decorate = true
-	date = relative
+abbrevCommit = true
+decorate = true
+date = "relative"
 
 [diff]
-	algorithm = patience
-	indentHeuristic = true
+algorithm = "patience"
+indentHeuristic = true
 
 [merge]
-	ff = false
+ff = false
 
 [push]
-	default = current
+default = "current"
 
 [pull]
-	rebase = true
+rebase = true
 
 [rebase]
-	autoStash = true
+autoStash = true
 
 [core]
-	excludesFile = ~/.gitignore-global
+excludesFile = "~/.gitignore-global"
 
 [include]
-	path = .gitconfig-local
+path = "~/.gitconfig-local"
