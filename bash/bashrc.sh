@@ -5,6 +5,13 @@ source $HOME/.dotfiles/bash/includes/aliases.sh
 source $HOME/.dotfiles/bash/includes/plugins.sh
 source $HOME/.dotfiles/bash/includes/terminal-options.sh
 
+# Mise
+MISE_BIN=$(command -pv mise)
+if [ -f $MIS_BIN ]; then
+  eval "$($MISE_BIN activate bash)"
+  MISE_ENABLED=1
+fi
+
 # Starship
 STARSHIP_BIN=/usr/bin/starship
 if [[ -f ${STARSHIP_BIN} && "$TERM" != "dumb" ]]; then
