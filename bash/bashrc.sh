@@ -12,13 +12,17 @@ if [ -f $MIS_BIN ]; then
   MISE_ENABLED=1
 fi
 
+if [ -f ~/.bashrc-local ]; then
+  source ~/.bashrc-local
+fi
+
+# Config below enabled only for interactive shells
+if [ $TERM = "dumb" ]; then return 0; fi
+
 # Starship
-STARSHIP_BIN=/usr/bin/starship
-if [[ -f ${STARSHIP_BIN} && "$TERM" != "dumb" ]]; then
+STARSHIP_BIN=$(command -pv starship)
+if [ -f $STARSHIP_BIN ]; then
   eval "$($STARSHIP_BIN init bash)"
   STARSHIP_ENABLED=1
 fi
 
-if [ -f ~/.bashrc-local ]; then
-  source ~/.bashrc-local
-fi
