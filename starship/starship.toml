@@ -2,3 +2,9 @@ format = """
 $username$hostname$directory$git_branch$git_status
 $character
 """
+
+[directory]
+truncation_length = 255
+truncation_symbol = '…/'
+truncate_to_repo = false
+use_logical_path = false
