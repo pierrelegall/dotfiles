@@ -43,6 +43,7 @@ BWRAP_ARGS=(
   --ro-bind /lib /lib
   --ro-bind /bin /bin
   --ro-bind /sbin /sbin
+  --ro-bind-try /opt/claude-code/bin/claude /opt/claude-code/bin/claude
   --proc /proc
   --tmpfs /tmp
 
