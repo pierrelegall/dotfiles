@@ -31,7 +31,4 @@ alias emacsd-start='emacs --daemon'
 alias emacsd-stop='emacsclient --eval "(kill-emacs)"'
 alias emacsd-restart='emacsd-stop && emacsd-start'
 
-alias b='prevd'
-alias f='nextd'
-
 alias iex='iex --erl "-kernel shell_history enabled"'
