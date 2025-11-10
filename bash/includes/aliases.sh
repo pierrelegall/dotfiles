@@ -12,9 +12,6 @@ alias .....='cd ../../../..'
 alias mv='mv --interactive'
 alias rm='rm --interactive=once'
 
-alias ls='eza -F'
-alias tree='eza --tree'
-
 alias ln='ln --interactive'
 
 alias df='df --human-readable'
