@@ -31,9 +31,6 @@ alias emacsd-start='emacs --daemon'
 alias emacsd-stop='emacsclient --eval "(kill-emacs)"'
 alias emacsd-restart='emacsd-stop && emacsd-start'
 
-alias se='sudo emacs --no-window-system --user $USER'
-alias sew='sudo emacs --no-window-system --user $USER'
-
 alias b='prevd'
 alias f='nextd'
 
