@@ -3,6 +3,7 @@
 alias sudo='sudo '
 alias q='exit'
 alias x='exit'
+alias c='clear'
 
 alias ..='cd ..'
 alias ...='cd ../..'
