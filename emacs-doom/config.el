@@ -121,6 +121,12 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+(defun my/kill-other-buffers ()
+ "Kill all other buffers."
+ (interactive)
+ (mapc 'kill-buffer
+  (cl-delete (current-buffer) (buffer-list))))
+
 (defun my/abbreviate-path (path)
  "Abbreviate the path, replacing home directory by ~/."
  (s-replace-regexp abbreviated-home-dir "~/" path))
