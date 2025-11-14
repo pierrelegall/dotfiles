@@ -64,7 +64,12 @@ BWRAP_ARGS=(
   --dev-bind /dev/tty /dev/tty
   --ro-bind-try /dev/pts /dev/pts
 
-  # Bind current directory (read-write)
+  # Bind some home directories (personal dev env)
+  --ro-bind $HOME/.rustup $HOME/.rustup
+  --ro-bind $HOME/.mix $HOME/.mix
+  --ro-bind $HOME/.node_modules $HOME/.node_modules
+
+  # Bind current directory
   --bind "$CURRENT_DIR" "$CURRENT_DIR"
   --chdir "$CURRENT_DIR"
 )
