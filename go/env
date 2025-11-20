@@ -1,0 +1,2 @@
+# Note: cannot expand `~` or `$HOME` :(
+GOPATH=/home/pierre/.go
