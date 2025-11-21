@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+# Check if source directory argument is provided
+if [ -z "$1" ]; then
+  echo "Error: Source directory argument is required" >&2
+  exit 1
+fi
+
+# Check if destination directory argument is provided
+if [ -z "$2" ]; then
+  echo "Error: Destination directory argument is required" >&2
+  exit 1
+fi
+
+# Check if destination is a valid directory
+if [ ! -d "$2" ]; then
+  echo "Error: Destination directory '$2' does not exist or is not a directory" >&2
+  exit 1
+fi
+
+# Check if source is a valid directory
+if [ ! -d "$1" ]; then
+  echo "Error: Source directory '$1' does not exist or is not a directory" >&2
+  exit 1
+fi
+
+# Because readability is nice
+source_dir=$1
+destination_dir=$2
+
+# Prompt for confirmation before proceeding
+echo ""
+echo "You are going to sync:"
+echo "- source: $(realpath $source_dir)"
+echo "- destination: $(realpath $destination_dir)"
+echo ""
+echo "This operation is not undoable."
+echo -n "Proceed with sync? (y/N): "
+read -r response
+echo ""
+if [[ ! $response =~ ^[Yy]$ ]]; then
+  echo "Sync cancelled."
+  exit 0
+fi
+
+# Run sync
+rsync -av \
+  --filter=":- .rsyncignore" \
+  --filter=":- .gitignore" \
+  --delete-excluded \
+  --ignore-errors \
+  --log-file=$HOME/.backup-home.log \
+  "$source_dir" "$destination_dir"
