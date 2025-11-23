@@ -121,6 +121,13 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+(defun my/unspecify-face (face &optional frame)
+ "Fully unspecify all attributes of FACE on FRAME (default: all frames)."
+ (face-spec-set face nil frame)
+ (apply #'set-face-attribute face frame
+  (mapcan (lambda (attr) (list attr 'unspecified))
+   (mapcar #'car face-attribute-name-alist))))
+
 (defun my/kill-other-buffers ()
  "Kill all other buffers."
  (interactive)
@@ -536,9 +543,15 @@ Otherwise, format as '@relative/path#line_number'."
   "b" #'dired-prev-subdir))
 
 (use-package! dired-subtree
+ :hook
+ (dired-subtree-after-insert . dired-omit-mode)
  :config
- (add-hook 'dired-subtree-after-insert-hook #'dired-omit-mode)
- (add-hook 'dired-subtree-after-insert-hook #'dired-hide-details-mode))
+ (my/unspecify-face 'dired-subtree-depth-1-face)
+ (my/unspecify-face 'dired-subtree-depth-2-face)
+ (my/unspecify-face 'dired-subtree-depth-3-face)
+ (my/unspecify-face 'dired-subtree-depth-4-face)
+ (my/unspecify-face 'dired-subtree-depth-5-face)
+ (my/unspecify-face 'dired-subtree-depth-6-face))
 
 ;; Used as a global config (not related to a package)
 ;;
