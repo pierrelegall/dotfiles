@@ -67,12 +67,6 @@
    (display-buffer-reuse-window display-buffer-same-window)
    (reusable-frames . visible)))
 
-(add-to-list
- 'display-buffer-alist
- '("\\*exunit-compilation-"
-   (display-buffer-reuse-window display-buffer-same-window)
-   (reusable-frames . visible)))
-
 ;; Workaround to not show popping buffer
 (add-to-list
  'display-buffer-alist
@@ -81,10 +75,12 @@
 
 (add-to-list
  'display-buffer-alist
- '("\\*eldoc\\|\\*helpful"
-   (display-buffer-reuse-window display-buffer-use-some-window)
+ '("\\*eldoc\\|\\*helpful\\|\\*Help\\*\\|\\*corfu"
+   (display-buffer-reuse-window
+    display-buffer-pop-up-window
+    display-buffer-use-least-recent-window)
    (inhibit-same-window . t)
-   (reusable-frames . visible)))
+   (reusable-frames . nil)))
 
 (setq org-plantuml-exec-mode 'plantuml)
 (setq org-plantuml-executable-path "/usr/bin/plantuml")
