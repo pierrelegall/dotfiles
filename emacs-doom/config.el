@@ -503,9 +503,10 @@ Otherwise, format as '@relative/path#line_number'."
 
 (setq completion-in-region-function
  (lambda (&rest args)
-  (apply (if vertico-mode
-          #'consult-completion-in-region
-          #'completion--in-region)
+  (apply
+   (cond
+    (vertico-mode #'consult-completion-in-region)
+    (t #'completion--in-region))
    args)))
 
 (use-package! corfu
