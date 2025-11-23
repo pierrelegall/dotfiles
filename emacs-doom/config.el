@@ -331,9 +331,9 @@ Otherwise, format as '@relative/path#line_number'."
 (global-set-key (kbd "C-i") #'completion-at-point)
 (global-set-key (kbd "C-S-i") #'dabbrev-completion)
 (global-set-key (kbd "<mouse-2>") nil)
-(global-set-key (kbd "C-z") #'winner-undo)
-(global-set-key (kbd "C-S-z") #'winner-redo)
-(global-set-key (kbd "C-æ") #'winner-redo)
+(global-set-key (kbd "C-u") #'winner-undo)
+(global-set-key (kbd "C-S-u") #'winner-redo)
+(global-set-key (kbd "C-z") #'winner-redo)
 
 (setq completion-styles '(fussy orderless basic))
 
@@ -1140,6 +1140,7 @@ If RETURN-P, return the message as a string instead of displaying it."
   ("C->" . vterm-send-C-e)
   ("C-j" . woman)
   ("C-v" . nil)
+  ("C-z" . nil)
   ("C-l" . vterm-clear)
   ("C-o" . nil)
   ("C-<return>" . vterm-send-C-m))
