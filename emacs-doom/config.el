@@ -63,7 +63,7 @@
 
 (add-to-list
  'display-buffer-alist
- '("\\*helpful"
+ '("\\*"
    (display-buffer-reuse-window display-buffer-same-window)
    (reusable-frames . visible)))
 
@@ -73,23 +73,17 @@
    (display-buffer-reuse-window display-buffer-same-window)
    (reusable-frames . visible)))
 
-(add-to-list
- 'display-buffer-alist
- '("\\*eglot-help "
-   (display-buffer-reuse-window display-buffer-same-window)
-   (reusable-frames . visible)))
-
-;; Workaround to not show *Compile-Log* popping buffer
+;; Workaround to not show popping buffer
 (add-to-list
  'display-buffer-alist
  '("\\*Compile-Log\\*"
    (display-buffer-use-some-frame)))
 
-;; TODO validate
 (add-to-list
  'display-buffer-alist
- '("\\*"
-   (display-buffer-reuse-window display-buffer-same-window)
+ '("\\*eldoc\\|\\*helpful"
+   (display-buffer-reuse-window display-buffer-use-some-window)
+   (inhibit-same-window . t)
    (reusable-frames . visible)))
 
 (setq org-plantuml-exec-mode 'plantuml)
