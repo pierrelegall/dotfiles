@@ -124,6 +124,24 @@
  (mapc 'kill-buffer
   (cl-delete (current-buffer) (buffer-list))))
 
+(defun my/describe-buffer-local-hooks ()
+ "Display all buffer-local hooks in the current buffer."
+ (interactive)
+ (let ((hooks nil))
+  (dolist (var (buffer-local-variables))
+   (when (consp var)
+    (let ((sym (car var)))
+     (when (string-match-p "-hook$" (symbol-name sym))
+      (push (cons sym (cdr var)) hooks)))))
+    (cond
+     (hooks
+      (with-output-to-temp-buffer "*Buffer Local Hooks*"
+      (princ (format "Buffer-local hooks in %s:\n\n" (buffer-name)))
+      (dolist (hook (nreverse hooks))
+       (princ (format "%s:\n  %S\n\n" (car hook) (cdr hook))))))
+     (t
+      (message "No buffer-local hooks in %s" (buffer-name))))))
+
 (defun my/abbreviate-path (path)
  "Abbreviate the path, replacing home directory by ~/."
  (s-replace-regexp abbreviated-home-dir "~/" path))
