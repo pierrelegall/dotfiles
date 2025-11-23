@@ -317,7 +317,7 @@ Otherwise, format as '@relative/path#line_number'."
 (global-set-key (kbd "C-S-z") #'winner-redo)
 (global-set-key (kbd "C-æ") #'winner-redo)
 
-(setq completion-styles '(orderless basic))
+(setq completion-styles '(fussy orderless basic))
 
 (setq shift-select-mode nil)
 (setq mouse-wheel-progressive-speed nil)
@@ -742,6 +742,11 @@ If RETURN-P, return the message as a string instead of displaying it."
  :init
  (setq flycheck-indication-mode 'left-fringe)
  (setq flycheck-display-errors-delay 0.2))
+
+(use-package! fussy
+ :after vertico
+ :config
+ (fussy-setup))
 
 ;; (use-package! flycheck-languagetool
 ;;   :init
