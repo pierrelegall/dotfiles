@@ -525,9 +525,16 @@ Otherwise, format as '@relative/path#line_number'."
  :config
  (add-hook 'window-size-change-functions 'frame-hide-title-bar-when-maximized)
  (setq my/doom-dashboard-ascii-banner
-  '(",---.,-.-.,---.,---.,---."
-    "|--- | | |,---||    `---."
-    "`---'` ' '`---^`---'`---'"))
+  '("    ██████                                         "
+    "   ███░░███                                      TM"
+    "  ░███ ░░░   ██████   ██████  █████ ████  █████    "
+    " ███████    ███░░███ ███░░███░░███ ░███  ███░░     "
+    "░░░███░    ░███ ░███░███ ░░░  ░███ ░███ ░░█████    "
+    "  ░███     ░███ ░███░███  ███ ░███ ░███  ░░░░███   "
+    "  █████    ░░██████ ░░██████  ░░████████ ██████  ██"
+    " ░░░░░      ░░░░░░   ░░░░░░    ░░░░░░░░ ░░░░░░  ░░ "
+    "                                                   "
+    " Because things take time.                 (ง •̀_•́)ง"))
  (defun my/doom-dashboard-draw-ascii-banner-fn ()
   (let* ((longest-line (apply #'max (mapcar #'length my/doom-dashboard-ascii-banner))))
    (put-text-property
@@ -558,7 +565,8 @@ If RETURN-P, return the message as a string instead of displaying it."
    (if doom-modules (hash-table-count doom-modules) -1)
    doom-init-time))
  (setq +doom-dashboard-ascii-banner-fn #'my/doom-dashboard-draw-ascii-banner-fn)
- (setq +doom-dashboard-functions `(doom-dashboard-widget-banner my/doom-dashboard-widget-loaded))
+ (setq +doom-dashboard-functions `(doom-dashboard-widget-banner))
+ ;;(setq +doom-dashboard-functions `(doom-dashboard-widget-banner my/doom-dashboard-widget-loaded))
  :bind
  (:map +doom-dashboard-mode-map
   ("a" . 'org-agenda)
