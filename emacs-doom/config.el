@@ -533,6 +533,7 @@ Otherwise, format as '@relative/path#line_number'."
  (setq dired-listing-switches "-alh --group-directories-first -v")
  (setq dired-omit-files "^\\./?$\\|^\\.\\./?$")
  (map! :map dired-mode-map
+  "C-o" nil
   "TAB" #'dired-subtree-cycle
   "<" #'dired-up-directory
   ;; better if it does not open file (only cd on directories)
@@ -757,7 +758,6 @@ If RETURN-P, return the message as a string instead of displaying it."
 
 (use-package! python-mode
  :after eglot
- 
  :hook
  (python-mode-hook . eglot-ensure)
  (before-save . eglot-format-buffer))
