@@ -518,6 +518,28 @@ Otherwise, format as '@relative/path#line_number'."
  ;; :config
  ;; (set-fringe-mode '(1 . 1)))
 
+(use-package! dired
+ :hook
+ (dired-mode . dired-omit-mode)
+ (dired-mode . dired-hide-details-mode)
+ :config
+ (setq dired-listing-switches "-alh --group-directories-first -v")
+ (setq dired-omit-files "^\\./?$\\|^\\.\\./?$")
+ (map! :map dired-mode-map
+  "TAB" #'dired-subtree-cycle
+  "<" #'dired-up-directory
+  ;; better if it does not open file (only cd on directories)
+  ">" #'dired-find-file
+  ;; nothing like this found
+  ;; "f" dired-forward
+  ;; trying to setup "back"
+  "b" #'dired-prev-subdir))
+
+(use-package! dired-subtree
+ :config
+ (add-hook 'dired-subtree-after-insert-hook #'dired-omit-mode)
+ (add-hook 'dired-subtree-after-insert-hook #'dired-hide-details-mode))
+
 ;; Used as a global config (not related to a package)
 ;;
 ;; TODO cleanup "emacs" config

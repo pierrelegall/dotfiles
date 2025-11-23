@@ -63,6 +63,7 @@
 (package! consult-notmuch)
 (package! corfu)
 (package! diff-hl)
+(package! dired-subtree)
 (package! doom-themes)
 (package! exunit)
 (package! feature-mode)
