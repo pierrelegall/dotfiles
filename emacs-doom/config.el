@@ -528,10 +528,7 @@ Otherwise, format as '@relative/path#line_number'."
                (help-mode))))
          (when doc-buffer
            (setq my/corfu-last-doc-buffer doc-buffer)
-           (display-buffer doc-buffer
-                           '(display-buffer-reuse-window display-buffer-use-some-window)
-                           '((inhibit-same-window . t)
-                             (reusable-frames . visible)))))
+           (display-buffer doc-buffer)))
         ;; Try as variable
         ((and symbol (boundp symbol))
          (save-window-excursion
@@ -547,10 +544,7 @@ Otherwise, format as '@relative/path#line_number'."
                (help-mode))))
          (when doc-buffer
            (setq my/corfu-last-doc-buffer doc-buffer)
-           (display-buffer doc-buffer
-                           '(display-buffer-reuse-window display-buffer-use-some-window)
-                           '((inhibit-same-window . t)
-                             (reusable-frames . visible)))))
+           (display-buffer doc-buffer)))
         (t
          (message "No documentation available for: %s" candidate))))))
  :bind
