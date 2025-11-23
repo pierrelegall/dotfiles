@@ -286,54 +286,53 @@ Otherwise, format as '@relative/path#line_number'."
 (add-to-list 'default-frame-alist '(width . 100))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-(global-set-key (kbd "C-.") #'eglot-code-actions)
-(global-set-key (kbd "C-u") #'my/pop-to-mark-command)
-;; (global-set-key (kbd "C-u") #'pop-to-mark-command)
-(global-set-key (kbd "C-x u") #'universal-argument)
-(global-set-key (kbd "C-!") #'shell-command)
-(global-set-key (kbd "C-j") #'xref-find-definitions)
-(global-set-key (kbd "C-\"") #'consult-imenu-multi)
-(global-set-key (kbd "C-S-n") #'forward-paragraph)
-(global-set-key (kbd "C-S-p") #'backward-paragraph)
-(global-set-key (kbd "C-{") #'my/move-line-up)
-(global-set-key (kbd "C-è") #'my/move-line-down)
-(global-set-key (kbd "C-<backspace>") #'doom/delete-backward-word)
-(global-set-key (kbd "C-h") (kbd "<backspace>"))
-(global-set-key (kbd "C-S-h") (kbd "C-<backspace>"))
-(global-set-key (kbd "C-S-d") #'doom/delete-for)
-(global-set-key (kbd "C-x i") #'indent-for-tab-command)
-(global-set-key (kbd "C-o") 'other-window)
-(global-set-key (kbd "C-S-o") (cmd! (other-window -1)))
-(global-set-key (kbd "C-v") (cmd! (scroll-up-command 5) (forward-line 5)))
-(global-set-key (kbd "C-S-v") (cmd! (scroll-down-command 5) (forward-line -5)))
-(global-set-key (kbd "C-S-f") 'forward-word)
-(global-set-key (kbd "C-S-b") 'backward-word)
-(global-set-key [remap kill-region] 'kill-ring-save)
-(global-set-key [remap kill-ring-save] 'kill-region)
-(global-set-key (kbd "C-S-w") 'kill-ring-save)
-(global-set-key (kbd "C-S-y") #'consult-yank-from-kill-ring)
-(global-set-key (kbd "C-S-l") 'visual-line-mode)
-(global-set-key (kbd "C-x O") 'my/switch-to-minibuffer)
-(global-set-key (kbd "C-<") 'beginning-of-buffer)
-(global-set-key (kbd "C->") 'end-of-buffer)
-(global-set-key (kbd "C-;") 'comment-line)
-(global-set-key (kbd "C-x C-k") 'my/kill-this-buffer)
-(global-set-key (kbd "C-q") 'my/kill-this-buffer)
-(global-set-key (kbd "C-,") 'my/expand-region)
-(global-set-key (kbd "C-ç") 'text-scale-decrease)
-(global-set-key (kbd "C-œ") 'text-scale-increase)
-(global-set-key (kbd "C-æ") 'text-scale-)
-(global-set-key (kbd "C--") 'doom/decrease-font-size)
-(global-set-key (kbd "C-+") 'doom/increase-font-size)
-(global-set-key (kbd "C-=") 'doom/reset-font-size)
-(global-set-key (kbd "C-0") 'doom/reset-font-size)
-(global-unset-key (kbd "C-<return>"))
-(global-set-key (kbd "C-i") #'completion-at-point)
-(global-set-key (kbd "C-S-i") #'dabbrev-completion)
-(global-set-key (kbd "<mouse-2>") nil)
-(global-set-key (kbd "C-u") #'winner-undo)
-(global-set-key (kbd "C-S-u") #'winner-redo)
-(global-set-key (kbd "C-z") #'winner-redo)
+(map!
+ "C-." #'eglot-code-actions
+ ;; "C-u" #'my/pop-to-mark-command
+ "C-x u" #'universal-argument
+ "C-!" #'shell-command
+ "C-j" #'xref-find-definitions
+ "C-\"" #'consult-imenu-multi
+ "C-S-n" #'forward-paragraph
+ "C-S-p" #'backward-paragraph
+ "C-{" #'my/move-line-up
+ "C-è" #'my/move-line-down
+ "C-<backspace>" #'doom/delete-backward-word
+ "C-h" (kbd "<backspace>")
+ "C-S-h" (kbd "C-<backspace>")
+ "C-S-d" #'doom/delete-for
+ "C-x i" #'indent-for-tab-command
+ "C-o" #'other-window
+ "C-S-o" (cmd! (other-window -1))
+ "C-v" (cmd! (scroll-up-command 5) (forward-line 5))
+ "C-S-v" (cmd! (scroll-down-command 5) (forward-line -5))
+ "C-S-f" #'forward-word
+ "C-S-b" #'backward-word
+ [remap kill-region] #'kill-ring-save
+ [remap kill-ring-save] #'kill-region
+ "C-S-w" #'kill-ring-save
+ "C-S-y" #'consult-yank-from-kill-ring
+ "C-S-l" #'visual-line-mode
+ "C-x O" #'my/switch-to-minibuffer
+ "C-<" #'beginning-of-buffer
+ "C->" #'end-of-buffer
+ "C-;" #'comment-line
+ "C-x C-k" #'my/kill-this-buffer
+ "C-q" #'my/kill-this-buffer
+ "C-," #'my/expand-region
+ "C-ç" #'text-scale-decrease
+ "C-œ" #'text-scale-increase
+ "C--" #'doom/decrease-font-size
+ "C-+" #'doom/increase-font-size
+ "C-=" #'doom/reset-font-size
+ "C-0" #'doom/reset-font-size
+ "C-<return>" nil
+ "C-i" #'completion-at-point
+ "C-S-i" #'dabbrev-completion
+ "<mouse-2>" nil
+ "C-u" #'winner-undo
+ "C-S-u" #'winner-redo
+ "C-z" #'winner-redo)
 
 (setq completion-styles '(fussy orderless basic))
 
@@ -379,7 +378,7 @@ Otherwise, format as '@relative/path#line_number'."
  "y" #'my/swtich-to-vterm-buffer
  "C-y" #'my/swtich-to-vterm-buffer
  "T" #'consult-buffer
- "C-T" #'consult-buffer
+ "C-S-t" #'consult-buffer
  "t" #'my/consult-projectile-or-buffer
  "C-t" #'my/consult-projectile-or-buffer
  "q" #'delete-window
@@ -418,7 +417,8 @@ Otherwise, format as '@relative/path#line_number'."
  "r f" #'rename-file
  "," #'treemacs-select-window
  "." #'treemacs-narrow-to-current-file
- "e" #'consult-flycheck)
+ "e" #'consult-flycheck
+ "u" #'winner-redo)
 
 (map! :map prog-mode-map
  "C-i" 'completion-at-point)
