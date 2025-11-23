@@ -496,17 +496,72 @@ Otherwise, format as '@relative/path#line_number'."
 
 (use-package! corfu
  :config
- (setq-default corfu-auto nil)
+ (setq-default corfu-auto t)
  (setq corfu-popupinfo-delay '(0.8 . 0.4))
  (corfu-popupinfo-mode -1)
  (setq corfu-preview-current nil)
- (setq corfu-quit-at-boundary nil)
+ (setq corfu-quit-at-boundary t)
  (setq corfu-cycle t)
+
+ (defvar my/corfu-last-doc-buffer nil
+   "Last created corfu documentation buffer.")
+
+ (defun my/corfu-show-documentation-persistent ()
+   "Show documentation for current completion candidate in a persistent buffer."
+   (interactive)
+   (when (and corfu--candidates (>= corfu--index 0))
+     (let* ((candidate (nth corfu--index corfu--candidates))
+            (symbol (intern-soft candidate))
+            doc-buffer)
+       ;; Kill previous doc buffer if it exists
+       (when (and my/corfu-last-doc-buffer (buffer-live-p my/corfu-last-doc-buffer))
+         (kill-buffer my/corfu-last-doc-buffer))
+       (cond
+        ;; Try as function
+        ((and symbol (fboundp symbol))
+         (save-window-excursion
+           (describe-function symbol)
+           (when-let ((help-buf (get-buffer "*Help*")))
+             (setq doc-buffer
+                   (generate-new-buffer
+                    (format "*corfu-doc-%s*"
+                            (replace-regexp-in-string "[^[:alnum:]]" "_" candidate))))
+             (with-current-buffer doc-buffer
+               (insert-buffer-substring help-buf)
+               (goto-char (point-min))
+               (help-mode))))
+         (when doc-buffer
+           (setq my/corfu-last-doc-buffer doc-buffer)
+           (display-buffer doc-buffer
+                           '(display-buffer-reuse-window display-buffer-use-some-window)
+                           '((inhibit-same-window . t)
+                             (reusable-frames . visible)))))
+        ;; Try as variable
+        ((and symbol (boundp symbol))
+         (save-window-excursion
+           (describe-variable symbol)
+           (when-let ((help-buf (get-buffer "*Help*")))
+             (setq doc-buffer
+                   (generate-new-buffer
+                    (format "*corfu-doc-%s*"
+                            (replace-regexp-in-string "[^[:alnum:]]" "_" candidate))))
+             (with-current-buffer doc-buffer
+               (insert-buffer-substring help-buf)
+               (goto-char (point-min))
+               (help-mode))))
+         (when doc-buffer
+           (setq my/corfu-last-doc-buffer doc-buffer)
+           (display-buffer doc-buffer
+                           '(display-buffer-reuse-window display-buffer-use-some-window)
+                           '((inhibit-same-window . t)
+                             (reusable-frames . visible)))))
+        (t
+         (message "No documentation available for: %s" candidate))))))
  :bind
  (:map corfu-map
   ("C-S-n" . corfu-popupinfo-scroll-up)
   ("C-S-p" . corfu-popupinfo-scroll-down)
-  ("C-." . corfu-info-documentation)))
+  ("C-." . my/corfu-show-documentation-persistent)))
 
 (use-package! diff-hl
  :after magit
