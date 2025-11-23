@@ -579,6 +579,7 @@ Otherwise, format as '@relative/path#line_number'."
  (dired-mode . dired-omit-mode)
  (dired-mode . dired-hide-details-mode)
  :config
+ (setq dired-free-space 'separate)
  (setq dired-listing-switches "-alh --group-directories-first -v")
  (setq dired-omit-files "^\\./?$\\|^\\.\\./?$")
  (map! :map dired-mode-map
