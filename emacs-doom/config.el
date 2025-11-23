@@ -1052,20 +1052,6 @@ If RETURN-P, return the message as a string instead of displaying it."
  :init
  (spacious-padding-mode 1))
 
-(use-package! treemacs
- :config
- (treemacs-git-mode 'deferred)
- (treemacs-filewatch-mode)
- (treemacs-add-and-display-current-project-exclusively)
- (treemacs-project-follow-mode)
- (treemacs-fringe-indicator-mode -1)
- (setq treemacs--project-follow-delay 0.1)
- (setq doom-variable-pitch-font (font-spec :family "Cascadia Mono"))
- (setq doom-themes-treemacs-enable-variable-pitch nil)
- :bind
- (:map treemacs-mode-map
-  ("i" . treemacs-TAB-action)))
-
 (use-package! treesit-auto
  :custom
  (treesit-auto-install 'prompt)
