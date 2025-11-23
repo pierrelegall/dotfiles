@@ -1122,6 +1122,14 @@ If RETURN-P, return the message as a string instead of displaying it."
  :config
  (setq vterm-buffer-name "Term")
  (setq vterm-buffer-name-string "Term: %s")
+ (defun my/vterm-self-insert-exit-copy-mode ()
+  "Exit copy mode and insert the typed character."
+  (interactive)
+  (let ((char last-command-event))
+   (vterm-copy-mode -1)
+   (vterm-send-key (char-to-string char))))
+ (define-key vterm-copy-mode-map [remap self-insert-command]
+  'my/vterm-self-insert-exit-copy-mode)
  (defun my/vterm-set-buffer-font ()
   "Set font to a variable width  fonts in current buffer"
   (interactive)
