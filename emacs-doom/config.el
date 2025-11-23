@@ -856,7 +856,16 @@ If RETURN-P, return the message as a string instead of displaying it."
   (add-to-list 'eglot-server-programs
    '(markdown-mode . ("harper-ls" "--stdio")))))
 
-(use-package nerd-icons)
+(use-package! nerd-icons)
+
+(use-package! nerd-icons-completion
+  :config
+  (nerd-icons-completion-mode))
+
+(use-package! nerd-icons-dired
+  :hook
+  (dired-mode . nerd-icons-dired-mode)
+  (dired-subtree-after-insert . nerd-icons-dired-mode))
 
 (use-package! notmuch
  :config

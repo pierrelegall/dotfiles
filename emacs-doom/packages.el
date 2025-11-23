@@ -75,6 +75,8 @@
 (package! isearch-dabbrev)
 (package! magit-todos)
 (package! nerd-icons)
+(package! nerd-icons-completion)
+(package! nerd-icons-dired)
 (package! olivetti)
 (package! spacious-padding)
 (package! marginalia)
