@@ -651,6 +651,11 @@ If RETURN-P, return the message as a string instead of displaying it."
    doom-init-time))
  (setq +doom-dashboard-ascii-banner-fn #'my/doom-dashboard-draw-ascii-banner-fn)
  (setq +doom-dashboard-functions `(doom-dashboard-widget-banner))
+ ;; Global Auto Revert
+ (global-auto-revert-mode 1)
+ (setq auto-revert-use-notify t)
+ (setq auto-revert-verbose t)
+ (setq revert-without-query '(".*"))
  ;;(setq +doom-dashboard-functions `(doom-dashboard-widget-banner my/doom-dashboard-widget-loaded))
  :bind
  (:map +doom-dashboard-mode-map
