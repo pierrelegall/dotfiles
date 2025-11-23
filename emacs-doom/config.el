@@ -423,9 +423,6 @@ Otherwise, format as '@relative/path#line_number'."
 (map! :map prog-mode-map
  "C-i" 'completion-at-point)
 
-(use-package all-the-icons
- :if (display-graphic-p))
-
 (use-package! consult
  :init
  (defun my/consult-buffer-with-search (search)

@@ -52,7 +52,6 @@
 (package! flycheck-popup-tip :disable t)
 (package! solaire-mode :disable t)
 
-(package! all-the-icons)
 (package! auto-save-visited-local-mode)
 (package! consult)
 (package! consult-gh)
