@@ -246,6 +246,30 @@ If search string is empty, just beep."
     (vterm)))
   ('else
    (vterm))))
+(defun my/copy-file-context-reference ()
+ "Copy file context at point or region for sharing with other software.
+If region is active, format as '@relative/path#start_line-end_line'.
+Otherwise, format as '@relative/path#line_number'."
+ (interactive)
+ (if-let ((file-path (buffer-file-name)))
+  (let* ((relative-path (cond
+                         ((and (fboundp 'projectile-project-root)
+                               (projectile-project-root))
+                          (file-relative-name file-path (projectile-project-root)))
+                         ('else
+                          (file-name-nondirectory file-path))))
+         (start-line (line-number-at-pos (cond
+                                          ((use-region-p) (region-beginning))
+                                          ('else (point)))))
+         (end-line (when (use-region-p) (line-number-at-pos (region-end))))
+         (context (cond
+                   (end-line
+                    (format "@%s#%d-%d" relative-path start-line end-line))
+                   ('else
+                    (format "@%s#%d" relative-path start-line)))))
+   (kill-new context)
+   (message "Copied: %s" context))
+  (message "Buffer is not visiting a file")))
 
 (add-to-list 'default-frame-alist '(font . "Cascadia Code-13"))
 (add-to-list 'default-frame-alist '(height . 45))
