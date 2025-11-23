@@ -236,16 +236,11 @@ If search string is empty, just beep."
  (isearch-push-state)
  (isearch-update))
 
-(defun my/vterm-in-current-directory ()
- "Open a VTerm in current directory."
+(defun my/dired-here ()
+ "Run dired in the current directory."
  (interactive)
- (cond
-  ((buffer-file-name)
-   (let (default-directory)
-    (setq default-directory (file-name-directory (buffer-file-name)))
-    (vterm)))
-  ('else
-   (vterm))))
+ (dired default-directory))
+
 (defun my/copy-file-context-reference ()
  "Copy file context at point or region for sharing with other software.
 If region is active, format as '@relative/path#start_line-end_line'.
@@ -358,12 +353,13 @@ Otherwise, format as '@relative/path#line_number'."
  (insert "	"))
 
 (map! :leader
+ "d" #'my/dired-here
  "!" #'shell-command
  "TAB" #'my/insert-tab
  "m" #'notmuch-jump-search
  "M" #'compose-mail
  "I" #'indent-region
- "o t" #'my/vterm-in-current-directory
+ "o t" #'vterm
  "o T" #'+vterm/here
  "y" #'my/swtich-to-vterm-buffer
  "C-y" #'my/swtich-to-vterm-buffer
@@ -377,10 +373,10 @@ Otherwise, format as '@relative/path#line_number'."
  "3" #'split-window-right
  "j" #'consult-imenu
  "J" #'consult-imenu-multi
- "d" #'help-command
- "d c" #'describe-command
- "d d" #'+lookup/documentation
- "d K" #'describe-keymap
+ ;; "d" #'help-command
+ ;; "d c" #'describe-command
+ ;; "d d" #'+lookup/documentation
+ ;; "d K" #'describe-keymap
  "h" #'help-command
  "h h" #'eldoc
  "x" #'consult-mode-command
@@ -388,6 +384,7 @@ Otherwise, format as '@relative/path#line_number'."
  "C-<SPC>" #'execute-extended-command
  "_" #'vertico-repeat-select
  "p" #'projectile-command-map
+ "p d" #'projectile-dired
  "g" #'consult-ripgrep
  "v" #'magit-status
  "V" #'magit-status-here
