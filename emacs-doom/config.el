@@ -411,8 +411,8 @@ Otherwise, format as '@relative/path#line_number'."
  "+" #'text-scale-increase
  "w" #'winner-undo
  "W" #'winner-redo
- "l" #'rotate-layout
- "L" #'rotate-window
+ "l" #'rotate-window
+ "L" #'rotate-layout
  "r b" #'rename-buffer
  "r f" #'rename-file
  "," #'treemacs-select-window
