@@ -1095,7 +1095,7 @@ If RETURN-P, return the message as a string instead of displaying it."
 (use-package ultra-scroll
  :init
  (setq scroll-conservatively 101) ; important!
- (setq scroll-margin 0)
+ (setq scroll-margin 5)
  :config
  (ultra-scroll-mode 1))
 
