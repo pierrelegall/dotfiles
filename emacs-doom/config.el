@@ -873,7 +873,7 @@ If RETURN-P, return the message as a string instead of displaying it."
  (defun my/magit-status-fold-all ()
    "Open magit status with all sections folded."
    (interactive)
-   (magit-status)
+   (magit-status-setup-buffer)
    (magit-section-show-level-2-all))
  (setq magit-display-buffer-function
   (lambda (buffer)
