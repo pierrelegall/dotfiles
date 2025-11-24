@@ -841,10 +841,15 @@ If RETURN-P, return the message as a string instead of displaying it."
 
 (use-package! magit
  :after nerd-icons
+ :hook
+ (magit-status-mode-hook . my/show-paren-local-disable-mode)
+ (magit-section-movement-hook . magit-hunk-maybe-recenter)
+ :custom
+ (magit-format-file-function #'magit-format-file-nerd-icons)
  :config
+ ;; (setq magit-section-highlight-hook nil)
+ ;; (setq magit-section-unhighlight-hook nil)
  (setq magit-region-highlight-hook nil)
- (setq magit-section-highlight-hook nil)
- (setq magit-section-unhighlight-hook nil)
  (setq magit-verbose-messages t)
  (setq magit-diff-refine-hunk nil)
  (setq magit-commit-show-diff nil)
@@ -878,11 +883,9 @@ If RETURN-P, return the message as a string instead of displaying it."
  (setq magit-display-buffer-function
   (lambda (buffer)
    (display-buffer buffer '(display-buffer-same-window))))
- :custom
- (magit-format-file-function #'magit-format-file-nerd-icons)
- :hook
- (magit-status-mode-hook . my/show-paren-local-disable-mode)
- (magit-section-movement-hook . magit-hunk-maybe-recenter)
+ (advice-add 'magit-status-here :before #'my/maybe-recenter)
+ (advice-add 'magit-section-forward :after (lambda (&rest _) (recenter 0)))
+ (advice-add 'magit-section-backward :after (lambda (&rest _) (recenter 0)))
  :bind
  (:map magit-mode-map
   ("C-S-i" . #'magit-section-cycle-diffs))
