@@ -293,8 +293,8 @@ Otherwise, format as '@relative/path#line_number'."
  "C-!" #'shell-command
  "C-j" #'xref-find-definitions
  "C-\"" #'consult-imenu-multi
- "C-S-n" #'forward-paragraph
- "C-S-p" #'backward-paragraph
+ "C-S-n" #'diff-hl-next-hunk
+ "C-S-p" #'diff-hl-previous-hunk
  "C-{" #'my/move-line-up
  "C-è" #'my/move-line-down
  "C-<backspace>" #'doom/delete-backward-word
@@ -576,9 +576,10 @@ Otherwise, format as '@relative/path#line_number'."
  (magit-post-refresh . diff-hl-magit-post-refresh)
  :init
  (global-diff-hl-mode 1)
- (diff-hl-flydiff-mode 1))
- ;; :config
- ;; (set-fringe-mode '(1 . 1)))
+ (diff-hl-flydiff-mode 1)
+ :config
+ (advice-add 'diff-hl-next-hunk :after (lambda (&rest _) (recenter)))
+ (advice-add 'diff-hl-previous-hunk :after (lambda (&rest _) (recenter))))
 
 (use-package! dired
  :hook
