@@ -883,12 +883,13 @@ If RETURN-P, return the message as a string instead of displaying it."
  (setq magit-display-buffer-function
   (lambda (buffer)
    (display-buffer buffer '(display-buffer-same-window))))
- (advice-add 'magit-status-here :before #'my/maybe-recenter)
+ (advice-add 'magit-status-here :after (lambda (&rest _) (recenter)))
  (advice-add 'magit-section-forward :after (lambda (&rest _) (recenter 0)))
  (advice-add 'magit-section-backward :after (lambda (&rest _) (recenter 0)))
  :bind
  (:map magit-mode-map
-  ("C-S-i" . #'magit-section-cycle-diffs))
+  ("C-S-i" . #'magit-section-cycle-diffs)
+  ("v" . my/magit-status-fold-all))
  (:map magit-status-mode-map
   ("i" . magit-section-toggle)
   ("I" . magit-gitignore)))
