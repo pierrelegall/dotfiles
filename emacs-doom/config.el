@@ -589,11 +589,12 @@ Otherwise, format as '@relative/path#line_number'."
  :config
  (defun my/dired-abbreviate-header ()
    "Replace full path with abbreviated path in dired header."
-   (save-excursion
-     (goto-char (point-min))
-     (when (re-search-forward "^  \\(/[^:]+\\):" nil t)
-       (let ((full-path (match-string 1)))
-         (replace-match (concat "  " (abbreviate-file-name full-path) ":") t t))))) 
+   (let ((inhibit-read-only t))
+     (save-excursion
+       (goto-char (point-min))
+       (when (re-search-forward "^  \\(/[^:]+\\):" nil t)
+         (let ((full-path (match-string 1)))
+           (replace-match (concat "  " (abbreviate-file-name full-path) ":") t t)))))) 
  (setq dired-free-space 'separate)
  (setq dired-listing-switches "-alh --group-directories-first -v")
  (setq dired-omit-files "^\\./?$\\|^\\.\\./?$")
