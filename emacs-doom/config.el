@@ -400,8 +400,8 @@ Otherwise, format as '@relative/path#line_number'."
  "p" #'projectile-command-map
  "p d" #'projectile-dired
  "g" #'consult-ripgrep
- "v" #'magit-status
- "V" #'magit-status-here
+ "v" #'magit-status-here
+ "V" #'my/magit-status-fold-all
  "b" #'switch-to-buffer
  "B" #'switch-to-buffer-other-window
  "C-k" #'my/kill-this-buffer
@@ -847,8 +847,33 @@ If RETURN-P, return the message as a string instead of displaying it."
  (setq magit-verbose-messages t)
  (setq magit-diff-refine-hunk nil)
  (setq magit-commit-show-diff nil)
+ (setq magit-status-headers-hook
+       '(magit-insert-error-header
+         magit-insert-diff-filter-header
+         magit-insert-head-branch-header))
+ (setq magit-status-sections-hook
+       '(magit-insert-status-headers
+         magit-insert-merge-log
+         magit-insert-rebase-sequence
+         magit-insert-am-sequence
+         magit-insert-sequencer-sequence
+         magit-insert-bisect-output
+         magit-insert-bisect-rest
+         magit-insert-bisect-log
+         magit-insert-staged-changes
+         magit-insert-unstaged-changes
+         magit-insert-untracked-files
+         magit-insert-unpushed-to-pushremote
+         magit-insert-unpushed-to-upstream-or-recent
+         magit-insert-unpulled-from-pushremote
+         magit-insert-unpulled-from-upstream))
  (defun my/show-paren-local-disable-mode ()
   (show-paren-local-mode -1))
+ (defun my/magit-status-fold-all ()
+   "Open magit status with all sections folded."
+   (interactive)
+   (magit-status)
+   (magit-section-show-level-2-all))
  (setq magit-display-buffer-function
   (lambda (buffer)
    (display-buffer buffer '(display-buffer-same-window))))
@@ -865,10 +890,7 @@ If RETURN-P, return the message as a string instead of displaying it."
   ("I" . magit-gitignore)))
 
 (use-package! magit-todos
- :after magit
- :config
- ;;(setq magit-todos-insert-after '(bottom))
- (magit-todos-mode 1))
+ :after magit)
 
 (use-package! marginalia
  :after vertico
