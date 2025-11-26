@@ -4,7 +4,7 @@
 # function that helps in this task, `vterm_printf`, is defined below.
 
 # Set editor variables to emacsclient when running inside Emacs
-set -gx EDITOR "emacsclient --no-wait"
+set -gx EDITOR "emacsclient"
 set -gx VISUAL $EDITOR
 set -gx GIT_EDITOR $EDITOR
 
