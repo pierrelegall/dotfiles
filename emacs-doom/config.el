@@ -673,7 +673,18 @@ If RETURN-P, return the message as a string instead of displaying it."
  (setq auto-revert-use-notify t)
  (setq auto-revert-verbose t)
  (setq revert-without-query '(".*"))
- ;;(setq +doom-dashboard-functions `(doom-dashboard-widget-banner my/doom-dashboard-widget-loaded))
+ (setq auto-revert-check-vc-info t)
+ ;; Force auto-revert even when buffer has unsaved changes
+ ;; By default, auto-revert skips buffers with modifications to prevent data loss.
+ ;; This advice makes auto-revert-handler ignore the buffer-modified-p check,
+ ;; allowing files to be reverted from disk even when there are unsaved changes.
+ ;; WARNING: Unsaved changes will be overwritten when file changes on disk.
+ (defadvice! my/auto-revert-ignore-modified-buffers (orig-fn &rest args)
+   :around #'auto-revert-handler
+   (let ((buffer-modified-p-orig (symbol-function 'buffer-modified-p)))
+     (cl-letf (((symbol-function 'buffer-modified-p)
+                (lambda (&optional buffer) nil)))
+       (apply orig-fn args))))
  :bind
  (:map +doom-dashboard-mode-map
   ("a" . 'org-agenda)
