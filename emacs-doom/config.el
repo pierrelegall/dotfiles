@@ -901,6 +901,7 @@ If RETURN-P, return the message as a string instead of displaying it."
  :bind
  (:map magit-mode-map
   ("C-S-i" . #'magit-section-cycle-diffs)
+  ("t" . vterm)
   ("v" . my/magit-status-fold-all))
  (:map magit-status-mode-map
   ("i" . magit-section-toggle)
