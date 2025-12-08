@@ -998,6 +998,24 @@ If RETURN-P, return the message as a string instead of displaying it."
     (org-move-item-down))
    ('else
     (my/move-line-down))))
+ (defun my/org-cut-item ()
+   "Cut the item at point."
+   (interactive)
+   (when (org-at-item-p)
+     (let* ((struct (org-list-struct))
+            (item-begin (org-list-get-item-begin))
+            (item-end (org-list-get-item-end item-begin struct)))
+       (kill-region item-begin (1- item-end)))))
+ (defun my/org-cut-subtree-or-item ()
+   "Cut the subtree or item at point."
+   (interactive)
+   (cond
+    ((org-at-heading-p)
+     (org-cut-subtree))
+    ((org-at-item-p)
+     (my/org-cut-item))
+    (t
+     (message "Should be called on a subtree or an item"))))
  (setq org-startup-folded t)
  (setq org-hide-block-startup nil)
  (setq org-priority-faces
@@ -1017,7 +1035,7 @@ If RETURN-P, return the message as a string instead of displaying it."
     ("DONE" . org-done)))
  :bind
  (:map org-mode-map
-  ("C-c w" . org-cut-subtree)
+  ("C-c w" . my/org-cut-subtree-or-item)
   ("C-c t" . org-todo)
   ("C-c f" . org-toggle-narrow-to-subtree)
   ("C-c p" . org-priority)
