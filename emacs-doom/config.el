@@ -409,8 +409,7 @@ Otherwise, format as '@relative/path#line_number'."
  "0" #'text-scale-adjust
  "-" #'text-scale-decrease
  "+" #'text-scale-increase
- "w" #'winner-undo
- "W" #'winner-redo
+ "w" #'my/copy-file-context-reference
  "l" #'rotate-window
  "L" #'rotate-layout
  "r b" #'rename-buffer
