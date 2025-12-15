@@ -1124,6 +1124,7 @@ If RETURN-P, return the message as a string instead of displaying it."
   ("r" . rustic-build)))
 
 (use-package ultra-scroll
+ :disabled t
  :init
  (setq scroll-conservatively 101) ; important!
  (setq scroll-margin 5)
