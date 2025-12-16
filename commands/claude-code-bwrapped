@@ -27,23 +27,25 @@ fi
 
 # Build bubblewrap command arguments
 BWRAP_ARGS=(
-  # Create new namespaces
-  --unshare-user            # New user namespace
-  --unshare-pid             # New PID namespace
-  --unshare-ipc             # New IPC namespace
-  --unshare-uts             # New UTS namespace (hostname)
-  --die-with-parent         # Kill sandbox if parent dies
+  # Kill children on C-c, better for CLI
+  --die-with-parent
+
+  # Create new namespaces, except for network
+  --unshare-user
+  --unshare-pid
+  --unshare-ipc
+  --unshare-uts
 
   # Security restrictions
-  --new-session             # New session
-  --cap-drop ALL            # Drop all capabilities
+  --cap-drop ALL
 
-  # Mount essential system directories (read-only)
-  --ro-bind /usr /usr
-  --ro-bind /lib /lib
+  # Mount system directories
+  --ro-bind-try /opt/claude-code/bin/claude /opt/claude-code/bin/claude
   --ro-bind /bin /bin
   --ro-bind /sbin /sbin
-  --ro-bind-try /opt/claude-code/bin/claude /opt/claude-code/bin/claude
+  --ro-bind /usr /usr
+  --ro-bind /lib /lib
+  --ro-bind /lib64 /lib64
   --proc /proc
   --tmpfs /tmp
 
@@ -64,38 +66,28 @@ BWRAP_ARGS=(
   --dev-bind /dev/tty /dev/tty
   --ro-bind-try /dev/pts /dev/pts
 
+  # Bind Claude files
+  --bind-try "$HOME/.claude" "$HOME/.claude"
+  --bind-try "$HOME/.claude.json" "$HOME/.claude.json"
+  --bind-try "$HOME/.config/claude" "$HOME/.config/claude"
+  
   # Bind some home directories (personal dev env)
-  --ro-bind $HOME/.rustup $HOME/.rustup
+  --ro-bind $HOME/.local/share/mise $HOME/.local/share/mise
   --ro-bind $HOME/.mix $HOME/.mix
   --ro-bind $HOME/.node_modules $HOME/.node_modules
+  --ro-bind $HOME/.rustup $HOME/.rustup
 
-  # Bind current directory
+  # Bind current working directory
   --bind "$CURRENT_DIR" "$CURRENT_DIR"
   --chdir "$CURRENT_DIR"
 )
 
-# Add lib64 if it exists
-if [ -d /lib64 ]; then
-  BWRAP_ARGS+=(--ro-bind /lib64 /lib64)
-fi
-
-# Add Claude configuration access if files/directories exist
-if [ -d "$HOME/.claude" ]; then
-  BWRAP_ARGS+=(--bind "$HOME/.claude" "$HOME/.claude")
-fi
-if [ -f "$HOME/.claude.json" ]; then
-  BWRAP_ARGS+=(--bind "$HOME/.claude.json" "$HOME/.claude.json")
-fi
-if [ -d "$HOME/.config/claude" ]; then
-  BWRAP_ARGS+=(--bind "$HOME/.config/claude" "$HOME/.config/claude")
-fi
-
 # Run in a bubblewrap sandbox
 echo "Starting claude in bubblewrap sandbox…"
 if [ -x $CLAUDE_BIN ]; then
-  exec bwrap "${BWRAP_ARGS[@]}" $CLAUDE_BIN "$@"
+  bwrap "${BWRAP_ARGS[@]}" $CLAUDE_BIN "$@"
 elif npx claude --version &>/dev/null; then
-  exec bwrap "${BWRAP_ARGS[@]}" npx claude "$@"
+  bwrap "${BWRAP_ARGS[@]}" npx claude "$@"
 else
   echo "⚠ Nor Claude Code binary nor Node package command found."
   exit 1
