@@ -25,6 +25,12 @@ function sudo -d "sudo wrapper that handles aliases"
   command sudo $argv
 end
 
+# Node executables
+set -l node_bin_dir $HOME/.node_modules/bin
+if test -d "$node_bin_dir"
+  prepend_to_path_if_absent $node_bin_dir
+end
+
 # Bash aliases
 set BASH_ALIASES $HOME/.dotfiles/bash/includes/aliases.sh
 if test -f "$BASH_ALIASES"
