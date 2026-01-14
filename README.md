@@ -1,3 +1,3 @@
 # Dotfiles
 
-My configuration files with auto setup makefiles.
+My configuration files with auto setup scripts.
