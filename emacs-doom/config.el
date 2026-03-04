@@ -491,12 +491,6 @@ Otherwise, format as '@relative/path#line_number'."
                      (string-prefix-p root directory))))
        (consult--buffer-query :sort 'nil))))))))
 
-(use-package! copilot
- :bind
- (:map copilot-completion-map
-  ("C-<return>" . 'copilot-accept-completion)
-  ("C-S-<return>" . 'copilot-accept-completion-by-word)))
-
 (setq completion-in-region-function
  (lambda (&rest args)
   (apply

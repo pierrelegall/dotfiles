@@ -93,5 +93,4 @@
 (package! web-mode)
 (package! wordreference)
 
-(package! copilot :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el" "dist")))
 (package! doom-nano-modeline :recipe (:host github :repo "ronisbr/doom-nano-modeline"))
