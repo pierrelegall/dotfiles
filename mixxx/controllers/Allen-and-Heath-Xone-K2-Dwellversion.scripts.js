@@ -126,9 +126,9 @@ XoneK2.decksBottomLeftEncoder = function (channel, control, value, status) {
         if (!XoneK2.controllers[channel].leftEncoderIsPressed) {
             var bpm = engine.getValue("[InternalClock]", "bpm");
             if (value === 1) {
-                bpm += 0.1;
+                bpm += 0.2;
             } else {
-                bpm -= 0.1;
+                bpm -= 0.2;
             }
             engine.setValue("[InternalClock]", "bpm", bpm);
         } else {
