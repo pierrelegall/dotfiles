@@ -552,7 +552,19 @@ XoneK2.Deck = function (column, deckNumber, midiChannel) {
             this.connect();
         },
         shift: function () {
-            // TODO, or not
+            this.color = XoneK2.color.amber;
+        },
+        input: function (channel, _control, value, _status, _group) {
+            // Mixxx has no built-in control to reset the rate to the track's
+            // original BPM, so we work around it by setting rate to 0.0
+            // (center of the rate slider = no pitch adjustment).
+            // value > 0 filters out the button release message (value == 0),
+            // so the action only fires once on press.
+            if (XoneK2.controllers[channel].isShifted && value > 0) {
+                engine.setValue(theDeck.deckString, 'rate', 0.0);
+            } else {
+                components.Button.prototype.input.apply(this, arguments);
+            }
         },
         supershift: function () {
             // TODO, or not
