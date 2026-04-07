@@ -1067,6 +1067,16 @@ If RETURN-P, return the message as a string instead of displaying it."
   ("<down-mouse-1>" . org-tree-slide-move-next-tree)
   ("<down-mouse-3>" . org-tree-slide-move-previous-tree)))
 
+(use-package! pulsar
+ :init
+ (pulsar-global-mode 1)
+ :config
+ (setq pulsar-delay 0.08)
+ (setq pulsar-iterations 6)
+ (setq pulsar-face 'pulsar-green)
+ (setq pulsar-region-face 'pulsar-yellow)
+ (setq pulsar-highlight-face 'pulsar-magenta))
+
 (use-package! doom-nano-modeline
  :init
  ;; (doom-modeline-mode -1)

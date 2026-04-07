@@ -81,6 +81,7 @@
 (package! marginalia)
 (package! nano-modeline)
 (package! orderless)
+(package! pulsar)
 (package! rainbow-delimiters)
 (package! vertico)
 (package! vertico-posframe)
