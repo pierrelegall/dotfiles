@@ -373,8 +373,8 @@ Otherwise, format as '@relative/path#line_number'."
  "m" #'notmuch-jump-search
  "M" #'compose-mail
  "I" #'indent-region
- "o t" #'vterm
- "o T" #'+vterm/here
+ "o t" #'+vterm/here
+ "o T" #'vterm
  "y" #'my/swtich-to-vterm-buffer
  "C-y" #'my/swtich-to-vterm-buffer
  "T" #'consult-buffer
