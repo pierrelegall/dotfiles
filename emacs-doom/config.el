@@ -725,6 +725,14 @@ If RETURN-P, return the message as a string instead of displaying it."
  :hook
  (eglot-mode . flycheck-eglot-mode))
 
+(use-package! svelte-mode
+ :after eglot
+ :hook
+ (svelte-mode . eglot-ensure)
+ :config
+ (add-to-list 'eglot-server-programs
+  '(svelte-mode . ("svelteserver" "--stdio"))))
+
 (use-package! eldoc
  :init
  (global-eldoc-mode -1)
