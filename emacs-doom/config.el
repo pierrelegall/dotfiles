@@ -683,7 +683,7 @@ If RETURN-P, return the message as a string instead of displaying it."
                 (lambda (&optional buffer) nil)))
        (apply orig-fn args))))
  :bind
- (:map +doom-dashboard-mode-map
+ (:map +dashboard-mode-map
   ("a" . 'org-agenda)
   ("b" . 'switch-to-buffer)
   ("f" . 'find-file)
@@ -701,8 +701,8 @@ If RETURN-P, return the message as a string instead of displaying it."
  ;; Corrects (and improves) org-mode's native fontification.
  (doom-themes-org-config)
  :bind
- (:map +doom-dashboard-mode-map
   ("a" . 'org-agenda)
+ (:map +dashboard-mode-map
   ("b" . 'switch-to-buffer)
   ("f" . 'find-file)
   ("m" . 'notmuch-jump-search)
