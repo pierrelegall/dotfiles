@@ -373,10 +373,10 @@ Otherwise, format as '@relative/path#line_number'."
  "m" #'notmuch-jump-search
  "M" #'compose-mail
  "I" #'indent-region
- "o t" #'+vterm/here
- "o T" #'vterm
- "y" #'my/swtich-to-vterm-buffer
- "C-y" #'my/swtich-to-vterm-buffer
+ "o t" #'ghostel-project-new
+ "o T" #'ghostel-new
+ "y" #'ghostel-list-buffers
+ "C-y" #'ghostel-list-buffers
  "T" #'consult-buffer
  "C-S-t" #'consult-buffer
  "t" #'my/consult-projectile-or-buffer
@@ -431,20 +431,6 @@ Otherwise, format as '@relative/path#line_number'."
    (lambda ()
     (insert search))
    (consult-buffer)))
- (defun my/swtich-to-vterm-buffer ()
-  "Switch to a vterm buffer."
-  (interactive)
-  (let* ((vterm-buffers
-          (seq-filter
-           (lambda (buf)
-            (eq (buffer-local-value 'major-mode buf) 'vterm-mode))
-           (buffer-list)))
-         (buffer-names (mapcar #'buffer-name vterm-buffers)))
-   (cond
-    (buffer-names
-     (switch-to-buffer (completing-read "Switch to vterm buffer: " buffer-names nil t)))
-    (t
-     (message "No vterm-mode buffers found")))))
  (defun my/consult-kill-buffer ()
   (interactive)
   (if-let ((buffer-name (substring (consult--vertico-candidate) 0 -1))
@@ -689,7 +675,7 @@ If RETURN-P, return the message as a string instead of displaying it."
   ("f" . 'find-file)
   ("p" . 'projectile-switch-project)
   ("r" . 'recentf)
-  ("t" . '+vterm/here)))
+  ("t" . 'ghostel-new)))
 
 (use-package! doom-themes
  :config
@@ -709,7 +695,7 @@ If RETURN-P, return the message as a string instead of displaying it."
   ("M" . 'compose-mail)
   ("p" . 'projectile-switch-project)
   ("r" . 'recentf)
-  ("t" . '+vterm/here)))
+  ("t" . 'ghostel-new)))
 
 (use-package! eglot
  :init
@@ -795,6 +781,28 @@ If RETURN-P, return the message as a string instead of displaying it."
 ;;   (text-mode . flycheck-languagetool-setup)
 ;;   (markdown-mode . flycheck-languagetool-setup)
 ;;   (org-mode . flycheck-languagetool-setup))
+
+(use-package! ghostel
+  :config
+  (defun ghostel-new ()
+   "Start a new Ghostel terminal."
+   (interactive)
+   (ghostel '(4)))
+  (defun ghostel-project-new ()
+   "Start a new Ghostel terminal in project root."
+   (interactive)
+   (ghostel-project '(4)))
+  (setq ghostel-buffer-name-function
+   (lambda (title)
+    (when title
+      (format "Term: %s" title))))
+  :bind
+  (:map ghostel-mode-map
+   ("C-." . #'ghostel-copy-mode))
+  (:map ghostel-semi-char-mode-map
+   ("C-o" . nil)
+   ("C-v" . nil)
+   ("C-q" . nil)))
 
 (use-package! goggles
  :hook ((prog-mode text-mode) . goggles-mode)
@@ -906,7 +914,7 @@ If RETURN-P, return the message as a string instead of displaying it."
  :bind
  (:map magit-mode-map
   ("C-S-i" . #'magit-section-cycle-diffs)
-  ("t" . vterm)
+  ("t" . ghostel-new)
   ("v" . my/magit-status-fold-all))
  (:map magit-status-mode-map
   ("i" . magit-section-toggle)
@@ -1196,44 +1204,6 @@ If RETURN-P, return the message as a string instead of displaying it."
   ("C-S-p" . previous-history-element)))
 
 (add-hook 'minibuffer-mode #'hide-mode-line-mode)
-
-(use-package! vterm
- :config
- (setq vterm-buffer-name "Term")
- (setq vterm-buffer-name-string "Term: %s")
- (defun my/vterm-self-insert-exit-copy-mode ()
-  "Exit copy mode and insert the typed character."
-  (interactive)
-  (let ((char last-command-event))
-   (vterm-copy-mode -1)
-   (vterm-send-key (char-to-string char))))
- (define-key vterm-copy-mode-map [remap self-insert-command]
-  'my/vterm-self-insert-exit-copy-mode)
- (defun my/vterm-set-buffer-font ()
-  "Set font to a variable width  fonts in current buffer"
-  (interactive)
-  (setq buffer-face-mode-face '(:family "Cascadia"))
-  (buffer-face-mode))
- :hook
- (vterm-mode . my/vterm-set-buffer-font)
- :bind
- (:map vterm-mode-map
-  ("C-q" . nil) ; looking for a better "exit"
-  ("C-S-h" . vterm-send-C-w)
-  ("C-S-d" . vterm-send-M-d)
-  ("C-g" . vterm--self-insert)
-  ("C-." . vterm-copy-mode)
-  ("C-/" . vterm-undo)
-  ("C-<" . vterm-send-C-a)
-  ("C->" . vterm-send-C-e)
-  ("C-j" . woman)
-  ("C-v" . nil)
-  ("C-z" . nil)
-  ("C-l" . vterm-clear)
-  ("C-o" . nil)
-  ("C-<return>" . vterm-send-C-m))
- (:map vterm-copy-mode-map
-  ("C-." . vterm-copy-mode-done)))
 
 (use-package! winner
  :config
