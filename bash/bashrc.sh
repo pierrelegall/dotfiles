@@ -7,7 +7,7 @@ source $HOME/.dotfiles/bash/includes/terminal-options.sh
 
 # Mise
 MISE_BIN=$(command -pv mise)
-if [ -f $MIS_BIN ]; then
+if [ -x $MISE_BIN ]; then
   eval "$($MISE_BIN activate bash)"
   MISE_ENABLED=1
 fi
@@ -25,4 +25,3 @@ if [ -f $STARSHIP_BIN ]; then
   eval "$($STARSHIP_BIN init bash)"
   STARSHIP_ENABLED=1
 fi
-
