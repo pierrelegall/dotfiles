@@ -424,29 +424,7 @@ Otherwise, format as '@relative/path#line_number'."
 
 (use-package! consult
  :init
- (defun my/consult-buffer-with-search (search)
-  "Run consult-buffer with SEARCH pre-filled in the minibuffer."
-  (interactive)
-  (minibuffer-with-setup-hook
-   (lambda ()
-    (insert search))
-   (consult-buffer)))
- (defun my/consult-kill-buffer ()
-  (interactive)
-  (if-let ((buffer-name (substring (consult--vertico-candidate) 0 -1))
-           (buffer (get-buffer buffer-name)))
-   (progn (kill-buffer buffer)
-    (minibuffer-keyboard-quit))
-   (message "Not a buffer")))
  :config
- (setq consult--source-buffer
-  (plist-put consult--source-buffer :items
-   (lambda ()
-    (mapcar #'buffer-name
-     (seq-filter (lambda (buf)
-                  (and (buffer-live-p buf)
-                   (not (string-prefix-p " " (buffer-name buf)))))
-      (buffer-list))))))
  (setq consult-preview-key "C-.")
  :bind
  (:map minibuffer-mode-map
