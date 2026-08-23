@@ -349,7 +349,7 @@ Otherwise, format as '@relative/path#line_number'."
 (setq initial-scratch-message "#+TITLE: Scratch\n\n")
 (setq initial-major-mode 'org-mode)
 (add-hook 'text-mode-hook 'visual-line-mode)
-(remove-hook 'doom-first-buffer-hook #'global-hl-line-mode)
+(setq global-hl-line-modes '(org-agenda-mode dired-mode))
 (remove-hook 'doom-first-buffer-hook #'show-paren-mode)
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
