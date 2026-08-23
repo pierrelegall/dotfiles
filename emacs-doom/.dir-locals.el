@@ -1,2 +1,2 @@
 ((emacs-lisp-mode
-  (lisp-indent-offset . 1))
+  (lisp-indent-offset . 1)))
