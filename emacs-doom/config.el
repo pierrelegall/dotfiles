@@ -585,7 +585,7 @@ Otherwise, format as '@relative/path#line_number'."
 (use-package! emacs
  :config
  (add-hook 'window-size-change-functions 'frame-hide-title-bar-when-maximized)
- (setq my/doom-dashboard-ascii-banner
+ (setq my/+dashboard-ascii-banner
   '("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠟⠹⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
     "⠀⠀⠀⠀⠀⠀⠀⠀⣷⣦⣄⣠⣿⠃⢠⣄⠈⢻⣆⣠⣴⡞⡆⠀⠀⠀⠀⠀⠀⠀"
@@ -600,37 +600,12 @@ Otherwise, format as '@relative/path#line_number'."
     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⢿⣦⣴⡾⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
     "                              "))
- (defun my/doom-dashboard-draw-ascii-banner-fn ()
-  (let* ((longest-line (apply #'max (mapcar #'length my/doom-dashboard-ascii-banner))))
-   (put-text-property
-    (point)
-    (dolist (line my/doom-dashboard-ascii-banner (point))
-     (insert
-      (+doom-dashboard--center
-       +doom-dashboard--width
-       (concat line (make-string (max 0 (- longest-line (length line))) 32)))
-      "\n"))
-    'face 'doom-dashboard-banner)))
- (defun my/doom-dashboard-widget-loaded ()
-  (when doom-init-time
-   (insert
-    "\n\n"
-    (propertize
-     (+doom-dashboard--center
-      +doom-dashboard--width
-      (my/doom-display-benchmark-h 'return))
-     'face 'doom-dashboard-loaded))))
- (defun my/doom-display-benchmark-h (&optional return-p)
-  "Display a benchmark including number of packages and modules loaded.
-
-If RETURN-P, return the message as a string instead of displaying it."
-  (funcall (if return-p #'format #'message)
-   "%d packages, %d modules, loaded in %.03fs"
-   (- (length load-path) (length (get 'load-path 'initial-value)))
-   (if doom-modules (hash-table-count doom-modules) -1)
-   doom-init-time))
- (setq +doom-dashboard-ascii-banner-fn #'my/doom-dashboard-draw-ascii-banner-fn)
- (setq +doom-dashboard-functions `(doom-dashboard-widget-banner))
+ (defun my/+dashboard-draw-ascii-banner-fn ()
+  (propertize
+   (string-join my/+dashboard-ascii-banner "\n")
+   'face '+dashboard-banner))
+ (setq +dashboard-ascii-banner-fn #'my/+dashboard-draw-ascii-banner-fn)
+ (setq +dashboard-functions '(+dashboard-widget-banner))
  ;; Global Auto Revert
  (global-auto-revert-mode 1)
  (setq auto-revert-use-notify t)
