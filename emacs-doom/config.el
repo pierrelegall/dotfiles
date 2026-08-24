@@ -281,7 +281,7 @@ Otherwise, format as '@relative/path#line_number'."
    (message "Copied: %s" context))
   (message "Buffer is not visiting a file")))
 
-(add-to-list 'default-frame-alist '(font . "Cascadia Code-13"))
+(add-to-list 'default-frame-alist '(font . "Cascadia Code-14"))
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(width . 100))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
