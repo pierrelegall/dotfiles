@@ -64,7 +64,7 @@
  ;;objed             ; text object editing for the innocent
  ;;parinfer          ; turn lisp into python, sort of
  ;;rotate-text       ; cycle region at point between text candidates
- snippets            ; my elves. They type so I don't have to
+ ;;snippets          ; my elves. They type so I don't have to
  ;;word-wrap         ; soft wrapping with language-aware indent
 
  :emacs
@@ -88,7 +88,7 @@
 
  :tools
  ;;ansible
- biblio              ; Writes a PhD for you (citation needed)
+ ;;biblio            ; Writes a PhD for you (citation needed)
  ;;debugger          ; FIXME stepping through code, to help you add bugs
  ;;direnv
  docker
@@ -150,7 +150,7 @@
  ;;nix               ; I hereby declare "nix geht mehr!"
  ;;ocaml             ; an objective camel
  (org) ; +roam2)     ; organize your plain life in plain text
- (php +lsp)          ; perl's insecure younger brother
+ ;;(php +lsp)        ; perl's insecure younger brother
  ;;plantuml          ; diagrams for confusing people more
  ;;purescript        ; javascript, but functional
  (python +lsp)       ; beautiful is better than ugly
@@ -158,7 +158,7 @@
  ;;racket            ; a DSL for DSLs
  ;;raku              ; the artist formerly known as perl6
  rest                ; Emacs as a REST client
- rst                 ; ReST in peace
+ ;;rst               ; ReST in peace
  (ruby +rails)       ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
  (rust +lsp)         ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
  ;;scala             ; java, but good
