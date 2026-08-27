@@ -889,6 +889,10 @@ Otherwise, format as '@relative/path#line_number'."
   (add-to-list 'eglot-server-programs
    '(markdown-mode . ("harper-ls" "--stdio")))))
 
+(use-package! mise
+ :config
+ (global-mise-mode 1))
+
 (use-package! nerd-icons)
 
 (use-package! nerd-icons-completion

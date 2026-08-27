@@ -73,6 +73,7 @@
 (package! gptel)
 (package! isearch-dabbrev)
 (package! magit-todos)
+(package! mise)
 (package! nerd-icons)
 (package! nerd-icons-completion)
 (package! nerd-icons-dired)
