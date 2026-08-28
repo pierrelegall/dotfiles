@@ -304,8 +304,8 @@ Otherwise, format as '@relative/path#line_number'."
  "C-x i" #'indent-for-tab-command
  "C-o" #'other-window
  "C-S-o" (cmd! (other-window -1))
- "C-v" (cmd! (scroll-up-command 5) (forward-line 5))
- "C-S-v" (cmd! (scroll-down-command 5) (forward-line -5))
+ "C-v" (cmd! (scroll-up-command 2) (forward-line 2))
+ "C-S-v" (cmd! (scroll-down-command 2) (forward-line -2))
  "C-S-f" #'forward-word
  "C-S-b" #'backward-word
  [remap kill-region] #'kill-ring-save
