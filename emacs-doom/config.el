@@ -827,6 +827,7 @@ Otherwise, format as '@relative/path#line_number'."
  :custom
  (magit-format-file-function #'magit-format-file-nerd-icons)
  :config
+ (setq magit-diff-visit-prefer-worktree t)
  ;; (setq magit-section-highlight-hook nil)
  ;; (setq magit-section-unhighlight-hook nil)
  (setq magit-region-highlight-hook nil)
