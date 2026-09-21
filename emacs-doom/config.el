@@ -1139,23 +1139,11 @@ Otherwise, format as '@relative/path#line_number'."
 (use-package! vertico
  :init
  (vertico-mode)
- (vertico-posframe-mode -1)
  (vertico-buffer-mode)
  (add-to-list
   'display-buffer-alist
   '("\\*vertico"
     (display-buffer-same-window)))
- :config
- (defun my/vertico-posframe-reload ()
-  (interactive)
-  (vertico-posframe-mode -1)
-  (vertico-buffer-mode)
-  (vertico-buffer-mode -1)
-  (vertico-posframe-mode))
- (setq vertico-posframe-border-width 6)
- (setq vertico-posframe-border-width 6)
- (setq vertico-posframe-width 100)
- (setq vertico-posframe-height nil)
  :bind
  (:map vertico-map
   ("C-v" . vertico-next-group)

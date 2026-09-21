@@ -85,7 +85,6 @@
 (package! pulsar)
 (package! rainbow-delimiters)
 (package! vertico)
-(package! vertico-posframe)
 (package! splunk-mode)
 (package! svelte-mode)
 (package! tidal)
