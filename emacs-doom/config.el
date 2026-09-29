@@ -884,11 +884,21 @@ Otherwise, format as '@relative/path#line_number'."
  :init
  (marginalia-mode -1))
 
-(use-package! markdown-mode
+(use-package! markdown-ts-mode
+ :mode
+ (("\\.md\\'"       . markdown-ts-mode)
+  ("\\.mdx\\'"      . markdown-ts-mode)
+  ("\\.markdown\\'" . markdown-ts-mode))
+ :hook
+ (markdown-ts-mode . markdown-indent-mode)
  :config
- (with-eval-after-load 'eglot
-  (add-to-list 'eglot-server-programs
-   '(markdown-mode . ("harper-ls" "--stdio")))))
+ (setq markdown-ts-default-folding 'fold-headings)
+ :bind
+ (:map markdown-ts-mode-map
+  ("RET" . newline)
+  ("C-c C-c" . markdown-ts-toggle-checkbox)
+  ("C-{" . markdown-ts-move-subtree-up)
+  ("C-è" . markdown-ts-move-subtree-down)))
 
 (use-package! mise
  :config
