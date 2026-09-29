@@ -80,6 +80,7 @@
 (package! olivetti)
 (package! spacious-padding)
 (package! marginalia)
+(package! markdown-indent-mode)
 (package! nano-modeline)
 (package! orderless)
 (package! pulsar)
