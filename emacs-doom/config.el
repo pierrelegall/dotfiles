@@ -426,7 +426,7 @@ Otherwise, format as '@relative/path#line_number'."
  :init
  :config
  (setq consult-async-split-style nil)
- (setq consult-ripgrep-args (concat consult-ripgrep-args " --context=1"))
+ (setq consult-ripgrep-args (concat consult-ripgrep-args " --context=1 --hidden"))
  (setq consult-preview-key "C-.")
  :bind
  (:map minibuffer-mode-map
