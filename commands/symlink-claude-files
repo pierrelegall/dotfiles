@@ -1,0 +1,31 @@
+#!/usr/bin/env nu
+
+# Make Claude Code read the agent-neutral files in the current directory
+def main [] {
+  error-if-agents-files-do-not-exist
+  error-if-claude-files-exist
+
+  mkdir .claude
+  ^ln -s AGENTS.md CLAUDE.md
+  ^ln -s ../.agents/skills .claude/skills
+}
+
+def error-if-agents-files-do-not-exist [] {
+  const agents_files = [AGENTS.md .agents]
+
+  for p in $agents_files {
+    if not ($p | path exists) {
+      error make { msg: $"($p) does not exist" }
+    }
+  }
+}
+
+def error-if-claude-files-exist [] {
+  const claude_files = [CLAUDE.md .claude]
+
+  for p in $claude_files {
+    if ($p | path exists --no-symlink) {
+      error make { msg: $"($p) already exists" }
+    }
+  }
+}
